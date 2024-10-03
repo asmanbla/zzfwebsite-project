@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>ZZF Industri - Home Page</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Logo Website-->
+        <link rel="icon" type="image/x-icon" href="assets/img/logoweb.png" />
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template File CSS -->
+        <link href="css/style.css" rel="stylesheet">
+<style>
+        .footer {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+}
+
+.footer .container {
+    max-width: 100%;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+}
+
+.footer .row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-item a {
+    text-align: left;
+}
+
+.categories-img img {
+    height: 250px; /* Atur tinggi gambar sesuai keinginan */
+    object-fit: cover; /* Agar gambar tetap proporsional dan tidak terdistorsi */
+    width: 100%; /* Lebar gambar diatur penuh agar mengikuti ukuran kolom */
+}
+
+a.btn {
+    display: inline-block; /* Atur sebagai inline-block agar dapat diberi margin */
+    margin-bottom: 10px;/* Atur jarak bawah pada tombol pertama */
+}
+
+a.btn {
+    margin-right: 10px; /* Jarak horizontal antar tombol */
+}
+
+a.btn.btn-secondary {
+    border-radius: 8px !important; /* Lekukan kecil dengan prioritas tinggi */
+    padding: 12px 24px !important; /* Ukuran padding agar berbentuk persegi panjang */
+    display: inline-block; /* Pastikan tombol tetap inline */
+}
+</style>
+
+    </head>
+
+    <body>
+
+        <!-- Website Start (Preload) -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Topbar Start -->
+        <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
+            <div class="container">
+                <div class="row gx-0 align-items-center" style="height: 45px;">
+                    <div class="col-lg-6 text-center text-lg-start mb-lg-0">
+                        <div class="d-flex flex-wrap">
+                            <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location here</a>
+                            <a href="tel:+62 818-961-343" class="text-muted me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+62 818-961-343</a>
+                            <a href="mailto:asmanabila03@gmail.com" class="text-muted me-0"><i class="fas fa-envelope text-primary me-2"></i>asmanabila03@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a href="" class="navbar-brand p-0">
+                        <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industri</h1>
+
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto py-0">
+                            <a href="#home" class="nav-item nav-link active">Home</a>
+                            <a href="#produk" class="nav-item nav-link">Produk</a>
+                            <a href="#tentang" class="nav-item nav-link">Tentang Kami</a>
+                            <a href="#keunggulan" class="nav-item nav-link">Keunggulan</a>
+                            <a href="#service" class="nav-item nav-link">Layanan</a>
+                            <a href="#kontak" class="nav-item nav-link">Kontak Kami</a>
+                        </div>
+                        <a href="/login" class="btn btn-primary rounded-pill py-2 px-4">Login</a> <br>
+                        <a href="#service" class="btn btn-secondary rounded-pill py-2 px-4">Pasang Produk</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+        <!-- Carousel Start -->
+        <div class="header-carousel" id="home">
+            <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+                    <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="img/imgzzf/bg2.jpg" class="img-fluid w-100" alt="First slide"/>
+                        <div class="carousel-caption">
+                            <div class="container py-4">
+                                <div class="row g-5">
+                                    <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
+                                    <div class="text-start">
+                                            <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
+                                            <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/imgzzf/bg1.jpeg" class="img-fluid w-100" alt="First slide"/>
+                        <div class="carousel-caption">
+                            <div class="container py-4">
+                                <div class="row g-5">
+                                    <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
+                                    <div class="text-start">
+                                            <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
+                                            <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+         <br>
+                <!-- Produk Kami (ZZF) -->
+                <div class="container-fluid categories pb-5" id="produk">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                    <h1 class="display-5 text-capitalize mb-3">Produk <span class="text-primary">Kami</span></h1>
+                    <p class="mb-0">Berikut adalah produk produk hasil produksi oleh PT ZZF Indonesia 
+                    </p>
+                </div>
+                <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/imgzzf/produk1.jpeg" class="img-fluid w-100 rounded-top" alt="">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Traveling Crane</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star text-body"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$99:00/Day</h4>
+                                </div>
+                        
+                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/imgzzf/produk2.jpg" class="img-fluid w-100 rounded-top" alt="">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Scaffolding</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star text-body"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$128:00/Day</h4>
+                                </div>
+                        
+                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/imgzzf/produk3.jpeg" class="img-fluid w-100 rounded-top" alt="">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Passenger Hoist</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star text-body"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$170:00/Day</h4>
+                                </div>
+                        
+                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end -->
+
+         <!-- Produk Kami (Seller) -->
+         <div class="container-fluid categories pb-5">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                    <h1 class="display-5 text-capitalize mb-3">Produk <span class="text-primary">Lainnya</span></h1>
+                    <p class="mb-0">Berikut adalah produk produk hasil produksi oleh rekanan atau seller PT ZZF Indonesia
+                    </p>
+                </div>
+                <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/imgzzf/produk4.jpeg" class="img-fluid w-100 rounded-top" alt="">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Tower Crane 5610</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star text-body"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$99:00/Day</h4>
+                                </div>
+                        
+                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/imgzzf/produk5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Truck Crane</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star text-body"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$128:00/Day</h4>
+                                </div>
+                        
+                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categories-item p-4">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="img/imgzzf/produk6.jpeg" class="img-fluid w-100 rounded-top" alt="">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>Tower Crane 5510</h4>
+                                <div class="categories-review mb-4">
+                                    <div class="d-flex justify-content-center text-secondary">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star text-body"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$170:00/Day</h4>
+                                </div>
+                        
+                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end -->
+
+        <!-- About Start -->
+        <div class="container-fluid overflow-hidden about py-5" id="tentang">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="about-item">
+                    <div class="pb-5">
+                        <h1 class="display-5 text-capitalize">Tentang <span class="text-primary">Kami</span></h1>
+                        <p class="mb-0">
+                            ZZF Industri Indonesia yang mulai beroperasi pada tahun 2012 adalah salah satu perusahaan
+                            yang sedang berkembang dari proyek Expanding CHINA ZZF INDUSTRIAL. Perusahaan ini menawarkan banyak
+                            peralatan terutama dalam bahan konstruksi, seperti Tower Crane, Batching Plants, dan lainnya.
+                            Kami juga menjamin bahwa produk dan bahan yang kami sediakan adalah salah satu produk terbaik
+                            dan berkualitas dari China, dengan kualitas yang luar biasa.
+                        </p>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="text-center rounded bg-secondary p-4">
+                                <h1 class="display-6 text-white">12</h1>
+                                <h5 class="text-light mb-0">Tahun Pengalaman</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="rounded">
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Memproduksi Alat Berat Berkualitas Tinggi</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Pelayanan Cepat</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Harga Sewa dan Jual yang Terjangkau</p>
+                                <p class="mb-0"><i class="fa fa-check-circle text-primary me-1"></i> Pengalaman Luas dan Banyak</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="d-flex align-items-center">
+                                <img src="img/imgzzf/foto-pak-ginting.jpg" class="img-fluid rounded-circle border border-4 border-secondary" style="width: 100px; height: 100px;" alt="Image">
+                                <div class="ms-4">
+                                    <h4>Harmony Ginting Ir, Msc</h4>
+                                    <p class="mb-0">CEO PT ZZF Indonesia</p>
+                                </div>
+                                <img src="img/imgzzf/foto-pak-jack-xie.jpg" class="img-fluid rounded-circle border border-4 border-secondary ms-5" style="width: 100px; height: 100px;" alt="Image">
+                                <div class="ms-4">
+                                    <h4>Jack Xie, MBA</h4>
+                                    <p class="mb-0">CEO Founder ZZF Group & PINETREE</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 d-flex align-items-center mt-4">
+                            <a href="https://zzf.co.id/" target="_blank" class="btn btn-primary rounded py-3 px-5">Selengkapnya Tentang Kami</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="about-img">
+                    <div class="img-1 mb-4">
+                        <img src="img/imgzzf/tentang-kami3.jpg" class="img-fluid rounded h-100 w-100" alt="">
+                    </div>
+                    <div class="img-2">
+                        <img src="img/imgzzf/tentang-kami1.jpg" class="img-fluid rounded w-100" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- About End -->
+
+
+        <!-- Features Start -->
+        <div class="container-fluid feature py-5" id="keunggulan">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                    <h1 class="display-5 text-capitalize mb-3">Keunggulan <span class="text-primary">Kami</span></h1>
+                    <p class="mb-0">PT ZZF menawakan berbagai produk dengan kualitas yang sangat tinggi dan terjangkau
+                    </p>
+                </div>
+                <div class="row g-4 align-items-center">
+                    <div class="col-xl-4">
+                        <div class="row gy-4 gx-0">
+                            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <span class="fa fa-trophy fa-2x"></span>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="mb-3">Harga Murah</h5>
+                                        <p class="mb-0">Menawarkan solusi berkualitas dengan biaya yang lebih terjangkau dibandingkan kompetitor.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <span class="fa fa-road fa-2x"></span>
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="mb-3">Waktu Singkat</h5>
+                                        <p class="mb-0">Menyelesaikan proyek dengan efisien dalam waktu yang lebih cepat tanpa mengorbankan kualitas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <img src="img/keunggulan.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="row gy-4 gx-0">
+                            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="feature-item justify-content-end">
+                                    <div class="text-end me-4">
+                                        <h5 class="mb-3">Fleksibilitas Layanan</h5>
+                                        <p class="mb-0">Menawarkansolusi yang dapat disesuaikan dengan kebutuhan spesifik proyek.</p>
+                                    </div>
+                                    <div class="feature-icon">
+                                        <span class="fa fa-tag fa-2x"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="feature-item justify-content-end">
+                                    <div class="text-end me-4">
+                                        <h5 class="mb-3">Keandalan Alat Berat</h5>
+                                        <p class="mb-0">Menggunakan alat berkualitas tinggi yang andal dan tahan lama untuk memastikan produktivitas maksimal.</p>
+                                    </div>
+                                    <div class="feature-icon">
+                                        <span class="fa fa-map-pin fa-2x"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Features End -->
+
+        <!-- Services Start -->
+        <div class="container-fluid service py-5" id="service">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Jenis <span class="text-primary">Layanan</span></h1>
+            <p class="mb-0">Pilih Sesuai kebutuhan anda</p>
+        </div>
+        <div class="row g-4 d-flex justify-content-center">
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item p-4">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-phone-alt fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Penjualan Alat Berat</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-money-bill-alt fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Penyewaan Alat Berat</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item p-4">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-road fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Penyewaan Komponen</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item p-4">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-road fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Penjualan Komponen</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Services End -->
+
+        <!-- Banner Start -->
+        <div class="container-fluid banner pb-5 wow zoomInDown" data-wow-delay="0.1s" id="kontak">
+            <div class="container pb-5">
+                <div class="banner-item rounded">
+                    <img src="img/imgzzf/bg3.jpg" class="img-fluid rounded w-100" alt="">
+                    <div class="banner-content">
+                        <h4 class="text-white">Mulailah Kerjasama dengan Kami Sekarang!</h4>
+                        <h2 class="text-white">Tertarik untuk menyewa atau membeli?</h2>
+                        <p class="text-white">Kontak kami untuk Informasi lebih lanjut!</p>
+                        <div class="banner-btn">
+                            <a href="https://wa.link/q0c1lg" target="_blank" class="btn btn-secondary rounded-pill py-3 px-4 px-md-5 me-2">WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Banner End -->
+
+        <!-- Testimonial Start -->
+        <div class="container-fluid testimonial pb-5">
+            <div class="container pb-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                    <h1 class="display-5 text-capitalize mb-3">Review Client<span class="text-primary"> Kami</span></h1>
+                    <p class="mb-0">Berikut adalah review dari client yang telah menggunakan layanan dari produk alat berat kami dan rekanan kami
+                    </p>
+                </div>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="testimonial-item">
+                        <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
+                        </div>
+                        <div class="testimonial-inner p-4">
+                            <img src="img/testimonial-1.jpg" class="img-fluid" alt="">
+                            <div class="ms-4">
+                                <h4>Person Name</h4>
+                                <p>Profession</p>
+                                <div class="d-flex text-primary">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star text-body"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-top rounded-bottom p-4">
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
+                        </div>
+                        <div class="testimonial-inner p-4">
+                            <img src="img/testimonial-2.jpg" class="img-fluid" alt="">
+                            <div class="ms-4">
+                                <h4>Person Name</h4>
+                                <p>Profession</p>
+                                <div class="d-flex text-primary">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star text-body"></i>
+                                    <i class="fas fa-star text-body"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-top rounded-bottom p-4">
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
+                        </div>
+                        <div class="testimonial-inner p-4">
+                            <img src="img/testimonial-3.jpg" class="img-fluid" alt="">
+                            <div class="ms-4">
+                                <h4>Person Name</h4>
+                                <p>Profession</p>
+                                <div class="d-flex text-primary">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star text-body"></i>
+                                    <i class="fas fa-star text-body"></i>
+                                    <i class="fas fa-star text-body"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-top rounded-bottom p-4">
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h4 class="text-white mb-4">Tentang Kami</h4>
+                                <p class="mb-3"> ZZF Industri Indonesia yang mulai beroperasi pada tahun 2012 adalah salah satu perusahaan
+                                yang sedang berkembang dari proyek Expanding CHINA ZZF INDUSTRIAL.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="#tentang"><i class="fas fa-angle-right me-2"></i> Tentang</a>
+                            <a href="#produk"><i class="fas fa-angle-right me-2"></i>Produk </a>
+                            <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Keunggulan</a>
+                            <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
+                            <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Kontak Kami</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12930</a>
+                            <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
+                            <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>PT ZZF Industri</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-body">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By <a class="border-bottom text-white">ZZF Industri</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    </body>
+
+</html>
