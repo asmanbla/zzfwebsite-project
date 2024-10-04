@@ -22,7 +22,7 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Logo Website-->
-        <link rel="icon" type="image/x-icon" href="assets/img/logoweb.png" />
+        <link rel="icon" type="image/x-icon" href="img/imgzzf/logo.png" />
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">

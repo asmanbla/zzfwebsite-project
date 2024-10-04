@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | ZZF Industri</title>
   <link rel="stylesheet" href="css/loginstyle.css">
+  <link rel="icon" type="image/x-icon" href="img/imgzzf/logo.png" />
 </head>
 <body>
   <div class="wrapper">
@@ -26,8 +27,8 @@
         </label>
         <a href="#">Forgot password?</a>
       </div>
-      <button type="submit"> 
-        <a href="/">Log In </a>
+      <button type="button"> 
+        <a href="/dashboard">Log In </a>
       </button>
       <div class="register">
         <p>Don't have an account? <a href="/register">Register</a></p>

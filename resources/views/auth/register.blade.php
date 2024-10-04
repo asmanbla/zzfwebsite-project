@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register | ZZF Industri</title>
   <link rel="stylesheet" href="css/registerstyle.css">
+  <link rel="icon" type="image/x-icon" href="img/imgzzf/logo.png" />
+
+  <style>
+    .text {
+      color: black;
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
@@ -26,11 +33,11 @@
         </label>
         <a href="#">Forgot password?</a>
       </div>
-      <button type="submit"> 
+      <button type="submit" class="text"> 
         <a href="/login">Register </a>
       </button>
       <div class="register">
-        <p>Don't have an account? <a href="#">Register</a></p>
+        <p>Already have an account? <a href="/login">Login</a></p>
       </div>
     </form>
   </div>
