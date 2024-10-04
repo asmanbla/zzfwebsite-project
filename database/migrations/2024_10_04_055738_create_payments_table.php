@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('sewa_id');
+            $table->foreign('sewa_id')->references('id')->on('sewas')->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('payment_date');
             $table->string('payment_method',255); 
             $table->bigInteger('amount');

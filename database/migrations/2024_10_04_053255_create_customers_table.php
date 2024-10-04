@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('phone',20)->unique();
             $table->text('address1'); 
             $table->text('address2');
-            $table->text('address3'); 
             $table->timestamps();
         });
     }

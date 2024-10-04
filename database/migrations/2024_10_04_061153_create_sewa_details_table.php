@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('sewa_details', function (Blueprint $table) {
             $table->unsignedBigInteger('products_zzfs_id');
             $table->foreign('products_zzfs_id')->references('id')->on('products_zzfs')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('orders_id');
-            $table->foreign('orders_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('sewas_id');
+            $table->foreign('sewas_id')->references('id')->on('sewas')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('quantity');
             $table->integer('subtotal');
             $table->timestamps();
