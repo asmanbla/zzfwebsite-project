@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->enum('roles', ['alat', 'komponen', 'bundling'])->default('alat');
+            $table->enum('kategori', ['alat', 'komponen', 'bundling'])->default('alat');
             $table->timestamps();
         });
     }

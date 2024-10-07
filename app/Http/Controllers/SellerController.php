@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Sellers;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +12,9 @@ class SellerController extends Controller
      */
     public function index()
     {
-        return view('seller.index');
+        return view ('seller.index', [
+            'penjual' => Sellers::all()
+           ]);
     }
 
     /**
@@ -19,7 +22,9 @@ class SellerController extends Controller
      */
     public function create()
     {
-        //
+        return view('seller.create', [
+            'sellers' => Sellers::all()
+        ]);
     }
 
     /**
@@ -27,7 +32,10 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Sellers::create($request->all());
+        // return $request->input();
+        return redirect('/seller')->with('success', 'New seler data with the name "' .$request -> name. '"    has been successfully saved!');
+
     }
 
     /**
@@ -43,7 +51,12 @@ class SellerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         //Menampilkan Form Edit
+         $seller = Sellers::find($id);
+         if (!$seller) return redirect()->route('seller.edit');
+         return view('seller.edit', [
+             'seller' => $seller
+         ]); 
     }
 
     /**
@@ -51,14 +64,27 @@ class SellerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Mengedit Data Seler
+    $sellers = Sellers::find($id);
+    $sellers->name = $request->name;
+    $sellers->email = $request->email;
+    if ($request->password) $sellers->password = bcrypt($request->password);
+    $sellers->roles = $request->roles;
+    $sellers->save();
+    return redirect('/seller')->with('success', 'User Data Update Successfully');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function hapusseller($id)
     {
-        //
+        $seller = Sellers::find($id);
+        if ($seller) {
+            $seller->delete();
+            return redirect('/seller')->with('success', 'The User Data Successfully Deleted!');
+        }
+        return redirect('/seller')->with('error', 'User not found!');
     }
 }

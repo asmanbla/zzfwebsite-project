@@ -28,11 +28,17 @@ Route::resource('userzzf', UserZZFController::class);
 // Route::post('/store', [UserZZFController::class, 'store'])->name('store');
 // Route::get('/edit/{id}', [UserZZFController::class, 'edit'])->name('edit');
 // Route::post('/update/{id}', [UserZZFController::class, 'update'])->name('update');
-Route::get('/userzzf/destroy/{id}', [UserZZFController::class, 'destroy'])->name('userzzf.destroy');
+Route::get('/hapususer/{id}', [UserZZFController::class, 'hapususer'])->name('hapususer');
+Route::get('/user/hapususer/{id}', [UserZZFController::class, 'hapususer']);
 
 
 // Route Customer 
 Route::resource('customer', CustomerController::class);
+Route::get('customer/{customer}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::get('/hapuscust/{id}', [CustomerController::class, 'hapuscust'])->name('hapuscust');
+Route::get('/customer/hapuscust/{id}', [CustomerController::class, 'hapuscust']);
 
 // Route Seller 
 Route::resource('seller', SellerController::class);
+Route::get('/hapusseller/{id}', [SellerController::class, 'hapusseller'])->name('hapusseller');
+Route::get('/seller/hapusseller/{id}', [SellerController::class, 'hapusseller']);

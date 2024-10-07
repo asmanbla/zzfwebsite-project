@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href=""><span class="badge badge-sm bg-gradient-danger mb-3 fs-6">Add New Item</span>
+            <a href="{{ route('customer.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Item</span>
               <h6>Customers</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -21,28 +21,51 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Pelanggan</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Password</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address 1</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address 2</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
                       <th class="text-secondary opacity-7"></th> -->
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          1.
-                          <div>
-                            <td> 
-                              Clara Selly
-                            </td>
-                            <td class="align-middle text center text-sm"> 
-                              <span class="badge badge-sm bg-gradient-success">Edit</span>
-                              <span class="badge badge-sm bg-gradient-danger">Delete</span>
-                           </td>
-                      </td>
-                    </tr>
-                  </tbody>
+                         @foreach ($customers as $idx => $data)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                                {{ $idx + 1 . '. ' }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                         {{ $data->name }}
+                                    </td>
+                                    <td>
+                                         {{ $data->email }}
+                                    </td>                     
+                                    <td>
+                                        {{ $data->password }}
+                                    </td>
+                                    <td>
+                                        {{ $data->phone }}
+                                    </td>
+                                    <td>
+                                        {{ $data->address1 }}
+                                    </td>
+                                    <td>
+                                        {{ $data->address2 }}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group me-2">
+                                        <a href="{{route('customer.edit',$data)}}"  class="btn btn-secondary btn btn-outline-primar btn-sm">Edit</a>
+                                        <a href="/hapuscust/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                        </tbody>
                 </table>
               </div>
             </div>

@@ -22,11 +22,9 @@ class UserZZFController extends Controller
      */
     public function create()
     {
-        {
             return view('userzzf.create', [
                 'users' => User::all()
             ]);
-        }
     }
 
     /**
@@ -80,14 +78,14 @@ class UserZZFController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
-{
-    $user = User::find($id);
-    if ($user) {
-        $user->delete();
-        return redirect('/userzzf')->with('success', 'The User Data Successfully Deleted!');
+    public function hapususer($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect('/userzzf')->with('success', 'The User Data Successfully Deleted!');
+        }
+        return redirect('/userzzf')->with('error', 'User not found!');
     }
-    return redirect('/userzzf')->with('error', 'User not found!');
-}
 
 }
