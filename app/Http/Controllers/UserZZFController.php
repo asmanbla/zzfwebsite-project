@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\User;
+
+use Illuminate\Http\Request;
+
+class UserZZFController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return view ('userzzf.index', [
+            'pengguna' => User::all()
+           ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        {
+            return view('userzzf.create', [
+                'users' => User::all()
+            ]);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+            User::create($request->all());
+            // return $request->input();
+            return redirect('/userzzf')->with('success', 'New user data with the name "' .$request -> name. '"    has been successfully saved!');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        //Menampilkan Form Edit
+        $user = User::find($id);
+        if (!$user) return redirect()->route('userzzf.edit');
+        return view('userzzf.edit', [
+            'user' => $user
+        ]); 
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+       
+    //Mengedit Data User
+    $users = User::find($id);
+    $users->name = $request->name;
+    $users->email = $request->email;
+    if ($request->password) $users->password = bcrypt($request->password);
+    $users->roles = $request->roles;
+    $users->save();
+    return redirect('/userzzf')->with('success', 'User Data Update Successfully');
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+{
+    $user = User::find($id);
+    if ($user) {
+        $user->delete();
+        return redirect('/userzzf')->with('success', 'The User Data Successfully Deleted!');
+    }
+    return redirect('/userzzf')->with('error', 'User not found!');
+}
+
+}
