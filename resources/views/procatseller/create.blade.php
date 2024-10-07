@@ -1,11 +1,10 @@
-@extends('dashboard.master')
+@extends('dashboardseller.master')
 @section('nav')
-      @include('dashboard.nav')
+      @include('dashboardseller.nav')
 @endsection
-@section('page', 'Seller ZZF / Edit')
+@section('page', 'Product Categories/ Create')
 @section('main')
-      @include('dashboard.main')
-
+      @include('dashboardseller.main')
 
  <!-- Table -->
  <div class="container-fluid py-4">
@@ -13,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Seller Edit</h6>
+              <h6>Form Kategori Produk</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -21,31 +20,20 @@
             <!-- FORM -->
               <div class="table-responsive p-0">
                 <div class="card border-1 m-3 pt-3">
-                <form action="{{route('seller.update', $seller)}}" method="POST" id="frmSeller">
-                @method('PUT')
-                @csrf
-                    <div class="mb-3 ms-3 me-3">
-                        <label type="nama" class="form-label">Nama Seller</label>
-                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="email">
-                     </div>
+                <form action='{{route("procatseller.store")}}' method="post" id="frmprocatseller">
+                  @csrf
                      <div class="mb-3 ms-3 me-3">
-                        <label type="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email">
-                     </div>
-                     <div class="mb-3 ms-3 me-3">
-                        <label type="password"class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password">
-                     </div>
-                     <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">Roles</label>
-                      <select class="form-select" aria-label="Default select example" id="roles" name="roles" >
-                        <option selected>Chose your Level</option>
-                        <option value="penjual">Penjual</option>
+                      <label for="level" class="form-label">Kategori</label>
+                      <select class="form-select" aria-label="Default select example" id="roles" name="kategori" >
+                        <option selected>Pilih Kategori</option>
+                        <option value="alat">Alat</option>
+                        <option value="komponen">Komponen</option>
+                        <option value="bundling">Bundling</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
-                    <a href="{{ route('seller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
+                    <a href="{{ route('procatseller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
                 </div>
                 <div class="col-3">
                     <button type="submit" class="btn bg-gradient-danger w-100"id="save">Save</button>
@@ -95,7 +83,7 @@
       const nama = document.getElementById("nama")
       const pswd = document.getElementById("password")
       const lvl = document.getElementById("level")
-      const form = document.getElementById("frmUser")
+      const form = document.getElementById("frmprocatseller")
       let pesan = ""
       function simpan(){
         if(nama.value === ""){

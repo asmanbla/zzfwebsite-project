@@ -4,9 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardsellerController;
 use App\Http\Controllers\UserZZFController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SellerController;
+use App\Http\Controllers\ProcatsellerController;
+use App\Http\Controllers\ProduksellerController;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,3 +47,15 @@ Route::get('/customer/hapuscust/{id}', [CustomerController::class, 'hapuscust'])
 Route::resource('seller', SellerController::class);
 Route::get('/hapusseller/{id}', [SellerController::class, 'hapusseller'])->name('hapusseller');
 Route::get('/seller/hapusseller/{id}', [SellerController::class, 'hapusseller']);
+
+
+//Dashboard seller
+Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);
+
+Route::resource('procatseller', App\Http\Controllers\ProcatsellerController::class);
+Route::get('/hapusprocatseller/{id}', [ProcatsellerController::class, 'hapusprocatseller'])->name('hapusprocatseller');
+Route::get('/procatseller/hapusprocatseller/{id}', [ProcatsellerController::class, 'hapusprocatseller']);
+
+Route::resource('produkseller', App\Http\Controllers\ProduksellerController::class);
+Route::get('/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller'])->name('hapusprodukseller');
+Route::get('/produkseller/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller']);
