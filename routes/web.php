@@ -10,8 +10,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProcatsellerController;
 use App\Http\Controllers\ProduksellerController;
-
-
+use App\Http\Controllers\ProductCategoriZzfController;
+use App\Http\Controllers\ProductZzfController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +48,17 @@ Route::resource('seller', SellerController::class);
 Route::get('/hapusseller/{id}', [SellerController::class, 'hapusseller'])->name('hapusseller');
 Route::get('/seller/hapusseller/{id}', [SellerController::class, 'hapusseller']);
 
+// Route Product Categories
+Route::resource('prodcatzzf', ProductCategoriZzfController::class);
+Route::put('/prodcatzzf/{category}', [ProductCategoriZzfController::class, 'update'])->name('prodcatzzf.update');
+Route::get('/hapusprodcatzzf/{id}', [ProductCategoriZzfController::class, 'hapusprodcatzzf'])->name('hapusprodcatzzf');
+Route::get('/prodcat/hapusprodcatzzf/{id}', [ProductCategoriZzfController::class, 'hapusprodcatzzf']);
+
+// Route Product 
+Route::resource('produkzzf', ProductZzfController::class);
+Route::get('/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf'])->name('hapusprodukzzf');
+Route::get('/produkzzf/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf']);
+
 
 //Dashboard seller
 Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);
@@ -60,3 +71,5 @@ Route::resource('produkseller', App\Http\Controllers\ProduksellerController::cla
 Route::get('/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller'])->name('hapusprodukseller');
 Route::get('/produkseller/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller']);
 Route::put('/produkseller/{id}', [ProduksellerController::class, 'update'])->name('produkseller.update');
+
+
