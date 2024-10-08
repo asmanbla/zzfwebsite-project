@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../../img/imgzzf/logo.png">
   <title>
-    PT ZZF Industri - Dashboard
+    PT ZZF Industri - Dashboard Seller
   </title>
 
   <!-- DATA TABLE BOOTSRAP 5 -->

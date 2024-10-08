@@ -25,27 +25,27 @@
                 @method('PUT')
                     <div class="mb-3 ms-3 me-3">
                         <label type="nama" class="form-label">Nama Customer</label>
-                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="email">
+                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="name" required value="{{$customer->name ?? old('name')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email">
+                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email" required value="{{$customer->email ?? old('email')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="password"class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password" required value="{{$customer->password ?? old('password')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="number"class="form-label">Nomor Telephone</label>
-                        <input type="numeber" id="phone" name="phone" class="form-control" placeholder="masukkan nomor telephone anda" aria-label="phone">
+                        <input type="numeber" id="phone" name="phone" class="form-control" placeholder="masukkan nomor telephone anda" aria-label="phone" required value="{{$customer->phone ?? old('phone')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="address"class="form-label">Address 1</label>
-                        <input type="address" id="address1" name="address1" class="form-control" placeholder="masukkan address pertama anda" aria-label="address1">
+                        <input type="address" id="address1" name="address1" class="form-control" placeholder="masukkan address pertama anda" aria-label="address1" required value="{{$customer->address1 ?? old('address1')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="address"class="form-label">Address 2</label>
-                        <input type="address" id="address2" name="address2" class="form-control" placeholder="masukkan address kedua anda" aria-label="address2">
+                        <input type="address" id="address2" name="address2" class="form-control" placeholder="masukkan address kedua anda" aria-label="address2" required value="{{$customer->address2 ?? old('address2')}}">
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">

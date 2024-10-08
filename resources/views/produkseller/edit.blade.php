@@ -26,7 +26,7 @@
                   <div class="mb-3 ms-3 me-3">
                         <label for="product_category_id" class="form-label">Product Category</label>
                         <select name="product_category_id" id="product_category_id" class="form-control" required>
-                            <option value="">Pilih Kategori</option>
+                            <option value="">value="{{$produkseller->product_category_id ??old('product_category_id')}}"</option>
                             @foreach($procatseller as $pc)
                                 <option value="{{ $pc->id }}">{{ $pc->kategori }}</option>
                             @endforeach
@@ -34,31 +34,34 @@
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="product_name" class="form-label">Product Name</label>
-                        <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required>
+                        <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required value="{{$produkseller->product_name ?? old('product_name')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" name="description" class="form-control" placeholder="Enter Your description" aria-label="description" required>
+                        <input type="text" id="description" name="description" class="form-control" placeholder="Enter Your description" aria-label="description" required value="{{$produkseller->description ?? old('description')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="price" class="form-label">Price</label>
-                        <input type="number" id="price" name="price" class="form-control" placeholder="Enter Your price" aria-label="price" required>
+                        <input type="number" id="price" name="price" class="form-control" placeholder="Enter Your price" aria-label="price" required value="{{$produkseller->price ?? old('price')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="stok_quantity" class="form-label">Stock Quantity</label>
-                        <input type="number" id="stok_quantity" name="stok_quantity" class="form-control" placeholder="Enter Your stock quantity" aria-label="stok_quantity" required>
+                        <input type="number" id="stok_quantity" name="stok_quantity" class="form-control" placeholder="Enter Your stock quantity" aria-label="stok_quantity" required value="{{$produkseller->stok_quantity ?? old('stok_quantity')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="image1" class="form-label">Image 1</label>
-                        <input type="file" id="image1_url" name="image1_url" class="form-control" placeholder="Enter Your image1" aria-label="image1" required>
+                        <label for="image1_url" class="form-label">Image 1</label>
+                        <img src="{{ asset('storage/' . $produkseller->image1_url) }}" class="img-thumbnail d-block" alt="Image 1" width="150">
+                        <input type="file" class="form-control" id="foto2" name="image1_url">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="image2" class="form-label">Image 2</label>
-                        <input type="file" id="image2_url" name="image2_url" class="form-control" placeholder="Enter Your image2" aria-label="image2">
+                        <label for="image2_url" class="form-label">Image 2</label>
+                        <img src="{{ asset('storage/' . $produkseller->image2_url) }}" class="img-thumbnail d-block" alt="Image 1" width="150">
+                        <input type="file" class="form-control" id="foto2" name="image2_url">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="image3" class="form-label">Image 3</label>
-                        <input type="file" id="image3_url" name="image3_url" class="form-control" placeholder="Enter Your image3" aria-label="image3">
+                        <label for="image3_url" class="form-label">Image 3</label>
+                        <img src="{{ asset('storage/' . $produkseller->image3_url) }}" class="img-thumbnail d-block" alt="Image 1" width="150">
+                        <input type="file" class="form-control" id="foto2" name="image3_url">
                      </div>
                      <div class="row ms-3 me-3 justify-content-end">
                         <div class="col-3">

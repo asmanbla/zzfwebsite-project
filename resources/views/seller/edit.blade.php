@@ -26,20 +26,20 @@
                 @csrf
                     <div class="mb-3 ms-3 me-3">
                         <label type="nama" class="form-label">Nama Seller</label>
-                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="email">
+                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="name" required value="{{$seller->name ?? old('name')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email">
+                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email" required value="{{$seller->email ?? old('email')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="password"class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password" required value="{{$seller->password ?? old('password')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                       <label for="level" class="form-label">Roles</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="roles" >
-                        <option selected>Chose your Level</option>
+                        <option selected>value="{{$seller->roles ??old('roles')}}"</option>
                         <option value="penjual">Penjual</option>
                       </select>
                      </div>

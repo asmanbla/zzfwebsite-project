@@ -30,4 +30,6 @@ class ProductsZzf extends Model
         {
             return $this->belongsTo(ProductCategories::class, 'product_category_id');
         }
+
+    protected $table = 'products_zzfs'; // Sesuaikan dengan tabel di database
 }

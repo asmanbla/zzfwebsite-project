@@ -63,26 +63,27 @@
                 {{ $data->stok_quantity }}
             </td>
             <td>
-                @if($data->image1_url)
-                    <img src="{{ asset('storage/'.$data->image1_url) }}" class="img-thumbnail">
-                @else
-                    <p>No image</p>
-                @endif
-            </td>
-            <td>
-                @if($data->image2_url)
-                    <img src="{{ asset('storage/'.$data->image2_url) }}" class="img-thumbnail">
-                @else
-                    <p>No image</p>
-                @endif
-            </td>
-            <td>
-                @if($data->image3_url)
-                    <img src="{{ asset('storage/'.$data->image3_url) }}" class="img-thumbnail">
-                @else
-                    <p>No image</p>
-                @endif
-            </td>
+              @if($data->image1_url)
+                  <img src="{{ asset('storage/'.$data->image1_url) }}" class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;">
+              @else
+                  <p>No image</p>
+              @endif
+          </td>
+          <td>
+              @if($data->image2_url)
+                  <img src="{{ asset('storage/'.$data->image2_url) }}" class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;">
+              @else
+                  <p>No image</p>
+              @endif
+          </td>
+          <td>
+              @if($data->image3_url)
+                  <img src="{{ asset('storage/'.$data->image3_url) }}" class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;">
+              @else
+                  <p>No image</p>
+              @endif
+          </td>
+
             <td class="text-center">
                 <div class="btn-group me-2">
                     <a href="{{ route('produkzzf.edit', $data->id) }}"  class="btn btn-warning btn-sm">Ubah</a>

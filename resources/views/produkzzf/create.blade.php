@@ -37,7 +37,7 @@
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" name="description" class="form-control" placeholder="Enter Your description" aria-label="description" required>
+                        <textarea rows="5" name="description" id="description" class="form-control" placeholder="tambah deskripsi product" aria-label="description" required></textarea>
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="price" class="form-label">Price</label>
