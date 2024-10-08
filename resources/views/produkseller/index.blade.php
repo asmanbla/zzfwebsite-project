@@ -21,6 +21,7 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id Kategori</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kategori</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Deskripsi</th>
@@ -35,46 +36,61 @@
                     </tr>
                   </thead>
                   <tbody>
-                         @foreach ($produkseller as $idx => $data)
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                                {{ $idx + 1 . '. ' }}
-                                        </div>
-                                    </td>
-                                    <td>
-                                {{$data->product_category_id}}
-                              </td>
-                              <td>
-                                {{$data->product_name}}
-                              </td>
-                              <td>
-                                {{$data->description}}
-                              </td>
-                              <td>
-                                {{$data->price}}
-                              </td>
-                              <td>
-                                {{$data->stok_quantity}}
-                              </td>
-                              <td>
-                                <img src="storage/{{$data->image1_url}}" class="img-thumbnail">
-                              </td>
-                              <td>
-                                <img src="storage/{{$data->image2_url}}" class="img-thumbnail">
-                              </td>
-                              <td>
-                                <img src="storage/{{$data->image3_url}}" class="img-thumbnail">
-                              </td>
-                                    <td class="text-center">
-                                        <div class="btn-group me-2">
-                                            <a href="{{ route('produkseller.edit', $data) }}"  class="btn btn-warning btn-sm">Ubah</a>
-                                            <a href="/hapusprodukseller/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                        </tbody>
+    @foreach ($vwprodukseller as $idx => $data)
+        <tr>
+            <td>
+                <div class="d-flex px-2 py-1">
+                    {{ $idx + 1 . '. ' }}
+                </div>
+            </td>
+            <td>
+                {{ $data->product_category_id ?? 'No category' }}
+            </td>
+            <td>
+                {{ $data->kategori }}
+            </td>
+            <td>
+                {{ $data->product_name }}
+            </td>
+            <td>
+                {{ $data->description }}
+            </td>
+            <td>
+                {{ $data->price }}
+            </td>
+            <td>
+                {{ $data->stok_quantity }}
+            </td>
+            <td>
+                @if($data->image1_url)
+                    <img src="{{ asset('storage/'.$data->image1_url) }}" class="img-thumbnail">
+                @else
+                    <p>No image</p>
+                @endif
+            </td>
+            <td>
+                @if($data->image2_url)
+                    <img src="{{ asset('storage/'.$data->image2_url) }}" class="img-thumbnail">
+                @else
+                    <p>No image</p>
+                @endif
+            </td>
+            <td>
+                @if($data->image3_url)
+                    <img src="{{ asset('storage/'.$data->image3_url) }}" class="img-thumbnail">
+                @else
+                    <p>No image</p>
+                @endif
+            </td>
+            <td class="text-center">
+                <div class="btn-group me-2">
+                    <a href="{{ route('produkseller.edit', $data->id) }}"  class="btn btn-warning btn-sm">Ubah</a>
+                    <a href="/hapusprodukseller/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                </div>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
                     </table>
               </div>
             </div>

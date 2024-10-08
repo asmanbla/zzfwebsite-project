@@ -59,3 +59,4 @@ Route::get('/procatseller/hapusprocatseller/{id}', [ProcatsellerController::clas
 Route::resource('produkseller', App\Http\Controllers\ProduksellerController::class);
 Route::get('/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller'])->name('hapusprodukseller');
 Route::get('/produkseller/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller']);
+Route::put('/produkseller/{id}', [ProduksellerController::class, 'update'])->name('produkseller.update');

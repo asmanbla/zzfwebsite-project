@@ -36,4 +36,9 @@ class ProductSellers extends Model
             'image2_url',
             'image3_url');
         }
+        
+        public function category()
+        {
+            return $this->belongsTo(ProductCategoriesSeller::class, 'product_category_id');
+        }
 }

@@ -21,6 +21,21 @@
               <div class="table-responsive p-0">
                 <div class="card border-1 m-3 pt-3">
                 <form action='{{route("procatseller.store")}}' method="post" id="frmprocatseller">
+                @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                   @csrf
                      <div class="mb-3 ms-3 me-3">
                       <label for="level" class="form-label">Kategori</label>
@@ -103,5 +118,8 @@
       btnSimpan.onclick = function(){
         simpan()
       }
+
+      
     </script>
+
     @endsection
