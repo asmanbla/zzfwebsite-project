@@ -12,8 +12,12 @@ use App\Http\Controllers\ProcatsellerController;
 use App\Http\Controllers\ProduksellerController;
 use App\Http\Controllers\ProductCategoriZzfController;
 use App\Http\Controllers\ProductZzfController;
+<<<<<<< HEAD
 use App\Http\Controllers\OrdersellerController;
 
+=======
+use App\Http\Controllers\OrderZzfController;
+>>>>>>> 319e921d11105339be0f2585367eb72035a6275f
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,6 +64,9 @@ Route::get('/prodcat/hapusprodcatzzf/{id}', [ProductCategoriZzfController::class
 Route::resource('produkzzf', ProductZzfController::class);
 Route::get('/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf'])->name('hapusprodukzzf');
 Route::get('/produkzzf/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf']);
+
+// Route Orders ZZF 
+Route::resource('orderzzf', OrderZzfController::class);
 
 
 //Dashboard seller
