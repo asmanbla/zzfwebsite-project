@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Orders;
+use App\Models\Customers;
+use Illuminate\Support\Facades\DB;
 
 class OrderZzfController extends Controller
 {
@@ -11,18 +13,21 @@ class OrderZzfController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view ('orderzzf.index', [
-            'order' => Orders::all()
-           ]);
-    }
-
+{
+    return view('orderzzf.index', [
+        'customers' => Customers::all(),
+        'vworderzzf' => DB::table('vworderzzf')->get() // Mengambil data dari view
+    ]);
+}
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('orderzzf.create', [
+            'order' => Orders::all(),
+            'custname' => Customers::all(),
+        ]);
     }
 
     /**
@@ -30,7 +35,9 @@ class OrderZzfController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Orders::create($request->all());
+            // return $request->input();
+            return redirect('/orderzzf')->with('success', 'New orders data with the id "' .$request -> id. '"    has been successfully saved!');
     }
 
     /**

@@ -16,4 +16,11 @@ class Orders extends Model
         'status',
     ];
 
+    protected $primaryKey = 'id';
+        
+    public function name()
+    {
+        return $this->belongsTo(Customers::class, 'customers_id');
+    }
+
 }
