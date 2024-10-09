@@ -12,6 +12,7 @@ use App\Http\Controllers\ProcatsellerController;
 use App\Http\Controllers\ProduksellerController;
 use App\Http\Controllers\ProductCategoriZzfController;
 use App\Http\Controllers\ProductZzfController;
+use App\Http\Controllers\OrderZzfController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,6 +59,9 @@ Route::get('/prodcat/hapusprodcatzzf/{id}', [ProductCategoriZzfController::class
 Route::resource('produkzzf', ProductZzfController::class);
 Route::get('/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf'])->name('hapusprodukzzf');
 Route::get('/produkzzf/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf']);
+
+// Route Orders ZZF 
+Route::resource('orderzzf', OrderZzfController::class);
 
 
 //Dashboard seller
