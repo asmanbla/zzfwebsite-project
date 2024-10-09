@@ -12,6 +12,8 @@ use App\Http\Controllers\ProcatsellerController;
 use App\Http\Controllers\ProduksellerController;
 use App\Http\Controllers\ProductCategoriZzfController;
 use App\Http\Controllers\ProductZzfController;
+use App\Http\Controllers\OrdersellerController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,4 +74,4 @@ Route::get('/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprod
 Route::get('/produkseller/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller']);
 Route::put('/produkseller/{id}', [ProduksellerController::class, 'update'])->name('produkseller.update');
 
-
+Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class);
