@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\OrderSellers;
+use App\Models\Customers;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class OrdersellerController extends Controller
 {
@@ -13,7 +14,9 @@ class OrdersellerController extends Controller
     public function index()
     {
         return view('orderseller.index', [
-            'orderseller' => OrderSellers::all()
+            'orderseller' => OrderSellers::all(),
+            //'customers' => Customers::all(),
+            //'vworderseller' => DB::table('vworderseller')->get() // Query data dari view vwprodukseller
         ]);
     }
 

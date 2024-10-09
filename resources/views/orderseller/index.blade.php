@@ -20,7 +20,7 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer Id</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal order</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
@@ -30,7 +30,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                         @foreach ($orderseller as $idx => $data)
+                         @foreach ($vworderseller as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -38,7 +38,16 @@
                                         </div>
                                     </td>
                                     <td>
-                                        {{ $data->kategori}}
+                                        {{ $data->name}}
+                                    </td>
+                                    <td>
+                                        {{ $data->order_date}}
+                                    </td>
+                                    <td>
+                                        {{ $data->total_amount}}
+                                    </td>
+                                    <td>
+                                        {{ $data->status}}
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
