@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('userzzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Order</span>
+            <a href="{{ route('orderzzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Order</span>
               <h6>Order</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -31,34 +31,35 @@
                     </tr>
                   </thead>
                   <tbody>
-                         @foreach ($order as $idx => $data)
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                                {{ $idx + 1 . '. ' }}
-                                        </div>
-                                    </td>
-                                    <td>
-                                         {{ $data->customers_name_id }}
-                                    </td>
-                                    <td>
-                                         {{ $data->order_date }}
-                                    </td>                     
-                                    <td>
-                                        {{ $data->total_amount }}
-                                    </td>
-                                    <td>
-                                        {{ $data->status }}
-                                    </td>
-                                    <td>
-                                        <div class="btn-group me-2">
-                                            <a href="{{ route('userzzf.edit', $data) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Ubah</a>
-                                            <a href="/hapususer/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                        </tbody>
+    @foreach ($vworderzzf as $idx => $data)
+        <tr>
+            <td>
+                <div class="d-flex px-2 py-1">
+                    {{ $idx + 1 . '. ' }}
+                </div>
+            </td>
+            <td>
+                {{ $data->name }} <!-- Sesuaikan dengan nama field dari view -->
+            </td>
+            <td>
+                {{ $data->order_date }}
+            </td>
+            <td>
+                {{ $data->total_amount }}
+            </td>
+            <td>
+                {{ $data->status }}
+            </td>
+            <td>
+                <div class="btn-group me-2">
+                    <a href="{{ route('userzzf.edit', $data->id) }}" class="btn btn-secondary btn-outline-primary btn-sm">Ubah</a>
+                    <a href="/hapususer/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                </div>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
                     </table>
               </div>
             </div>

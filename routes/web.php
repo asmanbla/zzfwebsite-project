@@ -12,12 +12,9 @@ use App\Http\Controllers\ProcatsellerController;
 use App\Http\Controllers\ProduksellerController;
 use App\Http\Controllers\ProductCategoriZzfController;
 use App\Http\Controllers\ProductZzfController;
-<<<<<<< HEAD
 use App\Http\Controllers\OrdersellerController;
-
-=======
 use App\Http\Controllers\OrderZzfController;
->>>>>>> 319e921d11105339be0f2585367eb72035a6275f
+
 
 Route::get('/', function () {
     return view('welcome');

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('products_zzfs_id');
             $table->unsignedBigInteger('products_sellers_id');
             $table->string('quantity')-> nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign key constraints
-            $table->foreign('users_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('products_zzfs_id')->references('id')->on('products_zzfs')->onDelete('cascade');
             $table->foreign('products_sellers_id')->references('id')->on('product_sellers')->onDelete('cascade');
         });
