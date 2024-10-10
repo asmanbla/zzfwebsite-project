@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Product Review Data ZZF')
+@section('page', 'Service Review Data ZZF')
 @section('main')
       @include('dashboard.main')
 
@@ -12,8 +12,8 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('produkreviewszzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Reviews</span>
-              <h6>Produk Reviews</h6>
+            <a href="{{ route('servicereviewszzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Reviews</span>
+              <h6>Service Reviews</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -22,7 +22,6 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ratting</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Komen</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -31,7 +30,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                            @foreach ($vwproductreviewzzf as $idx => $data)
+                            @foreach ($vwservicereview as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -39,10 +38,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        {{ $data->customer_name }}
-                                    </td>
-                                    <td>
-                                        {{ $data->product_name }}
+                                        {{ $data->name }}
                                     </td>
                                     <td>
                                         {{ $data->rating }}
@@ -52,7 +48,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="/hapuspreviewszzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                                            <a href="/hapussreviewszzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
                                         </div>
                                     </td>
                                 </tr>

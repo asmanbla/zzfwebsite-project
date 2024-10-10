@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customers;
-use App\Models\ProductsZzf;
-use App\Models\ProductReviews;
+use App\Models\ServiceReviews;
 use Illuminate\Support\Facades\DB;
 
-class ProdukReviewZzfController extends Controller
+class ServiceReviewsZzfController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
 {
-    return view('produkreviewszzf.index', [
+    return view('servicereviewszzf.index', [
         'customers' => Customers::all(),
-        'vwproductreviewzzf' => DB::table('vwproductreviewzzf')->get() // Mengambil data dari view
+        'vwservicereview' => DB::table('vwservicereview')->get() // Mengambil data dari view
     ]);
 }
     /**
@@ -25,11 +24,9 @@ class ProdukReviewZzfController extends Controller
      */
     public function create()
     {
-        return view('produkreviewszzf.create', [
-            'preview' => ProductReviews::all(),
+        return view('servicereviewszzf.create', [
+            'sreview' => ServiceReviews::all(),
             'custname' => Customers::all(),
-            'pname' => ProductReviews::all(),
-            'prodname' => ProductsZzf::all(),
         ]);
     }
 
@@ -38,9 +35,9 @@ class ProdukReviewZzfController extends Controller
      */
     public function store(Request $request)
     {
-        ProductReviews::create($request->all());
+        ServiceReviews::create($request->all());
             // return $request->input();
-            return redirect('/produkreviewszzf')->with('success', 'New reviews data with the id "' .$request -> id. '"    has been successfully saved!');
+            return redirect('/servicereviewszzf')->with('success', 'New reviews data with the id "' .$request -> id. '"    has been successfully saved!');
     }
 
     /**
@@ -56,12 +53,7 @@ class ProdukReviewZzfController extends Controller
      */
     public function edit(string $id)
 {
-    $produkreviewszzf = ProductReviews::findOrFail($id);
-
-    return view('produkreviewszzf.edit', [
-        'produkreviewszzf' => $produkreviewszzf,
-        'customer' => Customers::all()
-    ]);
+    
 }
 
 
@@ -79,27 +71,27 @@ class ProdukReviewZzfController extends Controller
     ]);
 
     // Mengedit Data order
-    $produkreviewszzf = ProductReviews::findOrFail($id);
+    $produkreviewszzf = ServiceReviews::findOrFail($id);
     $produkreviewszzf->customers_id = $request->customers_id;
     $produkreviewszzf->products_id = $request->products_id;
     $produkreviewszzf->rating = $request->total_amount;
     $produkreviewszzf->comment = $request->comment;
     $produkreviewszzf->save();
 
-    return redirect('/produkreviewszzf')->with('success', 'Review Data Updated Successfully');
+    return redirect('/servicezzfreviews')->with('success', 'Review Data Updated Successfully');
 }
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function hapuspreviewszzf($id)
+    public function hapussreviewszzf($id)
     {
-        $hapuspreviewszzf = ProductReviews::find($id);
-        if ($hapuspreviewszzf) {
-            $hapuspreviewszzf->delete();
-            return redirect('/produkreviewszzf')->with('success', 'The Reviews Data Successfully Deleted!');
+        $hapussreviewszzf = ServiceReviews::find($id);
+        if ($hapussreviewszzf) {
+            $hapussreviewszzf->delete();
+            return redirect('/servicereviewszzf')->with('success', 'The Reviews Data Successfully Deleted!');
         }
-        return redirect('/produkreviewszzf')->with('error', 'Data not found!');
+        return redirect('/servicereviewszzf')->with('error', 'Data not found!');
     }
 }

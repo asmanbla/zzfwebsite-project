@@ -18,6 +18,7 @@ use App\Http\Controllers\OrderDetailsZzfController;
 use App\Http\Controllers\SewaZzfController;
 use App\Http\Controllers\SewaDetailsZzfController;
 use App\Http\Controllers\ProdukReviewZzfController;
+use App\Http\Controllers\ServiceReviewsZzfController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -90,6 +91,12 @@ Route::get('/orderdetailszzf/hapussewadetailszzf/{id}', [SewaDetailsZzfControlle
 Route::resource('produkreviewszzf', ProdukReviewZzfController::class);
 Route::get('/hapuspreviewszzf/{id}', [ProdukReviewZzfController::class, 'hapuspreviewszzf'])->name('hapuspreviewszzf');
 Route::get('/produkreviewszzf/hapuspreviewszzf/{id}', [ProdukReviewZzfController::class, 'hapuspreviewszzf']);
+
+// Route Service Reviews ZZF
+Route::resource('servicereviewszzf', ServiceReviewsZzfController::class);
+Route::get('/hapussreviewszzf/{id}', [ServiceReviewsZzfController::class, 'hapussreviewszzf'])->name('hapussreviewszzf');
+Route::get('/servicezzfreviews/hapussreviewszzf/{id}', [ServiceReviewsZzfController::class, 'hapussreviewszzf']);
+
 
 //Dashboard seller
 Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);
