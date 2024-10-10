@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SewaDetails extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'products_zzfs_id',
+        'sewas_id',
+        'quantity',
+        'subtotal',
+    ];
 }

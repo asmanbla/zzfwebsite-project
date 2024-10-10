@@ -14,7 +14,10 @@ use App\Http\Controllers\ProductCategoriZzfController;
 use App\Http\Controllers\ProductZzfController;
 use App\Http\Controllers\OrdersellerController;
 use App\Http\Controllers\OrderZzfController;
-
+use App\Http\Controllers\OrderDetailsZzfController;
+use App\Http\Controllers\SewaZzfController;
+use App\Http\Controllers\SewaDetailsZzfController;
+use App\Http\Controllers\ProdukReviewZzfController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -64,7 +67,29 @@ Route::get('/produkzzf/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapu
 
 // Route Orders ZZF 
 Route::resource('orderzzf', OrderZzfController::class);
+Route::get('/hapusorderzzf/{id}', [OrderZzfController::class, 'hapusorderzzf'])->name('hapusorderzzf');
+Route::get('/orderzzf/hapusorderzzf/{id}', [OrderZzfController::class, 'hapusorderzzf']);
 
+// Route Order Details ZZF
+Route::resource('orderdetailszzf', OrderDetailsZzfController::class);
+// Route::get('/orderdetailszzf/{orderdetailszzf}/edit', [OrderDetailsZzfController::class, 'edit'])->name('orderdetailszzf.edit');
+Route::get('/hapusorderdetailszzf/{id}', [OrderDetailsZzfController::class, 'hapusorderdetailszzf'])->name('hapusorderdetailszzf');
+Route::get('/orderdetailszzf/hapusorderdetailszzf/{id}', [OrderDetailsZzfController::class, 'hapusorderdetailszzf']);
+
+// Route Sewa Zzf
+Route::resource('sewazzf', SewaZzfController::class);
+Route::get('/hapussewazzf/{id}', [SewaZzfController::class, 'hapussewazzf'])->name('hapussewazzf');
+Route::get('/sewazzf/hapussewazzf/{id}', [SewaZzfController::class, 'hapussewazzf']);
+
+// Route Sewa Details ZZF
+Route::resource('sewadetailszzf', SewaDetailsZzfController::class);
+Route::get('/hapussewadetailszzf/{id}', [SewaDetailsZzfController::class, 'hapussewadetailszzf'])->name('hapussewadetailszzf');
+Route::get('/orderdetailszzf/hapussewadetailszzf/{id}', [SewaDetailsZzfController::class, 'hapussewadetailszzf']);
+
+// Route Produk Reviews ZZF
+Route::resource('produkreviewszzf', ProdukReviewZzfController::class);
+Route::get('/hapuspreviewszzf/{id}', [ProdukReviewZzfController::class, 'hapuspreviewszzf'])->name('hapuspreviewszzf');
+Route::get('/produkreviewszzf/hapuspreviewszzf/{id}', [ProdukReviewZzfController::class, 'hapuspreviewszzf']);
 
 //Dashboard seller
 Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);

@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Order Data ZZF')
+@section('page', 'Order Details Data ZZF')
 @section('main')
       @include('dashboard.main')
 
@@ -12,8 +12,8 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('orderzzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Order</span>
-              <h6>Order</h6>
+            <a href="{{ route('orderdetailszzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Order Details </span>
+              <h6>Order Details</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -21,44 +21,44 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal Order</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Amount</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id Produk ZZF</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id Order</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Subtotal</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
                       <th class="text-secondary opacity-7"></th> -->
                     </tr>
                   </thead>
                   <tbody>
-                            @foreach ($vworderzzf as $idx => $data)
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2 py-1">
-                                            {{ $idx + 1 . '. ' }}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        {{ $data->name }} <!-- Sesuaikan dengan nama field dari view -->
-                                    </td>
-                                    <td>
-                                        {{ $data->order_date }}
-                                    </td>
-                                    <td>
-                                        {{ $data->total_amount }}
-                                    </td>
-                                    <td>
-                                        {{ $data->status }}
-                                    </td>
-                                    <td>
-                                        <div class="btn-group me-2">
-                                            <a href="{{ route('orderzzf.edit', $data->id) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Ubah</a>
-                                            <a href="/hapusorderzzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+    @foreach ($odetails as $idx => $data)
+        <tr>
+            <td>
+                <div class="d-flex px-2 py-1">
+                    {{ $idx + 1 . '. ' }}
+                </div>
+            </td>
+            <td>
+                {{ $data->products_zzfs_id }} <!-- Sesuaikan dengan nama field dari view -->
+            </td>
+            <td>
+                {{ $data->orders_id }}
+            </td>
+            <td>
+                {{ $data->quantity }}
+            </td>
+            <td>
+                {{ $data->subtotal }}
+            </td>
+            <td class="text-center">
+                <div class="btn-group me-2">
+                    <a href="/hapusorderdetailszzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                </div>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
                     </table>
               </div>
             </div>

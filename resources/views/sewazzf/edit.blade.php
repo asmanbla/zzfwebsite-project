@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Order ZZF / Create')
+@section('page', 'Order ZZF / Edit')
 @section('main')
       @include('dashboard.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Order ZZF Form</h6>
+              <h6>Sewa ZZF Edit</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -20,18 +20,18 @@
            <!-- FORM -->
 <div class="table-responsive p-0">
     <div class="card border-1 m-3 pt-3">
-        <form action="{{ route('orderzzf.update', $orderzzf->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('sewazzf.update', $sewazzf->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <!-- Customers -->
             <div class="mb-3 ms-3 me-3">
                 <label for="customers_id" class="form-label">Customer Name</label>
                 <select name="customers_id" id="customers_id" class="form-control" required>
-                    <option value="{{ $orderzzf->customers_id ?? old('customers_id') }}">
-                        {{ $orderzzf->customer->name ?? 'Pilih Pelanggan' }} <!-- Menampilkan pelanggan yang dipilih -->
+                    <option value="{{ $sewazzf->customers_id ?? old('customers_id') }}">
+                        {{ $sewazzf->customer->name ?? 'Pilih Pelanggan' }} <!-- Menampilkan pelanggan yang dipilih -->
                     </option>
                     @foreach($customer as $pc)
-                        <option value="{{ $pc->id }}" {{ $orderzzf->customers_id == $pc->id ? 'selected' : '' }}>
+                        <option value="{{ $pc->id }}" {{ $sewazzf->customers_id == $pc->id ? 'selected' : '' }}>
                             {{ $pc->name }}
                         </option>
                     @endforeach
@@ -42,7 +42,7 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="order_date" class="form-label">Tanggal Order</label>
                 <input type="date" name="order_date" class="form-control" placeholder="input tanggal order"
-                    aria-label="order_date" required value="{{ $orderzzf->order_date ?? old('order_date') }}">
+                    aria-label="order_date" required value="{{ $sewazzf->order_date ?? old('order_date') }}">
             </div>
 
             <!-- Total Amount -->
@@ -50,23 +50,23 @@
                 <label for="total_amount" class="form-label">Total Amount</label>
                 <input type="text" id="total_amount" name="total_amount" class="form-control"
                     placeholder="masukkan total amount" aria-label="total_amount" required
-                    value="{{ $orderzzf->total_amount ?? old('total_amount') }}">
+                    value="{{ $sewazzf->total_amount ?? old('total_amount') }}">
             </div>
 
             <!-- Status -->
             <div class="mb-3 ms-3 me-3">
-                <label for="status" class="form-label">Status</label>
+                <label for="status" class="form-label">Status Sewa</label>
                 <select class="form-select" aria-label="Default select example" id="status" name="status">
-                    <option value="menunggu pembayaran" {{ $orderzzf->status == 'menunggu pembayaran' ? 'selected' : '' }}>Menunggu Pembayaran</option>
-                    <option value="diproses" {{ $orderzzf->status == 'diproses' ? 'selected' : '' }}>Di Proses</option>
-                    <option value="selesai" {{ $orderzzf->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                    <option value="menunggu pembayaran" {{ $sewazzf->status == 'menunggu pembayaran' ? 'selected' : '' }}>Menunggu Pembayaran</option>
+                    <option value="diproses" {{ $sewazzf->status == 'diproses' ? 'selected' : '' }}>Di Proses</option>
+                    <option value="selesai" {{ $sewazzf->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
                 </select>
             </div>
 
             <!-- Buttons -->
             <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
-                    <a href="{{ route('orderzzf.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
+                    <a href="{{ route('sewazzf.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
                 </div>
                 <div class="col-3">
                     <button type="submit" class="btn bg-gradient-danger w-100" id="save">Save</button>
