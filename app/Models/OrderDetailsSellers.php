@@ -8,4 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetailsSellers extends Model
 {
     use HasFactory;
+
+    // Tentukan nama tabel jika tidak mengikuti konvensi Laravel (plural lowercase)
+    protected $table = 'order_details_sellers';
+
+    // Tentukan kolom yang bisa diisi (fillable)
+    protected $fillable = [
+        'product_sellers_id',
+        'order_sellers_id',
+        'quantity',
+        'subtotal',
+    ];
+
+    // Relasi dengan ProductSeller (produk penjual)
+    public function produkseller()
+    {
+        return $this->belongsTo(ProductSellers::class, 'product_sellers_id');
+    }
+
+    // Relasi dengan OrderSeller (order penjual)
+    public function orderseller()
+    {
+        return $this->belongsTo(OrderSellers::class, 'order_sellers_id');
+    }
 }

@@ -13,5 +13,14 @@ class OrderSellers extends Model
         'customers_id',
         'order_date',
         'total_amount',
-        'status'];
+        'status'
+    ];
+
+    protected $primaryKey = 'id';
+        
+    public function name()
+    {
+        return $this->belongsTo(Customers::class, 'customers_id');
+    }
+    
     }

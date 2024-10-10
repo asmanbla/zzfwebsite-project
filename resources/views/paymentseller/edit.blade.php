@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Order Seller/ Edit')
+@section('page', 'Pembayaran / Edit')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Form Order Seller</h6>
+              <h6>Form Pembayaran </h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -20,17 +20,25 @@
             <!-- FORM -->
               <div class="table-responsive p-0">
                 <div class="card border-1 m-3 pt-3">
-                <form action="{{route('orderseller.update', $orderseller)}}" method="POST" id="frmorderseller">
+                <form action="{{route('paymentseller.update', $paymentseller)}}" method="POST" id="frmpaymentseller">
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
-                        <label for="customers_id" class="form-label">Customers Id</label>
-                        <select name="customers_id" id="customers_id" class="form-control" required>
-    @foreach($customers as $pc)
-        <option value="{{ $pc->id }}" {{ old('customers_id', $orderseller->customers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->name }}</option>
-    @endforeach
-</select>
-                     </div>
+                <label for="order_sellers_id" class="form-label">No Order</label>
+                    <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
+                        @foreach($paymentseller as $pc)
+                        <option value="{{ $pc->id }}" {{ old('order_sellers_id', $paymentseller->order_sellers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->order_sellers_id }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3 ms-3 me-3">
+                <label for="order_sellers_id" class="form-label">No Order</label>
+                    <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
+                        @foreach($paymentseller as $pc)
+                        <option value="{{ $pc->id }}" {{ old('order_sellers_id', $paymentseller->order_sellers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->order_sellers_id }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="mb-3 ms-3 me-3">
                         <label for="order_date" class="form-label">order_date</label>
                         <input type="text" id="order_date" name="order_date" class="form-control" placeholder="Enter Your order_date" aria-label="order_date" required value="{{$orderseller->order_date ?? old('order_date')}}">

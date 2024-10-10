@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Order')
+@section('page', 'Pembayaran')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Order</h6>
+              <h6>Pembayaran</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -20,17 +20,18 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal order</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No. Order</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No. Sewa</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal Bayar</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Metode Bayar</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jumlah</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                       <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
                       <th class="text-secondary opacity-7"></th> -->
                     </tr>
                   </thead>
                   <tbody>
-                         @foreach ($vworderseller as $idx => $data)
+                         @foreach ($paymentseller as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -38,21 +39,24 @@
                                         </div>
                                     </td>
                                     <td>
-                                      {{ $data->name->name }}
+                                      {{ $data->order_sellers_id }}
                                     </td>
                                     <td>
-                                        {{ $data->order_date}}
+                                        {{ $data->sewa_sellers_id}}
                                     </td>
                                     <td>
-                                        {{ $data->total_amount}}
+                                        {{ $data->payment_date}}
                                     </td>
                                     <td>
-                                        {{ $data->status}}
+                                        {{ $data->payment_method}}
+                                    </td>
+                                    <td>
+                                        {{ $data->amount}}
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="{{ route('orderseller.edit', $data) }}"  class="btn btn-warning btn-sm">Ubah</a>
-                                    <form action="{{ route('orderseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
+                                            <a href="{{ route('paymentseller.edit', $data) }}"  class="btn btn-warning btn-sm">Ubah</a>
+                                    <form action="{{ route('paymentseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

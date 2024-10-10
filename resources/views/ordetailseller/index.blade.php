@@ -8,29 +8,28 @@
 
  <!-- Table -->
  <div class="container-fluid py-4">
-      <div class="row">
+    <div class="row">
         <div class="col-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>Order</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal order</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
-                      <th class="text-secondary opacity-7"></th> -->
-                    </tr>
-                  </thead>
-                  <tbody>
-                         @foreach ($vworderseller as $idx => $data)
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Order Details Seller</h6>
+                    <a href="{{ route('ordetailseller.create') }}" class="btn btn-primary btn-sm">Tambah Order Detail</a>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Produk</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kuantitas</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Subtotal</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($ordetailseller as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -38,27 +37,28 @@
                                         </div>
                                     </td>
                                     <td>
-                                      {{ $data->name->name }}
+                                      {{ $data->product_sellers_id }}
                                     </td>
                                     <td>
-                                        {{ $data->order_date}}
+                                        {{ $data->order_sellers_id}}
                                     </td>
                                     <td>
-                                        {{ $data->total_amount}}
+                                        {{ $data->quantity}}
                                     </td>
                                     <td>
-                                        {{ $data->status}}
+                                        {{ $data->subtotal}}
                                     </td>
                                     <td class="text-center">
-                                        <div class="btn-group me-2">
-                                            <a href="{{ route('orderseller.edit', $data) }}"  class="btn btn-warning btn-sm">Ubah</a>
-                                    <form action="{{ route('orderseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                    </form>
-                                            </div>
-                                        </td>
+    <div class="btn-group">
+        <a href="{{ route('ordetailseller.edit', $data->id) }}" class="btn btn-warning btn-sm">Ubah</a>
+        <form action="{{ route('ordetailseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+        </form>
+    </div>
+</td>
+
                                     </tr>
                                 @endforeach
                         </tbody>

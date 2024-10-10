@@ -1,25 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\OrderSellers;
+use App\Models\SewaSellers;
 use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class OrdersellerController extends Controller
+class SewasellerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
 {
-    $vworderseller = OrderSellers::with('name')->get(); // Menggunakan relasi 'name' dari model
-    return view('orderseller.index', [
-        'vworderseller' => $vworderseller,
+    $vwsewaseller = SewaSellers::with('name')->get(); // Menggunakan relasi 'name' dari model
+    return view('sewaseller.index', [
+        'vwsewaseller' => $vwsewaseller,
         'customers' => Customers::all(),
     ]);
 }
-
 
     /**
      * Show the form for creating a new resource.
@@ -50,10 +49,10 @@ class OrdersellerController extends Controller
      */
     public function edit(string $id)
     {
-        $orderseller = OrderSellers::findOrFail($id);
+        $sewaseller = SewaSellers::findOrFail($id);
     
-            return view('orderseller.edit', [
-                'orderseller' => $orderseller,
+            return view('sewaseller.edit', [
+                'sewaseller' => $sewaseller,
                 'customers' => Customers::all()
             ]);
     }
@@ -70,16 +69,16 @@ class OrdersellerController extends Controller
         'status' => 'required|string|max:500',
     ]);
 
-    $orderseller = OrderSellers::findOrFail($id);
-    $orderseller->customers_id = $request->input('customers_id');
-    $orderseller->order_date = $request->input('order_date');
-    $orderseller->total_amount = $request->input('total_amount');
-    $orderseller->status = $request->input('status');
+    $sewaseller = SewaSellers::findOrFail($id);
+    $sewaseller->customers_id = $request->input('customers_id');
+    $sewaseller->order_date = $request->input('order_date');
+    $sewaseller->total_amount = $request->input('total_amount');
+    $sewaseller->status = $request->input('status');
 
     // Simpan perubahan
-    $orderseller->save();
+    $sewaseller->save();
 
-    return redirect('/orderseller')->with('success', 'Order Data Updated Successfully');
+    return redirect('/sewaseller')->with('success', 'sewa Data Updated Successfully');
 }
 
     
@@ -89,14 +88,14 @@ class OrdersellerController extends Controller
      */
     public function destroy(string $id)
 {
-    // Cari data order seller berdasarkan id
-    $orderseller = OrderSellers::findOrFail($id);
+    // Cari data sewa seller berdasarkan id
+    $sewaseller = SewaSellers::findOrFail($id);
 
-    // Hapus data order seller
-    $orderseller->delete();
+    // Hapus data sewa seller
+    $sewaseller->delete();
 
     // Redirect kembali ke halaman index dengan pesan sukses
-    return redirect()->route('orderseller.index')->with('success', 'Order Data Deleted Successfully');
+    return redirect()->route('sewaseller.index')->with('success', 'sewa Data Deleted Successfully');
 }
 
 }

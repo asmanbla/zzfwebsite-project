@@ -21,16 +21,16 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal order</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Produk</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Rating</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Comment</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                       <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
                       <th class="text-secondary opacity-7"></th> -->
                     </tr>
                   </thead>
                   <tbody>
-                         @foreach ($vworderseller as $idx => $data)
+                         @foreach ($vwproductreviewsellers as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -41,18 +41,17 @@
                                       {{ $data->name->name }}
                                     </td>
                                     <td>
-                                        {{ $data->order_date}}
+                                        {{ $data->product->product_name}}
                                     </td>
                                     <td>
-                                        {{ $data->total_amount}}
+                                        {{ $data->rating}}
                                     </td>
                                     <td>
-                                        {{ $data->status}}
+                                        {{ $data->comment}}
                                     </td>
                                     <td class="text-center">
-                                        <div class="btn-group me-2">
-                                            <a href="{{ route('orderseller.edit', $data) }}"  class="btn btn-warning btn-sm">Ubah</a>
-                                    <form action="{{ route('orderseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
+                                        
+                                    <form action="{{ route('prodrevseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
