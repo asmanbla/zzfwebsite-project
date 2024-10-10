@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Orders;
+use App\Models\Sewas;
 use App\Models\Customers;
 use Illuminate\Support\Facades\DB;
 
-class OrderZzfController extends Controller
+class SewaZzfController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
 {
-    return view('orderzzf.index', [
+    return view('sewazzf.index', [
         'customers' => Customers::all(),
-        'vworderzzf' => DB::table('vworderzzf')->get() // Mengambil data dari view
+        'vwsewas' => DB::table('vwsewas')->get() // Mengambil data dari view
     ]);
 }
     /**
@@ -24,8 +24,8 @@ class OrderZzfController extends Controller
      */
     public function create()
     {
-        return view('orderzzf.create', [
-            'order' => Orders::all(),
+        return view('sewazzf.create', [
+            'sewa' => Sewas::all(),
             'custname' => Customers::all(),
         ]);
     }
@@ -35,9 +35,9 @@ class OrderZzfController extends Controller
      */
     public function store(Request $request)
     {
-        Orders::create($request->all());
+        Sewas::create($request->all());
             // return $request->input();
-            return redirect('/orderzzf')->with('success', 'New orders data with the id "' .$request -> id. '"    has been successfully saved!');
+            return redirect('/sewazzf')->with('success', 'New sewa data with the id "' .$request -> id. '"    has been successfully saved!');
     }
 
     /**
@@ -53,10 +53,10 @@ class OrderZzfController extends Controller
      */
     public function edit(string $id)
 {
-    $orderzzf = Orders::findOrFail($id);
+    $sewazzf = Sewas::findOrFail($id);
 
-    return view('orderzzf.edit', [
-        'orderzzf' => $orderzzf,
+    return view('sewazzf.edit', [
+        'sewazzf' => $sewazzf,
         'customer' => Customers::all()
     ]);
 }
@@ -76,27 +76,27 @@ class OrderZzfController extends Controller
     ]);
 
     // Mengedit Data order
-    $orderzzf = Orders::findOrFail($id);
-    $orderzzf->customers_id = $request->customers_id;
-    $orderzzf->order_date = $request->order_date;
-    $orderzzf->total_amount = $request->total_amount;
-    $orderzzf->status = $request->status;
-    $orderzzf->save();
+    $sewazzf = Sewas::findOrFail($id);
+    $sewazzf->customers_id = $request->customers_id;
+    $sewazzf->order_date = $request->order_date;
+    $sewazzf->total_amount = $request->total_amount;
+    $sewazzf->status = $request->status;
+    $sewazzf->save();
 
-    return redirect('/orderzzf')->with('success', 'Order Data Updated Successfully');
+    return redirect('/sewazzf')->with('success', 'Sewa Data Updated Successfully');
 }
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function hapusorderzzf($id)
+    public function hapussewazzf($id)
     {
-        $orderzzf = Orders::find($id);
-        if ($orderzzf) {
-            $orderzzf->delete();
-            return redirect('/orderzzf')->with('success', 'The Order Data Successfully Deleted!');
+        $sewazzf = Sewas::find($id);
+        if ($sewazzf) {
+            $sewazzf->delete();
+            return redirect('/sewazzf')->with('success', 'The Order Data Successfully Deleted!');
         }
-        return redirect('/orderzzf')->with('error', 'Data not found!');
+        return redirect('/sewazzf')->with('error', 'Data not found!');
     }
 }

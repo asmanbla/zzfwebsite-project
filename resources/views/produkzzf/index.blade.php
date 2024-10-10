@@ -64,21 +64,21 @@
             </td>
             <td>
               @if($data->image1_url)
-                  <img src="{{ asset('storage/'.$data->image1_url) }}" class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;">
+                  <img src="{{ asset('storage/'.$data->image1_url) }}" class="img-thumbnail" style="width: 200px; height: 100px; object-fit: cover;">
               @else
                   <p>No image</p>
               @endif
           </td>
           <td>
               @if($data->image2_url)
-                  <img src="{{ asset('storage/'.$data->image2_url) }}" class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;">
+                  <img src="{{ asset('storage/'.$data->image2_url) }}" class="img-thumbnail" style="width: 200px; height: 100px; object-fit: cover;">
               @else
                   <p>No image</p>
               @endif
           </td>
           <td>
               @if($data->image3_url)
-                  <img src="{{ asset('storage/'.$data->image3_url) }}" class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;">
+                  <img src="{{ asset('storage/'.$data->image3_url) }}" class="img-thumbnail" style="width: 200px; height: 100px; object-fit: cover;">
               @else
                   <p>No image</p>
               @endif

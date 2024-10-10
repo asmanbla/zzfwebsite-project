@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Order ZZF / Create')
+@section('page', 'Produk Review ZZF / Create')
 @section('main')
       @include('dashboard.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Order ZZF Form</h6>
+              <h6>Create Review Produk ZZF Form</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -20,7 +20,7 @@
             <!-- FORM -->
               <div class="table-responsive p-0">
                 <div class="card border-1 m-3 pt-3">
-                <form action='{{route("orderzzf.store")}}' method="post" id="frmUser">
+                <form action='{{route("produkreviewszzf.store")}}' method="post" id="frmRvw">
                   @csrf
                   <div class="mb-3 ms-3 me-3">
                         <label for="customers_id" class="form-label">Customer Name (Id)</label>
@@ -32,25 +32,25 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="order_date" class="form-label">Tanggal Order</label>
-                        <input type="date" name="order_date" id="email" class="form-control" placeholder="input tanggal order" aria-label="order_date">
+                        <label for="products_id" class="form-label">Produk Name (Id)</label>
+                        <select name="products_id" id="products_id" class="form-control" required>
+                            <option value="">Nama Poduk</option>
+                            @foreach($prodname as $pn)
+                                <option value="{{ $pn->id }}">{{ $pn->product_name }}</option>
+                            @endforeach
+                        </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="password"class="form-label">Total Amount</label>
-                        <input type="text" id="total_amount" name="total_amount" class="form-control" placeholder="masukkan total amoount anda" aria-label="total_amount">
+                        <label type="rating" class="form-label">Ratting</label>
+                        <input type="number" name="rating" id="rating" class="form-control" placeholder="input ratting" aria-label="order_date">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">Status</label>
-                      <select class="form-select" aria-label="Default select example" id="roles" name="status" >
-                        <option selected>Status Order</option>
-                        <option value="menunggu pembayaran">Menunggu Pembayaran</option>
-                        <option value="diproses">Di Proses</option>
-                        <option value="selesai">Selesai</option>
-                      </select>
+                        <label type="comment"class="form-label">Komentar</label>
+                        <input type="text" id="comment" name="comment" class="form-control" placeholder="masukkan komentar anda" aria-label="total_amount">
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
-                    <a href="{{ route('orderzzf.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
+                    <a href="{{ route('produkreviewszzf.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
                 </div>
                 <div class="col-3">
                     <button type="submit" class="btn bg-gradient-danger w-100"id="save">Save</button>

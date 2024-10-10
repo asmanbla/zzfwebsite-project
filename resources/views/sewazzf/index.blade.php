@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Order Data ZZF')
+@section('page', 'Sewa Data ZZF')
 @section('main')
       @include('dashboard.main')
 
@@ -12,8 +12,8 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('orderzzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Order</span>
-              <h6>Order</h6>
+            <a href="{{ route('sewazzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Sewa Data</span>
+              <h6>Sewa</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -31,7 +31,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                            @foreach ($vworderzzf as $idx => $data)
+                            @foreach ($vwsewas as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -50,10 +50,10 @@
                                     <td>
                                         {{ $data->status }}
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="{{ route('orderzzf.edit', $data->id) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Ubah</a>
-                                            <a href="/hapusorderzzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                                            <a href="{{ route('sewazzf.edit', $data->id) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Ubah</a>
+                                            <a href="/hapussewazzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
                                         </div>
                                     </td>
                                 </tr>
