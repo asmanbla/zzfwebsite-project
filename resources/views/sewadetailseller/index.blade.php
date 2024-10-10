@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Order')
+@section('page', 'Sewa Detail')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Order Details Seller</h6>
+                    <h6>Sewa Details Seller</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -21,14 +21,14 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Produk</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sewa</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kuantitas</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Subtotal</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($ordetailseller as $idx => $data)
+                            @foreach ($sewadetailseller as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -39,7 +39,7 @@
                                       {{ $data->product_sellers_id }}
                                     </td>
                                     <td>
-                                        {{ $data->order_sellers_id}}
+                                        {{ $data->sewa_sellers_id}}
                                     </td>
                                     <td>
                                         {{ $data->quantity}}
@@ -49,7 +49,7 @@
                                     </td>
                                     <td class="text-center">
     <div class="btn-group">
-        <form action="{{ route('ordetailseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
+        <form action="{{ route('sewadetailseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

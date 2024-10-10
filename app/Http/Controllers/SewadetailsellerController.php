@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\SewaDetailsSellers;
 use Illuminate\Http\Request;
 
 class SewadetailsellerController extends Controller
@@ -11,7 +11,9 @@ class SewadetailsellerController extends Controller
      */
     public function index()
     {
-        //
+        return view ('sewadetailseller.index', [
+            'sewadetailseller' =>SewaDetailsSellers::all()
+        ]);
     }
 
     /**
@@ -59,6 +61,13 @@ class SewadetailsellerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Cari data ordetail seller berdasarkan id
+        $sewadetailseller = SewaDetailsSellers::findOrFail($id);
+    
+        // Hapus data ordetail seller
+        $sewadetailseller->delete();
+    
+        // Redirect kembali ke halaman index dengan pesan sukses
+        return redirect()->route('sewadetailseller.index')->with('success', 'sewa detail Data Deleted Successfully');
     }
 }

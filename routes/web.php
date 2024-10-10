@@ -14,8 +14,10 @@ use App\Http\Controllers\ProductZzfController;
 use App\Http\Controllers\OrdersellerController;
 use App\Http\Controllers\SewasellerController;
 use App\Http\Controllers\OrdetailsellerController;
+use App\Http\Controllers\SewadetailsellerController;
 use App\Http\Controllers\ProdrevsellerController;
 use App\Http\Controllers\PaymentsellerController;
+
 
 
 Route::get('/', function () {
@@ -112,5 +114,6 @@ Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class
 
 Route::resource('sewaseller', App\Http\Controllers\SewasellerController::class);
 Route::resource('ordetailseller', App\Http\Controllers\OrdetailsellerController::class);
+Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerController::class);
 Route::resource('paymentseller', App\Http\Controllers\PaymentsellerController::class);
 Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
