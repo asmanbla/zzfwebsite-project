@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Payment Order ZZF / Edit')
+@section('page', 'Payment Sewa ZZF / Create')
 @section('main')
       @include('dashboard.main')
 
@@ -12,73 +12,54 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Payment Order ZZF Edit</h6>
+              <h6>Payment Sewa ZZF Form</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
 
-           <!-- FORM -->
-<div class="table-responsive p-0">
-    <div class="card border-1 m-3 pt-3">
-        <form action="{{ route('paymentorderszzf.update', $paymentorderszzf->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <!-- Customers -->
-            <div class="mb-3 ms-3 me-3">
-                <label for="order_id" class="form-label">Order Id</label>
-                <select name="order_id" id="order_id" class="form-control" required>
-                    <option value="{{ $paymentorderszzf->order_id ?? old('order_id') }}">
-                        {{ $paymentorderszzf->orders->id ?? 'Pilih Id Order' }} <!-- Menampilkan pelanggan yang dipilih -->
-                    </option>
-                    @foreach($orderid as $oi)
-                        <option value="{{ $oi->id }}" {{ $paymentorderszzf->order_id == $oi->id ? 'selected' : '' }}>
-                            {{ $oi->id }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <!-- Payment Date -->
-            <div class="mb-3 ms-3 me-3">
-                <label for="payment_date" class="form-label">Tanggal Pembayaran</label>
-                <input type="date" name="payment_date" class="form-control" placeholder="input tanggal order"
-                    aria-label="payment_date" required value="{{ $paymentorderszzf->payment_date ?? old('payment_date') }}">
-            </div>
-
-            <!-- Payment method -->
-            <div class="mb-3 ms-3 me-3">
+            <!-- FORM -->
+              <div class="table-responsive p-0">
+                <div class="card border-1 m-3 pt-3">
+                <form action='{{route("paymentsewaszzf.store")}}' method="post" id="FrmSw">
+                  @csrf
+                  <div class="mb-3 ms-3 me-3">
+                        <label for="sewas_id" class="form-label">No Sewa</label>
+                        <select name="sewas_id" id="sewas_id" class="form-control" required>
+                            <option value="">Nomor Sewa</option>
+                            @foreach($sewaid as $si)
+                                <option value="{{ $si->id }}">{{ $si->id }}</option>
+                            @endforeach
+                        </select>
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label type="payment_date" class="form-label">Tanggal Pembayaran</label>
+                        <input type="date" name="payment_date" id="payment_date" class="form-control" placeholder="input tanggal order" aria-label="payment_date">
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
                       <label for="payment_method" class="form-label">Metode Pembayran</label>
-                      <select name="payment_method" id="payment_method" class="form-control" required>
-                        <option value="{{ $paymentorderszzf->payment_method ?? old('payment_method') }}">
-                        {{ $paymentorderszzf->payment_method ?? 'Pilih Metode Pembayaran' }} 
+                      <select class="form-select" aria-label="Default select example" id="payment_method" name="payment_method" >
+                        <option selected>Pilih Metode Pembayaran</option>
                         <option value="Cash">Cash</option>
                         <option value="Transfer">Transfer</option>
                         <option value="Qris">Qris</option>
                       </select>
                      </div>
-
-            <!-- Total Amount -->
-            <div class="mb-3 ms-3 me-3">
-                <label for="amount" class="form-label">Total Amount</label>
-                <input type="text" id="amount" name="amount" class="form-control"
-                    placeholder="masukkan total amount" aria-label="amount" required
-                    value="{{ $paymentorderszzf->amount ?? old('amount') }}">
-            </div>
-
-            <!-- Buttons -->
-            <div class="row ms-3 me-3 justify-content-end">
+                     <div class="mb-3 ms-3 me-3">
+                        <label type="password"class="form-label">Amount</label>
+                        <input type="text" id="amount" name="amount" class="form-control" placeholder="masukkan total amount anda" aria-label="amount">
+                     </div>
+                <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
-                    <a href="{{ route('paymentorderszzf.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
+                    <a href="{{ route('paymentsewaszzf.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
                 </div>
                 <div class="col-3">
-                    <button type="submit" class="btn bg-gradient-danger w-100" id="save">Save</button>
+                    <button type="submit" class="btn bg-gradient-danger w-100"id="save">Save</button>
                 </div>
-            </div>
-        </form>
-    </div>
-</div>
-<!-- END FORM -->
+             </div>
+          </div>
+          </div> 
 
+        <!-- END FORM -->
 
       <!-- End Table -->
       <footer class="footer pt-3  ">

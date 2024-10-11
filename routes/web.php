@@ -24,6 +24,7 @@ use App\Http\Controllers\SewaDetailsZzfController;
 use App\Http\Controllers\ProdukReviewZzfController;
 use App\Http\Controllers\ServiceReviewsZzfController;
 use App\Http\Controllers\PaymentOrdersZzfController;
+use App\Http\Controllers\PaymentSewasZzfController;
 
 
 
@@ -104,10 +105,16 @@ Route::resource('servicereviewszzf', ServiceReviewsZzfController::class);
 Route::get('/hapussreviewszzf/{id}', [ServiceReviewsZzfController::class, 'hapussreviewszzf'])->name('hapussreviewszzf');
 Route::get('/servicezzfreviews/hapussreviewszzf/{id}', [ServiceReviewsZzfController::class, 'hapussreviewszzf']);
 
-// Route Service Reviews ZZF
+// Route Payment Order ZZF
 Route::resource('paymentorderszzf', PaymentOrdersZzfController::class);
 Route::get('/hapuspaymentorderszzf/{id}', [PaymentOrdersZzfController::class, 'hapuspaymentorderszzf'])->name('hapuspaymentorderszzf');
-Route::get('/servicezzfreviews/hapuspaymentorderszzf/{id}', [PaymentOrdersZzfController::class, 'hapuspaymentorderszzf']);
+Route::get('/paymentorderszzf/hapuspaymentorderszzf/{id}', [PaymentOrdersZzfController::class, 'hapuspaymentorderszzf']);
+
+// Route Payment Sewa ZZF
+Route::resource('paymentsewaszzf', PaymentSewasZzfController::class);
+Route::get('/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf'])->name('hapuspaymentsewaszzf');
+Route::get('/paymentsewaszzf/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf']);
+
 
 
 //Dashboard seller
