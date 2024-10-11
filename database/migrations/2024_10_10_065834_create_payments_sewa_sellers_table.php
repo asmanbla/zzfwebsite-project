@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('payments_sewa_sellers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sewas_id');
             $table->unsignedBigInteger('sewa_sellers_id');
             $table->foreign('sewa_sellers_id')->references('id')->on('sewa_sellers')->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('payment_date');

@@ -24,32 +24,35 @@
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
-                        <label for="order_sellers_id" class="form-label">No. Order</label>
-                        <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
-    @foreach($paymentorderseller as $pc)
-        <option value="{{ $pc->id }}" {{ old('order_sellers_id', $paymentorderseller->order_sellers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->id }}</option>
-    @endforeach
-</select>
+    <label for="order_sellers_id" class="form-label">Order Id</label>
+    <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
+        <option value="{{ $paymentorderseller->order_sellers_id ?? old('order_sellers_id') }}">
+            {{ $paymentorderseller->order_sellers->id ?? 'Pilih Id Order' }}
+        </option>
+        @foreach($orderseller as $oi)
+            <option value="{{ $oi->id }}" {{ $paymentorderseller->order_sellers_id == $oi->id ? 'selected' : '' }}>
+                {{ $oi->id }}
+            </option>
+        @endforeach
+    </select>
+</div>
+<div class="mb-3 ms-3 me-3">
+                        <label for="payment_date" class="form-label">payment_date</label>
+                        <input type="text" id="payment_date" name="payment_date" class="form-control" placeholder="Enter Your payment_date" aria-label="payment_date" required value="{{$paymentorderseller->payment_date ?? old('payment_date')}}">
                      </div>
-                <div class="mb-3 ms-3 me-3">
-                        <label for="payment_date" class="form-label">Tanggal sewa</label>
-                        <input type="text" id="payment_date" name="payment_date" class="form-control" placeholder="Enter Your sewa date" aria-label="payment_date" required value="{{$paymentpaymentseller->payment_date ?? old('payment_date')}}">
-                     </div>
+                     
                      <div class="mb-3 ms-3 me-3">
-                        <label for="payment_method" class="form-label">Payment method</label>
-                        <input type="text" id="payment_method" name="payment_method" class="form-control" placeholder="Enter Your payment_method" aria-label="payment_method" required value="{{$paymentorderseller->payment_method ?? old('payment_method')}}">
-                     </div>
-                     <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">status</label>
-                      <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
-                        <option selected disabled>Pilih status</option>
-                        <option value="menunggu pembayaran" {{ old('status', $paymentorderseller->status) == 'menunggu pembayaran' ? 'selected' : '' }}>menunggu pembayaran</option>
-                        <option value="diproses" {{ old('status', $paymentorderseller->status) == 'diproses' ? 'selected' : '' }}>diproses</option>
-                        <option value="dikirim" {{ old('status', $paymentorderseller->status) == 'dikirim' ? 'selected' : '' }}>dikirim</option>
-                        <option value="digunakan" {{ old('status', $paymentorderseller->status) == 'digunakan' ? 'selected' : '' }}>digunakan</option>
-                        <option value="dikembalikan" {{ old('status', $paymentorderseller->status) == 'dikembalikan' ? 'selected' : '' }}>dikembalikan</option>
-                        <option value="selesai" {{ old('status', $paymentorderseller->status) == 'selesai' ? 'selected' : '' }}>selesai</option>
+                      <label for="level" class="form-label">Metode Pembayaran</label>
+                      <select class="form-select" aria-label="Default select example" id="roles" name="payment_method" required>
+                        <option selected disabled>Pilih Metode Pembayaran</option>
+                        <option value="Cash" {{ old('payment_method', $paymentorderseller->payment_method) == 'Cash' ? 'selected' : '' }}>Cash</option>
+                        <option value="Transfer" {{ old('payment_method', $paymentorderseller->payment_method) == 'Transfer' ? 'selected' : '' }}>Transfer</option>
+                        <option value="Qris" {{ old('payment_method', $paymentorderseller->payment_method) == 'Qris' ? 'selected' : '' }}>Qris</option>
                       </select>
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label for="amount" class="form-label">Payment method</label>
+                        <input type="text" id="amount" name="amount" class="form-control" placeholder="Enter Your amount" aria-label="amount" required value="{{$paymentorderseller->amount ?? old('amount')}}">
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">

@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Pembayaran / Edit')
+@section('page', 'Pembayaran Beli / Edit')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,53 +12,51 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Form Pembayaran </h6>
+              <h6>Form Pembayaran Beli </h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
 
             <!-- FORM -->
               <div class="table-responsive p-0">
-                <div class="card border-1 m-3 pt-3">
-                <form action="{{route('paymentseller.update', $paymentseller)}}" method="POST" id="frmpaymentseller">
+                <div class="card bsewa-1 m-3 pt-3">
+                <form action="{{route('paymentsewaseller.update', $paymentsewaseller)}}" method="POST" id="frmpaymentsewaseller">
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
-                <label for="order_sellers_id" class="form-label">No Order</label>
-                    <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
-                        @foreach($paymentseller as $pc)
-                        <option value="{{ $pc->id }}" {{ old('order_sellers_id', $paymentseller->order_sellers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->order_sellers_id }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3 ms-3 me-3">
-                <label for="order_sellers_id" class="form-label">No Order</label>
-                    <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
-                        @foreach($paymentseller as $pc)
-                        <option value="{{ $pc->id }}" {{ old('order_sellers_id', $paymentseller->order_sellers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->order_sellers_id }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3 ms-3 me-3">
-                        <label for="order_date" class="form-label">order_date</label>
-                        <input type="text" id="order_date" name="order_date" class="form-control" placeholder="Enter Your order_date" aria-label="order_date" required value="{{$orderseller->order_date ?? old('order_date')}}">
+    <label for="sewa_sellers_id" class="form-label">Order Id</label>
+    <select name="sewa_sellers_id" id="sewa_sellers_id" class="form-control" required>
+        <option value="{{ $paymentsewaseller->sewa_sellers_id ?? old('sewa_sellers_id') }}">
+            {{ $paymentsewaseller->sewa_sellers->id ?? 'Pilih Id sewa' }}
+        </option>
+        @foreach($sewaseller as $oi)
+            <option value="{{ $oi->id }}" {{ $paymentsewaseller->sewa_sellers_id == $oi->id ? 'selected' : '' }}>
+                {{ $oi->id }}
+            </option>
+        @endforeach
+    </select>
+</div>
+<div class="mb-3 ms-3 me-3">
+                        <label for="payment_date" class="form-label">payment_date</label>
+                        <input type="text" id="payment_date" name="payment_date" class="form-control" placeholder="Enter Your payment_date" aria-label="payment_date" required value="{{$paymentsewaseller->payment_date ?? old('payment_date')}}">
                      </div>
+                     
                      <div class="mb-3 ms-3 me-3">
-                        <label for="total_amount" class="form-label">total_amount</label>
-                        <input type="text" id="total_amount" name="total_amount" class="form-control" placeholder="Enter Your total_amount" aria-label="total_amount" required value="{{$orderseller->total_amount ?? old('total_amount')}}">
-                     </div>
-                     <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">status</label>
-                      <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
-                        <option selected disabled>Pilih status</option>
-                        <option value="menunggu pembayaran" {{ old('status', $orderseller->status) == 'menunggu pembayaran' ? 'selected' : '' }}>menunggu pembayaran</option>
-                        <option value="diproses" {{ old('status', $orderseller->status) == 'diproses' ? 'selected' : '' }}>diproses</option>
-                        <option value="selesai" {{ old('status', $orderseller->status) == 'selesai' ? 'selected' : '' }}>selesai</option>
+                      <label for="level" class="form-label">Metode Pembayaran</label>
+                      <select class="form-select" aria-label="Default select example" id="payment_method" name="payment_method" required>
+                        <option selected disabled>Pilih Metode Pembayaran</option>
+                        <option value="Cash" {{ old('payment_method', $paymentsewaseller->payment_method) == 'Cash' ? 'selected' : '' }}>Cash</option>
+                        <option value="Transfer" {{ old('payment_method', $paymentsewaseller->payment_method) == 'Transfer' ? 'selected' : '' }}>Transfer</option>
+                        <option value="Qris" {{ old('payment_method', $paymentsewaseller->payment_method) == 'Qris' ? 'selected' : '' }}>Qris</option>
                       </select>
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="text" id="amount" name="amount" class="form-control" placeholder="Enter Your amount" aria-label="amount" required value="{{$paymentsewaseller->amount ?? old('amount')}}">
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
-                    <a href="{{ route('orderseller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
+                    <a href="{{ route('paymentsewaseller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
                 </div>
                 <div class="col-3">
                     <button type="submit" class="btn bg-gradient-danger w-100" id="save">Save</button>
@@ -108,7 +106,7 @@
       const nama = document.getElementById("nama")
       const pswd = document.getElementById("password")
       const lvl = document.getElementById("level")
-      const form = document.getElementById("frmorderseller")
+      const form = document.getElementById("frmpaymentsewaseller")
       let pesan = ""
       function simpan(){
         if(nama.value === ""){

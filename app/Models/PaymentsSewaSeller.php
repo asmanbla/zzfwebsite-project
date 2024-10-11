@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PaymentsSewaSeller extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'id',
+        'sewa_sellers_id',
+        'payment_date',
+        'payment_method',
+        'amount'
+    ];
 }
