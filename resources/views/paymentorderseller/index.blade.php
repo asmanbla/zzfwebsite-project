@@ -21,7 +21,6 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No. Order</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No. Sewa</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tanggal Bayar</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Metode Bayar</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jumlah</th>
@@ -31,7 +30,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                         @foreach ($paymentseller as $idx => $data)
+                         @foreach ($paymentorderseller as $idx => $data)
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
@@ -39,10 +38,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                      {{ $data->order_sellers_id }}
-                                    </td>
-                                    <td>
-                                        {{ $data->sewa_sellers_id}}
+                                        {{ $data->order_sellers_id}}
                                     </td>
                                     <td>
                                         {{ $data->payment_date}}
@@ -55,8 +51,8 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="{{ route('paymentseller.edit', $data) }}"  class="btn btn-warning btn-sm">Ubah</a>
-                                    <form action="{{ route('paymentseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
+                                            <a href="{{ route('paymentorderseller.edit', $data) }}"  class="btn btn-warning btn-sm">Ubah</a>
+                                    <form action="{{ route('paymentorderseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

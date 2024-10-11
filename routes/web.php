@@ -16,7 +16,8 @@ use App\Http\Controllers\SewasellerController;
 use App\Http\Controllers\OrdetailsellerController;
 use App\Http\Controllers\SewadetailsellerController;
 use App\Http\Controllers\ProdrevsellerController;
-use App\Http\Controllers\PaymentsellerController;
+use App\Http\Controllers\PaymentordersellerController;
+use App\Http\Controllers\PaymentsewasellerController;
 use App\Http\Controllers\OrderZzfController;
 use App\Http\Controllers\OrderDetailsZzfController;
 use App\Http\Controllers\SewaZzfController;
@@ -134,5 +135,6 @@ Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class
 Route::resource('sewaseller', App\Http\Controllers\SewasellerController::class);
 Route::resource('ordetailseller', App\Http\Controllers\OrdetailsellerController::class);
 Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerController::class);
-Route::resource('paymentseller', App\Http\Controllers\PaymentsellerController::class);
+Route::resource('paymentorderseller', App\Http\Controllers\PaymentordersellerController::class);
+Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsewasellerController::class);
 Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
