@@ -1,0 +1,127 @@
+@extends('dashboardseller.master')
+@section('nav')
+      @include('dashboardseller.nav')
+@endsection
+@section('page', 'Pembayaran Beli / Edit')
+@section('main')
+      @include('dashboardseller.main')
+
+ <!-- Table -->
+ <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Form Pembayaran Beli </h6>
+              <hr class="">
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+
+            <!-- FORM -->
+              <div class="table-responsive p-0">
+                <div class="card bsewa-1 m-3 pt-3">
+                <form action="{{route('paymentorderseller.update', $paymentorderseller)}}" method="POST" id="frmpaymentorderseller">
+                @method('PUT')
+                @csrf
+                <div class="mb-3 ms-3 me-3">
+                        <label for="order_sellers_id" class="form-label">No. Order</label>
+                        <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
+    @foreach($paymentorderseller as $pc)
+        <option value="{{ $pc->id }}" {{ old('order_sellers_id', $paymentorderseller->order_sellers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->id }}</option>
+    @endforeach
+</select>
+                     </div>
+                <div class="mb-3 ms-3 me-3">
+                        <label for="payment_date" class="form-label">Tanggal sewa</label>
+                        <input type="text" id="payment_date" name="payment_date" class="form-control" placeholder="Enter Your sewa date" aria-label="payment_date" required value="{{$paymentpaymentseller->payment_date ?? old('payment_date')}}">
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label for="payment_method" class="form-label">Payment method</label>
+                        <input type="text" id="payment_method" name="payment_method" class="form-control" placeholder="Enter Your payment_method" aria-label="payment_method" required value="{{$paymentorderseller->payment_method ?? old('payment_method')}}">
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                      <label for="level" class="form-label">status</label>
+                      <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
+                        <option selected disabled>Pilih status</option>
+                        <option value="menunggu pembayaran" {{ old('status', $paymentorderseller->status) == 'menunggu pembayaran' ? 'selected' : '' }}>menunggu pembayaran</option>
+                        <option value="diproses" {{ old('status', $paymentorderseller->status) == 'diproses' ? 'selected' : '' }}>diproses</option>
+                        <option value="dikirim" {{ old('status', $paymentorderseller->status) == 'dikirim' ? 'selected' : '' }}>dikirim</option>
+                        <option value="digunakan" {{ old('status', $paymentorderseller->status) == 'digunakan' ? 'selected' : '' }}>digunakan</option>
+                        <option value="dikembalikan" {{ old('status', $paymentorderseller->status) == 'dikembalikan' ? 'selected' : '' }}>dikembalikan</option>
+                        <option value="selesai" {{ old('status', $paymentorderseller->status) == 'selesai' ? 'selected' : '' }}>selesai</option>
+                      </select>
+                     </div>
+                <div class="row ms-3 me-3 justify-content-end">
+                <div class="col-3">
+                    <a href="{{ route('paymentorderseller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn bg-gradient-danger w-100" id="save">Save</button>
+                </div>
+             </div>
+          </div>
+          </div> 
+
+        <!-- END FORM -->
+
+      <!-- End Table -->
+      <footer class="footer pt-3  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                for a better web.
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const btnSimpan = document.getElementById("save")
+      const nama = document.getElementById("nama")
+      const pswd = document.getElementById("password")
+      const lvl = document.getElementById("level")
+      const form = document.getElementById("frmpaymentorderseller")
+      let pesan = ""
+      function simpan(){
+        if(nama.value === ""){
+          nama.focus()
+            swal("Incomplete data", "Nama must be filled!", "error")
+        }else if(pswd.value === ""){
+          pswd.focus()
+        swal("Incomplete data", "Password must be filled!", "error")
+        }else if(lvl.value === ""){
+          lvl.focus()
+          swal("Incomplete data", "Level must be filled!", "error")
+        }else{
+          form.submit()
+        }
+          
+      }
+      btnSimpan.onclick = function(){
+        simpan()
+      }
+    </script>
+    @endsection

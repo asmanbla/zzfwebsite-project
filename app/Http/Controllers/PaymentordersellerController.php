@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\PaymentsSellers;
+
 use Illuminate\Http\Request;
 
-class PaymentsellerController extends Controller
+class PaymentordersellerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("paymentseller.index", [
-            'paymentseller' => PaymentsSellers::all()
+        return view("paymentorderseller.index", [
+            'paymentorderseller' => PaymentsSellers::all()
         ]);
     }
 
@@ -61,6 +61,13 @@ class PaymentsellerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Cari data ordetail seller berdasarkan id
+        $paymentorderseller = PaymentSellers::findOrFail($id);
+    
+        // Hapus data ordetail seller
+        $paymentorderseller->delete();
+    
+        // Redirect kembali ke halaman index dengan pesan sukses
+        return redirect()->route('paymentorderseller$paymentorderseller.index')->with('success', 'sewa detail Data Deleted Successfully');
     }
 }

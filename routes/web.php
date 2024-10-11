@@ -115,5 +115,6 @@ Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class
 Route::resource('sewaseller', App\Http\Controllers\SewasellerController::class);
 Route::resource('ordetailseller', App\Http\Controllers\OrdetailsellerController::class);
 Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerController::class);
-Route::resource('paymentseller', App\Http\Controllers\PaymentsellerController::class);
+Route::resource('paymentorderseller', App\Http\Controllers\PaymentsewasellerController::class);
+Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsellerController::class);
 Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
