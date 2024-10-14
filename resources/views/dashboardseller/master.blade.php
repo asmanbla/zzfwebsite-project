@@ -123,6 +123,8 @@
 <body class="g-sidenav-show  bg-gray-100" id="master">
 @yield('nav')
 @yield('main')
+@include('sweetalert::alert')
+
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
