@@ -99,21 +99,36 @@
           </div>
         </div>
       </footer>
-    </div>
-    <input type="hidden" id="sts" class="form-control" value="@isset($status){{$status}}@endisset" />
-    <input type="hidden" id="psn" class="form-control" value="@isset($status){{$pesan}}@endisset" />
-    <script>
-      const body = document.getElementById('master')
-      const sts = document.getElementById("sts")
-      const psn = document.getElementById("psn")
-      function pesan_simpan(){
-        if(sts.value === "simpan")
-        swal("Good Job!", psn.value, "success")
-      }
-    {
-      body.onload = function(){
-        pesan_simpan()
-      }
-    }
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+
+    <script src="/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    @include('sweetalert::alert')
+</body>
+<input type="hidden" id="sts" class="form-control"
+    value="@isset($status){{ $status }}@endisset" />
+<input type="hidden" id="psn" class="form-control"
+    value="@isset($status){{ $pesan }}@endisset" />
+<script>
+    const sts = document.getElementById("sts")
+    const psn = document.getElementById("psn")
+
+    function pesan_simpan() {
+        if (sts.value === "simpan")
+            swal("Good Job!", psn.value, "success")
+    } {
+        body.onload = function() {
+            pesan_simpan()
+        }
+    }
+</script>
     @endsection

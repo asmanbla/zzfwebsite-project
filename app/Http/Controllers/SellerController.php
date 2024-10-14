@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Sellers;
+use RealRashid\SweetAlert\Facades;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +35,8 @@ class SellerController extends Controller
     {
         Sellers::create($request->all());
         // return $request->input();
-        return redirect('/seller')->with('success', 'New seler data with the name "' .$request -> name. '"    has been successfully saved!');
+        return redirect('/seller')->with('success', 'New Seller Data Created Successfully');
+
 
     }
 

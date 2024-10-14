@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserZZFController extends Controller
@@ -12,9 +12,9 @@ class UserZZFController extends Controller
      */
     public function index()
     {
-        return view ('userzzf.index', [
+        return view('userzzf.index', [
             'pengguna' => User::all()
-           ]);
+        ]);
     }
 
     /**
@@ -22,9 +22,9 @@ class UserZZFController extends Controller
      */
     public function create()
     {
-            return view('userzzf.create', [
-                'users' => User::all()
-            ]);
+        return view('userzzf.create', [
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -32,9 +32,8 @@ class UserZZFController extends Controller
      */
     public function store(Request $request)
     {
-            User::create($request->all());
-            // return $request->input();
-            return redirect('/userzzf')->with('success', 'New user data with the name "' .$request -> name. '"    has been successfully saved!');
+        User::create($request->all());
+        return redirect('/userzzf')->with('success', 'New user data with the name "' . $request->name . '" has been successfully saved!');
     }
 
     /**
@@ -50,12 +49,12 @@ class UserZZFController extends Controller
      */
     public function edit($id)
     {
-        //Menampilkan Form Edit
+        // Menampilkan Form Edit
         $user = User::find($id);
-        if (!$user) return redirect()->route('userzzf.edit');
+        if (!$user) return redirect()->route('userzzf.index'); // Perbaiki redirect jika user tidak ditemukan
         return view('userzzf.edit', [
             'user' => $user
-        ]); 
+        ]);
     }
 
     /**
@@ -63,16 +62,17 @@ class UserZZFController extends Controller
      */
     public function update(Request $request, string $id)
     {
-       
-    //Mengedit Data User
-    $users = User::find($id);
-    $users->name = $request->name;
-    $users->email = $request->email;
-    if ($request->password) $users->password = bcrypt($request->password);
-    $users->roles = $request->roles;
-    $users->save();
-    return redirect('/userzzf')->with('success', 'User Data Update Successfully');
+        // Mengedit Data User
+        $users = User::find($id);
+        if (!$users) return redirect('/userzzf')->with('error', 'User not found!'); // Tambahkan pengecekan jika user tidak ditemukan
 
+        $users->name = $request->name;
+        $users->email = $request->email;
+        if ($request->password) $users->password = bcrypt($request->password);
+        $users->roles = $request->roles;
+        $users->save();
+        
+        return redirect('/userzzf')->with('success', 'User Data Updated Successfully');
     }
 
     /**
@@ -87,5 +87,4 @@ class UserZZFController extends Controller
         }
         return redirect('/userzzf')->with('error', 'User not found!');
     }
-
 }
