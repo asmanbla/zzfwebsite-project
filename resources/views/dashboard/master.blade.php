@@ -45,6 +45,17 @@
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
 <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
 <link rel="stylesheet" href="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.css">
+
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+<!-- SweetAlert2  -->
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('css/sweetalert.min.css') }}"></script>
+
 <script>
   function angka(e){
     let keyCode = e.keyCode ? e.keyCode : e.whice
@@ -85,6 +96,8 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -273,11 +286,86 @@
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 
+<script>
+document.getElementById('myButton').addEventListener('click', function() {
+  Swal.fire({
+    title: 'Selamat!',
+    text: 'Ini adalah pesan dari SweetAlert!',
+    icon: 'success',
+    confirmButtonText: 'Tutup'
+  });
+});
+</script>
+
+<script src="/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    @include('sweetalert::alert')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+
+        <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+
+        <script>
+    document.getElementById('product_reviews').addEventListener('submit', function(event) {
+        // Optional: Add your form submission code here if you want to handle it with AJAX
+        // event.preventDefault();
+        // const rating = document.querySelector('input[name="rating"]:checked').value;
+        // console.log('Rating submitted:', rating);
+        // const formData = new FormData(this);
+        // fetch('/insertdataformreview', {
+        //     method: 'POST',
+        //     body: formData
+        // }).then(response => response.json()).then(data => console.log(data));
+    });
+</script>
+
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bun"></script>
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
 
-</body>
 
+<script src="/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    @include('sweetalert::alert')
+
+<input type="hidden" id="sts" class="form-control"
+    value="@isset($status){{ $status }}@endisset" />
+<input type="hidden" id="psn" class="form-control"
+    value="@isset($status){{ $pesan }}@endisset" />
+<script>
+    const sts = document.getElementById("sts")
+    const psn = document.getElementById("psn")
+
+    function pesan_simpan() {
+        if (sts.value === "simpan")
+            swal("Good Job!", psn.value, "success")
+    } {
+        body.onload = function() {
+            pesan_simpan()
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+</body>
 </html>
