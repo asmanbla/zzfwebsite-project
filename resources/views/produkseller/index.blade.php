@@ -97,9 +97,18 @@
           </div>
         </div>
       </div>  
+      @if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif
 
       <!-- End Table -->
-      <footer class="footer pt-3  ">
+      <!-- <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
@@ -131,21 +140,6 @@
           </div>
         </div>
       </footer>
-    </div>
-    <input type="hidden" id="sts" class="form-control" value="@isset($status){{$status}}@endisset" />
-    <input type="hidden" id="psn" class="form-control" value="@isset($status){{$pesan}}@endisset" />
-    <script>
-      const body = document.getElementById('master')
-      const sts = document.getElementById("sts")
-      const psn = document.getElementById("psn")
-      function pesan_simpan(){
-        if(sts.value === "simpan")
-        swal("Good Job!", psn.value, "success")
-      }
-    {
-      body.onload = function(){
-        pesan_simpan()
-      }
-    }
-    </script>
+    </div> -->
+    
     @endsection

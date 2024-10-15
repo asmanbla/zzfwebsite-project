@@ -79,7 +79,7 @@ class OrdersellerController extends Controller
     // Simpan perubahan
     $orderseller->save();
 
-    return redirect('/orderseller')->with('success', 'Order Data Updated Successfully');
+    return redirect('/orderseller')->with("sukses", 'Edit Order Berhasil Disimpan');
 }
 
     
@@ -96,7 +96,7 @@ class OrdersellerController extends Controller
     $orderseller->delete();
 
     // Redirect kembali ke halaman index dengan pesan sukses
-    return redirect()->route('orderseller.index')->with('success', 'Order Data Deleted Successfully');
+    return redirect()->route('orderseller.index')->with("sukses", 'Order Berhasil Dihapus!');
 }
 
 }

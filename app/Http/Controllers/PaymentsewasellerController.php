@@ -60,7 +60,7 @@ class PaymentsewasellerController extends Controller
     public function update(Request $request, string $id)
 {
     $request->validate([
-        'sewa_sellers_id' => 'required||exists:customers,id',
+        'sewa_sellers_id' => 'required|exists:sewa_sellers,id',
         'payment_date' => 'required|date',
         'payment_method' => 'required|in:Cash,Transfer,Qris', // Validasi untuk kolom metode
         'amount' =>  'required|'
@@ -75,7 +75,7 @@ class PaymentsewasellerController extends Controller
     // Simpan perubahan
     $paymentsewaseller->save();
 
-    return redirect('/paymentsewaseller')->with('success', 'sewa Data Updated Successfully');
+    return redirect('/paymentsewaseller')->with('sukses', 'Edit Data Pembayaran Sewa Berhasil Disimpan!');
 }
 
     /**
@@ -94,6 +94,6 @@ class PaymentsewasellerController extends Controller
         $paymentsewaseller->delete();
     
         // Redirect kembali ke halaman index dengan pesan sukses
-        return redirect()->route('paymentsewaseller.index')->with('success', 'sewa detail Data Deleted Successfully');
+        return redirect()->route('paymentsewaseller.index')->with('sukses', 'Data Pembayaran Sewa Berhasil Dihapus!');
     }
 }

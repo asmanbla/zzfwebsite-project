@@ -35,7 +35,7 @@ class SellerController extends Controller
     {
         Sellers::create($request->all());
         // return $request->input();
-        return redirect('/seller')->with('success', 'New Seller Data Created Successfully');
+        return redirect('/seller')->with('sukses', 'Seller Berhasil Ditambahkan!');
 
 
     }
@@ -73,7 +73,7 @@ class SellerController extends Controller
     if ($request->password) $sellers->password = bcrypt($request->password);
     $sellers->roles = $request->roles;
     $sellers->save();
-    return redirect('/seller')->with('success', 'User Data Update Successfully');
+    return redirect('/seller')->with('sukses', 'Edit Seller Berhasil Disimpan!');
 
     }
 
@@ -85,7 +85,7 @@ class SellerController extends Controller
         $seller = Sellers::find($id);
         if ($seller) {
             $seller->delete();
-            return redirect('/seller')->with('success', 'The User Data Successfully Deleted!');
+            return redirect('/seller')->with('sukses', 'Seller Berhasil Dihapus!');
         }
         return redirect('/seller')->with('error', 'User not found!');
     }

@@ -44,7 +44,7 @@ class SewaDetailsZzfController extends Controller
 
     SewaDetails::create($validated);
 
-    return redirect('/sewadetailszzf')->with('success', 'New Sewa Details data with the id "' .$request->id. '" has been successfully saved!');
+    return redirect('/sewadetailszzf')->with('sukses', 'Sewa Detail Baru Berhasil Ditambahkan!');
 }
 
 
@@ -85,7 +85,7 @@ class SewaDetailsZzfController extends Controller
         $sewadetailszzf = SewaDetails::find($id);
         if ($sewadetailszzf) {
             $sewadetailszzf->delete();
-            return redirect('/sewadetailszzf')->with('success', 'The Order Data Successfully Deleted!');
+            return redirect('/sewadetailszzf')->with('sukses', 'Sewa Detail Berhasil Dihapus!');
         }
         return redirect('/sewadetailszzf')->with('error', 'Data not found!');
     }

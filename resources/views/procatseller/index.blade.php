@@ -5,7 +5,7 @@
 @section('page', 'Kategori Produk')
 @section('main')
       @include('dashboardseller.main')
-
+    
  <!-- Table -->
  <div class="container-fluid py-4">
       <div class="row">
@@ -55,7 +55,7 @@
       </div>  
 
       <!-- End Table -->
-      <footer class="footer pt-3  ">
+      <!-- <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
@@ -86,9 +86,19 @@
             </div>
           </div>
         </div>
-      </footer>
+      </footer> -->
     </div>
-    <input type="hidden" id="sts" class="form-control" value="@isset($status){{$status}}@endisset" />
+    @if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif
+
+    <!-- <input type="hidden" id="sts" class="form-control" value="@isset($status){{$status}}@endisset" />
     <input type="hidden" id="psn" class="form-control" value="@isset($status){{$pesan}}@endisset" />
     <script>
       const body = document.getElementById('master')
@@ -103,5 +113,5 @@
         pesan_simpan()
       }
     }
-    </script>
+    </script> -->
     @endsection

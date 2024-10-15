@@ -37,7 +37,7 @@ class SewaZzfController extends Controller
     {
         Sewas::create($request->all());
             // return $request->input();
-            return redirect('/sewazzf')->with('success', 'New sewa data with the id "' .$request -> id. '"    has been successfully saved!');
+            return redirect('/sewazzf')->with('sukses', 'Sewa Berhasil Ditambahkan!');
     }
 
     /**
@@ -83,7 +83,7 @@ class SewaZzfController extends Controller
     $sewazzf->status = $request->status;
     $sewazzf->save();
 
-    return redirect('/sewazzf')->with('success', 'Sewa Data Updated Successfully');
+    return redirect('/sewazzf')->with('sukses', 'Edit Sewa Berhasil Disimpan');
 }
 
 
@@ -95,7 +95,7 @@ class SewaZzfController extends Controller
         $sewazzf = Sewas::find($id);
         if ($sewazzf) {
             $sewazzf->delete();
-            return redirect('/sewazzf')->with('success', 'The Order Data Successfully Deleted!');
+            return redirect('/sewazzf')->with('sukses', 'Sewa Berhasil Dihapus');
         }
         return redirect('/sewazzf')->with('error', 'Data not found!');
     }

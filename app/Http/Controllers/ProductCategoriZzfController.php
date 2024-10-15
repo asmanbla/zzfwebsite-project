@@ -34,7 +34,7 @@ class ProductCategoriZzfController extends Controller
     {
         ProductCategories::create($request->all());
         // return $request->input();
-        return redirect('/prodcatzzf')->with('success', 'New categories data with the name "' .$request -> kategori. '"    has been successfully saved!');
+        return redirect('/prodcatzzf')->with('sukses', 'Produk Kategori Baru Berhasil Ditambahkan!');
     }
 
     /**
@@ -67,7 +67,7 @@ class ProductCategoriZzfController extends Controller
         $category = ProductCategories::find($id);
         $category->kategori = $request->kategori;
         $category->save();
-        return redirect('/prodcatzzf')->with('success', 'User Data Update Successfully');
+        return redirect('/prodcatzzf')->with('sukses', 'Edit Produk Kategori Berhasil Disimpan!');
     }
 
     /**
@@ -78,7 +78,7 @@ class ProductCategoriZzfController extends Controller
         $category = ProductCategories::find($id);
         if ($category) {
             $category->delete();
-            return redirect('/prodcatzzf')->with('success', 'The User Data Successfully Deleted!');
+            return redirect('/prodcatzzf')->with('sukses', 'Produk Kategori Berhasil Dihapus!');
         }
         return redirect('/prodcatzzf')->with('error', 'User not found!');
     }

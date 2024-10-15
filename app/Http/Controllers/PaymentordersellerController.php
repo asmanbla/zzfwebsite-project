@@ -75,7 +75,7 @@ class PaymentordersellerController extends Controller
     // Simpan perubahan
     $paymentorderseller->save();
 
-    return redirect('/paymentorderseller')->with('success', 'sewa Data Updated Successfully');
+    return redirect('/paymentorderseller')->with('sukses', 'Edit Pembayaran Order Berhasil Disimpan!');
 }
 
     /**
@@ -90,6 +90,6 @@ class PaymentordersellerController extends Controller
         $paymentorderseller->delete();
     
         // Redirect kembali ke halaman index dengan pesan sukses
-        return redirect()->route('paymentorderseller.index')->with('success', 'sewa detail Data Deleted Successfully');
+        return redirect()->route('paymentorderseller.index')->with('sukses', 'Data Pembayaran Order Berhasil Dihapus!');
     }
 }

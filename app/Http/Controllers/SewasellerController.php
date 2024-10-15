@@ -78,7 +78,7 @@ class SewasellerController extends Controller
     // Simpan perubahan
     $sewaseller->save();
 
-    return redirect('/sewaseller')->with('success', 'sewa Data Updated Successfully');
+    return redirect('/sewaseller')->with('sukses', 'Edit Sewa Berhasil Disimpan!');
 }
 
     
@@ -95,7 +95,7 @@ class SewasellerController extends Controller
     $sewaseller->delete();
 
     // Redirect kembali ke halaman index dengan pesan sukses
-    return redirect()->route('sewaseller.index')->with('success', 'sewa Data Deleted Successfully');
+    return redirect()->route('sewaseller.index')->with('sukses', 'Data Sewa Berhasil Dihapus');
 }
 
 }

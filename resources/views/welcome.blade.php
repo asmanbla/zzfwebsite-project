@@ -137,40 +137,38 @@ a.btn.btn-secondary {
         </div>
         <!-- Navbar & Hero End -->
 
-        <!-- Carousel Start -->
-        <div class="header-carousel" id="home">
-            <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-                <ol class="carousel-indicators">
-                    <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
-                    <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img src="img/imgzzf/bg2.jpg" class="img-fluid w-100" alt="First slide"/>
-                        <div class="carousel-caption">
-                            <div class="container py-4">
-                                <div class="row g-5">
-                                    <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
-                                    <div class="text-start">
-                                            <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
-                                            <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
-                                        </div>
-                                    </div>
+<!-- Carousel Start -->
+<div class="header-carousel" id="home">
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-wrap="true"> <!-- Interval 2 detik dan looping -->
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img src="img/imgzzf/bg2.jpg" class="img-fluid w-100" alt="First slide"/>
+                <div class="carousel-caption">
+                    <div class="container py-4">
+                        <div class="row g-5">
+                            <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
+                                <div class="text-start">
+                                    <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
+                                    <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="img/imgzzf/bg1.jpeg" class="img-fluid w-100" alt="First slide"/>
-                        <div class="carousel-caption">
-                            <div class="container py-4">
-                                <div class="row g-5">
-                                    <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
-                                    <div class="text-start">
-                                            <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
-                                            <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
-                                        </div>
-                                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/imgzzf/bg1.jpeg" class="img-fluid w-100" alt="First slide"/>
+                <div class="carousel-caption">
+                    <div class="container py-4">
+                        <div class="row g-5">
+                            <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
+                                <div class="text-start">
+                                    <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
+                                    <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +176,11 @@ a.btn.btn-secondary {
                 </div>
             </div>
         </div>
-        <!-- Carousel End -->
+    </div>
+</div>
+<!-- Carousel End -->
+
+
          <br>
                 <!-- Produk Kami (ZZF) -->
                 <div class="container-fluid categories pb-5" id="produk">

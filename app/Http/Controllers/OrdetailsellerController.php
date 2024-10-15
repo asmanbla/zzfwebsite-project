@@ -68,6 +68,6 @@ class OrdetailsellerController extends Controller
         $ordetailseller->delete();
     
         // Redirect kembali ke halaman index dengan pesan sukses
-        return redirect()->route('ordetailseller.index')->with('success', 'ordetail Data Deleted Successfully');
+        return redirect()->route('ordetailseller.index')->with('sukses', 'Order Detail Berhasil Dihapus');
     }
 }

@@ -68,6 +68,15 @@
           </div>
         </div>
       </div>  
+      @if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif
 
       <!-- End Table -->
       <footer class="footer pt-3  ">

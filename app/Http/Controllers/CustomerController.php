@@ -33,7 +33,7 @@ class CustomerController extends Controller
     {
         Customers::create($request->all());
         // return $request->input();
-        return redirect('/customer')->with('success', 'New customer data with the name "' .$request -> name. '"    has been successfully saved!');
+        return redirect('/customer')->with('sukses', 'Customer Baru Berhasil Ditambahkan!');
     }
 
     /**
@@ -78,7 +78,7 @@ class CustomerController extends Controller
         $customers->address1 = $request->address1;
         $customers->address2 = $request->address2;
         $customers->save();
-        return redirect('/customer')->with('success', 'New Customers Data Update Successfully');
+        return redirect('/customer')->with('sukses', 'Edit Customer Berhasil Disimpan!');
     }
 
     /**
@@ -89,7 +89,7 @@ class CustomerController extends Controller
         $customer = Customers::find($id);
         if ($customer) {
             $customer->delete();
-            return redirect('/customer')->with('success', 'The User Data Successfully Deleted!');
+            return redirect('/customer')->with('sukses', 'Customer Berhasil Dihapus!');
         }
         return redirect('/customer')->with('error', 'User not found!');
     }

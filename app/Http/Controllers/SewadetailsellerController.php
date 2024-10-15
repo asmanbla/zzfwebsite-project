@@ -68,6 +68,6 @@ class SewadetailsellerController extends Controller
         $sewadetailseller->delete();
     
         // Redirect kembali ke halaman index dengan pesan sukses
-        return redirect()->route('sewadetailseller.index')->with('success', 'sewa detail Data Deleted Successfully');
+        return redirect()->route('sewadetailseller.index')->with('sukses', 'Sewa Detail Berhasil Dihapus!');
     }
 }

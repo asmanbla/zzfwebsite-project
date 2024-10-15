@@ -39,7 +39,7 @@ class ProductZzfController extends Controller
     // {
     //     ProductSellers::create($request->all());
     //     // return $request->input();
-    //     return redirect('/produkzzf')->with('success', 'New kategori produk data with the name "' .$request -> name. '"    has been successfully saved!');
+    //     return redirect('/produkzzf')->with('sukses', 'New kategori produk data with the name "' .$request -> name. '"    has been successfully saved!');
     // }
 
     public function store(Request $request)
@@ -84,7 +84,7 @@ class ProductZzfController extends Controller
             ProductsZzf::create($data);
     
             // Redirect ke halaman index dengan pesan sukses
-            return redirect()->route('produkzzf.index')->with('success', 'Product saved successfully');
+            return redirect()->route('produkzzf.index')->with('sukses', 'Produk Baru Berhasil Disimpan!');
         } catch (\Exception $e) {
             // Tangani error jika terjadi kesalahan
             return redirect()->back()->withErrors(['error' => 'Failed to save product: ' . $e->getMessage()])->withInput();
@@ -147,7 +147,7 @@ class ProductZzfController extends Controller
     // Save the updated product
     $produkzzf->save();
 
-    return redirect('/produkzzf')->with('success', 'Product Data Updated Successfully');
+    return redirect('/produkzzf')->with('sukses', 'Edit Produk Berhasil Disimpan!');
 
 }
     /**
@@ -158,7 +158,7 @@ class ProductZzfController extends Controller
         $produkzzf = ProductsZzf::find($id);
         if ($produkzzf) {
             $produkzzf->delete();
-            return redirect('/produkzzf')->with('success', 'The User Data Successfully Deleted!');
+            return redirect('/produkzzf')->with('sukses', 'Produk Berhasil Dihapus!');
         }
         return redirect('/produkzzf')->with('error', 'User not found!');
     }

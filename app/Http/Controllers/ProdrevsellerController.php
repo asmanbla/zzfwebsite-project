@@ -12,15 +12,23 @@ class ProdrevsellerController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $vwproductreviewsellers = ProductReviewsSellers::with('name', 'product')->get(); // Menggunakan relasi 'name' dari model
+    // return view('prodrevseller.index', [
+    //     'vwproductreviewsellers' => DB::table('vwproductreviewsellers')->get(),
+    //     'customers' => Customers::all(),
+    //     'produkseller' => ProductSellers::all()
+    // ]);
+    // }
+
     public function index()
-    {
-        $vwproductreviewsellers = ProductReviewsSellers::with('name', 'product')->get(); // Menggunakan relasi 'name' dari model
+{
     return view('prodrevseller.index', [
-        'vwproductreviewsellers' => $vwproductreviewsellers,
         'customers' => Customers::all(),
-        'produkseller' => ProductSellers::all()
+        'vwproductreviewsellers' => DB::table('vwproductreviewsellers')->get() // Mengambil data dari view
     ]);
-    }
+}
 
     /**
      * Show the form for creating a new resource.
@@ -74,6 +82,6 @@ class ProdrevsellerController extends Controller
     $prodrevseller->delete();
 
     // Redirect kembali ke halaman index dengan pesan sukses
-    return redirect()->route('prodrevseller.index')->with('success', 'Order Data Deleted Successfully');
+    return redirect()->route('prodrevseller.index')->with('sukses', 'Produk Review Berhasil Dihapus!');
 }
 }

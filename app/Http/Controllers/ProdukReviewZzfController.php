@@ -40,7 +40,7 @@ class ProdukReviewZzfController extends Controller
     {
         ProductReviews::create($request->all());
             // return $request->input();
-            return redirect('/produkreviewszzf')->with('success', 'New reviews data with the id "' .$request -> id. '"    has been successfully saved!');
+            return redirect('/produkreviewszzf')->with('sukses', 'Produk Review Baru Berhasil!');
     }
 
     /**
@@ -86,7 +86,7 @@ class ProdukReviewZzfController extends Controller
     $produkreviewszzf->comment = $request->comment;
     $produkreviewszzf->save();
 
-    return redirect('/produkreviewszzf')->with('success', 'Review Data Updated Successfully');
+    return redirect('/produkreviewszzf')->with('sukses', 'Edit Produk Review Berhasil Disimpan!');
 }
 
 
@@ -98,7 +98,7 @@ class ProdukReviewZzfController extends Controller
         $hapuspreviewszzf = ProductReviews::find($id);
         if ($hapuspreviewszzf) {
             $hapuspreviewszzf->delete();
-            return redirect('/produkreviewszzf')->with('success', 'The Reviews Data Successfully Deleted!');
+            return redirect('/produkreviewszzf')->with('sukses', 'Produk Review Berhasil Dihapus!');
         }
         return redirect('/produkreviewszzf')->with('error', 'Data not found!');
     }
