@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Sellers;
-use RealRashid\SweetAlert\Facades;
 
+use App\Models\Sellers;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert; // Pastikan SweetAlert diimpor dengan benar
 
 class SellerController extends Controller
 {
@@ -13,9 +13,9 @@ class SellerController extends Controller
      */
     public function index()
     {
-        return view ('seller.index', [
+        return view('seller.index', [
             'penjual' => Sellers::all()
-           ]);
+        ]);
     }
 
     /**
@@ -23,9 +23,7 @@ class SellerController extends Controller
      */
     public function create()
     {
-        return view('seller.create', [
-            'sellers' => Sellers::all()
-        ]);
+        return view('seller.create');
     }
 
     /**
@@ -33,6 +31,7 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         Sellers::create($request->all());
         // return $request->input();
         return redirect('/seller')->with('sukses', 'Seller Berhasil Ditambahkan!');
@@ -46,6 +45,25 @@ class SellerController extends Controller
     public function show(string $id)
     {
         //
+=======
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:sellers,email',
+            'password' => 'required|string|min:2',
+            'roles' => 'required|string',
+        ]);
+
+        // Simpan data seller baru
+        Sellers::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password), // Enkripsi password
+            'roles' => $request->roles,
+        ]);
+
+        return redirect('/seller')->with('success', 'New Seller Data Created Successfully');
+>>>>>>> 465b29e0a0cdaf5f92983b9b663a434335666a94
     }
 
     /**
@@ -53,12 +71,14 @@ class SellerController extends Controller
      */
     public function edit(string $id)
     {
-         //Menampilkan Form Edit
-         $seller = Sellers::find($id);
-         if (!$seller) return redirect()->route('seller.edit');
-         return view('seller.edit', [
-             'seller' => $seller
-         ]); 
+        // Menampilkan Form Edit
+        $seller = Sellers::find($id);
+        if (!$seller) {
+            return redirect('/seller')->with('error', 'Seller not found!');
+        }
+        return view('seller.edit', [
+            'seller' => $seller
+        ]);
     }
 
     /**
@@ -66,6 +86,7 @@ class SellerController extends Controller
      */
     public function update(Request $request, string $id)
     {
+<<<<<<< HEAD
         //Mengedit Data Seler
     $sellers = Sellers::find($id);
     $sellers->name = $request->name;
@@ -74,7 +95,31 @@ class SellerController extends Controller
     $sellers->roles = $request->roles;
     $sellers->save();
     return redirect('/seller')->with('sukses', 'Edit Seller Berhasil Disimpan!');
+=======
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:sellers,email,'.$id,
+            'password' => 'nullable|string|min:8',
+            'roles' => 'required|string',
+        ]);
+>>>>>>> 465b29e0a0cdaf5f92983b9b663a434335666a94
 
+        // Mengedit data seller
+        $sellers = Sellers::find($id);
+        if (!$sellers) {
+            return redirect('/seller')->with('error', 'Seller not found!');
+        }
+
+        $sellers->name = $request->name;
+        $sellers->email = $request->email;
+        if ($request->password) {
+            $sellers->password = bcrypt($request->password); // Enkripsi password baru jika ada
+        }
+        $sellers->roles = $request->roles;
+        $sellers->save();
+
+        return redirect('/seller')->with('success', 'Seller Data Updated Successfully');
     }
 
     /**
@@ -85,8 +130,12 @@ class SellerController extends Controller
         $seller = Sellers::find($id);
         if ($seller) {
             $seller->delete();
+<<<<<<< HEAD
             return redirect('/seller')->with('sukses', 'Seller Berhasil Dihapus!');
+=======
+            return redirect('/seller')->with('success', 'The Seller Data Successfully Deleted!');
+>>>>>>> 465b29e0a0cdaf5f92983b9b663a434335666a94
         }
-        return redirect('/seller')->with('error', 'User not found!');
+        return redirect('/seller')->with('error', 'Seller not found!');
     }
 }

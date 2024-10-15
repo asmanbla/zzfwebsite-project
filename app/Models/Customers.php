@@ -42,4 +42,12 @@ class Customers extends Authenticatable
         return $this->hasMany(Payments::class, 'customer_id');
     }
 
+    /**
+     * Set password harus dienkripsi saat disimpan.
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
 }

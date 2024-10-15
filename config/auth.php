@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\User; 
+use App\Models\Sellers; 
+use App\Models\Customers; 
+
 return [
 
     /*
@@ -40,7 +44,20 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+
+        'sellers' => [
+            'driver' => 'session',
+            'provider' => 'sellers', // Pastikan ini sesuai
+        ],
+        
+        'customers' => [
+            'driver' => 'session',
+            'provider' => 'customers', // Pastikan ini sesuai
+        ],
     ],
+    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -59,17 +76,27 @@ return [
     |
     */
 
-    'providers' => [
+   'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'driver' => 'eloquent', // Atau 'database' sesuai kebutuhan
+            'model' => App\Models\User::class,
         ],
-
+    
+        'sellers' => [
+            'driver' => 'eloquent', // Pastikan ini sesuai dengan model
+            'model' => App\Models\Sellers::class,
+        ],
+    
+        'customers' => [
+            'driver' => 'eloquent', // Pastikan ini sesuai dengan model
+            'model' => App\Models\Customers::class,
+        ],
+        
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-    ],
+],
 
     /*
     |--------------------------------------------------------------------------
