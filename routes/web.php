@@ -26,6 +26,7 @@ use App\Http\Controllers\ProdukReviewZzfController;
 use App\Http\Controllers\ServiceReviewsZzfController;
 use App\Http\Controllers\PaymentOrdersZzfController;
 use App\Http\Controllers\PaymentSewasZzfController;
+use App\Http\Controllers\AuthController;
 
 
 
@@ -36,11 +37,11 @@ Route::get('/', function () {
 });
 
 // Route login 
-Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
+// Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
 // Route::post('/customer/register', [CustomerRegisterController::class, 'register'])->name('register.register.post');
 
 // Route register
-Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
+// Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 // Route::post('/customer/register', [CustomerRegisterController::class, 'register'])->name('register.register.post');
 
 //Route Dashboard
@@ -120,7 +121,7 @@ Route::get('/paymentsewaszzf/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfControl
 
 
 
-//Dashboard seller
+//DASHBOARD SELLER
 Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);
 
 Route::resource('procatseller', App\Http\Controllers\ProcatsellerController::class);
@@ -140,3 +141,32 @@ Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerControl
 Route::resource('paymentorderseller', App\Http\Controllers\PaymentordersellerController::class);
 Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsewasellerController::class);
 Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
+
+
+// Route Login Register 
+
+// Route untuk menampilkan halaman login
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('showLoginForm');
+
+// Route untuk melakukan login
+Route::post('loginproses', [AuthController::class, 'loginproses'])->name('loginproses');
+
+// Route untuk menampilkan halaman registrasi seller
+Route::get('register', [AuthController::class, 'showSellerRegister'])->name('showSellerRegister');
+Route::post('/register', [AuthController::class, 'sellerRegister'])->name('auth.sellerRegister');
+
+// Route untuk menampilkan halaman registrasi customer
+Route::get('registercustomer', [AuthController::class, 'showCustomerRegister'])->name('showCustomerRegister');
+Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->name('auth.customerRegister');
+
+// Route untuk halaman dashboard Admin dan Seller
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
+    })->name('admin.dashboard');
+
+    Route::get('/dashboardseller', function () {
+        return view('dashboardseller.home'); 
+    })->name('seller.dashboard');
+});
+

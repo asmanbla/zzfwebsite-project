@@ -129,8 +129,8 @@ a.btn.btn-secondary {
                             <a href="#service" class="nav-item nav-link">Layanan</a>
                             <a href="#kontak" class="nav-item nav-link">Kontak Kami</a>
                         </div>
-                        <a href="/login" class="btn btn-primary rounded-pill py-2 px-4">Login</a> <br>
-                        <a href="#service" class="btn btn-secondary rounded-pill py-2 px-4">Pasang Produk</a>
+                        <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Bergabung</a> <br>
+                        <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Pasang Produk</a>
                     </div>
                 </nav>
             </div>
@@ -497,6 +497,7 @@ a.btn.btn-secondary {
             <h1 class="display-5 text-capitalize mb-3">Jenis <span class="text-primary">Layanan</span></h1>
             <p class="mb-0">Pilih Sesuai kebutuhan anda</p>
         </div>
+        <!-- <a href="/dashboardseller" class="text-decoration-none"> -->
         <div class="row g-4 d-flex justify-content-center">
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item p-4">
