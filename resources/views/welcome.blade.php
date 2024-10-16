@@ -2,6 +2,8 @@
 <html lang="en">
 
     <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
         <meta charset="utf-8">
         <title>ZZF Industri - Home Page</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -16,6 +18,9 @@
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+       
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 
         <!-- Libraries Stylesheet -->
         <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -124,13 +129,39 @@ a.btn.btn-secondary {
                         <div class="navbar-nav mx-auto py-0">
                             <a href="#home" class="nav-item nav-link active">Home</a>
                             <a href="#produk" class="nav-item nav-link">Produk</a>
-                            <a href="#tentang" class="nav-item nav-link">Tentang Kami</a>
+                            <a href="#tentang" class="nav-item nav-link">Tentang</a>
                             <a href="#keunggulan" class="nav-item nav-link">Keunggulan</a>
                             <a href="#service" class="nav-item nav-link">Layanan</a>
-                            <a href="#kontak" class="nav-item nav-link">Kontak Kami</a>
+                            <a href="#kontak" class="nav-item nav-link">Kontak</a>
                         </div>
-                        <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Bergabung</a> <br>
+
+                        <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Bergabung</a>
                         <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Pasang Produk</a>
+
+                        <!-- Dropdown -->
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user"></i> <!-- Ikon profil -->
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                @auth('customers') <!-- Menggunakan guard 'customer' -->
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('customer.index', ['customerId' => Auth::guard('customers')->user()->id]) }}">
+                                            {{ Auth::guard('customers')->user()->name }} - Customers
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li>
+                                        <form action="{{ route('logoutcustomer') }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">Logout</button>
+                                        </form>
+                                    </li>
+                                @else
+                                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                                @endauth
+                            </ul>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -694,6 +725,15 @@ a.btn.btn-secondary {
         <!-- Back to Top -->
         <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
+        @if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif 
         
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -708,5 +748,6 @@ a.btn.btn-secondary {
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     </body>
+
 
 </html>

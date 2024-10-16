@@ -18,46 +18,42 @@ class AuthController extends Controller
     }
 
     public function loginproses(Request $request)
-    {
-        // Validasi input dari pengguna
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-    
-        // Cek di tabel userzzf
-        $users = User::where('email', $request->email)->first();
-        if ($users && $users->password === $request->password) {
-            Auth::login($users);
-            return redirect('/dashboard')->with('success', 'Selamat datang di dashboard Admin Kami!');
-        }
-    
-        // Cek di tabel sellers
-        $sellers = Sellers::where('email', $request->email)->first();
-        if ($sellers && $sellers->password === $request->password) {
-            Auth::guard('sellers')->login($sellers);
-            return redirect('/dashboardseller')->with('success', 'Selamat datang di dashboard Seller!');
-        }
-    
-        // Cek di tabel sellers
-        $customers = Customers::where('email', $request->email)->first();
-        if ($customers && $customers->password === $request->password) {
-            Auth::guard('customers')->login($customers);
-            return redirect('/')->with('success', 'Selamat datang di Halaman Website Kami!');
-        }
+{
+    // Validasi input dari pengguna
+    $request->validate([
+        'email' => 'required|string|email',
+        'password' => 'required|string',
+    ]);
 
-        // // Cek di tabel customers
-        // $customers = Customers::where('email', $request->email)->first();
-        // if ($customers && $customers->password === $request->password) {
-        //     Auth::guard('customers')->login($customers);
-        //     return redirect('/')->with('success', 'Selamat datang di halaman utama Customer!');
-        // }
-    
-        // Jika tidak ditemukan, arahkan kembali ke halaman login
-        return redirect()->route('login')->withInput($request->only('email'))->withErrors([
-            'email' => 'Email atau Password yang dimasukkan tidak cocok.',
-        ]);
+    $credentials = $request->only('email', 'password');
+
+    // Cek di tabel userzzf
+    $users = User::where('email', $credentials['email'])->first();
+    if ($users && $users->password === $credentials['password']) {
+        Auth::login($users);
+        return redirect('/dashboard')->with('sukses', 'Selamat datang di dashboard Admin Kami!');
     }
+
+    // Cek di tabel sellers
+    $sellers = Sellers::where('email', $credentials['email'])->first();
+    if ($sellers && $sellers->password === $credentials['password']) {
+        Auth::guard('sellers')->login($sellers);
+        return redirect('/dashboardseller')->with('sukses', 'Selamat datang di dashboard Seller!');
+    }
+
+    // Cek di tabel customers
+    $customers = Customers::where('email', $credentials['email'])->first();
+    if ($customers && $customers->password === $credentials['password']) {
+        Auth::guard('customers')->login($customers);
+        return redirect('/')->with('sukses', 'Selamat datang di Halaman Website Kami!');
+    }
+
+    // Jika tidak ditemukan, arahkan kembali ke halaman login
+    return redirect()->route('login')->withInput($request->only('email'))->withErrors([
+        'email' => 'Email atau Password yang dimasukkan tidak cocok.',
+    ]);
+}
+
     
     // Metode untuk menampilkan halaman login
     public function showSellerRegister() {
@@ -79,7 +75,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password), // Mengamankan password
         ]);
     
-        return redirect('/login')->with('success', 'Registration successful! Please log in.'); // Redirect ke login
+        return redirect('/login')->with('sukses', 'Registration successful! Please log in.'); // Redirect ke login
     }
 
     // Metode untuk menampilkan halaman login
@@ -107,7 +103,8 @@ class AuthController extends Controller
             'address2' => $request->address2,
         ]);
     
-        return redirect('/login')->with('success', 'Registration successful! Please log in.'); // Redirect ke login
+        return redirect('/login')->with('sukses', 'Registration successful! Please log in.'); // Redirect ke login
     }
+    
 
 }

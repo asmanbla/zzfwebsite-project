@@ -366,7 +366,15 @@ document.getElementById('myButton').addEventListener('click', function() {
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+@if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif 
 
 </body>
 </html>

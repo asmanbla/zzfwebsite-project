@@ -146,7 +146,7 @@ Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::c
 // Route Login Register 
 
 // Route untuk menampilkan halaman login
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('showLoginForm');
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 
 // Route untuk melakukan login
 Route::post('loginproses', [AuthController::class, 'loginproses'])->name('loginproses');
@@ -159,14 +159,34 @@ Route::post('/register', [AuthController::class, 'sellerRegister'])->name('auth.
 Route::get('registercustomer', [AuthController::class, 'showCustomerRegister'])->name('showCustomerRegister');
 Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->name('auth.customerRegister');
 
-// Route untuk halaman dashboard Admin dan Seller
+// Route untuk halaman dashboard Admin dan Seller, dilindungi oleh middleware auth
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
     })->name('admin.dashboard');
 
     Route::get('/dashboardseller', function () {
+        return view('dashboardseller.home');
+    })->name('seller.dashboard');
+});
+
+Route::middleware(['auth:sellers'])->group(function () {
+    Route::get('/dashboardseller', function () {
         return view('dashboardseller.home'); 
     })->name('seller.dashboard');
 });
+
+/// Logout
+Route::post('/logout', function () {
+    Auth::logout();
+    session()->flash('status', 'Logout Berhasil');
+    return redirect('/login');
+})->name('logout');
+
+// Logout Customer
+Route::post('/customer/logout', function () {
+    Auth::guard('customers')->logout();
+    session()->flash('status', 'Logout Berhasil');
+    return redirect('/');
+})->name('logoutcustomer');
 

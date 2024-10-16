@@ -362,3 +362,12 @@
       <a class="btn bg-gradient-danger mt-3 w-100" href="https://www.creative-tim.com/product/soft-ui-dashboard-pro?ref=sidebarfree">Upgrade to pro</a>
     </div> 
   </aside>
+  @if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif 

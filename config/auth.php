@@ -47,9 +47,9 @@ return [
 
 
         'sellers' => [
-            'driver' => 'session',
-            'provider' => 'sellers', // Pastikan ini sesuai
-        ],
+        'driver' => 'session',
+        'provider' => 'sellers',
+    ],
         
         'customers' => [
             'driver' => 'session',
@@ -83,7 +83,7 @@ return [
         ],
     
         'sellers' => [
-            'driver' => 'eloquent', // Pastikan ini sesuai dengan model
+            'driver' => 'eloquent',
             'model' => App\Models\Sellers::class,
         ],
     
