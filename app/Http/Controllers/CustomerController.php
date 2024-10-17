@@ -73,7 +73,9 @@ class CustomerController extends Controller
         $customers = Customers::find($id);
         $customers->name = $request->name;
         $customers->email = $request->email;
-        if ($request->password) $customers->password = bcrypt($request->password);
+        if ($request->password) {
+            $customers->password = $request->password; // Simpan password tanpa bcrypt
+        }
         $customers->phone = $request->phone;
         $customers->address1 = $request->address1;
         $customers->address2 = $request->address2;

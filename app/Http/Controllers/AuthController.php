@@ -72,7 +72,7 @@ class AuthController extends Controller
         Sellers::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Mengamankan password
+            'password' => $request->password, // Mengamankan password
         ]);
     
         return redirect('/login')->with('sukses', 'Registration successful! Please log in.'); // Redirect ke login
@@ -97,7 +97,7 @@ class AuthController extends Controller
         Customers::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Mengamankan password
+            'password' => $request->password, // Mengamankan password
             'phone' => $request->phone,
             'address1' => $request->address1,
             'address2' => $request->address2,

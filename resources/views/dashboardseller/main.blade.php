@@ -5,6 +5,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="path/to/bootstrap.bundle.min.js"></script>
 
+<!-- Tambahkan di bagian <head> file layout atau sebelum penutup </body> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -29,31 +34,30 @@
             </li> -->
             <ul class="navbar-nav justify-content-end">
             <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fas fa-user fa-fw"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  @auth('sellers')
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item" href="/dashprofile">
-                                    {{ Auth::user()->name }} - Sellers
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li>
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
-                                </form>
-                            </li>
-                        </ul>
-                @else
-                    <li><a class="dropdown-item" href="/login">Login</a></li>
-                @endauth
-                  </ul>
-              </li>
+   <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+       <i class="fas fa-user fa-fw"></i>
+   </a>
+   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+       @auth('sellers')
+       <li>
+           <a class="dropdown-item" href="/dashprofile">
+               {{ Auth::user()->name }} - Sellers
+           </a>
+       </li>
+       <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+       <li><hr class="dropdown-divider" /></li>
+       <li>
+           <form action="{{ route('logout') }}" method="POST">
+               @csrf
+               <button type="submit" class="dropdown-item">Logout</button>
+           </form>
+       </li>
+       @else
+       <li><a class="dropdown-item" href="/login">Login</a></li>
+       @endauth
+   </ul>
+</li>
+
             <li class="nav-item px-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
@@ -136,6 +140,16 @@
         </div>
       </div>
     </nav>
+
+    @if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif 
 
     <script>
     $(document).ready(function() {

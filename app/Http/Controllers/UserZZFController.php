@@ -68,10 +68,15 @@ class UserZZFController extends Controller
 
         $users->name = $request->name;
         $users->email = $request->email;
-        if ($request->password) $users->password = bcrypt($request->password);
+
+        // Memeriksa apakah password diisi, dan tidak melakukan hash bcrypt
+        if ($request->password) {
+            $users->password = $request->password; // Simpan password tanpa bcrypt
+        }
+
         $users->roles = $request->roles;
         $users->save();
-        
+
         return redirect('/userzzf')->with('sukses', 'Edit User Berhasil Disimpan!');
     }
 

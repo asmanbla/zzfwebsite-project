@@ -70,7 +70,9 @@ class SellerController extends Controller
     $sellers = Sellers::find($id);
     $sellers->name = $request->name;
     $sellers->email = $request->email;
-    if ($request->password) $sellers->password = bcrypt($request->password);
+    if ($request->password) {
+        $sellers->password = $request->password; // Simpan password tanpa bcrypt
+    }
     $sellers->roles = $request->roles;
     $sellers->save();
     return redirect('/seller')->with('sukses', 'Edit Seller Berhasil Disimpan!');
@@ -84,7 +86,7 @@ class SellerController extends Controller
         $sellers->name = $request->name;
         $sellers->email = $request->email;
         if ($request->password) {
-            $sellers->password = bcrypt($request->password); // Enkripsi password baru jika ada
+            $users->password = $request->password; // Simpan password tanpa bcrypt
         }
         $sellers->roles = $request->roles;
         $sellers->save();
