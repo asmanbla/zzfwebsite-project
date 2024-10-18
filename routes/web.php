@@ -44,10 +44,7 @@ Route::get('/', function () {
 // Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 // Route::post('/customer/register', [CustomerRegisterController::class, 'register'])->name('register.register.post');
 
-<<<<<<< HEAD
-=======
 Route::middleware(['auth'])->group(function () {
->>>>>>> 28c7bb549470ff9a0ae7f142d5017c80b15d944e
 
 //Route Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.home');
@@ -131,38 +128,7 @@ Route::get('/dashboard', function () {
     return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
 })->name('admin.dashboard');
 
-
 });
-
-// Route Login Register 
-
-<<<<<<< HEAD
-// Route untuk menampilkan halaman login
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-
-// Route untuk melakukan login
-Route::post('loginproses', [AuthController::class, 'loginproses'])->name('loginproses');
-
-// Route untuk menampilkan halaman registrasi seller
-Route::get('register', [AuthController::class, 'showSellerRegister'])->name('showSellerRegister');
-Route::post('/register', [AuthController::class, 'sellerRegister'])->name('auth.sellerRegister');
-
-// Route untuk menampilkan halaman registrasi customer
-Route::get('registercustomer', [AuthController::class, 'showCustomerRegister'])->name('showCustomerRegister');
-Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->name('auth.customerRegister');
-
-
-// Route::middleware(['auth'])->group(function () {
-// Route untuk halaman dashboard Admin dan Seller, dilindungi oleh middleware auth
-
-    Route::get('/dashboard', function () {
-        return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
-    })->name('admin.dashboard');
-
-    Route::get('/dashboardseller', function () {
-        return view('dashboardseller.home');
-    })->name('seller.dashboard');
-// });
 
 Route::middleware(['auth:sellers'])->group(function () {
     Route::get('/dashboardseller', function () {
@@ -190,8 +156,8 @@ Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::c
 
 });
 
-=======
->>>>>>> 28c7bb549470ff9a0ae7f142d5017c80b15d944e
+// Route Login Register 
+
 /// Logout
 Route::post('/logout', function () {
     Auth::logout();
@@ -224,4 +190,3 @@ Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->n
 Route::group(['middleware' => 'auth:customers'], function () {
     Route::resource('custprofile', App\Http\Controllers\ProfileCustController::class);
 });
-
