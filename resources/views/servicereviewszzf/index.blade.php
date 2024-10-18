@@ -48,7 +48,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="/hapussreviewszzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                                            <a href="/hapussreviewszzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

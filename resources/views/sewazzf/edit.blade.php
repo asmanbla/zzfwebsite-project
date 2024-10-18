@@ -40,14 +40,14 @@
 
             <!-- Order Date -->
             <div class="mb-3 ms-3 me-3">
-                <label for="order_date" class="form-label">Tanggal Order</label>
+                <label for="order_date" class="form-label">Order Date</label>
                 <input type="date" name="order_date" class="form-control" placeholder="input tanggal order"
                     aria-label="order_date" required value="{{ $sewazzf->order_date ?? old('order_date') }}">
             </div>
 
             <!-- Total Amount -->
             <div class="mb-3 ms-3 me-3">
-                <label for="total_amount" class="form-label">Total Amount</label>
+                <label for="total_amount" class="form-label">Amount</label>
                 <input type="text" id="total_amount" name="total_amount" class="form-control"
                     placeholder="masukkan total amount" aria-label="total_amount" required
                     value="{{ $sewazzf->total_amount ?? old('total_amount') }}">
@@ -55,7 +55,7 @@
 
             <!-- Status -->
             <div class="mb-3 ms-3 me-3">
-                <label for="status" class="form-label">Status Sewa</label>
+                <label for="status" class="form-label">Status</label>
                 <select class="form-select" aria-label="Default select example" id="status" name="status">
                     <option value="menunggu pembayaran" {{ $sewazzf->status == 'menunggu pembayaran' ? 'selected' : '' }}>Menunggu Pembayaran</option>
                     <option value="diproses" {{ $sewazzf->status == 'diproses' ? 'selected' : '' }}>Di Proses</option>

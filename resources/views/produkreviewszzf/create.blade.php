@@ -32,7 +32,7 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="products_id" class="form-label">Produk Name (Id)</label>
+                        <label for="products_id" class="form-label">Product Name (Id)</label>
                         <select name="products_id" id="products_id" class="form-control" required>
                             <option value="">Nama Poduk</option>
                             @foreach($prodname as $pn)
@@ -41,11 +41,11 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="rating" class="form-label">Ratting</label>
+                        <label type="rating" class="form-label">Rating</label>
                         <input type="number" name="rating" id="rating" class="form-control" placeholder="input ratting" aria-label="order_date">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="comment"class="form-label">Komentar</label>
+                        <label type="comment"class="form-label">Comment</label>
                         <input type="text" id="comment" name="comment" class="form-control" placeholder="masukkan komentar anda" aria-label="total_amount">
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

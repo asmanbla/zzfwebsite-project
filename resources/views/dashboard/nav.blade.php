@@ -207,7 +207,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Sewa</span>
+            <span class="nav-link-text ms-1">Rent</span>
           </a>
        </li>
        <li class="nav-item">
@@ -229,7 +229,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Sewa Detail</span>
+            <span class="nav-link-text ms-1">Rent Detail</span>
           </a>
        </li><li class="nav-item">
           <a class="nav-link  " href="{{ route('produkreviewszzf.index') }}">
@@ -294,7 +294,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Pembayaran Beli</span>
+            <span class="nav-link-text ms-1">Payment Order</span>
           </a>
        </li>
        <li class="nav-item">
@@ -316,7 +316,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Payments Sewa</span>
+            <span class="nav-link-text ms-1">Payment Rent</span>
           </a>
        </li>
        <li class="nav-item">

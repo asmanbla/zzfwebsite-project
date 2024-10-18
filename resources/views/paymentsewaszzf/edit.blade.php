@@ -25,7 +25,7 @@
             @method('PUT')
             <!-- Customers -->
             <div class="mb-3 ms-3 me-3">
-                <label for="sewas_id" class="form-label">Sewa Id</label>
+                <label for="sewas_id" class="form-label">Rent Number</label>
                 <select name="sewas_id" id="sewas_id" class="form-control" required>
                     <option value="{{ $paymentsewaszzf->sewas_id ?? old('sewas_id') }}">
                         {{ $paymentsewaszzf->sewas->id ?? 'Pilih Id Sewa' }} <!-- Menampilkan pelanggan yang dipilih -->
@@ -40,14 +40,14 @@
 
             <!-- Payment Date -->
             <div class="mb-3 ms-3 me-3">
-                <label for="payment_date" class="form-label">Tanggal Pembayaran</label>
+                <label for="payment_date" class="form-label">Payment Date</label>
                 <input type="date" name="payment_date" class="form-control" placeholder="input tanggal order"
                     aria-label="payment_date" required value="value="{{ old('payment_date', $paymentsewaszzf->payment_date) }}"">
             </div>
 
             <!-- Payment method -->
             <div class="mb-3 ms-3 me-3">
-                      <label for="payment_method" class="form-label">Metode Pembayran</label>
+                      <label for="payment_method" class="form-label">Payment Method</label>
                       <select name="payment_method" id="payment_method" class="form-control" required>
                         <option value="{{ $paymentsewaszzf->payment_method ?? old('payment_method') }}">
                         {{ $paymentsewaszzf->payment_method ?? 'Pilih Metode Pembayaran' }} 
@@ -59,7 +59,7 @@
 
             <!-- Total Amount -->
             <div class="mb-3 ms-3 me-3">
-                <label for="amount" class="form-label">Total Amount</label>
+                <label for="amount" class="form-label">Amount</label>
                 <input type="text" id="amount" name="amount" class="form-control"
                     placeholder="masukkan total amount" aria-label="amount" required
                     value="{{ $paymentsewaszzf->amount ?? old('amount') }}">

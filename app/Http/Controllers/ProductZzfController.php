@@ -84,7 +84,7 @@ class ProductZzfController extends Controller
             ProductsZzf::create($data);
     
             // Redirect ke halaman index dengan pesan sukses
-            return redirect()->route('produkzzf.index')->with('sukses', 'Produk Baru Berhasil Disimpan!');
+            return redirect()->route('produkzzf.index')->with('sukses', 'New Product added!');
         } catch (\Exception $e) {
             // Tangani error jika terjadi kesalahan
             return redirect()->back()->withErrors(['error' => 'Failed to save product: ' . $e->getMessage()])->withInput();
@@ -147,7 +147,7 @@ class ProductZzfController extends Controller
     // Save the updated product
     $produkzzf->save();
 
-    return redirect('/produkzzf')->with('sukses', 'Edit Produk Berhasil Disimpan!');
+    return redirect('/produkzzf')->with('sukses', 'Edit Product Saved!');
 
 }
     /**
@@ -158,7 +158,7 @@ class ProductZzfController extends Controller
         $produkzzf = ProductsZzf::find($id);
         if ($produkzzf) {
             $produkzzf->delete();
-            return redirect('/produkzzf')->with('sukses', 'Produk Berhasil Dihapus!');
+            return redirect('/produkzzf')->with('sukses', 'Product Deleted Successfully!');
         }
         return redirect('/produkzzf')->with('error', 'User not found!');
     }

@@ -32,7 +32,7 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="order_date" class="form-label">Tanggal Order</label>
+                        <label type="order_date" class="form-label">Order Date</label>
                         <input type="date" name="order_date" id="email" class="form-control" placeholder="input tanggal order" aria-label="order_date">
                      </div>
                      <div class="mb-3 ms-3 me-3">

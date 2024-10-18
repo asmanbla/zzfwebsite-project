@@ -24,9 +24,9 @@
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">Kategori</label>
+                      <label for="level" class="form-label">Category</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="kategori" required>
-                        <option selected disabled>Pilih Kategori</option>
+                        <option selected disabled>Choose Category</option>
                         <option value="alat" {{ old('kategori', $category->kategori) == 'alat' ? 'selected' : '' }}>Alat</option>
                         <option value="komponen" {{ old('kategori', $category->kategori) == 'komponen' ? 'selected' : '' }}>Komponen</option>
                         <option value="bundling" {{ old('kategori', $category->kategori) == 'bundling' ? 'selected' : '' }}>Bundling</option>

@@ -52,8 +52,8 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="{{ route('seller.edit', $data) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Ubah</a>
-                                            <a href="/hapusseller/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                                            <a href="{{ route('seller.edit', $data) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Edit</a>
+                                            <a href="/hapusseller/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Delete</a>
                                             </div>
                                         </td>
                                     </tr>

@@ -44,7 +44,7 @@ class OrderDetailsZzfController extends Controller
 
     OrderDetails::create($validated);
 
-    return redirect('/orderdetailszzf')->with('sukses', 'Order Detail Baru Berhasil Ditambahkan!');
+    return redirect('/orderdetailszzf')->with('sukses', 'New Order Detail Added!');
 }
 
 
@@ -85,7 +85,7 @@ class OrderDetailsZzfController extends Controller
         $orderdetailszzf = OrderDetails::find($id);
         if ($orderdetailszzf) {
             $orderdetailszzf->delete();
-            return redirect('/orderdetailszzf')->with('sukses', 'Order Detail Berhasil Dihapus');
+            return redirect('/orderdetailszzf')->with('sukses', 'Order Detail Deleted Successfully!');
         }
         return redirect('/orderdetailszzf')->with('error', 'Data not found!');
     }

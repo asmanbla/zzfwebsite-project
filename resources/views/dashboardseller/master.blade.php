@@ -14,6 +14,8 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <head>
   <meta charset="utf-8" />
@@ -327,5 +329,14 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
 
 </body>
+@if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif 
 
 </html>

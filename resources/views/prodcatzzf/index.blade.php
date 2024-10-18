@@ -20,8 +20,8 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kategori</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Number</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
                       <th class="text-secondary opacity-7"></th> -->
@@ -40,8 +40,8 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="{{ route('prodcatzzf.edit', $data) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Ubah</a>
-                                            <a href="/hapusprodcatzzf/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                                            <a href="{{ route('prodcatzzf.edit', $data) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Edit</a>
+                                            <a href="/hapusprodcatzzf/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Delete</a>
                                             </div>
                                         </td>
                                     </tr>

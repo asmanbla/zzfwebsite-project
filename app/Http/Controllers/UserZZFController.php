@@ -33,7 +33,7 @@ class UserZZFController extends Controller
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect('/userzzf')->with('sukses', 'User Baru Berhasil Ditambahkan!');
+        return redirect('/userzzf')->with('sukses', 'New User Added!');
     }
 
     /**
@@ -72,7 +72,7 @@ class UserZZFController extends Controller
         $users->roles = $request->roles;
         $users->save();
         
-        return redirect('/userzzf')->with('sukses', 'Edit User Berhasil Disimpan!');
+        return redirect('/userzzf')->with('sukses', 'Edit User Saved!');
     }
 
     /**
@@ -83,7 +83,7 @@ class UserZZFController extends Controller
         $user = User::find($id);
         if ($user) {
             $user->delete();
-            return redirect('/userzzf')->with('sukses', 'User Berhasil Dihapus!');
+            return redirect('/userzzf')->with('sukses', 'User Deleted Successfully!');
         }
         return redirect('/userzzf')->with('error', 'User not found!');
     }

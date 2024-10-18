@@ -44,6 +44,7 @@ Route::get('/', function () {
 // Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 // Route::post('/customer/register', [CustomerRegisterController::class, 'register'])->name('register.register.post');
 
+
 //Route Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.home');
 
@@ -121,26 +122,6 @@ Route::get('/paymentsewaszzf/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfControl
 
 
 
-//DASHBOARD SELLER
-Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);
-
-Route::resource('procatseller', App\Http\Controllers\ProcatsellerController::class);
-Route::get('/hapusprocatseller/{id}', [ProcatsellerController::class, 'hapusprocatseller'])->name('hapusprocatseller');
-Route::get('/procatseller/hapusprocatseller/{id}', [ProcatsellerController::class, 'hapusprocatseller']);
-
-Route::resource('produkseller', App\Http\Controllers\ProduksellerController::class);
-Route::get('/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller'])->name('hapusprodukseller');
-Route::get('/produkseller/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller']);
-Route::put('/produkseller/{id}', [ProduksellerController::class, 'update'])->name('produkseller.update');
-
-Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class);
-
-Route::resource('sewaseller', App\Http\Controllers\SewasellerController::class);
-Route::resource('ordetailseller', App\Http\Controllers\OrdetailsellerController::class);
-Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerController::class);
-Route::resource('paymentorderseller', App\Http\Controllers\PaymentordersellerController::class);
-Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsewasellerController::class);
-Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
 
 
 // Route Login Register 
@@ -159,8 +140,10 @@ Route::post('/register', [AuthController::class, 'sellerRegister'])->name('auth.
 Route::get('registercustomer', [AuthController::class, 'showCustomerRegister'])->name('showCustomerRegister');
 Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->name('auth.customerRegister');
 
+
+// Route::middleware(['auth'])->group(function () {
 // Route untuk halaman dashboard Admin dan Seller, dilindungi oleh middleware auth
-Route::middleware(['auth'])->group(function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
     })->name('admin.dashboard');
@@ -168,12 +151,32 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboardseller', function () {
         return view('dashboardseller.home');
     })->name('seller.dashboard');
-});
+// });
 
 Route::middleware(['auth:sellers'])->group(function () {
     Route::get('/dashboardseller', function () {
         return view('dashboardseller.home'); 
     })->name('seller.dashboard');
+    //DASHBOARD SELLER
+Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);
+
+Route::resource('procatseller', App\Http\Controllers\ProcatsellerController::class);
+Route::get('/hapusprocatseller/{id}', [ProcatsellerController::class, 'hapusprocatseller'])->name('hapusprocatseller');
+Route::get('/procatseller/hapusprocatseller/{id}', [ProcatsellerController::class, 'hapusprocatseller']);
+
+Route::resource('produkseller', App\Http\Controllers\ProduksellerController::class);
+Route::get('/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller'])->name('hapusprodukseller');
+Route::get('/produkseller/hapusprodukseller/{id}', [ProduksellerController::class, 'hapusprodukseller']);
+Route::put('/produkseller/{id}', [ProduksellerController::class, 'update'])->name('produkseller.update');
+
+Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class);
+Route::resource('sewaseller', App\Http\Controllers\SewasellerController::class);
+Route::resource('ordetailseller', App\Http\Controllers\OrdetailsellerController::class);
+Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerController::class);
+Route::resource('paymentorderseller', App\Http\Controllers\PaymentordersellerController::class);
+Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsewasellerController::class);
+Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
+
 });
 
 /// Logout
