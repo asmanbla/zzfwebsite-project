@@ -25,7 +25,7 @@
                      <div class="mb-3 ms-3 me-3">
                         <label for="product_category_id" class="form-label">Product Category</label>
                         <select name="product_category_id" id="product_category_id" class="form-control" required>
-                            <option value="">Pilih Kategori</option>
+                            <option value="">Choose Category</option>
                             @foreach($prodcatzzf as $pc)
                                 <option value="{{ $pc->id }}">{{ $pc->kategori }}</option>
                             @endforeach

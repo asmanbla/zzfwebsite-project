@@ -28,6 +28,7 @@ class Customers extends Authenticatable
     ];
 
     protected $casts = [
+        'password' => 'hashed',
         'logindate' => 'datetime',
         'email_verified_at' => 'datetime',
     ];
@@ -44,6 +45,9 @@ class Customers extends Authenticatable
     /**
      * Set password harus dienkripsi saat disimpan.
      */
-    
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 
 }

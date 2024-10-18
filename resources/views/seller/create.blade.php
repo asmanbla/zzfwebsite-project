@@ -23,7 +23,7 @@
                 <form action='{{route("seller.store")}}' method="post" id="frmUser">
                   @csrf
                     <div class="mb-3 ms-3 me-3">
-                        <label type="nama" class="form-label">Nama Seller</label>
+                        <label type="nama" class="form-label">Seller Name</label>
                         <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="email">
                      </div>
                      <div class="mb-3 ms-3 me-3">

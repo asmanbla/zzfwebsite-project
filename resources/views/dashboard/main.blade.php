@@ -26,7 +26,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li>
-                                <a class="dropdown-item" href="/dashprofile">
+                                <a class="dropdown-item" href="/dashprofilezzf">
                                     {{ Auth::user()->name }} - Admin ZZF
                                 </a>
                             </li>

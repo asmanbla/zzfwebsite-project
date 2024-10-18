@@ -37,7 +37,7 @@ class ServiceReviewsZzfController extends Controller
     {
         ServiceReviews::create($request->all());
             // return $request->input();
-            return redirect('/servicereviewszzf')->with('sukses', 'Servis Review Baru Berhasil Ditambahkan!');
+            return redirect('/servicereviewszzf')->with('sukses', 'New Service Review Added!');
     }
 
     /**
@@ -78,7 +78,7 @@ class ServiceReviewsZzfController extends Controller
     $produkreviewszzf->comment = $request->comment;
     $produkreviewszzf->save();
 
-    return redirect('/servicezzfreviews')->with('sukses', 'Edit Servis Review Berhasil Disimpan!');
+    return redirect('/servicezzfreviews')->with('sukses', 'Edit Service Review Saved!');
 }
 
 
@@ -90,7 +90,7 @@ class ServiceReviewsZzfController extends Controller
         $hapussreviewszzf = ServiceReviews::find($id);
         if ($hapussreviewszzf) {
             $hapussreviewszzf->delete();
-            return redirect('/servicereviewszzf')->with('sukses', 'Servis Review Berhasil Dihapus!');
+            return redirect('/servicereviewszzf')->with('sukses', 'Service Review Deleted Successfully!');
         }
         return redirect('/servicereviewszzf')->with('error', 'Data not found!');
     }

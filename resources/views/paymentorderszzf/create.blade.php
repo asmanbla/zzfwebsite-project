@@ -23,7 +23,7 @@
                 <form action='{{route("paymentorderszzf.store")}}' method="post" id="frmUser">
                   @csrf
                   <div class="mb-3 ms-3 me-3">
-                        <label for="order_id" class="form-label">No Order</label>
+                        <label for="order_id" class="form-label">Order Number</label>
                         <select name="order_id" id="order_id" class="form-control" required>
                             <option value="">Nomor Order</option>
                             @foreach($orderid as $oi)
@@ -32,11 +32,11 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="payment_date" class="form-label">Tanggal Pembayaran</label>
+                        <label type="payment_date" class="form-label">Payment Date</label>
                         <input type="date" name="payment_date" id="payment_date" class="form-control" placeholder="input tanggal order" aria-label="payment_date">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                      <label for="payment_method" class="form-label">Metode Pembayran</label>
+                      <label for="payment_method" class="form-label">Payment Method</label>
                       <select class="form-select" aria-label="Default select example" id="payment_method" name="payment_method" >
                         <option selected>Pilih Metode Pembayaran</option>
                         <option value="Cash">Cash</option>

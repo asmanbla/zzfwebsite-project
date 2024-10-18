@@ -23,7 +23,7 @@
                 <form action='{{route("paymentsewaszzf.store")}}' method="post" id="FrmSw">
                   @csrf
                   <div class="mb-3 ms-3 me-3">
-                        <label for="sewas_id" class="form-label">No Sewa</label>
+                        <label for="sewas_id" class="form-label">Rent Number</label>
                         <select name="sewas_id" id="sewas_id" class="form-control" required>
                             <option value="">Nomor Sewa</option>
                             @foreach($sewaid as $si)
@@ -32,11 +32,11 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="payment_date" class="form-label">Tanggal Pembayaran</label>
+                        <label type="payment_date" class="form-label">Payment Date</label>
                         <input type="date" name="payment_date" id="payment_date" class="form-control" placeholder="input tanggal order" aria-label="payment_date">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                      <label for="payment_method" class="form-label">Metode Pembayran</label>
+                      <label for="payment_method" class="form-label">Payment Method</label>
                       <select class="form-select" aria-label="Default select example" id="payment_method" name="payment_method" >
                         <option selected>Pilih Metode Pembayaran</option>
                         <option value="Cash">Cash</option>

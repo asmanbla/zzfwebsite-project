@@ -26,7 +26,7 @@
                 @method('PUT')
                 @csrf
                     <div class="mb-3 ms-3 me-3">
-                        <label type="nama" class="form-label">Nama User</label>
+                        <label type="nama" class="form-label">User Name</label>
                         <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="name" required value="{{$user->name ?? old('name')}}" >
                      </div>
                      <div class="mb-3 ms-3 me-3">

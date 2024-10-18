@@ -26,9 +26,9 @@ use App\Http\Controllers\ProdukReviewZzfController;
 use App\Http\Controllers\ServiceReviewsZzfController;
 use App\Http\Controllers\PaymentOrdersZzfController;
 use App\Http\Controllers\PaymentSewasZzfController;
+use App\Http\Controllers\DashProfileController;
+use App\Http\Controllers\ProfileCustController;
 use App\Http\Controllers\AuthController;
-
-
 
 
 
@@ -43,6 +43,8 @@ Route::get('/', function () {
 // Route register
 // Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 // Route::post('/customer/register', [CustomerRegisterController::class, 'register'])->name('register.register.post');
+
+Route::middleware(['auth'])->group(function () {
 
 //Route Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.home');
@@ -119,9 +121,20 @@ Route::resource('paymentsewaszzf', PaymentSewasZzfController::class);
 Route::get('/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf'])->name('hapuspaymentsewaszzf');
 Route::get('/paymentsewaszzf/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf']);
 
+// DASHPROFILE 
+Route::resource('dashprofilezzf', App\Http\Controllers\DashProfileController::class);
 
+Route::get('/dashboard', function () {
+    return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
+})->name('admin.dashboard');
 
-//DASHBOARD SELLER
+});
+
+Route::middleware(['auth:sellers'])->group(function () {
+    Route::get('/dashboardseller', function () {
+        return view('dashboardseller.home'); 
+    })->name('seller.dashboard');
+    //DASHBOARD SELLER
 Route::resource('dashboardseller', App\Http\Controllers\DashboardSellerController::class);
 
 Route::resource('procatseller', App\Http\Controllers\ProcatsellerController::class);
@@ -134,7 +147,6 @@ Route::get('/produkseller/hapusprodukseller/{id}', [ProduksellerController::clas
 Route::put('/produkseller/{id}', [ProduksellerController::class, 'update'])->name('produkseller.update');
 
 Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class);
-
 Route::resource('sewaseller', App\Http\Controllers\SewasellerController::class);
 Route::resource('ordetailseller', App\Http\Controllers\OrdetailsellerController::class);
 Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerController::class);
@@ -142,8 +154,23 @@ Route::resource('paymentorderseller', App\Http\Controllers\PaymentordersellerCon
 Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsewasellerController::class);
 Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
 
+});
 
 // Route Login Register 
+
+/// Logout
+Route::post('/logout', function () {
+    Auth::logout();
+    session()->flash('status', 'Logout Berhasil');
+    return redirect('/login');
+})->name('logout');
+
+// Logout Customer
+Route::post('/customer/logout', function () {
+    Auth::guard('customers')->logout();
+    session()->flash('status', 'Logout Berhasil');
+    return redirect('/');
+})->name('logoutcustomer');
 
 // Route untuk menampilkan halaman login
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -159,34 +186,8 @@ Route::post('/register', [AuthController::class, 'sellerRegister'])->name('auth.
 Route::get('registercustomer', [AuthController::class, 'showCustomerRegister'])->name('showCustomerRegister');
 Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->name('auth.customerRegister');
 
-// Route untuk halaman dashboard Admin dan Seller, dilindungi oleh middleware auth
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
-    })->name('admin.dashboard');
-
-    Route::get('/dashboardseller', function () {
-        return view('dashboardseller.home');
-    })->name('seller.dashboard');
+// Route Middleware Untuk Halaman Home
+Route::group(['middleware' => 'auth:customers'], function () {
+    Route::resource('custprofile', App\Http\Controllers\ProfileCustController::class);
 });
-
-Route::middleware(['auth:sellers'])->group(function () {
-    Route::get('/dashboardseller', function () {
-        return view('dashboardseller.home'); 
-    })->name('seller.dashboard');
-});
-
-/// Logout
-Route::post('/logout', function () {
-    Auth::logout();
-    session()->flash('status', 'Logout Berhasil');
-    return redirect('/login');
-})->name('logout');
-
-// Logout Customer
-Route::post('/customer/logout', function () {
-    Auth::guard('customers')->logout();
-    session()->flash('status', 'Logout Berhasil');
-    return redirect('/');
-})->name('logoutcustomer');
 

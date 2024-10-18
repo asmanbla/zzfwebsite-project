@@ -31,21 +31,21 @@ class AuthController extends Controller
     $users = User::where('email', $credentials['email'])->first();
     if ($users && $users->password === $credentials['password']) {
         Auth::login($users);
-        return redirect('/dashboard')->with('sukses', 'Selamat datang di dashboard Admin Kami!');
+        return redirect('/dashboard')->with('sukses', 'Welcome To Our Dashboard Admin!');
     }
 
     // Cek di tabel sellers
     $sellers = Sellers::where('email', $credentials['email'])->first();
     if ($sellers && $sellers->password === $credentials['password']) {
         Auth::guard('sellers')->login($sellers);
-        return redirect('/dashboardseller')->with('sukses', 'Selamat datang di dashboard Seller!');
+        return redirect('/dashboardseller')->with('sukses', 'Welcome To Our Dashboard Seller!');
     }
 
     // Cek di tabel customers
     $customers = Customers::where('email', $credentials['email'])->first();
     if ($customers && $customers->password === $credentials['password']) {
         Auth::guard('customers')->login($customers);
-        return redirect('/')->with('sukses', 'Selamat datang di Halaman Website Kami!');
+        return redirect('/')->with('sukses', 'Welcome To Our Website Page!');
     }
 
     // Jika tidak ditemukan, arahkan kembali ke halaman login
@@ -72,7 +72,7 @@ class AuthController extends Controller
         Sellers::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password, // Mengamankan password
+            'password' => bcrypt($request->password), // Mengamankan password
         ]);
     
         return redirect('/login')->with('sukses', 'Registration successful! Please log in.'); // Redirect ke login
@@ -97,7 +97,7 @@ class AuthController extends Controller
         Customers::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password, // Mengamankan password
+            'password' => bcrypt($request->password), // Mengamankan password
             'phone' => $request->phone,
             'address1' => $request->address1,
             'address2' => $request->address2,

@@ -13,7 +13,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('produkzzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Produk</span>
+            <a href="{{ route('produkzzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Product</span>
               <h6>Produk</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -86,8 +86,8 @@
 
             <td class="text-center">
                 <div class="btn-group me-2">
-                    <a href="{{ route('produkzzf.edit', $data->id) }}"  class="btn btn-secondary btn-sm">Ubah</a>
-                    <a href="/hapusprodukzzf/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Hapus</a>
+                    <a href="{{ route('produkzzf.edit', $data->id) }}"  class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="/hapusprodukzzf/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Delete</a>
                 </div>
             </td>
         </tr>

@@ -23,7 +23,7 @@
                 <form action='{{route("customer.store")}}' method="post" id="frmUser">
                   @csrf
                     <div class="mb-3 ms-3 me-3">
-                        <label type="nama" class="form-label">Nama Customer</label>
+                        <label type="nama" class="form-label">Customer Name</label>
                         <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="email">
                      </div>
                      <div class="mb-3 ms-3 me-3">
@@ -35,7 +35,7 @@
                         <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="number"class="form-label">Nomor Telephone</label>
+                        <label type="number"class="form-label">Telephone Number</label>
                         <input type="numeber" id="phone" name="phone" class="form-control" placeholder="masukkan nomor telephone anda" aria-label="phone">
                      </div>
                      <div class="mb-3 ms-3 me-3">

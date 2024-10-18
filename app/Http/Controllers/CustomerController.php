@@ -33,7 +33,7 @@ class CustomerController extends Controller
     {
         Customers::create($request->all());
         // return $request->input();
-        return redirect('/customer')->with('sukses', 'Customer Baru Berhasil Ditambahkan!');
+        return redirect('/customer')->with('sukses', 'New Customer Added!');
     }
 
     /**
@@ -73,14 +73,12 @@ class CustomerController extends Controller
         $customers = Customers::find($id);
         $customers->name = $request->name;
         $customers->email = $request->email;
-        if ($request->password) {
-            $customers->password = $request->password; // Simpan password tanpa bcrypt
-        }
+        if ($request->password) $customers->password = bcrypt($request->password);
         $customers->phone = $request->phone;
         $customers->address1 = $request->address1;
         $customers->address2 = $request->address2;
         $customers->save();
-        return redirect('/customer')->with('sukses', 'Edit Customer Berhasil Disimpan!');
+        return redirect('/customer')->with('sukses', 'Edit Customer Saved!');
     }
 
     /**
@@ -91,7 +89,7 @@ class CustomerController extends Controller
         $customer = Customers::find($id);
         if ($customer) {
             $customer->delete();
-            return redirect('/customer')->with('sukses', 'Customer Berhasil Dihapus!');
+            return redirect('/customer')->with('sukses', 'Customer Deleted Successfully!');
         }
         return redirect('/customer')->with('error', 'User not found!');
     }

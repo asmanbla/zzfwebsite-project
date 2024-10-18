@@ -30,11 +30,11 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="rating" class="form-label">Ratting</label>
+                        <label type="rating" class="form-label">Rating</label>
                         <input type="number" name="rating" id="rating" class="form-control" placeholder="input Ratting" aria-label="rating" required value="{{ $produkreviewszzf->rating ?? old('rating') }}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="comment"class="form-label">Komentar</label>
+                        <label type="comment"class="form-label">Comment</label>
                         <input type="text" id="comment" name="comment" class="form-control" placeholder="masukkan komentar anda" aria-label="total_amount" required value="{{ $produkreviewszzf->comment ?? old('comment') }}">
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

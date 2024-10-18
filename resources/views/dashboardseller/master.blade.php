@@ -14,6 +14,8 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <head>
   <meta charset="utf-8" />
@@ -326,6 +328,45 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
 
-</body>
 
+<script src="/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    @include('sweetalert::alert')
+
+<input type="hidden" id="sts" class="form-control"
+    value="@isset($status){{ $status }}@endisset" />
+<input type="hidden" id="psn" class="form-control"
+    value="@isset($status){{ $pesan }}@endisset" />
+<script>
+    const sts = document.getElementById("sts")
+    const psn = document.getElementById("psn")
+
+    function pesan_simpan() {
+        if (sts.value === "simpan")
+            swal("Good Job!", psn.value, "success")
+    } {
+        body.onload = function() {
+            pesan_simpan()
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif 
+
+</body>
 </html>

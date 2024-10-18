@@ -40,7 +40,7 @@
 
             <!-- Order Date -->
             <div class="mb-3 ms-3 me-3">
-                <label for="order_date" class="form-label">Tanggal Order</label>
+                <label for="order_date" class="form-label">Order Date</label>
                 <input type="date" name="order_date" class="form-control" placeholder="input tanggal order"
                     aria-label="order_date" required value="{{ $orderzzf->order_date ?? old('order_date') }}">
             </div>
