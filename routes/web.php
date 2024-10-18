@@ -26,9 +26,9 @@ use App\Http\Controllers\ProdukReviewZzfController;
 use App\Http\Controllers\ServiceReviewsZzfController;
 use App\Http\Controllers\PaymentOrdersZzfController;
 use App\Http\Controllers\PaymentSewasZzfController;
+use App\Http\Controllers\DashProfileController;
+use App\Http\Controllers\ProfileCustController;
 use App\Http\Controllers\AuthController;
-
-
 
 
 
@@ -44,6 +44,10 @@ Route::get('/', function () {
 // Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 // Route::post('/customer/register', [CustomerRegisterController::class, 'register'])->name('register.register.post');
 
+<<<<<<< HEAD
+=======
+Route::middleware(['auth'])->group(function () {
+>>>>>>> 28c7bb549470ff9a0ae7f142d5017c80b15d944e
 
 //Route Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.home');
@@ -120,12 +124,19 @@ Route::resource('paymentsewaszzf', PaymentSewasZzfController::class);
 Route::get('/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf'])->name('hapuspaymentsewaszzf');
 Route::get('/paymentsewaszzf/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf']);
 
+// DASHPROFILE 
+Route::resource('dashprofilezzf', App\Http\Controllers\DashProfileController::class);
+
+Route::get('/dashboard', function () {
+    return view('dashboard.home'); // Ganti dengan view dashboard admin yang sesuai
+})->name('admin.dashboard');
 
 
-
+});
 
 // Route Login Register 
 
+<<<<<<< HEAD
 // Route untuk menampilkan halaman login
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 
@@ -179,6 +190,8 @@ Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::c
 
 });
 
+=======
+>>>>>>> 28c7bb549470ff9a0ae7f142d5017c80b15d944e
 /// Logout
 Route::post('/logout', function () {
     Auth::logout();
@@ -192,4 +205,23 @@ Route::post('/customer/logout', function () {
     session()->flash('status', 'Logout Berhasil');
     return redirect('/');
 })->name('logoutcustomer');
+
+// Route untuk menampilkan halaman login
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+
+// Route untuk melakukan login
+Route::post('loginproses', [AuthController::class, 'loginproses'])->name('loginproses');
+
+// Route untuk menampilkan halaman registrasi seller
+Route::get('register', [AuthController::class, 'showSellerRegister'])->name('showSellerRegister');
+Route::post('/register', [AuthController::class, 'sellerRegister'])->name('auth.sellerRegister');
+
+// Route untuk menampilkan halaman registrasi customer
+Route::get('registercustomer', [AuthController::class, 'showCustomerRegister'])->name('showCustomerRegister');
+Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->name('auth.customerRegister');
+
+// Route Middleware Untuk Halaman Home
+Route::group(['middleware' => 'auth:customers'], function () {
+    Route::resource('custprofile', App\Http\Controllers\ProfileCustController::class);
+});
 

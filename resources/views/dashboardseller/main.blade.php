@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
   th {
     color: #f1c40f; /* Contoh warna emas */
@@ -32,6 +33,8 @@ table {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+=======
+>>>>>>> 28c7bb549470ff9a0ae7f142d5017c80b15d944e
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -56,6 +59,7 @@ table {
               <a class="btn btn-outline-danger btn-sm mb-0 me-3" target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Sign In</a>
             </li> -->
             <ul class="navbar-nav justify-content-end">
+<<<<<<< HEAD
                         <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fas fa-user fa-fw"></i>
@@ -80,6 +84,30 @@ table {
                   @endauth
               </ul>
             </li>
+=======
+            <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fas fa-user fa-fw"></i>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+    @auth('sellers')
+      <li><a class="dropdown-item" href="/dashprofile">{{ Auth::user()->name }} - Sellers</a></li>
+      <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li>
+        <form action="{{ route('logout') }}" method="POST">
+          @csrf
+          <button type="submit" class="dropdown-item">Logout</button>
+        </form>
+      </li>
+    @else
+      <li><a class="dropdown-item" href="/login">Login</a></li>
+    @endauth
+  </ul>
+</li>
+
+
+>>>>>>> 28c7bb549470ff9a0ae7f142d5017c80b15d944e
             <li class="nav-item px-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>

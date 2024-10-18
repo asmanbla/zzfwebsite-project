@@ -102,10 +102,10 @@ a.btn.btn-secondary {
             <div class="container">
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location here</a>
-                            <a href="tel:+62 818-961-343" class="text-muted me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-muted me-0"><i class="fas fa-envelope text-primary me-2"></i>asmanabila03@gmail.com</a>
+                        <div class="d-flex flex-wrap text-white">
+                            <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>Location here</a>
+                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
+                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ a.btn.btn-secondary {
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a href="" class="navbar-brand p-0">
-                        <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industri</h1>
+                        <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industry</h1>
 
                         <!-- <img src="img/logo.png" alt="Logo"> -->
                     </a>
@@ -128,15 +128,15 @@ a.btn.btn-secondary {
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-auto py-0">
                             <a href="#home" class="nav-item nav-link active">Home</a>
-                            <a href="#produk" class="nav-item nav-link">Produk</a>
-                            <a href="#tentang" class="nav-item nav-link">Tentang</a>
-                            <a href="#keunggulan" class="nav-item nav-link">Keunggulan</a>
-                            <a href="#service" class="nav-item nav-link">Layanan</a>
-                            <a href="#kontak" class="nav-item nav-link">Kontak</a>
+                            <a href="#produk" class="nav-item nav-link">Product</a>
+                            <a href="#tentang" class="nav-item nav-link">About</a>
+                            <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
+                            <a href="#service" class="nav-item nav-link">Service</a>
+                            <a href="#kontak" class="nav-item nav-link">Contact</a>
                         </div>
 
-                        <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Bergabung</a>
-                        <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Pasang Produk</a>
+                        <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Login Customers </a>
+                        <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
 
                         <!-- Dropdown -->
                         <div class="nav-item dropdown">
@@ -146,7 +146,7 @@ a.btn.btn-secondary {
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 @auth('customers') <!-- Menggunakan guard 'customer' -->
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('customer.index', ['customerId' => Auth::guard('customers')->user()->id]) }}">
+                                        <a class="dropdown-item" href="/custprofile">
                                             {{ Auth::guard('customers')->user()->name }} - Customers
                                         </a>
                                     </li>
@@ -183,8 +183,8 @@ a.btn.btn-secondary {
                         <div class="row g-5">
                             <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
                                 <div class="text-start">
-                                    <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
-                                    <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
+                                    <h1 class="display-5 text-white">Find the best quality and affordable heavy machine tools here</h1>
+                                    <p>Make your machine rental experience even better with us!</p>
                                 </div>
                             </div>
                         </div>
@@ -198,8 +198,8 @@ a.btn.btn-secondary {
                         <div class="row g-5">
                             <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
                                 <div class="text-start">
-                                    <h1 class="display-5 text-white">Temukan alat mesin berat dengan kualitas terbaik dan biaya terjangkau disini</h1>
-                                    <p>Jadikan pengalaman sewa alat berat mu menjadi lebih baik bersama kami!</p>
+                                <h1 class="display-5 text-white">Find the best quality and affordable heavy machine tools here</h1>
+                                <p>Make your machine rental experience even better with us!</p>
                                 </div>
                             </div>
                         </div>
@@ -217,8 +217,8 @@ a.btn.btn-secondary {
                 <div class="container-fluid categories pb-5" id="produk">
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Produk <span class="text-primary">Kami</span></h1>
-                    <p class="mb-0">Berikut adalah produk produk hasil produksi oleh PT ZZF Indonesia 
+                    <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Product</span></h1>
+                    <p class="mb-0">The following are the products produced by PT ZZF Indonesia 
                     </p>
                 </div>
                 <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
@@ -303,8 +303,8 @@ a.btn.btn-secondary {
          <div class="container-fluid categories pb-5">
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Produk <span class="text-primary">Lainnya</span></h1>
-                    <p class="mb-0">Berikut adalah produk produk hasil produksi oleh rekanan atau seller PT ZZF Indonesia
+                    <h1 class="display-5 text-capitalize mb-3">Other <span class="text-primary">Products</span></h1>
+                    <p class="mb-0">The following are products produced by partners or sellers of PT ZZF Indonesia
                     </p>
                 </div>
                 <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
@@ -389,31 +389,31 @@ a.btn.btn-secondary {
         <div class="container-fluid overflow-hidden about py-5" id="tentang">
     <div class="container py-5">
         <div class="row g-5">
-            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
                 <div class="about-item">
                     <div class="pb-5">
-                        <h1 class="display-5 text-capitalize">Tentang <span class="text-primary">Kami</span></h1>
+                        <h1 class="display-5 text-capitalize">About <span class="text-primary">Us</span></h1>
                         <p class="mb-0">
-                            ZZF Industri Indonesia yang mulai beroperasi pada tahun 2012 adalah salah satu perusahaan
-                            yang sedang berkembang dari proyek Expanding CHINA ZZF INDUSTRIAL. Perusahaan ini menawarkan banyak
-                            peralatan terutama dalam bahan konstruksi, seperti Tower Crane, Batching Plants, dan lainnya.
-                            Kami juga menjamin bahwa produk dan bahan yang kami sediakan adalah salah satu produk terbaik
-                            dan berkualitas dari China, dengan kualitas yang luar biasa.
+                        ZZF Industri Indonesia, which started operating in 2012, is one of the companies
+                            which is currently developing from the Expanding CHINA ZZF INDUSTRIAL project. This company has a lot to offer
+                            equipment especially in construction materials, such as Tower Cranes, Batching Plants, and others.
+                            We also guarantee that the products and materials we provide are one of the best products
+                            and quality from China, with extraordinary quality.
                         </p>
                     </div>
                     <div class="row g-4">
                         <div class="col-lg-6">
                             <div class="text-center rounded bg-secondary p-4">
                                 <h1 class="display-6 text-white">12</h1>
-                                <h5 class="text-light mb-0">Tahun Pengalaman</h5>
+                                <h5 class="text-light mb-0">Years Experience</h5>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="rounded">
-                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Memproduksi Alat Berat Berkualitas Tinggi</p>
-                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Pelayanan Cepat</p>
-                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Harga Sewa dan Jual yang Terjangkau</p>
-                                <p class="mb-0"><i class="fa fa-check-circle text-primary me-1"></i> Pengalaman Luas dan Banyak</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Producing High Quality Heavy Equipment</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Fast Service</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Harga Affordable Rent and Sell</p>
+                                <p class="mb-0"><i class="fa fa-check-circle text-primary me-1"></i> Extensive and Abundant Experience</p>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -431,7 +431,7 @@ a.btn.btn-secondary {
                             </div>
                         </div>
                         <div class="col-lg-12 d-flex align-items-center mt-4">
-                            <a href="https://zzf.co.id/" target="_blank" class="btn btn-primary rounded py-3 px-5">Selengkapnya Tentang Kami</a>
+                            <a href="https://zzf.co.id/" target="_blank" class="btn btn-primary rounded py-3 px-5">More About Us</a>
                         </div>
                     </div>
                 </div>
@@ -457,8 +457,8 @@ a.btn.btn-secondary {
         <div class="container-fluid feature py-5" id="keunggulan">
             <div class="container py-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Keunggulan <span class="text-primary">Kami</span></h1>
-                    <p class="mb-0">PT ZZF menawakan berbagai produk dengan kualitas yang sangat tinggi dan terjangkau
+                    <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Speciality</span></h1>
+                    <p class="mb-0">PT ZZF offers a variety of products with very high quality and affordable
                     </p>
                 </div>
                 <div class="row g-4 align-items-center">
@@ -470,8 +470,8 @@ a.btn.btn-secondary {
                                         <span class="fa fa-trophy fa-2x"></span>
                                     </div>
                                     <div class="ms-4">
-                                        <h5 class="mb-3">Harga Murah</h5>
-                                        <p class="mb-0">Menawarkan solusi berkualitas dengan biaya yang lebih terjangkau dibandingkan kompetitor.
+                                        <h5 class="mb-3">Low Price</h5>
+                                        <p class="mb-0">Offer quality solutions at a more affordable cost than competitors.
                                         </p>
                                     </div>
                                 </div>
@@ -482,8 +482,8 @@ a.btn.btn-secondary {
                                         <span class="fa fa-road fa-2x"></span>
                                     </div>
                                     <div class="ms-4">
-                                        <h5 class="mb-3">Waktu Singkat</h5>
-                                        <p class="mb-0">Menyelesaikan proyek dengan efisien dalam waktu yang lebih cepat tanpa mengorbankan kualitas.</p>
+                                        <h5 class="mb-3">Time Efficiency</h5>
+                                        <p class="mb-0">Efficiently complete projects in faster time without sacrificing quality.</p>
                                     </div>
                                 </div>
                             </div>
@@ -497,8 +497,8 @@ a.btn.btn-secondary {
                             <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="feature-item justify-content-end">
                                     <div class="text-end me-4">
-                                        <h5 class="mb-3">Fleksibilitas Layanan</h5>
-                                        <p class="mb-0">Menawarkansolusi yang dapat disesuaikan dengan kebutuhan spesifik proyek.</p>
+                                        <h5 class="mb-3">Service Flexibility</h5>
+                                        <p class="mb-0">Offer solutions that can be tailored to the specific needs of the project.</p>
                                     </div>
                                     <div class="feature-icon">
                                         <span class="fa fa-tag fa-2x"></span>
@@ -508,8 +508,8 @@ a.btn.btn-secondary {
                             <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
                                 <div class="feature-item justify-content-end">
                                     <div class="text-end me-4">
-                                        <h5 class="mb-3">Keandalan Alat Berat</h5>
-                                        <p class="mb-0">Menggunakan alat berkualitas tinggi yang andal dan tahan lama untuk memastikan produktivitas maksimal.</p>
+                                        <h5 class="mb-3">Machine Reliability</h5>
+                                        <p class="mb-0">Using reliable, durable high-quality tools to ensure maximum productivity.</p>
                                     </div>
                                     <div class="feature-icon">
                                         <span class="fa fa-map-pin fa-2x"></span>
@@ -527,8 +527,8 @@ a.btn.btn-secondary {
         <div class="container-fluid service py-5" id="service">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Jenis <span class="text-primary">Layanan</span></h1>
-            <p class="mb-0">Pilih Sesuai kebutuhan anda</p>
+            <h1 class="display-5 text-capitalize mb-3">Type Of <span class="text-primary">Services</span></h1>
+            <p class="mb-0">Choose According to your needs</p>
         </div>
         <!-- <a href="/dashboardseller" class="text-decoration-none"> -->
         <div class="row g-4 d-flex justify-content-center">
@@ -537,7 +537,7 @@ a.btn.btn-secondary {
                     <div class="service-icon mb-4">
                         <i class="fa fa-phone-alt fa-2x"></i>
                     </div>
-                    <h5 class="mb-3">Penjualan Alat Berat</h5>
+                    <h5 class="mb-3">Heavy Equipment Sales</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -545,7 +545,7 @@ a.btn.btn-secondary {
                     <div class="service-icon mb-4">
                         <i class="fa fa-money-bill-alt fa-2x"></i>
                     </div>
-                    <h5 class="mb-3">Penyewaan Alat Berat</h5>
+                    <h5 class="mb-3">Heavy Equipment Rental</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
@@ -553,7 +553,7 @@ a.btn.btn-secondary {
                     <div class="service-icon mb-4">
                         <i class="fa fa-road fa-2x"></i>
                     </div>
-                    <h5 class="mb-3">Penyewaan Komponen</h5>
+                    <h5 class="mb-3">Component Rental</h5>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
@@ -561,7 +561,7 @@ a.btn.btn-secondary {
                     <div class="service-icon mb-4">
                         <i class="fa fa-road fa-2x"></i>
                     </div>
-                    <h5 class="mb-3">Penjualan Komponen</h5>
+                    <h5 class="mb-3">Component Sales</h5>
                 </div>
             </div>
         </div>
@@ -576,11 +576,13 @@ a.btn.btn-secondary {
                 <div class="banner-item rounded">
                     <img src="img/imgzzf/bg3.jpg" class="img-fluid rounded w-100" alt="">
                     <div class="banner-content">
-                        <h4 class="text-white">Mulailah Kerjasama dengan Kami Sekarang!</h4>
-                        <h2 class="text-white">Tertarik untuk menyewa atau membeli?</h2>
-                        <p class="text-white">Kontak kami untuk Informasi lebih lanjut!</p>
+                        <h4 class="text-white">Start Cooperation with Us Now!</h4>
+                        <h2 class="text-white">Interested in renting or buying?</h2>
+                        <p class="text-white">Contact Us For More Information</p>
                         <div class="banner-btn">
-                            <a href="https://wa.link/q0c1lg" target="_blank" class="btn btn-secondary rounded-pill py-3 px-4 px-md-5 me-2">WhatsApp</a>
+                            <a href="https://wa.link/q0c1lg" target="_blank" class="btn btn-secondary rounded-pill py-3 px-4 px-md-5 me-2">
+                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -592,8 +594,8 @@ a.btn.btn-secondary {
         <div class="container-fluid testimonial pb-5">
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Review Client<span class="text-primary"> Kami</span></h1>
-                    <p class="mb-0">Berikut adalah review dari client yang telah menggunakan layanan dari produk alat berat kami dan rekanan kami
+                    <h1 class="display-5 text-capitalize mb-3">Our Client<span class="text-primary"> Review</span></h1>
+                    <p class="mb-0">The following are reviews from clients who have used the services of our heavy equipment products and our partners
                     </p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
@@ -672,20 +674,20 @@ a.btn.btn-secondary {
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <div class="footer-item">
-                                <h4 class="text-white mb-4">Tentang Kami</h4>
-                                <p class="mb-3"> ZZF Industri Indonesia yang mulai beroperasi pada tahun 2012 adalah salah satu perusahaan
-                                yang sedang berkembang dari proyek Expanding CHINA ZZF INDUSTRIAL.</p>
+                                <h4 class="text-white mb-4">About Us</h4>
+                                <p class="mb-3"> ZZF Industri Indonesia which started operating in 2012 is one of the companies
+                                which is developing from the Expanding CHINA ZZF INDUSTRIAL project.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="text-white mb-4">Quick Links</h4>
-                            <a href="#tentang"><i class="fas fa-angle-right me-2"></i> Tentang</a>
-                            <a href="#produk"><i class="fas fa-angle-right me-2"></i>Produk </a>
-                            <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Keunggulan</a>
+                            <a href="#tentang"><i class="fas fa-angle-right me-2"></i> About</a>
+                            <a href="#produk"><i class="fas fa-angle-right me-2"></i>Product </a>
+                            <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Speciality</a>
                             <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
-                            <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Kontak Kami</a>
+                            <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Contact</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
                         </div>
                     </div>
@@ -693,7 +695,7 @@ a.btn.btn-secondary {
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="footer-item d-flex flex-column">
                             <h4 class="text-white mb-4">Contact Info</h4>
-                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12930</a>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
                             <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
                             <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
                         </div>
