@@ -83,8 +83,8 @@ class produksellerController extends Controller
             // Simpan data produk ke database
             ProductSellers::create($data);
     
-            // Redirect ke halaman index dengan pesan sukses
-            return redirect()->route('produkseller.index')->with('sukses', 'Produk Baru Berhasil Ditambahkan!');
+            // Redirect ke halaman index dengan pesan success
+            return redirect()->route('produkseller.index')->with('success', 'New Product Successfully Added!');
         } catch (\Exception $e) {
             // Tangani error jika terjadi kesalahan
             return redirect()->back()->withErrors(['error' => 'Failed to save product: ' . $e->getMessage()])->withInput();
@@ -148,7 +148,7 @@ class produksellerController extends Controller
         // Save the updated product
         $produkseller->save();
     
-        return redirect('/produkseller')->with('sukses', 'Edit Produk Berhasil Disimpan!');
+        return redirect('/produkseller')->with('success', 'Edit Product Saved Successfully!!!');
     }
     
     
@@ -161,7 +161,7 @@ class produksellerController extends Controller
         $produkseller = ProductSellers::find($id);
         if ($produkseller) {
             $produkseller->delete();
-            return redirect('/produkseller')->with('sukses', 'Produk Berhasil Dihapus!');
+            return redirect('/produkseller')->with('success', 'Product Deleted Successfully!!');
         }
         return redirect('/produkseller')->with('error', 'User not found!');
     }

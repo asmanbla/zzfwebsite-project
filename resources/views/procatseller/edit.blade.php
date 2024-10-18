@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Form Kategori Produk</h6>
+              <h6>Form Product Categories</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -24,7 +24,7 @@
                 @method('PUT')
                 @csrf
                      <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">Kategori</label>
+                      <label for="level" class="form-label">Category</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="kategori" required>
                         <option selected disabled>Pilih Kategori</option>
                         <option value="alat" {{ old('kategori', $procatseller->kategori) == 'alat' ? 'selected' : '' }}>Alat</option>

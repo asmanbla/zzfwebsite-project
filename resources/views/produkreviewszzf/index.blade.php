@@ -52,7 +52,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="/hapuspreviewszzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini?')">Delete</a>
+                                            <a href="/hapuspreviewszzf/{{ $data->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">Delete</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -64,9 +64,9 @@
           </div>
         </div>
       </div>  
-      @if (Session::has('sukses'))
+      @if (Session::has('success'))
     <script>
-      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+      swal("success", "{{ Session::get('success') }}", 'success', {
           button:true,
           button:"OK",
           timer:5000

@@ -727,9 +727,9 @@ a.btn.btn-secondary {
         <!-- Back to Top -->
         <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
 
-        @if (Session::has('sukses'))
+        @if (Session::has('success'))
     <script>
-      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+      swal("success", "{{ Session::get('success') }}", 'success', {
           button:true,
           button:"OK",
           timer:5000

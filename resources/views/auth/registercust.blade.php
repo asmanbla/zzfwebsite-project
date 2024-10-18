@@ -145,9 +145,9 @@ button {
   </form>
 </div>
 
-@if (Session::has('sukses'))
+@if (Session::has('success'))
     <script>
-      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+      swal("success", "{{ Session::get('success') }}", 'success', {
           button:true,
           button:"OK",
           timer:5000

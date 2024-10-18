@@ -44,7 +44,7 @@ class SewaDetailsZzfController extends Controller
 
     SewaDetails::create($validated);
 
-    return redirect('/sewadetailszzf')->with('sukses', 'New Rent Detail Added!');
+    return redirect('/sewadetailszzf')->with('success', 'New Rent Detail Added!');
 }
 
 
@@ -85,7 +85,7 @@ class SewaDetailsZzfController extends Controller
         $sewadetailszzf = SewaDetails::find($id);
         if ($sewadetailszzf) {
             $sewadetailszzf->delete();
-            return redirect('/sewadetailszzf')->with('sukses', 'Rent Detail Deleted Successfully!');
+            return redirect('/sewadetailszzf')->with('success', 'Rent Detail Deleted Successfully!');
         }
         return redirect('/sewadetailszzf')->with('error', 'Data not found!');
     }

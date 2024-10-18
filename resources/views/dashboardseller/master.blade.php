@@ -329,9 +329,9 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
 
 </body>
-@if (Session::has('sukses'))
+@if (Session::has('success'))
     <script>
-      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+      swal("success", "{{ Session::get('success') }}", 'success', {
           button:true,
           button:"OK",
           timer:5000
@@ -368,9 +368,9 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-@if (Session::has('sukses'))
+@if (Session::has('success'))
     <script>
-      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+      swal("success", "{{ Session::get('success') }}", 'success', {
           button:true,
           button:"OK",
           timer:5000

@@ -37,7 +37,7 @@ class OrderZzfController extends Controller
     {
         Orders::create($request->all());
             // return $request->input();
-            return redirect('/orderzzf')->with('sukses', 'New Order Added!');
+            return redirect('/orderzzf')->with('success', 'New Order Added!');
     }
 
     /**
@@ -83,7 +83,7 @@ class OrderZzfController extends Controller
     $orderzzf->status = $request->status;
     $orderzzf->save();
 
-    return redirect('/orderzzf')->with('sukses', 'Edit Order Saved!');
+    return redirect('/orderzzf')->with('success', 'Edit Order Saved!');
 }
 
 
@@ -95,7 +95,7 @@ class OrderZzfController extends Controller
         $orderzzf = Orders::find($id);
         if ($orderzzf) {
             $orderzzf->delete();
-            return redirect('/orderzzf')->with('sukses', 'Order Deleted Successfully!');
+            return redirect('/orderzzf')->with('success', 'Order Deleted Successfully!');
         }
         return redirect('/orderzzf')->with('error', 'Data not found!');
     }

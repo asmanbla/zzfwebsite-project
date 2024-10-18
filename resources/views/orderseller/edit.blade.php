@@ -32,15 +32,15 @@
 </select>
                      </div>
                 <div class="mb-3 ms-3 me-3">
-                        <label for="order_date" class="form-label">order_date</label>
+                        <label for="order_date" class="form-label">Order Date</label>
                         <input type="text" id="order_date" name="order_date" class="form-control" placeholder="Enter Your order_date" aria-label="order_date" required value="{{$orderseller->order_date ?? old('order_date')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="total_amount" class="form-label">total_amount</label>
+                        <label for="total_amount" class="form-label">Amount</label>
                         <input type="text" id="total_amount" name="total_amount" class="form-control" placeholder="Enter Your total_amount" aria-label="total_amount" required value="{{$orderseller->total_amount ?? old('total_amount')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">status</label>
+                      <label for="level" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
                         <option selected disabled>Pilih status</option>
                         <option value="menunggu pembayaran" {{ old('status', $orderseller->status) == 'menunggu pembayaran' ? 'selected' : '' }}>menunggu pembayaran</option>

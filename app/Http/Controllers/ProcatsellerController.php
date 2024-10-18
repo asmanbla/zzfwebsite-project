@@ -33,7 +33,7 @@ class procatsellerController extends Controller
     {
         ProductCategoriesSeller::create($request->all());
         // return $request->input();
-        return redirect('/procatseller')->with('sukses', 'Produk Kategori Baru Telah Berhasil Ditambahkan!');
+        return redirect('/procatseller')->with('success', 'New Product Category Succesfully Added!');
     }
 
     /**
@@ -64,7 +64,7 @@ class procatsellerController extends Controller
     $procatseller = ProductCategoriesSeller::find($id);
     $procatseller->kategori = $request->kategori;
     $procatseller->save();
-    return redirect('/procatseller')->with('sukses', 'Edit Produk Kategori Berhasil Disimpan!');
+    return redirect('/procatseller')->with('success', 'Edit Product Category Saved Successfully!!!');
     }
 
     /**
@@ -75,7 +75,7 @@ class procatsellerController extends Controller
         $procatseller = ProductCategoriesSeller::find($id);
         if ($procatseller) {
             $procatseller->delete();
-            return redirect('/procatseller')->with('sukses', 'Produk Kategori Berhasil Dihapus!');
+            return redirect('/procatseller')->with('success', 'Product Category Deleted Successfully!!');
         }
         return redirect('/procatseller')->with('error', 'User not found!');
     }

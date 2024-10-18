@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Produk / Create')
+@section('page', 'Product / Create')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Form Produk</h6>
+              <h6>Form Product</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">

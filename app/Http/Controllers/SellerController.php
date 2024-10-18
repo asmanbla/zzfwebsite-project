@@ -33,7 +33,7 @@ class SellerController extends Controller
     {
         Sellers::create($request->all());
         // return $request->input();
-        return redirect('/seller')->with('sukses', 'Seller Berhasil Ditambahkan!');
+        return redirect('/seller')->with('success', 'New Seller Added!');
 
 
     }
@@ -73,7 +73,7 @@ class SellerController extends Controller
     if ($request->password) $sellers->password = bcrypt($request->password);
     $sellers->roles = $request->roles;
     $sellers->save();
-    return redirect('/seller')->with('sukses', 'Edit Seller Berhasil Disimpan!');
+    return redirect('/seller')->with('success', 'Edit Seller Saved Successfully!!!');
 
         // Mengedit data seller
         $sellers = Sellers::find($id);
@@ -100,7 +100,7 @@ class SellerController extends Controller
         $seller = Sellers::find($id);
         if ($seller) {
             $seller->delete();
-            return redirect('/seller')->with('sukses', 'Seller Berhasil Dihapus!');
+            return redirect('/seller')->with('success', 'Seller Deleted Successfully!!');
         }
         return redirect('/seller')->with('error', 'Seller not found!');
     }

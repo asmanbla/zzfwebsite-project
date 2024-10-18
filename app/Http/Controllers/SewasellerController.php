@@ -78,7 +78,7 @@ class SewasellerController extends Controller
     // Simpan perubahan
     $sewaseller->save();
 
-    return redirect('/sewaseller')->with('sukses', 'Edit Sewa Berhasil Disimpan!');
+    return redirect('/sewaseller')->with('success', 'Edit Rent Saved Successfully!!!');
 }
 
     
@@ -94,8 +94,8 @@ class SewasellerController extends Controller
     // Hapus data sewa seller
     $sewaseller->delete();
 
-    // Redirect kembali ke halaman index dengan pesan sukses
-    return redirect()->route('sewaseller.index')->with('sukses', 'Data Sewa Berhasil Dihapus');
+    // Redirect kembali ke halaman index dengan pesan success
+    return redirect()->route('sewaseller.index')->with('success', 'Rent Data Deleted Successfully!');
 }
 
 }

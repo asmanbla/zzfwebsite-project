@@ -35,7 +35,7 @@ class PaymentOrdersZzfController extends Controller
     {
         Payments::create($request->all());
             // return $request->input();
-            return redirect('/paymentorderszzf')->with('sukses', 'New Payment Order Added!');
+            return redirect('/paymentorderszzf')->with('success', 'New Payment Order Added!');
     }
 
     /**
@@ -81,7 +81,7 @@ class PaymentOrdersZzfController extends Controller
     $paymentorderszzf->amount = $request->amount;
     $paymentorderszzf->save();
 
-    return redirect('/paymentorderszzf')->with('sukses', 'Edit Payment Order Saved!');
+    return redirect('/paymentorderszzf')->with('success', 'Edit Payment Order Saved!');
 }
 
 
@@ -93,7 +93,7 @@ class PaymentOrdersZzfController extends Controller
         $paymentorderszzf = Payments::find($id);
         if ($paymentorderszzf) {
             $paymentorderszzf->delete();
-            return redirect('/paymentorderszzf')->with('sukses', 'Payment Order Deleted Successfully!');
+            return redirect('/paymentorderszzf')->with('success', 'Payment Order Deleted Successfully!');
         }
         return redirect('/paymentorderszzf')->with('error', 'Data not found!');
     }

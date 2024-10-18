@@ -81,7 +81,7 @@ class ProdrevsellerController extends Controller
     // Hapus data prodrev seller
     $prodrevseller->delete();
 
-    // Redirect kembali ke halaman index dengan pesan sukses
-    return redirect()->route('prodrevseller.index')->with('sukses', 'Produk Review Berhasil Dihapus!');
+    // Redirect kembali ke halaman index dengan pesan success
+    return redirect()->route('prodrevseller.index')->with('success', 'Product Review Deleted Successfully!!');
 }
 }

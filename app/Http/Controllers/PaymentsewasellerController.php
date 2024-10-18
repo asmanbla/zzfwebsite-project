@@ -75,7 +75,7 @@ class PaymentsewasellerController extends Controller
     // Simpan perubahan
     $paymentsewaseller->save();
 
-    return redirect('/paymentsewaseller')->with('sukses', 'Edit Data Pembayaran Sewa Berhasil Disimpan!');
+    return redirect('/paymentsewaseller')->with('success', 'Edit Payment Rent Saved Successfully!!!');
 }
 
     /**
@@ -93,7 +93,7 @@ class PaymentsewasellerController extends Controller
         // Hapus data ordetail seller
         $paymentsewaseller->delete();
     
-        // Redirect kembali ke halaman index dengan pesan sukses
-        return redirect()->route('paymentsewaseller.index')->with('sukses', 'Data Pembayaran Sewa Berhasil Dihapus!');
+        // Redirect kembali ke halaman index dengan pesan success
+        return redirect()->route('paymentsewaseller.index')->with('success',  'Payment Rent Deleted Successfully!!');
     }
 }

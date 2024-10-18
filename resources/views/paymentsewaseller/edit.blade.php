@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Pembayaran Sewa / Edit')
+@section('page', 'Payment Rent / Edit')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Form Pembayaran Sewa </h6>
+              <h6>Form Payment Rent </h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -24,7 +24,7 @@
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
-    <label for="sewa_sellers_id" class="form-label">Order Id</label>
+    <label for="sewa_sellers_id" class="form-label">ID Order</label>
     <select name="sewa_sellers_id" id="sewa_sellers_id" class="form-control" required>
         <option value="{{ $paymentsewaseller->sewa_sellers_id ?? old('sewa_sellers_id') }}">
             {{ $paymentsewaseller->sewa_sellers->id ?? 'Pilih Id sewa' }}
@@ -37,12 +37,12 @@
     </select>
 </div>
 <div class="mb-3 ms-3 me-3">
-                        <label for="payment_date" class="form-label">payment_date</label>
+                        <label for="payment_date" class="form-label">Payment Date</label>
                         <input type="text" id="payment_date" name="payment_date" class="form-control" placeholder="Enter Your payment_date" aria-label="payment_date" required value="{{$paymentsewaseller->payment_date ?? old('payment_date')}}">
                      </div>
                      
                      <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">Metode Pembayaran</label>
+                      <label for="level" class="form-label">Payment Method</label>
                       <select class="form-select" aria-label="Default select example" id="payment_method" name="payment_method" required>
                         <option selected disabled>Pilih Metode Pembayaran</option>
                         <option value="Cash" {{ old('payment_method', $paymentsewaseller->payment_method) == 'Cash' ? 'selected' : '' }}>Cash</option>

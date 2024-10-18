@@ -37,7 +37,7 @@ class SewaZzfController extends Controller
     {
         Sewas::create($request->all());
             // return $request->input();
-            return redirect('/sewazzf')->with('sukses', 'New Rent Added!');
+            return redirect('/sewazzf')->with('success', 'New Rent Added!');
     }
 
     /**
@@ -83,7 +83,7 @@ class SewaZzfController extends Controller
     $sewazzf->status = $request->status;
     $sewazzf->save();
 
-    return redirect('/sewazzf')->with('sukses', 'Edit Rent Saved');
+    return redirect('/sewazzf')->with('success', 'Edit Rent Saved');
 }
 
 
@@ -95,7 +95,7 @@ class SewaZzfController extends Controller
         $sewazzf = Sewas::find($id);
         if ($sewazzf) {
             $sewazzf->delete();
-            return redirect('/sewazzf')->with('sukses', 'Rent Deleted Successfully!');
+            return redirect('/sewazzf')->with('success', 'Rent Deleted Successfully!');
         }
         return redirect('/sewazzf')->with('error', 'Data not found!');
     }

@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Sewa Seller/ Edit')
+@section('page', 'Rent/ Edit')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Form sewa Seller</h6>
+              <h6>Form Rent</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -24,7 +24,7 @@
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
-                        <label for="customers_id" class="form-label">Customers Id</label>
+                        <label for="customers_id" class="form-label">Customer Id</label>
                         <select name="customers_id" id="customers_id" class="form-control" required>
     @foreach($customers as $pc)
         <option value="{{ $pc->id }}" {{ old('customers_id', $sewaseller->customers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->name }}</option>
@@ -32,15 +32,15 @@
 </select>
                      </div>
                 <div class="mb-3 ms-3 me-3">
-                        <label for="order_date" class="form-label">Tanggal sewa</label>
+                        <label for="order_date" class="form-label">Rent Date</label>
                         <input type="text" id="order_date" name="order_date" class="form-control" placeholder="Enter Your sewa date" aria-label="order_date" required value="{{$sewaseller->order_date ?? old('order_date')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="total_amount" class="form-label">total_amount</label>
+                        <label for="total_amount" class="form-label">Amount</label>
                         <input type="text" id="total_amount" name="total_amount" class="form-control" placeholder="Enter Your total_amount" aria-label="total_amount" required value="{{$sewaseller->total_amount ?? old('total_amount')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">status</label>
+                      <label for="level" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
                         <option selected disabled>Pilih status</option>
                         <option value="menunggu pembayaran" {{ old('status', $sewaseller->status) == 'menunggu pembayaran' ? 'selected' : '' }}>menunggu pembayaran</option>

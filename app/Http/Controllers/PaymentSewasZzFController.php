@@ -35,7 +35,7 @@ class PaymentSewasZzfController extends Controller
     {
         PaymentsSewa::create($request->all());
             // return $request->input();
-            return redirect('/paymentsewaszzf')->with('sukses', 'New Payment Rent Added!');
+            return redirect('/paymentsewaszzf')->with('success', 'New Payment Rent Added!');
     }
 
     /**
@@ -81,7 +81,7 @@ class PaymentSewasZzfController extends Controller
     $paymentsewaszzf->amount = $request->amount;
     $paymentsewaszzf->save();
 
-    return redirect('/paymentsewaszzf')->with('sukses', 'Edit Payment Rent Saved!');
+    return redirect('/paymentsewaszzf')->with('success', 'Edit Payment Rent Saved!');
 }
 
 
@@ -93,7 +93,7 @@ class PaymentSewasZzfController extends Controller
         $paymentsewaszzf = PaymentsSewa::find($id);
         if ($paymentsewaszzf) {
             $paymentsewaszzf->delete();
-            return redirect('/paymentsewaszzf')->with('sukses', 'Payment Rent Deleted Successfully!');
+            return redirect('/paymentsewaszzf')->with('success', 'Payment Rent Deleted Successfully!');
         }
         return redirect('/paymentsewaszzf')->with('error', 'Data not found!');
     }

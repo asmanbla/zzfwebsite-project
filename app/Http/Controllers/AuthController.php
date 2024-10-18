@@ -31,21 +31,21 @@ class AuthController extends Controller
     $users = User::where('email', $credentials['email'])->first();
     if ($users && $users->password === $credentials['password']) {
         Auth::login($users);
-        return redirect('/dashboard')->with('sukses', 'Welcome To Our Dashboard Admin!');
+        return redirect('/dashboard')->with('success', 'Welcome To Our Dashboard Admin!');
     }
 
     // Cek di tabel sellers
     $sellers = Sellers::where('email', $credentials['email'])->first();
     if ($sellers && $sellers->password === $credentials['password']) {
         Auth::guard('sellers')->login($sellers);
-        return redirect('/dashboardseller')->with('sukses', 'Welcome To Our Dashboard Seller!');
+        return redirect('/dashboardseller')->with('success', 'Welcome To Our Dashboard Seller!');
     }
 
     // Cek di tabel customers
     $customers = Customers::where('email', $credentials['email'])->first();
     if ($customers && $customers->password === $credentials['password']) {
         Auth::guard('customers')->login($customers);
-        return redirect('/')->with('sukses', 'Welcome To Our Website Page!');
+        return redirect('/')->with('success', 'Welcome To Our Website Page!');
     }
 
     // Jika tidak ditemukan, arahkan kembali ke halaman login
@@ -75,7 +75,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password), // Mengamankan password
         ]);
     
-        return redirect('/login')->with('sukses', 'Registration successful! Please log in.'); // Redirect ke login
+        return redirect('/login')->with('success', 'Registration successful! Please log in.'); // Redirect ke login
     }
 
     // Metode untuk menampilkan halaman login
@@ -103,7 +103,7 @@ class AuthController extends Controller
             'address2' => $request->address2,
         ]);
     
-        return redirect('/login')->with('sukses', 'Registration successful! Please log in.'); // Redirect ke login
+        return redirect('/login')->with('success', 'Registration successful! Please log in.'); // Redirect ke login
     }
     
 

@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboardseller.nav')
 @endsection
-@section('page', 'Pembayaran Beli / Edit')
+@section('page', 'Payment Order / Edit')
 @section('main')
       @include('dashboardseller.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Form Pembayaran Beli </h6>
+              <h6>Form Payment Order</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -37,12 +37,12 @@
     </select>
 </div>
 <div class="mb-3 ms-3 me-3">
-                        <label for="payment_date" class="form-label">payment_date</label>
+                        <label for="payment_date" class="form-label">Payment Date</label>
                         <input type="text" id="payment_date" name="payment_date" class="form-control" placeholder="Enter Your payment_date" aria-label="payment_date" required value="{{$paymentorderseller->payment_date ?? old('payment_date')}}">
                      </div>
                      
                      <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">Metode Pembayaran</label>
+                      <label for="level" class="form-label">Payment Method</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="payment_method" required>
                         <option selected disabled>Pilih Metode Pembayaran</option>
                         <option value="Cash" {{ old('payment_method', $paymentorderseller->payment_method) == 'Cash' ? 'selected' : '' }}>Cash</option>
@@ -51,7 +51,7 @@
                       </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="amount" class="form-label">Payment method</label>
+                        <label for="amount" class="form-label">Amount</label>
                         <input type="text" id="amount" name="amount" class="form-control" placeholder="Enter Your amount" aria-label="amount" required value="{{$paymentorderseller->amount ?? old('amount')}}">
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
