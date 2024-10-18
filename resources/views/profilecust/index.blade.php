@@ -36,11 +36,13 @@
         <link href="../css/style.css" rel="stylesheet">
 <style>
 
-.footer {
+<style>
+        .footer {
     display: flex;
     justify-content: left;
     align-items: left;
     text-align: left;
+    color: white;
 }
 
 .footer .container {
@@ -84,6 +86,9 @@ a.btn.btn-secondary {
     padding: 12px 24px !important; /* Ukuran padding agar berbentuk persegi panjang */
     display: inline-block; /* Pastikan tombol tetap inline */
 }
+</style>
+
+<style>
 
 /* Umum */
 body {
@@ -211,9 +216,9 @@ h2, h3, .customer-info {
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap">
-                            <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location here</a>
-                            <a href="tel:+62 818-961-343" class="text-muted me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-muted me-0"><i class="fas fa-envelope text-primary me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location here</a>
+                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+62 818-961-343</a>
+                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-primary me-2"></i>asmanabila03@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -288,6 +293,7 @@ h2, h3, .customer-info {
                         <p><strong>Name:</strong> {{ $customer->name }}</p>
                         <p><strong>Email:</strong> {{ $customer->email }}</p>
                         <p><strong>Phone:</strong> {{ $customer->phone }}</p>
+                        <p><strong>Password:</strong> {{ $customer->phone }}</p>
                         <p><strong>Address 1:</strong> {{ $customer->address1 }}</p>
                         <p><strong>Address 2:</strong> {{ $customer->address2 }}</p>
                     </div>
@@ -298,46 +304,9 @@ h2, h3, .customer-info {
 </body>
 
 <br><br>
- <!-- Footer Start -->
- <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <div class="footer-item">
-                                <h4 class="text-white mb-4">About Us</h4>
-                                <p class="mb-3"> ZZF Industri Indonesia which started operating in 2012 is one of the companies
-                                which is developing from the Expanding CHINA ZZF INDUSTRIAL project.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Quick Links</h4>
-                            <a href="#tentang"><i class="fas fa-angle-right me-2"></i> Tentang</a>
-                            <a href="#produk"><i class="fas fa-angle-right me-2"></i>Produk </a>
-                            <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Keunggulan</a>
-                            <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
-                            <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Kontak Kami</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                        </div>
-                    </div>
-                   
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Contact Info</h4>
-                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12930</a>
-                            <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
-                            <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
         
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4">
+       <!-- Copyright Start -->
+       <div class="container-fluid copyright py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
@@ -353,3 +322,34 @@ h2, h3, .customer-info {
             </div>
         </div>
         <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        @if (Session::has('sukses'))
+    <script>
+      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
+          button:true,
+          button:"OK",
+          timer:5000
+      });
+    </script>
+    @endif 
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    </body>
+
+
+</html>

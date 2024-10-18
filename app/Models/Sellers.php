@@ -30,8 +30,8 @@ class Sellers extends Authenticatable // Mewarisi Authenticatable
     /**
      * Set password harus dienkripsi saat disimpan.
      */
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
 }

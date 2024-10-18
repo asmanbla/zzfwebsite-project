@@ -45,14 +45,14 @@
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   @auth('sellers')
                   <li>
-                      <a class="dropdown-item" href="/dashprofile">
+                      <a class="dropdown-item" href="/dashprofileseller">
                           {{ Auth::user()->name }} - Sellers
                       </a>
                   </li>
                   <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                      <form action="{{ route('logout') }}" method="POST">
+                      <form action="{{ route('logoutsellers') }}" method="POST">
                           @csrf
                           <button type="submit" class="dropdown-item">Logout</button>
                       </form>

@@ -50,7 +50,7 @@
                                     <td>
                                         {{ $data->roles }}
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="btn-group me-2">
                                             <a href="{{ route('userzzf.edit', $data) }}" class="btn btn-secondary btn btn-outline-primar btn-sm">Edit</a>
                                             <a href="/hapususer/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">Delete</a>

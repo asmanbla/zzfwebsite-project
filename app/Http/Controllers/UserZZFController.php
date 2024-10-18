@@ -31,10 +31,25 @@ class UserZZFController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
+<<<<<<< HEAD
     {
         User::create($request->all());
         return redirect('/userzzf')->with('success', 'New User Added!');
     }
+=======
+{
+    // Menyimpan user tanpa hashing password
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password, // Menyimpan password apa adanya
+        'roles' => $request->roles,
+    ]);
+    
+    return redirect('/userzzf')->with('sukses', 'New User Added!');
+}
+
+>>>>>>> 564ab1061c29576df59f0e1a17d3c8ae4526676f
 
     /**
      * Display the specified resource.
@@ -64,16 +79,19 @@ class UserZZFController extends Controller
     {
         // Mengedit Data User
         $users = User::find($id);
-        if (!$users) return redirect('/userzzf')->with('error', 'User not found!'); // Tambahkan pengecekan jika user tidak ditemukan
+        if (!$users) return redirect('/userzzf')->with('error', 'User not found!');
 
         $users->name = $request->name;
         $users->email = $request->email;
-        if ($request->password) $users->password = bcrypt($request->password);
+        if ($request->password) {
+            $users->password = $request->password; // Menyimpan password apa adanya
+        }
         $users->roles = $request->roles;
         $users->save();
         
         return redirect('/userzzf')->with('success', 'Edit User Saved!');
     }
+
 
     /**
      * Remove the specified resource from storage.
