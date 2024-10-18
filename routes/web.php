@@ -28,6 +28,7 @@ use App\Http\Controllers\PaymentOrdersZzfController;
 use App\Http\Controllers\PaymentSewasZzfController;
 use App\Http\Controllers\DashProfileController;
 use App\Http\Controllers\ProfileCustController;
+use App\Http\Controllers\DashProfileSellerController;
 use App\Http\Controllers\AuthController;
 
 
@@ -154,6 +155,9 @@ Route::resource('paymentorderseller', App\Http\Controllers\PaymentordersellerCon
 Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsewasellerController::class);
 Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
 
+// DASHPROFILE SELLER 
+Route::resource('dashprofileseller', App\Http\Controllers\DashProfileSellerController::class);
+
 });
 
 // Route Login Register 
@@ -171,6 +175,13 @@ Route::post('/customer/logout', function () {
     session()->flash('status', 'Logout Berhasil');
     return redirect('/');
 })->name('logoutcustomer');
+
+// Logout Seller
+Route::post('/sellers/logout', function () {
+    Auth::guard('sellers')->logout();
+    session()->flash('status', 'Logout Berhasil');
+    return redirect('/login');
+})->name('logoutsellers');
 
 // Route untuk menampilkan halaman login
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');

@@ -24,19 +24,19 @@
                   @csrf
                     <div class="mb-3 ms-3 me-3">
                         <label type="nama" class="form-label">User Name</label>
-                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="email">
+                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="name" required>
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email">
+                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email" required>
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="password"class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password" required>
                      </div>
                      <div class="mb-3 ms-3 me-3">
                       <label for="level" class="form-label">Roles</label>
-                      <select class="form-select" aria-label="Default select example" id="roles" name="roles" >
+                      <select class="form-select" aria-label="Default select example" id="roles" name="roles" required>
                         <option selected>Chose your Level</option>
                         <option value="admin">Admin</option>
                       </select>

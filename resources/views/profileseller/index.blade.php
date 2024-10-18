@@ -3,7 +3,7 @@
     @include('dashboard.nav')
 @endsection
 
-@section('page', 'Profile Details ZZF Admin')
+@section('page', 'Profile Details Sellers')
 
 @section('main')
     @include('dashboard.main')
@@ -156,17 +156,17 @@
                 </div>
                 <div class="col-md-10 align-self-center">
                     <div class="customer-info">
-                        <p><strong>Name :</strong> {{ $user->name }}</p>
-                        <p><strong>Email :</strong> {{ $user->email }}</p>
-                        <p><strong>Password Account :</strong> {{ $user->password }}</p>
-                        <p><strong>Role :</strong> {{ $user->roles }}</p>
+                        <p><strong>Name :</strong> {{ $sellers->name }}</p>
+                        <p><strong>Email :</strong> {{ $sellers->email }}</p>
+                        <p><strong>Password Account :</strong> {{ $sellers->password }}</p>
+                        <p><strong>Role :</strong> {{ $sellers->roles }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="row mt-4 justify-content-center">
                 <div class="col-md-6">
-                    <a href="/dashboard" type="button" class="btn btn-danger">
+                    <a href="/dashboardseller" type="button" class="btn btn-warning">
                         <i class="fas fa-arrow-left me-2"></i>Back To Dashboard Page
                     </a>
                 </div>
