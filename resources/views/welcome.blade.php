@@ -213,8 +213,8 @@ a.btn.btn-secondary {
 
 
          <br>
-                <!-- Produk Kami (ZZF) -->
-                <div class="container-fluid categories pb-5" id="produk">
+               <!-- Produk Kami (ZZF) -->
+        <div class="container-fluid categories pb-5" id="produk">
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                     <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Product</span></h1>
@@ -222,81 +222,28 @@ a.btn.btn-secondary {
                     </p>
                 </div>
                 <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
+                @foreach($products as $product)
                     <div class="categories-item p-4">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
-                                <img src="img/imgzzf/produk1.jpeg" class="img-fluid w-100 rounded-top" alt="">
+                                <!-- Menampilkan gambar produk -->
+                                <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
                             </div>
                             <div class="categories-content rounded-bottom p-4">
-                                <h4>Traveling Crane</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
+                                <!-- Menampilkan nama produk -->
+                                <h4>{{ $product->product_name }}</h4>
                                 <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$99:00/Day</h4>
+                                    <!-- Menampilkan harga produk -->
+                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->price }}/Day</h4>
                                 </div>
-                        
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                                <!-- Tombol detail produk -->
+                                <a href="{{ route('detailproduk.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                             </div>
                         </div>
                     </div>
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="img/imgzzf/produk2.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Scaffolding</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$128:00/Day</h4>
-                                </div>
-                        
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="img/imgzzf/produk3.jpeg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Passenger Hoist</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$170:00/Day</h4>
-                                </div>
-                        
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                @endforeach
+             </div>
+        <br> <br>
         <!-- end -->
 
          <!-- Produk Kami (Seller) -->
@@ -308,80 +255,26 @@ a.btn.btn-secondary {
                     </p>
                 </div>
                 <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="img/imgzzf/produk4.jpeg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Tower Crane 5610</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$99:00/Day</h4>
-                                </div>
-                        
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            </div>
+                @foreach($productsseller as $ps)
+                <div class="categories-item p-4">
+                    <div class="categories-item-inner">
+                        <div class="categories-img rounded-top">
+                            <!-- Menampilkan gambar produk -->
+                            <img src="{{ asset('storage/' . $ps->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $ps->product_name }}">
                         </div>
-                    </div>
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="img/imgzzf/produk5.jpg" class="img-fluid w-100 rounded-top" alt="">
+                        <div class="categories-content rounded-bottom p-4">
+                            <!-- Menampilkan nama produk -->
+                            <h4>{{ $ps->product_name }}</h4>
+                            <div class="mb-4">
+                                <!-- Menampilkan harga produk -->
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $ps->price }}/Day</h4>
                             </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Truck Crane</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$128:00/Day</h4>
-                                </div>
-                        
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="categories-item p-4">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <img src="img/imgzzf/produk6.jpeg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <h4>Tower Crane 5510</h4>
-                                <div class="categories-review mb-4">
-                                    <div class="d-flex justify-content-center text-secondary">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star text-body"></i>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">$170:00/Day</h4>
-                                </div>
-                        
-                                <a href="#" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            </div>
+                            <!-- Tombol detail produk -->
+                            <a href="{{ route('detailprodukseller.show',  $ps->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
         <!-- end -->
 
@@ -713,9 +606,9 @@ a.btn.btn-secondary {
                         <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>PT ZZF Industri</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 text-center text-md-end text-body">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        <!--/* This template is free as long as you keep the below author’s credit link/attribution link/backlink. */-->
+                        <!--/* If you'd like to use the template without the below author’s credit link/attribution link/backlink, */-->
+                        <!--/* you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". */-->
                         Designed By <a class="border-bottom text-white">ZZF Industri</a>
                     </div>
                 </div>

@@ -29,13 +29,19 @@ use App\Http\Controllers\PaymentSewasZzfController;
 use App\Http\Controllers\DashProfileController;
 use App\Http\Controllers\ProfileCustController;
 use App\Http\Controllers\DashProfileSellerController;
+use App\Http\Controllers\HomeBladeController;
+use App\Http\Controllers\DetailProdukController;
 use App\Http\Controllers\AuthController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', HomeBladeController::class);
+
+//Produk Details View
+
+Route::get('/produkdetails/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
+Route::get('/produkdetailseller/{id}', [DetailProdukController::class, 'showseller'])->name('detailprodukseller.show');
+
 
 // Route login 
 // Route::get('/login', [LoginController::class, 'index'])->name('auth.login');

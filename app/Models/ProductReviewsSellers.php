@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductReviewsSellers extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'id',
         'customers_id',
@@ -17,16 +18,15 @@ class ProductReviewsSellers extends Model
         'comment'
     ];
 
-
     protected $primaryKey = 'id';
-        
-    public function name()
+
+    public function customer()
     {
-        return $this->belongsTo(Customers::class, 'customers_id');
+        return $this->belongsTo(Customers::class, 'customers_id'); // Mengacu pada kolom 'customers_id'
     }
 
     public function product()
     {
-        return $this->belongsTo(ProductSellers::class, 'id');
+        return $this->belongsTo(ProductSellers::class, 'products_id'); // Mengacu pada kolom 'products_id'
     }
 }

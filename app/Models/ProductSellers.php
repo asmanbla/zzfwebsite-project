@@ -41,4 +41,9 @@ class ProductSellers extends Model
         {
             return $this->belongsTo(ProductCategoriesSeller::class, 'product_category_id');
         }
+
+        public function reviews()
+    {
+        return $this->hasMany(ProductReviewsSellers::class);
+    }
 }
