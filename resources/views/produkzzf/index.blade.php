@@ -54,7 +54,28 @@
                 {{ $data->product_name }}
             </td>
             <td>
-                {{ $data->description }}
+                @php
+                    // Pisahkan deskripsi menjadi array kata
+                    $words = explode(' ', $data->description);
+                    $lines = [];
+                    $line = '';
+
+                    foreach ($words as $index => $word) {
+                        $line .= $word . ' ';
+                        if (($index + 1) % 5 == 0) {
+                            $lines[] = trim($line);
+                            $line = '';
+                        }
+                    }
+
+                    if (!empty($line)) {
+                        $lines[] = trim($line);
+                    }
+                @endphp
+
+                @foreach($lines as $line)
+                    {{ $line }}<br>
+                @endforeach
             </td>
             <td>
                 {{ $data->price }}

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('customers_id');
             $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
-            $table->dateTime('order_date'); 
+            $table->dateTime('start_date'); 
+            $table->dateTime('finish_date'); 
             $table->bigInteger('total_amount'); 
             $table->enum('status', ['menunggu pembayaran', 'diproses', 'dikirim', 'digunakan', 'dikembalikan', 'selesai'])->default('menunggu pembayaran');
             $table->timestamps();

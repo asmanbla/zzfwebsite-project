@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('order_details_sellers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('sellers_id');
             $table->unsignedBigInteger('product_sellers_id');
             $table->foreign('product_sellers_id')->references('id')->on('product_sellers')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('order_sellers_id');
@@ -20,6 +21,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('subtotal');
             $table->timestamps();
+            //Foreign Key Constraint
+            $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
         });
     }
 

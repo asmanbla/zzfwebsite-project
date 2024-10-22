@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('products_zzfs_id');
-            $table->unsignedBigInteger('products_sellers_id');
-            $table->string('quantity')-> nullable();
-            $table->string('total')->nullable();
-            $table->string('endtotal')->nullable();
+            $table->unsignedBigInteger('products_zzfs_id')->nullable();
+            $table->unsignedBigInteger('products_sellers_id')->nullable();
+            $table->string('quantity');
+            $table->string('total');
+            $table->string('endtotal');
+            $table->enum('action', ['rent', 'buy'])->default('rent');
             $table->timestamps();
 
             // Foreign key constraints

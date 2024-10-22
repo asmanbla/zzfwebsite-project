@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('order_sellers', function (Blueprint $table) {
                 $table->id();
+                $table->unsignedBigInteger('sellers_id');
                 $table->unsignedBigInteger('customers_id');
                 $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
                 $table->dateTime('order_date'); 
                 $table->bigInteger('total_amount'); 
                 $table->enum('status', ['menunggu pembayaran', 'diproses', 'selesai'])->default('menunggu pembayaran');
                 $table->timestamps();
+                //Foreign Key Constraint
+                $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
         });
     }
 

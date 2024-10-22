@@ -20,7 +20,9 @@ return new class extends Migration
             $table->enum('roles', ['penjual'])->default('penjual');
             $table->string('remember_token', 100)->nullable();
             $table->timestamps();
+            $table->engine = 'InnoDB'; // Add this line
         });
+        
     }
 
     /**
