@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_reviews_sellers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('sellers_id');
             $table->unsignedBigInteger('customers_id');
             $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('products_id');
@@ -20,6 +21,8 @@ return new class extends Migration
             $table->tinyInteger('rating');
             $table->text('comment');
             $table->timestamps();
+            //Foreign Key Constraint
+            $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
         });
     }
 

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_sellers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('sellers_id');
             $table->unsignedBigInteger('product_category_id');
             $table->foreign('product_category_id')->references('id')->on('product_categories_sellers')->onDelete('cascade')->onUpdate('cascade');
             $table->string('product_name',100)->unique();
@@ -23,6 +24,8 @@ return new class extends Migration
             $table->string('image2_url',255) ->nullable(); 
             $table->string('image3_url',255) ->nullable(); 
             $table->timestamps();
+            //Foreign Key Constraint
+            $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
         });
     }
 

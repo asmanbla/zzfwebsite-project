@@ -31,8 +31,6 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image2</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image3</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-                      <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
-                      <th class="text-secondary opacity-7"></th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -53,7 +51,28 @@
                 {{ $data->product_name }}
             </td>
             <td>
-                {{ $data->description }}
+                @php
+                    // Pisahkan deskripsi menjadi array kata
+                    $words = explode(' ', $data->description);
+                    $lines = [];
+                    $line = '';
+
+                    foreach ($words as $index => $word) {
+                        $line .= $word . ' ';
+                        if (($index + 1) % 5 == 0) {
+                            $lines[] = trim($line);
+                            $line = '';
+                        }
+                    }
+
+                    if (!empty($line)) {
+                        $lines[] = trim($line);
+                    }
+                @endphp
+
+                @foreach($lines as $line)
+                    {{ $line }}<br>
+                @endforeach
             </td>
             <td>
                 {{ $data->price }}
@@ -106,40 +125,4 @@
       });
     </script>
     @endif
-
-      <!-- End Table -->
-      <!-- <footer class="footer pt-3  ">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div> -->
-    
     @endsection
