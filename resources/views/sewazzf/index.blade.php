@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Sewa Data ZZF')
+@section('page', 'Rent Data ZZF')
 @section('main')
       @include('dashboard.main')
 
@@ -12,8 +12,8 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('sewazzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Sewa Data</span>
-              <h6>Sewa</h6>
+            <a href="{{ route('sewazzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Rent Data</span>
+              <h6>Rent</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -22,7 +22,8 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order Date</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Start Rent Date</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">End Rent Date</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Amount</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -42,7 +43,10 @@
                                         {{ $data->name }} <!-- Sesuaikan dengan nama field dari view -->
                                     </td>
                                     <td>
-                                        {{ $data->order_date }}
+                                        {{ $data->start_date }}
+                                    </td>
+                                    <td>
+                                        {{ $data->finish_date }}
                                     </td>
                                     <td>
                                         {{ $data->total_amount }}

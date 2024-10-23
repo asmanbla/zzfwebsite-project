@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Sewa ZZF / Create')
+@section('page', 'Rent ZZF / Create')
 @section('main')
       @include('dashboard.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Sewa ZZF Form</h6>
+              <h6>Rent ZZF Form</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -32,8 +32,12 @@
                         </select>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label type="order_date" class="form-label">Order Date</label>
-                        <input type="date" name="order_date" id="email" class="form-control" placeholder="input tanggal order" aria-label="order_date">
+                        <label type="start_date" class="form-label">Start Rent Date</label>
+                        <input type="date" name="start_date" id="email" class="form-control" placeholder="input tanggal order" aria-label="order_date">
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label type="finish_date" class="form-label">Finish Rent Date</label>
+                        <input type="date" name="finish_date" id="email" class="form-control" placeholder="input tanggal order" aria-label="order_date">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="password"class="form-label">Amount</label>
@@ -42,10 +46,10 @@
                      <div class="mb-3 ms-3 me-3">
                       <label for="level" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="status" >
-                        <option selected>Status Sewa</option>
-                        <option value="menunggu pembayaran">Menunggu Pembayaran</option>
-                        <option value="diproses">Di Proses</option>
-                        <option value="selesai">Selesai</option>
+                        <option selected>Rent Status</option>
+                        <option value="menunggu pembayaran">Waitting For Payment</option>
+                        <option value="diproses">Process</option>
+                        <option value="selesai">End</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

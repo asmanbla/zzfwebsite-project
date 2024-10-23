@@ -5,6 +5,7 @@ use App\Models\SewaSellers;
 use App\Models\Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class SewasellerController extends Controller
 {
@@ -12,13 +13,18 @@ class SewasellerController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $vwsewaseller = SewaSellers::with('name')->get(); // Menggunakan relasi 'name' dari model
-    return view('sewaseller.index', [
-        'vwsewaseller' => $vwsewaseller,
-        'customers' => Customers::all(),
-    ]);
-}
+    {
+        $sellers_id = Auth::id(); // Mendapatkan ID seller yang login
+
+        // Hanya mengambil data sewa yang dimiliki oleh seller yang sedang login
+        $vwsewaseller = SewaSellers::with('name')->where('sellers_id', $sellers_id)->get(); 
+
+        return view('sewaseller.index', [
+            'vwsewaseller' => $vwsewaseller,
+            'customers' => Customers::all(), // Jika Anda ingin tetap menampilkan semua customer
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

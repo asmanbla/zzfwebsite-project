@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Payment Sewa ZZF')
+@section('page', 'Rent Payments ZZF')
 @section('main')
       @include('dashboard.main')
 
@@ -13,8 +13,8 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('paymentsewaszzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Payments Sewa</span>
-              <h6>Payment Penyewaan</h6>
+            <a href="{{ route('paymentsewaszzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Rent Payment</span>
+              <h6>Rent Payment</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">

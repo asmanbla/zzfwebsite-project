@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Sewa Details ZZF / Create')
+@section('page', 'Rent Details ZZF / Create')
 @section('main')
       @include('dashboard.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Sewa Details Form</h6>
+              <h6>Rent Details Form</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">

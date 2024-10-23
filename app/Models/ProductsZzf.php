@@ -32,4 +32,9 @@ class ProductsZzf extends Model
         }
 
     protected $table = 'products_zzfs'; // Sesuaikan dengan tabel di database
+
+    public function reviews()
+    {
+        return $this->hasMany(ProductReviews::class);
+    }
 }

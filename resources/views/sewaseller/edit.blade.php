@@ -26,11 +26,15 @@
                 <div class="mb-3 ms-3 me-3">
                         <label for="customers_id" class="form-label">Customer Id</label>
                         <select name="customers_id" id="customers_id" class="form-control" required>
-    @foreach($customers as $pc)
-        <option value="{{ $pc->id }}" {{ old('customers_id', $sewaseller->customers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->name }}</option>
-    @endforeach
-</select>
+                            @foreach($customers as $pc)
+                                <option value="{{ $pc->id }}" {{ old('customers_id', $sewaseller->customers_id) == $pc->id ? 'selected' : '' }}>{{ $pc->name }}</option>
+                            @endforeach
+                        </select>
                      </div>
+                     <div class="mb-3 ms-3 me-3">
+                                        <label for="sellers_id" class="form-label">Seller ID</label>
+                                        <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" readonly>
+                                    </div>
                 <div class="mb-3 ms-3 me-3">
                         <label for="order_date" class="form-label">Rent Date</label>
                         <input type="text" id="order_date" name="order_date" class="form-control" placeholder="Enter Your sewa date" aria-label="order_date" required value="{{$sewaseller->order_date ?? old('order_date')}}">

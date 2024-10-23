@@ -29,13 +29,21 @@ use App\Http\Controllers\PaymentSewasZzfController;
 use App\Http\Controllers\DashProfileController;
 use App\Http\Controllers\ProfileCustController;
 use App\Http\Controllers\DashProfileSellerController;
+use App\Http\Controllers\HomeBladeController;
+use App\Http\Controllers\DetailProdukController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartHomeController;
 use App\Http\Controllers\AuthController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', HomeBladeController::class);
+
+//Produk Details View
+
+Route::get('/produkdetails/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
+Route::get('/produkdetailseller/{id}', [DetailProdukController::class, 'showseller'])->name('detailprodukseller.show');
+
 
 // Route login 
 // Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
@@ -122,6 +130,8 @@ Route::resource('paymentsewaszzf', PaymentSewasZzfController::class);
 Route::get('/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf'])->name('hapuspaymentsewaszzf');
 Route::get('/paymentsewaszzf/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf']);
 
+Route::resource('cart', CartController::class);
+
 // DASHPROFILE 
 Route::resource('dashprofilezzf', App\Http\Controllers\DashProfileController::class);
 
@@ -159,6 +169,15 @@ Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::c
 Route::resource('dashprofileseller', App\Http\Controllers\DashProfileSellerController::class);
 
 });
+
+// Route Halaman Customer 
+Route::middleware(['auth:customers'])->group(function () {
+    // Route::resource('cartpage', CartHomeController::class);
+    Route::get('/cartpage', [CartHomeController::class, 'index'])->name('carthome.index'); // Menampilkan halaman cart
+    Route::post('/cart/add/{id}', [CartHomeController::class, 'addToCart'])->name('cart.addToCart'); // Menambahkan item ke cart
+    Route::delete('/cart/remove/{id}', [CartHomeController::class, 'destroy'])->name('carthome.destroy'); // Menghapus item dari cart
+});
+
 
 // Route Login Register 
 
