@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\ProductSellers;
 use App\Models\ProductCategoriesSeller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class produksellerController extends Controller
 {
@@ -12,13 +14,17 @@ class produksellerController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view("produkseller.index", [
-            'procatseller' => ProductCategoriesSeller::all(),
-            'produkseller' => ProductSellers::with('category')->get(),
-            'vwprodukseller' => DB::table('vwprodukseller')->get() // Query data dari view vwprodukseller
-        ]);
-    }
+{
+    $sellers_id = Auth::id(); // Mendapatkan ID seller yang login
+
+    return view("produkseller.index", [
+        // Hanya menampilkan kategori produk yang dimiliki oleh seller yang sedang login
+        'procatseller' => ProductCategoriesSeller::where('sellers_id', $sellers_id)->get(),
+        // Menampilkan produk yang dimiliki oleh seller yang sedang login
+        'produkseller' => ProductSellers::with('category')->where('sellers_id', $sellers_id)->get(),
+        'vwprodukseller' => DB::table('vwprodukseller')->where('sellers_id', $sellers_id)->get() // Query data dari view vwprodukseller untuk seller yang login
+    ]);
+}
 
 
     /**
@@ -26,32 +32,26 @@ class produksellerController extends Controller
      */
     public function create()
     {
+        $procatseller = ProductCategoriesSeller::where('sellers_id', Auth::id())->get();
+
         return view('produkseller.create', [
-            'produkseller' => ProductSellers::all(),
-            'procatseller' => ProductCategoriesSeller::all(),
+            'procatseller' => ProductCategoriesSeller::where('sellers_id', Auth::id())->get(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     ProductSellers::create($request->all());
-    //     // return $request->input();
-    //     return redirect('/produkseller')->with('success', 'New kategori produk data with the name "' .$request -> name. '"    has been successfully saved!');
-    // }
-
     public function store(Request $request)
     {
         // Validasi input
         $request->validate([
-            'product_category_id' => 'required|exists:product_categories_sellers,id', // Perbaikan nama tabel
+            'product_category_id' => 'required|exists:product_categories_sellers,id',
             'product_name' => 'required|string|max:255|unique:product_sellers,product_name',
             'price' => 'required|numeric|min:0',
             'stok_quantity' => 'nullable|numeric|min:0',
             'description' => 'required|string|max:500',
-            'image1_url' => 'required|image|max:6000', // Pastikan file gambar tidak lebih dari 6MB
+            'image1_url' => 'required|image|max:6000',
             'image2_url' => 'nullable|image|max:6000',
             'image3_url' => 'nullable|image|max:6000'
         ]);
@@ -66,6 +66,9 @@ class produksellerController extends Controller
                 'price',
                 'description'
             ]);
+
+            // Tambahkan sellers_id berdasarkan pengguna yang sedang login
+            $data['sellers_id'] = Auth::id();
     
             // Simpan image1
             $data['image1_url'] = $request->file('image1_url')->store('produkseller/Photos', 'public');
@@ -92,55 +95,48 @@ class produksellerController extends Controller
     }
     
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-            $produkseller = ProductSellers::findOrFail($id);
-    
-            return view('produkseller.edit', [
-                'produkseller' => $produkseller,
-                'procatseller' => ProductCategoriesSeller::all()
-            ]);
+        $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->firstOrFail();
+        
+        return view('produkseller.edit', [
+            'produkseller' => $produkseller,
+            'procatseller' => ProductCategoriesSeller::where('sellers_id', Auth::id())->get(), // Ganti titik koma dengan koma
+        ]);
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-
     public function update(Request $request, string $id)
     {
         $request->validate([
             'product_name' => 'required|string|max:255',
-            'product_category_id' => 'required|exists:product_categories_sellers,id', // Perbaikan nama tabel,
+            'product_category_id' => 'required|exists:product_categories_sellers,id',
             'price' => 'required|numeric|min:0',
             'stok_quantity' => 'nullable|numeric|min:0',
             'description' => 'required|string|max:500',
-            'image1_url' => 'nullable|image|', // Adjust validation rules as needed
-            'image2_url' => 'nullable|image|',
-            'image3_url' => 'nullable|image|',
+            'image1_url' => 'nullable|image|max:6000',
+            'image2_url' => 'nullable|image|max:6000',
+            'image3_url' => 'nullable|image|max:6000',
         ]);
     
-        $produkseller = ProductSellers::findOrFail($id);
+        $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->firstOrFail();
         $produkseller->product_name = $request->input('product_name');
         $produkseller->product_category_id = $request->input('product_category_id');
         $produkseller->price = $request->input('price');
         $produkseller->stok_quantity = $request->input('stok_quantity');
         $produkseller->description = $request->input('description');
     
-        for ($i = 1; $i <= 5; $i++) {
+        // Update gambar jika ada yang di-upload
+        for ($i = 1; $i <= 3; $i++) {
             if ($request->hasFile('image' . $i . '_url')) {
                 // Store the uploaded image
-                $imagePath = $request->file('image' . $i . '_url')->store('produkseller/Photos');
-                // Update the corresponding image_url property of the product
+                $imagePath = $request->file('image' . $i . '_url')->store('produkseller/Photos', 'public');
+                // Update properti image_url yang sesuai dari produk
                 $produkseller->{'image' . $i . '_url'} = str_replace('public/', 'storage/', $imagePath);
             }
         }
@@ -151,18 +147,16 @@ class produksellerController extends Controller
         return redirect('/produkseller')->with('success', 'Edit Product Saved Successfully!!!');
     }
     
-    
-    
     /**
      * Remove the specified resource from storage.
      */
     public function hapusprodukseller($id)
     {
-        $produkseller = ProductSellers::find($id);
+        $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->first();
         if ($produkseller) {
             $produkseller->delete();
             return redirect('/produkseller')->with('success', 'Product Deleted Successfully!!');
         }
-        return redirect('/produkseller')->with('error', 'User not found!');
+        return redirect('/produkseller')->with('error', 'Product not found or you do not have permission to delete this product!');
     }
 }

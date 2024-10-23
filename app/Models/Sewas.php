@@ -11,7 +11,8 @@ class Sewas extends Model
     protected $fillable = [
         'id',
         'customers_id',
-        'order_date',
+        'start_date',
+        'finish_date',
         'total_amount',
         'status',
     ];

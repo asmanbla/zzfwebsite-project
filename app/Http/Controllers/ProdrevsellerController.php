@@ -6,6 +6,7 @@ use App\Models\Customers;
 use App\Models\ProductSellers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProdrevsellerController extends Controller
 {
@@ -24,9 +25,11 @@ class ProdrevsellerController extends Controller
 
     public function index()
 {
+    $sellers_id = Auth::id(); // Mendapatkan ID seller yang login
+
     return view('prodrevseller.index', [
         'customers' => Customers::all(),
-        'vwproductreviewsellers' => DB::table('vwproductreviewsellers')->get() // Mengambil data dari view
+        'vwproductreviewsellers' => DB::table('vwproductreviewsellers')->where('sellers_id', $sellers_id)->get() // Mengambil data dari view
     ]);
 }
 

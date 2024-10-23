@@ -13,6 +13,8 @@ class SewaDetailsSellers extends Model
 
     // Tentukan kolom yang bisa diisi (fillable)
     protected $fillable = [
+        'id',
+        'sellers_id',
         'product_sellers_id',
         'sewa_sellers_id',
         'quantity',
@@ -29,5 +31,10 @@ class SewaDetailsSellers extends Model
     public function sewaseller()
     {
         return $this->belongsTo(SewaSellers::class, 'sewa_sellers_id');
+    }
+
+    public function idseller()
+    {
+        return $this->belongsTo(Sellers::class, 'sellers_id');
     }
 }

@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Sewa Details Data ZZF')
+@section('page', 'Rent Details Data ZZF')
 @section('main')
       @include('dashboard.main')
 
@@ -12,8 +12,8 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <a href="{{ route('sewadetailszzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Sewa Details </span>
-              <h6>Sewa Details</h6>
+            <a href="{{ route('sewadetailszzf.create')}}"><span class="badge badge-sm bg-gradient-primary mb-3 fs-6">Add New Rent Details </span>
+              <h6>Rent Details</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">

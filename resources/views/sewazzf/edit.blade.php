@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Order ZZF / Edit')
+@section('page', 'Rent ZZF / Edit')
 @section('main')
       @include('dashboard.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Sewa ZZF Edit</h6>
+              <h6>Rent ZZF Edit</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -40,7 +40,7 @@
 
             <!-- Order Date -->
             <div class="mb-3 ms-3 me-3">
-                <label for="order_date" class="form-label">Order Date</label>
+                <label for="order_date" class="form-label">Rent Date</label>
                 <input type="date" name="order_date" class="form-control" placeholder="input tanggal order"
                     aria-label="order_date" required value="{{ $sewazzf->order_date ?? old('order_date') }}">
             </div>
@@ -57,9 +57,9 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="status" class="form-label">Status</label>
                 <select class="form-select" aria-label="Default select example" id="status" name="status">
-                    <option value="menunggu pembayaran" {{ $sewazzf->status == 'menunggu pembayaran' ? 'selected' : '' }}>Menunggu Pembayaran</option>
-                    <option value="diproses" {{ $sewazzf->status == 'diproses' ? 'selected' : '' }}>Di Proses</option>
-                    <option value="selesai" {{ $sewazzf->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                    <option value="menunggu pembayaran" {{ $sewazzf->status == 'menunggu pembayaran' ? 'selected' : '' }}>Waitting For Payments</option>
+                    <option value="diproses" {{ $sewazzf->status == 'diproses' ? 'selected' : '' }}>Process</option>
+                    <option value="selesai" {{ $sewazzf->status == 'selesai' ? 'selected' : '' }}>End</option>
                 </select>
             </div>
 

@@ -31,25 +31,10 @@ class UserZZFController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-<<<<<<< HEAD
     {
         User::create($request->all());
         return redirect('/userzzf')->with('success', 'New User Added!');
     }
-=======
-{
-    // Menyimpan user tanpa hashing password
-    User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => $request->password, // Menyimpan password apa adanya
-        'roles' => $request->roles,
-    ]);
-    
-    return redirect('/userzzf')->with('sukses', 'New User Added!');
-}
-
->>>>>>> 564ab1061c29576df59f0e1a17d3c8ae4526676f
 
     /**
      * Display the specified resource.

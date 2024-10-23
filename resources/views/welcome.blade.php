@@ -113,60 +113,66 @@ a.btn.btn-secondary {
         </div>
         <!-- Topbar End -->
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a href="" class="navbar-brand p-0">
-                        <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industry</h1>
+      <!-- Navbar & Hero Start -->
+<div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="" class="navbar-brand p-0">
+                <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industry</h1>
+                <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="#home" class="nav-item nav-link active">Home</a>
+                    <a href="#produk" class="nav-item nav-link">Product</a>
+                    <a href="#tentang" class="nav-item nav-link">About</a>
+                    <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
+                    <a href="#service" class="nav-item nav-link">Service</a>
+                    <a href="#kontak" class="nav-item nav-link">Contact</a>
+                </div>
 
-                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Login </a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
+
+                <!-- Dropdown -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> <!-- Ikon profil -->
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav mx-auto py-0">
-                            <a href="#home" class="nav-item nav-link active">Home</a>
-                            <a href="#produk" class="nav-item nav-link">Product</a>
-                            <a href="#tentang" class="nav-item nav-link">About</a>
-                            <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
-                            <a href="#service" class="nav-item nav-link">Service</a>
-                            <a href="#kontak" class="nav-item nav-link">Contact</a>
-                        </div>
-
-                        <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Login Customers </a>
-                        <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
-
-                        <!-- Dropdown -->
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user"></i> <!-- Ikon profil -->
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                @auth('customers') <!-- Menggunakan guard 'customer' -->
-                                    <li>
-                                        <a class="dropdown-item" href="/custprofile">
-                                            {{ Auth::guard('customers')->user()->name }} - Customers
-                                        </a>
-                                    </li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li>
-                                        <form action="{{ route('logoutcustomer') }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item">Logout</button>
-                                        </form>
-                                    </li>
-                                @else
-                                    <li><a class="dropdown-item" href="/login">Login</a></li>
-                                @endauth
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                            <li>
+                                <a class="dropdown-item" href="/custprofile">
+                                    {{ Auth::guard('customers')->user()->name }} - Customers
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <form action="{{ route('logoutcustomer') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        @else
+                            <li><a class="dropdown-item" href="/login">Login</a></li>
+                        @endauth
+                    </ul>
+                </div>
+                <a href="/cartpage" class="nav-link position-relative me-3">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                    </span>
+                </a>
             </div>
-        </div>
-        <!-- Navbar & Hero End -->
+        </nav>
+    </div>
+</div>
+<!-- Navbar & Hero End -->
+
 
 <!-- Carousel Start -->
 <div class="header-carousel" id="home">

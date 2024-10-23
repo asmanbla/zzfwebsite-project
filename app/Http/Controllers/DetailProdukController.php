@@ -51,4 +51,6 @@ class DetailProdukController extends Controller
             abort(404); // Jika produk tidak ditemukan
         }
     }
+
+    
 }

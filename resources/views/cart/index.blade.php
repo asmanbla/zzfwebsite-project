@@ -1,10 +1,10 @@
-@extends('dashboardseller.master')
+@extends('dashboard.master')
 @section('nav')
-      @include('dashboardseller.nav')
+      @include('dashboard.nav')
 @endsection
-@section('page', 'Rent')
+@section('page', 'Cart Data ZZF')
 @section('main')
-      @include('dashboardseller.main')
+      @include('dashboard.main')
 
  <!-- Table -->
  <div class="container-fluid py-4">
@@ -12,55 +12,54 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Rent</h6>
+              <h6>Cart</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Number</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Rent Date</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Customer Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Product Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name Of Sellers</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">End Total</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E</th>
                       <th class="text-secondary opacity-7"></th> -->
                     </tr>
                   </thead>
                   <tbody>
-                         @foreach ($vwsewaseller as $idx => $data)
+                           
                                 <tr>
                                     <td>
                                         <div class="d-flex px-2 py-1">
-                                                {{ $idx + 1 . '. ' }}
+                                            
                                         </div>
                                     </td>
                                     <td>
-                                      {{ $data->name->name }}
+                                         <!-- Sesuaikan dengan nama field dari view -->
                                     </td>
                                     <td>
-                                        {{ $data->order_date}}
+                                       
                                     </td>
                                     <td>
-                                        {{ $data->total_amount}}
+                                       
                                     </td>
                                     <td>
-                                        {{ $data->status}}
+                                       
                                     </td>
+                                    <td>
+                                       
+                                       </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="{{ route('sewaseller.edit', $data) }}"  class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('sewaseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                            <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                         
                         </tbody>
                     </table>
               </div>
@@ -68,7 +67,6 @@
           </div>
         </div>
       </div>  
-
       @if (Session::has('success'))
     <script>
       swal("success", "{{ Session::get('success') }}", 'success', {
@@ -78,5 +76,7 @@
       });
     </script>
     @endif
+
       <!-- End Table -->
+
     @endsection

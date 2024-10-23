@@ -23,15 +23,19 @@
                 <form action="{{ route('produkseller.update', $produkseller->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                  <div class="mb-3 ms-3 me-3">
+                    <div class="mb-3 ms-3 me-3">
                         <label for="product_category_id" class="form-label">Product Category</label>
                         <select name="product_category_id" id="product_category_id" class="form-control" required>
-                            <option value="">value="{{$produkseller->product_category_id ??old('product_category_id')}}"</option>
+                            <option value="">Pilih Kategori</option>
                             @foreach($procatseller as $pc)
                                 <option value="{{ $pc->id }}">{{ $pc->kategori }}</option>
                             @endforeach
                         </select>
                      </div>
+                     <div class="mb-3 ms-3 me-3">
+                            <label for="sellers_id" class="form-label">Seller ID</label>
+                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" readonly>
+                       </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="product_name" class="form-label">Product Name</label>
                         <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required value="{{$produkseller->product_name ?? old('product_name')}}">

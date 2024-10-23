@@ -11,6 +11,7 @@ class ProductReviewsSellers extends Model
 
     protected $fillable = [
         'id',
+        'sellers_id',
         'customers_id',
         'products_id',
         'product_name',
@@ -28,5 +29,10 @@ class ProductReviewsSellers extends Model
     public function product()
     {
         return $this->belongsTo(ProductSellers::class, 'products_id'); // Mengacu pada kolom 'products_id'
+    }
+
+    public function idseller()
+    {
+        return $this->belongsTo(Sellers::class, 'sellers_id');
     }
 }

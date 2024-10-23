@@ -8,8 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCategoriesSeller extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'id',
+        'sellers_id',  // Kolom yang bisa diisi oleh pengguna
         'kategori'
     ];
+
+    public function seller()
+    {
+        // Asumsikan model 'Seller' adalah yang benar, bukan 'Sellers'
+        return $this->belongsTo(Seller::class, 'sellers_id');
+    }
 }

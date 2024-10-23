@@ -22,15 +22,15 @@
                 <div class="card border-2 m-4 pt-4">
                 <form action='{{ route("produkzzf.store") }}' method="POST" id="frmproduct" enctype="multipart/form-data">
                   @csrf
-                     <div class="mb-3 ms-3 me-3">
-                        <label for="product_category_id" class="form-label">Product Category</label>
-                        <select name="product_category_id" id="product_category_id" class="form-control" required>
-                            <option value="">Choose Category</option>
-                            @foreach($prodcatzzf as $pc)
-                                <option value="{{ $pc->id }}">{{ $pc->kategori }}</option>
-                            @endforeach
-                        </select>
-                     </div>
+                  <div class="mb-3 ms-3 me-3">
+                      <label for="product_category_id" class="form-label">Product Category</label>
+                      <select name="product_category_id" id="product_category_id" class="form-control" required>
+                          <option value="">Pilih Kategori</option>
+                          @foreach($prodcatzzf as $pc)
+                              <option value="{{ $pc->id }}">{{ $pc->kategori }}</option>
+                          @endforeach
+                      </select>
+                  </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="product_name" class="form-label">Product Name</label>
                         <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required>
