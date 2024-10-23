@@ -13,14 +13,19 @@ class HomeBladeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-{
-    $products = ProductsZzf::all(); // Mengambil semua produk dari model ProductsZzf
-    $productsseller = ProductSellers::all(); // Mengambil semua produk dari model ProductSellers
 
-    // Hitung jumlah item dalam keranjang untuk pengguna yang sedang login
-    $customerId = Auth::id(); // Mendapatkan ID customer yang login
-    $totalItems = Carts::where('customer_id', $customerId)->sum('quantity');
+public function index()
+{
+    $products = ProductsZzf::all(); // Mengambil semua produk
+    $productsseller = ProductSellers::all(); // Mengambil semua produk dari seller
+
+    // Cek apakah user sudah login sebagai customer
+    if (Auth::guard('customers')->check()) {
+        $customerId = Auth::guard('customers')->id(); // Mendapatkan ID customer yang login
+        $totalItems = Carts::where('customer_id', $customerId)->sum('quantity'); // Hitung jumlah item dalam cart
+    } else {
+        $totalItems = 0; // Jika tidak login, jumlah item 0
+    }
 
     return view('welcome', [
         'products' => $products,
@@ -28,6 +33,7 @@ class HomeBladeController extends Controller
         'totalItems' => $totalItems, // Mengirimkan jumlah item ke view
     ]);
 }
+
 
     /**
      * Show the form for creating a new resource.

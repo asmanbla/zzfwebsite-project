@@ -45,7 +45,7 @@ class AuthController extends Controller
     $customers = Customers::where('email', $credentials['email'])->first();
     if ($customers && $customers->password === $credentials['password']) {
         Auth::guard('customers')->login($customers);
-        return redirect('/')->with('success', 'Welcome To Our Website Page!');
+        return redirect('/')->with('success', 'Welcome To Our Website Page, Happy Shopping!');
     }
 
     // Jika tidak ditemukan, arahkan kembali ke halaman login dengan pesan error
