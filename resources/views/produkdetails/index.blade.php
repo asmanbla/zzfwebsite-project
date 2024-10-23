@@ -393,7 +393,7 @@
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="quantity" value="1"> <!-- Menyimpan quantity jika perlu -->
-                            <button type="submit" class="btn btn-warning">
+                            <button type="submit" class="btn btn-secondary">
                                 <i class="bi bi-cart-fill"></i>
                             </button>
                         </form>

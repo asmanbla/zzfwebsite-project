@@ -386,22 +386,29 @@ h2.section-heading {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                   <tbody>
+                   <tbody>
                         @foreach ($cartItems as $item)
                             <tr>
                                 <td class="product-thumbnail">
-                                    @if ($item['product']->image1_url)
-                                        <img src="{{ asset('storage/' . $item['product']->image1_url) }}" alt="{{ $item['product']->product_name }}" style="width: 50px; height: 50px;">
+                                    @if ($item->product) <!-- Cek apakah item dari tabel ProductsZzf -->
+                                        <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
+                                    @elseif ($item->productSellers) <!-- Cek apakah item dari tabel ProductSellers -->
+                                        <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
                                     @else
                                         No Image
                                     @endif
                                 </td>
-                                <td>{{ $item->product->product_name }}</td>
-                                <td> Rp{{ number_format($item->product->price, 0, ',', '.') }}</td>
+                                <td>
+                                    {{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}
+                                </td>
+                                <td>
+                                    Rp{{ number_format($item->product ? $item->product->price : $item->productSellers->price, 0, ',', '.') }}
+                                </td>
                                 <td>
                                     <input type="number" class="form-control text-center quantity-input" 
                                         value="{{ $item->quantity }}" 
-                                        data-price="{{ $item->product->price }}" 
+                                        data-price="{{ $item->product ? $item->product->price : $item->productSellers->price }}" 
                                         style="width: 70px;"
                                         onchange="updateTotal(this)">
                                 </td>

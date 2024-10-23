@@ -134,7 +134,7 @@ a.btn.btn-secondary {
                     <a href="#kontak" class="nav-item nav-link">Contact</a>
                 </div>
 
-                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Login </a>
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
                 <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
 
                 <!-- Dropdown -->
