@@ -343,7 +343,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <!-- Jika kamu ingin menampilkan badge jumlah item -->
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0 <!-- Ganti dengan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
                     </span>
                 </a>
             </div>
