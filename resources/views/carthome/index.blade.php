@@ -22,6 +22,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+        <!-- Sweetalert -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <!-- Libraries Stylesheet -->
         <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -319,7 +321,7 @@ h2.section-heading {
         <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a href="" class="navbar-brand p-0">
+                    <a href="/" class="navbar-brand p-0">
                         <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industry</h1>
 
                         <!-- <img src="img/logo.png" alt="Logo"> -->
@@ -473,16 +475,6 @@ h2.section-heading {
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
-        @if (Session::has('sukses'))
-    <script>
-      swal("Sukses", "{{ Session::get('sukses') }}", 'success', {
-          button:true,
-          button:"OK",
-          timer:5000
-      });
-    </script>
-    @endif 
         
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -534,6 +526,26 @@ h2.section-heading {
             document.getElementById('grand-total').textContent = 'Rp' + grandTotal.toLocaleString('id-ID', { minimumFractionDigits: 0 });
         }
     </script>
+
+@if (Session::has('success'))
+      <script>
+        swal("Success", "{{ Session::get('success') }}", "success", {
+          button: true,
+          button: "OK",
+          timer: 5000
+        });
+      </script>
+    @endif 
+
+    @if (Session::has('error'))
+      <script>
+        swal("Error", "{{ Session::get('error') }}", "error", {
+          button: true,
+          button: "OK",
+          timer: 5000
+        });
+      </script>
+    @endif 
 
 
 </html>
