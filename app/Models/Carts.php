@@ -23,4 +23,9 @@ class Carts extends Model
     {
         return $this->belongsTo(ProductsZzf::class, 'products_zzfs_id');
     }
+
+    public function productSellers()
+    {
+        return $this->belongsTo(ProductSellers::class, 'products_sellers_id'); // Ubah menjadi ProductSellers
+    }
 }

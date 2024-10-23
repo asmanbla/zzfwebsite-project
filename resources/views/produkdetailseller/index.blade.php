@@ -408,10 +408,11 @@
                 <div class="d-flex justify-content-start align-items-center mb-5">
                         <a href="https://wa.link/nr4xkp" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">Deliveries via online</a>
                         <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
-                        <form action="#" method="POST" class="d-inline">
+                        <form action="{{ route('cart.addToCartSellers', $productseller->id) }}" method="POST" class="d-inline me-2">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $productseller->id }}">
-                            <button type="submit" class="btn btn-secondary" style="margin-right: 15px !important;">
+                            <input type="hidden" name="quantity" value="1"> <!-- Menyimpan quantity jika perlu -->
+                            <button type="submit" class="btn btn-secondary">
                                 <i class="bi bi-cart-fill"></i>
                             </button>
                         </form>

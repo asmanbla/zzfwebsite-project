@@ -172,11 +172,17 @@ Route::resource('dashprofileseller', App\Http\Controllers\DashProfileSellerContr
 
 // Route Halaman Customer 
 Route::middleware(['auth:customers'])->group(function () {
-    // Route::resource('cartpage', CartHomeController::class);
     Route::get('/cartpage', [CartHomeController::class, 'index'])->name('carthome.index'); // Menampilkan halaman cart
-    Route::post('/cart/add/{id}', [CartHomeController::class, 'addToCart'])->name('cart.addToCart'); // Menambahkan item ke cart
+    
+    // Route untuk menambahkan produk dari products_zzfs
+    Route::post('/cart/add/product/{id}', [CartHomeController::class, 'addToCart'])->name('cart.addToCart'); // Menambahkan item ke cart (products_zzfs)
+    
+    // Route untuk menambahkan produk dari product_sellers
+    Route::post('/cart/add/seller/{id}', [CartHomeController::class, 'addToCartSellers'])->name('cart.addToCartSellers'); // Menambahkan item ke cart (product_sellers)
+
     Route::delete('/cart/remove/{id}', [CartHomeController::class, 'destroy'])->name('carthome.destroy'); // Menghapus item dari cart
 });
+
 
 
 // Route Login Register 

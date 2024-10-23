@@ -71,7 +71,7 @@ class AuthController extends Controller
         Sellers::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Mengamankan password
+            'password' => $request->password, // Mengamankan password
         ]);
     
         return redirect('/login')->with('success', 'Registration successful! Please log in.'); // Redirect ke login
