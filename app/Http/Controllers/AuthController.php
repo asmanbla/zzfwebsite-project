@@ -48,11 +48,10 @@ class AuthController extends Controller
         return redirect('/')->with('success', 'Welcome To Our Website Page!');
     }
 
-    // Jika tidak ditemukan, arahkan kembali ke halaman login
-    return redirect()->route('login')->withInput($request->only('email'))->withErrors([
-        'email' => 'Email atau Password yang dimasukkan tidak cocok.',
-    ]);
+    // Jika tidak ditemukan, arahkan kembali ke halaman login dengan pesan error
+    return redirect()->route('login')->withInput($request->only('email'))->with('error', 'Email atau Password yang dimasukkan tidak cocok.');
 }
+
 
     
     // Metode untuk menampilkan halaman login

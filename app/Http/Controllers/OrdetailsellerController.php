@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\OrderDetailsSellers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrdetailsellerController extends Controller
 {
@@ -11,8 +12,11 @@ class OrdetailsellerController extends Controller
      */
     public function index()
     {
-        return view ('ordetailseller.index', [
-            'ordetailseller' =>OrderDetailsSellers::all()
+        $sellers_id = Auth::id(); // Mendapatkan ID seller yang login
+
+        // Mengambil data order detail yang hanya dimiliki oleh seller yang sedang login
+        return view('ordetailseller.index', [
+            'ordetailseller' => OrderDetailsSellers::where('sellers_id', $sellers_id)->get(),
         ]);
     }
 
@@ -61,13 +65,14 @@ class OrdetailsellerController extends Controller
      */
     public function destroy(string $id)
     {
-        // Cari data ordetail seller berdasarkan id
-        $ordetailseller = OrderDetailsSellers::findOrFail($id);
+        // Cari data order detail berdasarkan id dan sellers_id
+        $ordetailseller = OrderDetailsSellers::where('id', $id)
+            ->where('sellers_id', Auth::id()) // Pastikan hanya seller yang memiliki order detail yang bisa menghapusnya
+            ->firstOrFail();
     
-        // Hapus data ordetail seller
+        // Hapus data order detail
         $ordetailseller->delete();
     
-        // Redirect kembali ke halaman index dengan pesan success
         return redirect()->route('ordetailseller.index')->with('success', 'Order Detail Deleted Successfully!');
     }
 }

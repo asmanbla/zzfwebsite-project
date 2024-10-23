@@ -24,6 +24,9 @@
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
+                            <label for="sellers_id" class="form-label">Seller ID</label>
+                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" readonly>
+                <div class="mb-3 ms-3 me-3">
     <label for="sewa_sellers_id" class="form-label">ID Order</label>
     <select name="sewa_sellers_id" id="sewa_sellers_id" class="form-control" required>
         <option value="{{ $paymentsewaseller->sewa_sellers_id ?? old('sewa_sellers_id') }}">

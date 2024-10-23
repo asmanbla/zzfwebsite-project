@@ -24,6 +24,9 @@
                 @method('PUT')
                 @csrf
                 <div class="mb-3 ms-3 me-3">
+                            <label for="sellers_id" class="form-label"></label>
+                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" hidden>
+                <div class="mb-3 ms-3 me-3">
                         <label for="customers_id" class="form-label">Customers Id</label>
                         <select name="customers_id" id="customers_id" class="form-control" required>
     @foreach($customers as $pc)

@@ -10,6 +10,7 @@ class SewaSellers extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'sellers_id',
         'customers_id',
         'order_date',
         'total_amount',
@@ -18,8 +19,23 @@ class SewaSellers extends Model
 
     protected $primaryKey = 'id';
         
+    public function idseller()
+    {
+        return $this->belongsTo(Sellers::class, 'sellers_id');
+    }
+
     public function name()
     {
         return $this->belongsTo(Customers::class, 'customers_id');
+    }
+
+    public function payments()
+{
+    return $this->hasMany(PaymentsSewaSeller::class, 'sewa_sellers_id');
+}
+
+public function details()
+    {
+        return $this->hasMany(SewaDetailsSellers::class, 'sewa_sellers_id');
     }
 }

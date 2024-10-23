@@ -10,6 +10,7 @@ class OrderSellers extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'sellers_id',
         'customers_id',
         'order_date',
         'total_amount',
@@ -18,6 +19,12 @@ class OrderSellers extends Model
 
     protected $primaryKey = 'id';
         
+
+    public function idseller()
+    {
+        return $this->belongsTo(Sellers::class, 'sellers_id');
+    }
+    
     public function name()
     {
         return $this->belongsTo(Customers::class, 'customers_id');

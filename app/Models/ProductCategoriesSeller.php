@@ -12,4 +12,5 @@ class ProductCategoriesSeller extends Model
         'id',
         'kategori'
     ];
+
 }

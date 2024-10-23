@@ -10,9 +10,15 @@ class Sewas extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'sellers_id',
         'customers_id',
         'order_date',
         'total_amount',
         'status',
     ];
+
+    public function idseller()
+    {
+        return $this->belongsTo(Sellers::class, 'sellers_id');
+    }
 }

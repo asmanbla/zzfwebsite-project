@@ -26,8 +26,9 @@ class SewaDetailsSellers extends Model
     }
 
     // Relasi dengan sewaSeller (sewa penjual)
-    public function sewaseller()
+    public function sewa()
     {
         return $this->belongsTo(SewaSellers::class, 'sewa_sellers_id');
     }
+
 }

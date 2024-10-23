@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\PaymentsSewaSeller;
 use App\Models\SewaSellers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentsewasellerController extends Controller
 {
@@ -12,8 +14,16 @@ class PaymentsewasellerController extends Controller
      */
     public function index()
     {
+        $sellers_id = Auth::id(); // Mendapatkan ID seller yang login
+
+        $paymentsewaseller = PaymentsSewaSeller::with('sewa') // Memuat relasi sewa
+            ->whereHas('sewa', function($query) use ($sellers_id) {
+                $query->where('sellers_id', $sellers_id); // Memfilter berdasarkan sellers_id
+            })
+            ->get();
+
         return view("paymentsewaseller.index", [
-            'paymentsewaseller' => PaymentsSewaSeller::all()
+            'paymentsewaseller' => $paymentsewaseller
         ]);
     }
 
@@ -22,7 +32,7 @@ class PaymentsewasellerController extends Controller
      */
     public function create()
     {
-        //
+        // Tambahkan logika jika perlu
     }
 
     /**
@@ -30,7 +40,7 @@ class PaymentsewasellerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Tambahkan logika untuk menyimpan data pembayaran sewa baru
     }
 
     /**
@@ -38,7 +48,16 @@ class PaymentsewasellerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Cari data pembayaran sewa berdasarkan id
+        $paymentsewaseller = PaymentsSewaSeller::where('id', $id)
+            ->whereHas('sewa', function($query) {
+                $query->where('sellers_id', Auth::id()); // Pastikan hanya seller yang login yang bisa melihat data ini
+            })
+            ->firstOrFail();
+
+        return view('paymentsewaseller.show', [
+            'paymentsewaseller' => $paymentsewaseller
+        ]);
     }
 
     /**
@@ -46,54 +65,64 @@ class PaymentsewasellerController extends Controller
      */
     public function edit(string $id)
     {
-        $paymentsewaseller = PaymentsSewaSeller::findOrFail($id);
-    
-            return view('paymentsewaseller.edit', [
-                'paymentsewaseller' => $paymentsewaseller,
-                'sewaseller' => SewaSellers::all()
-            ]);
+        // Cari data pembayaran sewa berdasarkan id
+        $paymentsewaseller = PaymentsSewaSeller::where('id', $id)
+            ->whereHas('sewa', function($query) {
+                $query->where('sellers_id', Auth::id()); // Pastikan hanya seller yang login yang bisa mengedit data ini
+            })
+            ->firstOrFail();
+
+        return view('paymentsewaseller.edit', [
+            'paymentsewaseller' => $paymentsewaseller,
+            'sewaseller' => SewaSellers::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-{
-    $request->validate([
-        'sewa_sellers_id' => 'required|exists:sewa_sellers,id',
-        'payment_date' => 'required|date',
-        'payment_method' => 'required|in:Cash,Transfer,Qris', // Validasi untuk kolom metode
-        'amount' =>  'required|'
-    ]);
+    {
+        $request->validate([
+            'sewa_sellers_id' => 'required|exists:sewa_sellers,id',
+            'payment_date' => 'required|date',
+            'payment_method' => 'required|in:Cash,Transfer,Qris', // Validasi untuk kolom metode
+            'amount' => 'required|numeric|min:0' // Pastikan validasi amount
+        ]);
 
-    $paymentsewaseller = PaymentsSewaSeller::findOrFail($id);
-    $paymentsewaseller->sewa_sellers_id = $request->input('sewa_sellers_id');
-    $paymentsewaseller->payment_date = $request->input('payment_date');
-    $paymentsewaseller->payment_method = $request->input('payment_method');
-    $paymentsewaseller->amount = $request->input('amount');
+        $paymentsewaseller = PaymentsSewaSeller::where('id', $id)
+            ->whereHas('sewa', function($query) {
+                $query->where('sellers_id', Auth::id()); // Pastikan hanya seller yang login yang bisa mengupdate data ini
+            })
+            ->firstOrFail();
 
-    // Simpan perubahan
-    $paymentsewaseller->save();
+        $paymentsewaseller->sewa_sellers_id = $request->input('sewa_sellers_id');
+        $paymentsewaseller->payment_date = $request->input('payment_date');
+        $paymentsewaseller->payment_method = $request->input('payment_method');
+        $paymentsewaseller->amount = $request->input('amount');
 
-    return redirect('/paymentsewaseller')->with('success', 'Edit Payment Rent Saved Successfully!!!');
-}
+        // Simpan perubahan
+        $paymentsewaseller->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    
+        return redirect('/paymentsewaseller')->with('success', 'Edit Payment Rent Saved Successfully!!!');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        // Cari data ordetail seller berdasarkan id
-        $paymentsewaseller = PaymentsSewaSeller::findOrFail($id);
-    
-        // Hapus data ordetail seller
+        // Cari data pembayaran sewa berdasarkan id
+        $paymentsewaseller = PaymentsSewaSeller::where('id', $id)
+            ->whereHas('sewa', function($query) {
+                $query->where('sellers_id', Auth::id()); // Pastikan hanya seller yang login yang bisa menghapus data ini
+            })
+            ->firstOrFail();
+
+        // Hapus data pembayaran sewa
         $paymentsewaseller->delete();
-    
+
         // Redirect kembali ke halaman index dengan pesan success
-        return redirect()->route('paymentsewaseller.index')->with('success',  'Payment Rent Deleted Successfully!!');
+        return redirect()->route('paymentsewaseller.index')->with('success', 'Payment Rent Deleted Successfully!!');
     }
 }

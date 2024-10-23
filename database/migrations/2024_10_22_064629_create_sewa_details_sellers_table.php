@@ -17,11 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('product_sellers_id');
             $table->foreign('product_sellers_id')->references('id')->on('product_sellers')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('sewa_sellers_id');
-            $table->foreign('sewa_sellers_id')->references('id')->on('order_sellers')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('quantity');
             $table->integer('subtotal');
             $table->timestamps();
             //Foreign Key Constraint
+            $table->foreign('sewa_sellers_id')->references('id')->on('sewa_sellers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
         });
     }

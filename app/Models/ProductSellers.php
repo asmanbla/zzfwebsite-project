@@ -19,6 +19,8 @@ class ProductSellers extends Model
         'image3_url'
     ]; 
 
+
+
     public function procatseller()
     {
         return $this->belongsTo(ProductCategoriesSeller::class, 'product_category_id');
