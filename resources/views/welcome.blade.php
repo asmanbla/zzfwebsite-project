@@ -35,33 +35,6 @@
         <!-- Template File CSS -->
         <link href="css/style.css" rel="stylesheet">
 <style>
-        .footer {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-}
-
-.footer .container {
-    max-width: 100%;
-}
-
-.footer-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-}
-
-.footer .row {
-    display: flex;
-    justify-content: space-around;
-}
-
-.footer-item a {
-    text-align: left;
-}
 
 .categories-img img {
     height: 250px; /* Atur tinggi gambar sesuai keinginan */
@@ -567,42 +540,44 @@ a.btn.btn-secondary {
         <!-- Testimonial End -->
 
         <!-- Footer Start -->
-        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <div class="footer-item">
-                                <h4 class="text-white mb-4">About Us</h4>
-                                <p class="mb-3"> ZZF Industri Indonesia which started operating in 2012 is one of the companies
-                                which is developing from the Expanding CHINA ZZF INDUSTRIAL project.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Quick Links</h4>
-                            <a href="#tentang"><i class="fas fa-angle-right me-2"></i> About</a>
-                            <a href="#produk"><i class="fas fa-angle-right me-2"></i>Product </a>
-                            <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Speciality</a>
-                            <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
-                            <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Contact</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                        </div>
-                    </div>
-                   
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="text-white mb-4">Contact Info</h4>
-                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
-                            <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
-                            <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
-                        </div>
+<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s" style="position: relative; bottom: 0; width: 100%;">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">About Us</h4>
+                        <p class="mb-3"> ZZF Industri Indonesia which started operating in 2012 is one of the companies
+                            which is developing from the Expanding CHINA ZZF INDUSTRIAL project.</p>
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a href="#tentang"><i class="fas fa-angle-right me-2"></i> About</a>
+                    <a href="#produk"><i class="fas fa-angle-right me-2"></i>Product </a>
+                    <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Speciality</a>
+                    <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
+                    <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Contact</a>
+                    <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Contact Info</h4>
+                    <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
+                    <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
+                    <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
+                </div>
+            </div>
         </div>
-        <!-- Footer End -->
+    </div>
+</div>
+<!-- Footer End -->
+
+
         
         <!-- Copyright Start -->
         <div class="container-fluid copyright py-4">

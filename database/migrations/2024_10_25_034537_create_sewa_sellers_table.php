@@ -11,23 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('sewa_sellers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('sellers_id');
             $table->unsignedBigInteger('customers_id');
             $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
-            $table->dateTime('order_date'); 
+            $table->dateTime('start_date'); 
+            $table->dateTime('finish_date'); 
             $table->bigInteger('total_amount'); 
-            $table->enum('status', ['menunggu pembayaran', 'diproses', 'selesai'])->default('menunggu pembayaran');
+            $table->enum('status', ['waiting for payment','processed','shipped','used','returned','done'])->default('waiting for payment');
             $table->timestamps();
+            //Foreign Key Constraint
+            $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('sewa_sellers');
     }
 };

@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
                 $table->dateTime('order_date'); 
                 $table->bigInteger('total_amount'); 
-                $table->enum('status', ['menunggu pembayaran', 'diproses', 'selesai'])->default('menunggu pembayaran');
+                $table->enum('status', ['waiting for payment','processed','completed'])->default('waiting for payment');
                 $table->timestamps();
                 //Foreign Key Constraint
                 $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');

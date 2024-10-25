@@ -48,7 +48,9 @@ class produksellerController extends Controller
         $request->validate([
             'product_category_id' => 'required|exists:product_categories_sellers,id',
             'product_name' => 'required|string|max:255|unique:product_sellers,product_name',
-            'price' => 'required|numeric|min:0',
+            'type'=>'required|in:rent, purchase, rent_and_purchase',
+            'purchase_price' => 'nullable|numeric|min:0',
+            'rent_price' => 'nullable|numeric|min:0',
             'stok_quantity' => 'nullable|numeric|min:0',
             'description' => 'required|string|max:500',
             'image1_url' => 'required|image|max:6000',
@@ -63,7 +65,8 @@ class produksellerController extends Controller
                 'product_category_id',
                 'product_name',
                 'stok_quantity',
-                'price',
+                'purchase_price',
+                'rent_price',
                 'description'
             ]);
 
@@ -116,7 +119,9 @@ class produksellerController extends Controller
         $request->validate([
             'product_name' => 'required|string|max:255',
             'product_category_id' => 'required|exists:product_categories_sellers,id',
-            'price' => 'required|numeric|min:0',
+            'type'=>'required|in:rent, purchase, rent_and_purchase',
+            'purchase_price' => 'nullable|numeric|min:0',
+            'rent_price' => 'nullable|numeric|min:0',
             'stok_quantity' => 'nullable|numeric|min:0',
             'description' => 'required|string|max:500',
             'image1_url' => 'nullable|image|max:6000',
@@ -127,7 +132,9 @@ class produksellerController extends Controller
         $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->firstOrFail();
         $produkseller->product_name = $request->input('product_name');
         $produkseller->product_category_id = $request->input('product_category_id');
-        $produkseller->price = $request->input('price');
+        $produkseller->type = $request->input('type');
+        $produkseller->purchase_price = $request->input('purchase_price');
+        $produkseller->rent_price = $request->input('rent_price');
         $produkseller->stok_quantity = $request->input('stok_quantity');
         $produkseller->description = $request->input('description');
     

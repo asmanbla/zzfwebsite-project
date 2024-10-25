@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('quantity');
             $table->string('total');
             $table->string('endtotal');
-            $table->enum('action', ['rent', 'buy'])->default('rent');
+            $table->enum('action', ['rent', 'purchase'])->default('rent');
             $table->timestamps();
 
             // Foreign key constraints
