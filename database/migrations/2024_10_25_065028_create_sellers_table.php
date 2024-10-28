@@ -15,9 +15,10 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name', 255);
             $table->string('email', 255);
+            $table->string('account number',20);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
-            $table->enum('roles', ['penjual'])->default('penjual');
+            $table->enum('roles', ['seller', 'admin_zzf'])->default('seller');
             $table->string('remember_token', 100)->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB'; // Add this line
