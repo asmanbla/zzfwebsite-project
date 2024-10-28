@@ -57,9 +57,10 @@
             <div class="mb-3 ms-3 me-3">
                 <label for="status" class="form-label">Status</label>
                 <select class="form-select" aria-label="Default select example" id="status" name="status">
-                    <option value="menunggu pembayaran" {{ $orderzzf->status == 'menunggu pembayaran' ? 'selected' : '' }}>Menunggu Pembayaran</option>
-                    <option value="diproses" {{ $orderzzf->status == 'diproses' ? 'selected' : '' }}>Di Proses</option>
-                    <option value="selesai" {{ $orderzzf->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                    <option value="waiting for payment" {{ $orderzzf->status == 'waiting for payment' ? 'selected' : '' }}>Waiting For Payment</option>
+                    <option value="processed" {{ $orderzzf->status == 'processed' ? 'selected' : '' }}>Processed</option>
+                    <option value="completed" {{ $orderzzf->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                    
                 </select>
             </div>
 

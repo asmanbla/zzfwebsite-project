@@ -47,12 +47,12 @@
                       <label for="level" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
                         <option selected disabled>Pilih status</option>
-                        <option value="menunggu pembayaran" {{ old('status', $sewaseller->status) == 'menunggu pembayaran' ? 'selected' : '' }}>menunggu pembayaran</option>
-                        <option value="diproses" {{ old('status', $sewaseller->status) == 'diproses' ? 'selected' : '' }}>diproses</option>
-                        <option value="dikirim" {{ old('status', $sewaseller->status) == 'dikirim' ? 'selected' : '' }}>dikirim</option>
-                        <option value="digunakan" {{ old('status', $sewaseller->status) == 'digunakan' ? 'selected' : '' }}>digunakan</option>
-                        <option value="dikembalikan" {{ old('status', $sewaseller->status) == 'dikembalikan' ? 'selected' : '' }}>dikembalikan</option>
-                        <option value="selesai" {{ old('status', $sewaseller->status) == 'selesai' ? 'selected' : '' }}>selesai</option>
+                        <option value="waiting for payment" {{ old('status', $sewaseller->status) == 'waiting for payment' ? 'selected' : '' }}>waiting for payment</option>
+                        <option value="processed" {{ old('status', $sewaseller->status) == 'processed' ? 'selected' : '' }}>processed</option>
+                        <option value="shipped" {{ old('status', $sewaseller->status) == 'shipped' ? 'selected' : '' }}>shipped</option>
+                        <option value="used" {{ old('status', $sewaseller->status) == 'used' ? 'selected' : '' }}>used</option>
+                        <option value="returned" {{ old('status', $sewaseller->status) == 'returned' ? 'selected' : '' }}>returned</option>
+                        <option value="done" {{ old('status', $sewaseller->status) == 'done' ? 'selected' : '' }}>done</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

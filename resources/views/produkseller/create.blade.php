@@ -44,8 +44,21 @@
                         <input type="text" id="description" name="description" class="form-control" placeholder="Enter Your description" aria-label="description" required>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="number" id="price" name="price" class="form-control" placeholder="Enter Your price" aria-label="price" required>
+                        <label for="type" class="form-label">Type</label>
+                          <select class="form-select" aria-label="Default select example" id="type" name="type">
+                            <option selected>Choose Type</option>
+                            <option value="rent">Rent</option>
+                            <option value="purchase">Purchase</option>
+                            <option value="rent_and_purchase">Rent and Purchase</option>
+                          </select>
+                        </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label for="price" class="form-label"> Purchase Price</label>
+                        <input type="number" id="purchase_price" name="purchase_price" class="form-control" placeholder="Enter Your purchase_price" aria-label="purchase_price" required>
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label for="price" class="form-label">Rent Price</label>
+                        <input type="number" id="rent_price" name="rent_price" class="form-control" placeholder="Enter Your rent price (price /day)" aria-label="rent price" required>
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="stok_quantity" class="form-label">Stock Quantity</label>

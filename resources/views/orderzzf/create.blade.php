@@ -43,9 +43,9 @@
                       <label for="level" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="status" >
                         <option selected>Status Order</option>
-                        <option value="menunggu pembayaran">Menunggu Pembayaran</option>
-                        <option value="diproses">Di Proses</option>
-                        <option value="selesai">Selesai</option>
+                        <option value="waiting for payment">Waiting For Payment</option>
+                        <option value="processed">Processed</option>
+                        <option value="completed">Completed</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

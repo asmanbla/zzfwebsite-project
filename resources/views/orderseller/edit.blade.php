@@ -46,9 +46,9 @@
                       <label for="level" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
                         <option selected disabled>Pilih status</option>
-                        <option value="menunggu pembayaran" {{ old('status', $orderseller->status) == 'menunggu pembayaran' ? 'selected' : '' }}>menunggu pembayaran</option>
-                        <option value="diproses" {{ old('status', $orderseller->status) == 'diproses' ? 'selected' : '' }}>diproses</option>
-                        <option value="selesai" {{ old('status', $orderseller->status) == 'selesai' ? 'selected' : '' }}>selesai</option>
+                        <option value="waiting for payment" {{ old('status', $orderseller->status) == 'waiting for payment' ? 'selected' : '' }}>waiting for payment</option>
+                        <option value="processed" {{ old('status', $orderseller->status) == 'processed' ? 'selected' : '' }}>processed</option>
+                        <option value="completed" {{ old('status', $orderseller->status) == 'completed' ? 'selected' : '' }}>completed</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

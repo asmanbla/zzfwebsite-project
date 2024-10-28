@@ -65,6 +65,7 @@ class produksellerController extends Controller
                 'product_category_id',
                 'product_name',
                 'stok_quantity',
+                'type',
                 'purchase_price',
                 'rent_price',
                 'description'

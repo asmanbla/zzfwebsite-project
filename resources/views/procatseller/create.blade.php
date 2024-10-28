@@ -48,8 +48,8 @@
                                         <label for="kategori" class="form-label">Category</label>
                                         <select class="form-select" aria-label="Default select example" id="kategori" name="kategori">
                                             <option selected>Choose Category</option>
-                                            <option value="alat">Alat</option>
-                                            <option value="komponen">Komponen</option>
+                                            <option value="equipment">Equipment</option>
+                                            <option value="component">Component</option>
                                             <option value="bundling">Bundling</option>
                                         </select>
                                     </div>

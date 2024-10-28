@@ -47,9 +47,12 @@
                       <label for="level" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="status" >
                         <option selected>Rent Status</option>
-                        <option value="menunggu pembayaran">Waitting For Payment</option>
-                        <option value="diproses">Process</option>
-                        <option value="selesai">End</option>
+                        <option value="waiting for payment">Waiting For Payment</option>
+                        <option value="processed">Processed</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="used">Used</option>
+                        <option value="returned">Returned</option>
+                        <option value="done">Done</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

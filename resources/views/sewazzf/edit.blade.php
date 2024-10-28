@@ -56,11 +56,15 @@
             <!-- Status -->
             <div class="mb-3 ms-3 me-3">
                 <label for="status" class="form-label">Status</label>
-                <select class="form-select" aria-label="Default select example" id="status" name="status">
-                    <option value="menunggu pembayaran" {{ $sewazzf->status == 'menunggu pembayaran' ? 'selected' : '' }}>Waitting For Payments</option>
-                    <option value="diproses" {{ $sewazzf->status == 'diproses' ? 'selected' : '' }}>Process</option>
-                    <option value="selesai" {{ $sewazzf->status == 'selesai' ? 'selected' : '' }}>End</option>
-                </select>
+                <select class="form-select" aria-label="Default select example" id="roles" name="status" required>
+                        <option selected disabled>Pilih status</option>
+                        <option value="waiting for payment" {{ old('status', $sewaseller->status) == 'waiting for payment' ? 'selected' : '' }}>waiting for payment</option>
+                        <option value="processed" {{ old('status', $sewaseller->status) == 'processed' ? 'selected' : '' }}>processed</option>
+                        <option value="shipped" {{ old('status', $sewaseller->status) == 'shipped' ? 'selected' : '' }}>shipped</option>
+                        <option value="used" {{ old('status', $sewaseller->status) == 'used' ? 'selected' : '' }}>used</option>
+                        <option value="returned" {{ old('status', $sewaseller->status) == 'returned' ? 'selected' : '' }}>returned</option>
+                        <option value="done" {{ old('status', $sewaseller->status) == 'done' ? 'selected' : '' }}>done</option>
+                      </select>
             </div>
 
             <!-- Buttons -->

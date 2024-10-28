@@ -31,6 +31,10 @@
                         <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email">
                      </div>
                      <div class="mb-3 ms-3 me-3">
+                        <label type="text" class="form-label">Account Number</label>
+                        <input type="text" name="account_number" id="account_number" class="form-control" placeholder="masukkan account number anda" aria-label="account_number">
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
                         <label type="password"class="form-label">Password</label>
                         <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password">
                      </div>
@@ -38,7 +42,7 @@
                       <label for="level" class="form-label">Roles</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="roles" >
                         <option selected>Chose your Level</option>
-                        <option value="penjual">Penjual</option>
+                        <option value="seller">Seller</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

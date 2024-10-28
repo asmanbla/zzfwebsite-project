@@ -24,12 +24,12 @@
                   @csrf
                   <div class="mb-3 ms-3 me-3">
                       <label for="level" class="form-label">Category</label>
-                      <select class="form-select" aria-label="Default select example" id="roles" name="kategori" >
+                      <select class="form-select" aria-label="Default select example" id="kategori" name="kategori">
                         <option selected>Choose Category</option>
-                        <option value="alat">Alat</option>
-                        <option value="komponen">Komponen</option>
+                        <option value="equipment">Equipment</option>
+                        <option value="component">Component</option>
                         <option value="bundling">Bundling</option>
-                      </select>
+                                        </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">

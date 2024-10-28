@@ -436,11 +436,11 @@ h2.section-heading {
                     </tfoot>
                  </table>
                 <div class="mb-3 ms-3 me-3">
-                      <label for="level" class="form-label">Action</label>
-                      <select class="form-select" aria-label="Default select example" id="roles" name="kategori" >
+                      <label for="action" class="form-label">Action</label>
+                      <select class="form-select" aria-label="Default select example" id="action" name="action" >
                         <option selected>Choose Action Type</option>
                         <option value="rent">Rent</option>
-                        <option value="order">Order</option>
+                        <option value="purchase">Order</option>
                       </select>
                      </div>
                 <div class="d-flex justify-content-between">

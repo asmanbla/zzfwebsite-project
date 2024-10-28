@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('image1_url',255); 
             $table->string('image2_url',255) ->nullable(); 
             $table->string('image3_url',255) ->nullable();
-            $table->enum('roles', ['seller', 'admin_zzf'])->default('seller');
             $table->timestamps();
             //Foreign Key Constraint
             $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
