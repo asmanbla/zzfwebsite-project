@@ -222,6 +222,9 @@
                         </div>
                         <div class="categories-content rounded-bottom p-4">
                             <h4>{{ $product->product_name }}</h4>
+                            <h6 class="text-secondary">
+                                <i class="fa fa-user"></i> {{ $product->name }}
+                            </h6>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->purchase_price }}</h4>
                             </div>
@@ -252,6 +255,9 @@
                         </div>
                         <div class="categories-content rounded-bottom p-4">
                             <h4>{{ $product->product_name }}</h4>
+                            <h6 class="text-secondary">
+                                <i class="fa fa-user"></i> {{ $product->name }}
+                            </h6>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->rent_price }}/Day</h4>
                             </div>
@@ -282,8 +288,14 @@
                         </div>
                         <div class="categories-content rounded-bottom p-4">
                             <h4>{{ $product->product_name }}</h4>
+                            <h6 class="text-secondary">
+                                <i class="fa fa-user"></i> {{ $product->name }}
+                            </h6>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->rent_price }}/Day</h4>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->purchase_price }}</h4>
                             </div>
                             <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                         </div>
