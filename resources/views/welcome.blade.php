@@ -204,75 +204,92 @@
     </div>
 </div>
 <!-- Carousel End -->
-
-
          <br>
-               <!-- Produk Kami (ZZF) -->
-        <div class="container-fluid categories pb-5" id="produk">
-            <div class="container pb-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Product</span></h1>
-                    <p class="mb-0">The following are the products produced by PT ZZF Indonesia 
-                    </p>
-                </div>
-                <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
-                @foreach($products as $product)
-                    <div class="categories-item p-6">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <!-- Menampilkan gambar produk -->
-                                <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <!-- Menampilkan nama produk -->
-                                <h4>{{ $product->product_name }}</h4>
-                                <div class="mb-4">
-                                    <!-- Menampilkan harga produk -->
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->price }}/Day</h4>
-                                </div>
-                                <!-- Tombol detail produk -->
-                                <a href="{{ route('detailproduk.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-             </div>
-             <br>
-             <a href="/prodview" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Products</a>
-        <br> <br>
-        <!-- end -->
 
-         <!-- Produk Kami (Seller) -->
-         <div class="container-fluid categories pb-5">
-            <div class="container pb-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Other <span class="text-primary">Products</span></h1>
-                    <p class="mb-0">The following are products produced by partners or sellers of PT ZZF Indonesia
-                    </p>
-                </div>
-                <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
-                @foreach($productsseller as $ps)
-                <div class="categories-item p-4">
+   <!-- Product For Sale -->
+<div class="container-fluid categories pb-5" id="produk">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">For Sale <span class="text-primary">Product</span></h1>
+            <p class="mb-0">The Following are the Product for Sale</p>
+        </div>
+        <div class="categories-carousel owl-carousel">
+            @foreach($productsForSale as $product)
+                <div class="categories-item p-6">
                     <div class="categories-item-inner">
                         <div class="categories-img rounded-top">
-                            <!-- Menampilkan gambar produk -->
-                            <img src="{{ asset('storage/' . $ps->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $ps->product_name }}">
+                            <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
                         </div>
                         <div class="categories-content rounded-bottom p-4">
-                            <!-- Menampilkan nama produk -->
-                            <h4>{{ $ps->product_name }}</h4>
+                            <h4>{{ $product->product_name }}</h4>
                             <div class="mb-4">
-                                <!-- Menampilkan harga produk -->
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $ps->price }}/Day</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->purchase_price }}</h4>
                             </div>
-                            <!-- Tombol detail produk -->
-                            <a href="{{ route('detailprodukseller.show',  $ps->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            <a href="{{ route('detailproduk.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-        <!-- end -->
+    </div>
+</div>
+
+<!-- Product For Rent -->
+<div class="container-fluid categories pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">For Rent <span class="text-primary">Products</span></h1>
+            <p class="mb-0">The Following are the Product for Rent</p>
+        </div>
+        <div class="categories-carousel owl-carousel">
+            @foreach($productsForRent as $product)
+                <div class="categories-item p-6">
+                    <div class="categories-item-inner">
+                        <div class="categories-img rounded-top">
+                            <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
+                        </div>
+                        <div class="categories-content rounded-bottom p-4">
+                            <h4>{{ $product->product_name }}</h4>
+                            <div class="mb-4">
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->rent_price }}/Day</h4>
+                            </div>
+                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+<!-- Product For Rent -->
+<div class="container-fluid categories pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">For Rent and Purchase <span class="text-primary">Products</span></h1>
+            <p class="mb-0">The Following are the Product for Rent and Purchase</p>
+        </div>
+        <div class="categories-carousel owl-carousel">
+            @foreach($productsForAll as $product)
+                <div class="categories-item p-6">
+                    <div class="categories-item-inner">
+                        <div class="categories-img rounded-top">
+                            <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
+                        </div>
+                        <div class="categories-content rounded-bottom p-4">
+                            <h4>{{ $product->product_name }}</h4>
+                            <div class="mb-4">
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->rent_price }}/Day</h4>
+                            </div>
+                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
 
         <!-- About Start -->
         <div class="container-fluid overflow-hidden about py-5" id="tentang">

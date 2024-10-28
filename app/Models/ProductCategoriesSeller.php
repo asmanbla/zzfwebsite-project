@@ -14,12 +14,10 @@ class ProductCategoriesSeller extends Model
         'kategori'
     ];
 
-<<<<<<< HEAD
-=======
     public function seller()
     {
         // Asumsikan model 'Seller' adalah yang benar, bukan 'Sellers'
         return $this->belongsTo(Seller::class, 'sellers_id');
     }
->>>>>>> 0ba2fa2d6c92d86dc4f6239152e448078125dd41
+
 }

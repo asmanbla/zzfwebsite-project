@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('sellers_id');
             $table->unsignedBigInteger('product_category_id');
             $table->foreign('product_category_id')->references('id')->on('product_categories_sellers')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('product_name',100)->unique();
+            $table->string('product_name',100);
             $table->text('description');
             $table->enum('type', ['rent', 'purchase', 'rent_and_purchase'])->default('rent_and_purchase');
             $table->integer('purchase_price')->nullable();

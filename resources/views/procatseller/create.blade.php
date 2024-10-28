@@ -36,13 +36,7 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    @csrf
-                                    
-                                    <!-- Readonly Field for sellers_id -->
-                                    <div class="mb-3 ms-3 me-3">
-                                        <label for="sellers_id" class="form-label">Seller ID</label>
-                                        <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" readonly>
-                                    </div>
+                                    @csrf           
 
                                     <div class="mb-3 ms-3 me-3">
                                         <label for="kategori" class="form-label">Category</label>
@@ -53,6 +47,9 @@
                                             <option value="bundling">Bundling</option>
                                         </select>
                                     </div>
+                                    <label for="sellers_id" class="form-label"></label>
+                                        <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" hidden>
+                                    </div>
 
                                     <div class="row ms-3 me-3 justify-content-end">
                                         <div class="col-3">
@@ -61,7 +58,7 @@
                                         <div class="col-3">
                                             <button type="submit" class="btn bg-gradient-danger w-100" id="save">Save</button>
                                         </div>
-                                    </div>
+                                          <!-- Readonly Field for sellers_id -->
                                 </form>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ use App\Models\ProductsZzf;
 use App\Models\ProductSellers;
 use App\Models\Carts;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeBladeController extends Controller
 {
@@ -14,25 +15,28 @@ class HomeBladeController extends Controller
      * Display a listing of the resource.
      */
 
-public function index()
-{
-    $products = ProductsZzf::all(); // Mengambil semua produk
-    $productsseller = ProductSellers::all(); // Mengambil semua produk dari seller
-
-    // Cek apakah user sudah login sebagai customer
-    if (Auth::guard('customers')->check()) {
-        $customerId = Auth::guard('customers')->id(); // Mendapatkan ID customer yang login
-        $totalItems = Carts::where('customer_id', $customerId)->sum('quantity'); // Hitung jumlah item dalam cart
-    } else {
-        $totalItems = 0; // Jika tidak login, jumlah item 0
-    }
-
-    return view('welcome', [
-        'products' => $products,
-        'productsseller' => $productsseller,
-        'totalItems' => $totalItems, // Mengirimkan jumlah item ke view
-    ]);
-}
+     public function index()
+     {
+         // Query untuk produk dengan tipe 'purchase' dan 'rent'
+         $productsForSale = DB::table('vwprodukseller')->where('type', 'purchase')->get();
+         $productsForRent = DB::table('vwprodukseller')->where('type', 'rent')->get();
+         $productsForAll = DB::table('vwprodukseller')->where('type', 'rent_and_purchase')->get();
+     
+         // Cek apakah user sudah login sebagai customer
+         if (Auth::guard('customers')->check()) {
+             $customerId = Auth::guard('customers')->id();
+             $totalItems = Carts::where('customer_id', $customerId)->sum('quantity');
+         } else {
+             $totalItems = 0;
+         }
+     
+         return view('welcome', [
+             'productsForSale' => $productsForSale,
+             'productsForRent' => $productsForRent,
+             'productsForAll' => $productsForAll,
+             'totalItems' => $totalItems,
+         ]);
+     }
 
 
     /**

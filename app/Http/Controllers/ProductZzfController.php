@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\ProductsZzf;
+use App\Models\ProductSellers;
 use App\Models\ProductCategories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,10 +13,10 @@ class ProductZzfController extends Controller
      */
     public function index()
     {
-        return view("produkzzf.index", [
+        return view("produkall.index", [
             'category' => ProductCategories::all(),
-            'produkzzf' => ProductsZzf::with('category')->get(),
-            'vwprodukzzf' => DB::table('vwprodukzzf')->get() // Query data dari view vwprodukzzf
+            'produkall' => ProductSellers::with('category')->get(),
+            'vwprodukseller' => DB::table('vwprodukseller')->get() // Query data dari view vwprodukall
         ]);
     }
 
@@ -26,8 +26,8 @@ class ProductZzfController extends Controller
      */
     public function create()
     {
-        return view('produkzzf.create', [
-            'produkzzf' => ProductsZzf::all(),
+        return view('produkall.create', [
+            'produkall' => ProductSellers::all(),
             'prodcatzzf' => ProductCategories::all(),
         ]);
     }
@@ -71,23 +71,23 @@ class ProductZzfController extends Controller
             ]);
     
             // Simpan image1
-            $data['image1_url'] = $request->file('image1_url')->store('produkzzf/Photos', 'public');
+            $data['image1_url'] = $request->file('image1_url')->store('produkseller/Photos', 'public');
     
             // Simpan image2 jika ada
             if ($request->hasFile('image2_url')) {
-                $data['image2_url'] = $request->file('image2_url')->store('produkzzf/Photos', 'public');
+                $data['image2_url'] = $request->file('image2_url')->store('produkseller/Photos', 'public');
             }
     
             // Simpan image3 jika ada
             if ($request->hasFile('image3_url')) {
-                $data['image3_url'] = $request->file('image3_url')->store('produkzzf/Photos', 'public');
+                $data['image3_url'] = $request->file('image3_url')->store('produkseller/Photos', 'public');
             }
     
             // Simpan data produk ke database
             ProductsZzf::create($data);
     
             // Redirect ke halaman index dengan pesan success
-            return redirect()->route('produkzzf.index')->with('success', 'New Product added!');
+            return redirect()->route('produkall.index')->with('success', 'New Product added!');
         } catch (\Exception $e) {
             // Tangani error jika terjadi kesalahan
             return redirect()->back()->withErrors(['error' => 'Failed to save product: ' . $e->getMessage()])->withInput();
@@ -107,10 +107,10 @@ class ProductZzfController extends Controller
      */
      public function edit(string $id)
     {
-        $produkzzf = ProductsZzf::findOrFail($id);
+        $produkall = ProductsZzf::findOrFail($id);
 
-        return view('produkzzf.edit', [
-            'produkzzf' => $produkzzf,
+        return view('produkall.edit', [
+            'produkall' => $produkall,
             'category' => ProductCategories::all()
         ]);
     }
@@ -133,40 +133,40 @@ class ProductZzfController extends Controller
         'image3_url' => 'nullable|image|',
     ]);
 
-    $produkzzf = ProductsZzf::findOrFail($id);
-    $produkzzf->product_name = $request->input('product_name');
-    $produkzzf->product_category_id = $request->input('product_category_id');
+    $produkseller = ProductSellers::findOrFail($id);
+    $produkseller->product_name = $request->input('product_name');
+    $produkseller->product_category_id = $request->input('product_category_id');
     $produkseller->type = $request->input('type');
     $produkseller->purchase_price = $request->input('purchase_price');
     $produkseller->rent_price = $request->input('rent_price');
-    $produkzzf->stok_quantity = $request->input('stok_quantity');
-    $produkzzf->description = $request->input('description');
+    $produkseller->stok_quantity = $request->input('stok_quantity');
+    $produkseller->description = $request->input('description');
 
     for ($i = 1; $i <= 5; $i++) {
         if ($request->hasFile('image' . $i . '_url')) {
             // Store the uploaded image
-            $imagePath = $request->file('image' . $i . '_url')->store('produkzzf/Photos');
+            $imagePath = $request->file('image' . $i . '_url')->store('produkseller/Photos');
             // Update the corresponding image_url property of the product
-            $produkzzf->{'image' . $i . '_url'} = str_replace('public/', 'storage/', $imagePath);
+            $produkseller->{'image' . $i . '_url'} = str_replace('public/', 'storage/', $imagePath);
         }
     }
 
     // Save the updated product
-    $produkzzf->save();
+    $produkall->save();
 
-    return redirect('/produkzzf')->with('success', 'Edit Product Saved!');
+    return redirect('/produkall')->with('success', 'Edit Product Saved!');
 
 }
     /**
      * Remove the specified resource from storage.
      */
-    public function hapusprodukzzf($id)
+    public function hapusprodukall($id)
     {
-        $produkzzf = ProductsZzf::find($id);
-        if ($produkzzf) {
-            $produkzzf->delete();
-            return redirect('/produkzzf')->with('success', 'Product Deleted Successfully!');
+        $produkall = ProductsZzf::find($id);
+        if ($produkall) {
+            $produkall->delete();
+            return redirect('/produkall')->with('success', 'Product Deleted Successfully!');
         }
-        return redirect('/produkzzf')->with('error', 'User not found!');
+        return redirect('/produkall')->with('error', 'User not found!');
     }
 }
