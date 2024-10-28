@@ -28,7 +28,7 @@
         <label>Enter your Email</label>
       </div>
       <div class="input-field">
-        <input type="text" name="account_number" required pattern="\d+" title="Please enter numbers only" maxlength="20">
+        <input type="number" name="account_number" required>
         <label>Enter your Account Number</label>
       </div>
       <div class="input-field">

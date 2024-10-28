@@ -31,10 +31,6 @@
                             @endforeach
                         </select>
                      </div>
-                     <div class="mb-3 ms-3 me-3">
-                                        <label for="sellers_id" class="form-label">Seller ID</label>
-                                        <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" readonly>
-                                    </div>
                 <div class="mb-3 ms-3 me-3">
                         <label for="order_date" class="form-label">Rent Date</label>
                         <input type="text" id="order_date" name="order_date" class="form-control" placeholder="Enter Your sewa date" aria-label="order_date" required value="{{$sewaseller->order_date ?? old('order_date')}}">
@@ -55,6 +51,8 @@
                         <option value="done" {{ old('status', $sewaseller->status) == 'done' ? 'selected' : '' }}>done</option>
                       </select>
                      </div>
+                     <label for="sellers_id" class="form-label"></label>
+                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" hidden>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
                     <a href="{{ route('sewaseller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>

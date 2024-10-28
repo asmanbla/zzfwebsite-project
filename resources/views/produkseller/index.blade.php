@@ -111,7 +111,7 @@
           </td>
             <td class="text-center">
                 <div class="btn-group me-2">
-                    <a href="{{ route('produkseller.edit', $data->id) }}"  class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ route('produkseller.edit', $data->id) }}"  class="btn btn-sm btn-edit">Edit</a>
                     <a href="/hapusprodukseller/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">Delete</a>
                 </div>
             </td>

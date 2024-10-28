@@ -65,6 +65,7 @@ class AuthController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:sellers,email',
             'password' => 'required|string|min:2',
+            'account_number' => 'required|',
         ]);
     
         // Membuat Seller baru
@@ -72,6 +73,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password, // Mengamankan password
+            'account_number' => $request->account_number,
         ]);
     
         return redirect('/login')->with('success', 'Registration successful! Please log in.'); // Redirect ke login

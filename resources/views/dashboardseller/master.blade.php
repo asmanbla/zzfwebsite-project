@@ -59,65 +59,67 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<style> 
-.custom-yellow {
-    background-color: #f6c23e !important; /* Kuning */
-    color: white !important; /* Putih untuk teks dan ikon */
-}
+<style>
+   /* Warna biru tua sebagai warna utama */
+   .bg-gradient-primary,
+   .bg-gradient-danger {
+      background-color: #0D3B66 !important;
+      background-image: linear-gradient(310deg, #0D3B66, #092237) !important;
+   }
 
+   .text-primary, .text-body, .font-weight-bolder {
+      color: #0D3B66 !important; /* Warna teks biru tua */
+   }
 
-.bg-gradient-yellow {
-  background: linear-gradient(87deg, #f6c23e, #ffd700);
-  color: white;
-}
+   .nav-link.text-body,
+   .breadcrumb-item.active,
+   .fa-cog, .fa-bell, .fa-user {
+      color: #0D3B66 !important; /* Ikon dan elemen navbar menjadi biru tua */
+   }
 
-  .zoom {
-    transition: transform .3s; /*Animation */
-  }
+   /* Warna latar belakang utama */
+   body {
+      background-color: #f5f6fa; /* Warna putih keabu-abuan untuk background */
+   }
+   /* Ubah warna badge menjadi biru tua */
+   .bg-gradient-yellow {
+        background: linear-gradient(87deg, #003366, #00008B); /* Gradasi biru tua */
+        color: white; /* Warna teks tetap putih */
+    }
 
-  .zoom:hover {
-    cursor: zoom-in;
-    transform: scale(6);
-  }
+    /* Tombol biru tua untuk tombol edit */
+    .btn-edit {
+        background-color: #001f5f !important; /* Biru tua */
+        color: white !important;
+        border-color: #001f5f !important;
+    }
 
+    /* Tombol merah untuk tombol delete */
+    .btn-danger {
+        background-color: #d90e07 !important; /* Merah */
+        color: white !important;
+        border-color: #d90e07 !important;
+    }
+
+   /* Tombol dengan warna biru tua */
+   .btn-primary {
+      background-color: #0D3B66 !important;
+      border-color: #092237 !important;
+   }
+
+   /* Warna biru tua untuk grafik */
+   .chart-bar,
+   .chart-line {
+      background-color: #0D3B66;
+   }
+
+   /* Warna ikon dan tooltip */
+   .icon-shape, .custom-tooltip {
+      background-color: #0D3B66 !important;
+      color: #FFFFFF !important;
+   }
 </style>
 
-<style> 
-  .custom-tooltip {
-    --bs-tooltip-bg: var(--bs-warning); /* Ganti warna tooltip menjadi kuning */
-  }
-
-  .zoom {
-    transition: transform .3s; /*Animation */
-  }
-
-  .zoom:hover {
-    cursor: zoom-in;
-    transform: scale(6);
-  }
-
-  /* Warna latar belakang dan elemen lainnya menjadi kuning */
-  body {
-    background-color: #fffbea; /* Warna latar belakang putih kekuningan */
-  }
-
-  .breadcrumb-item.active {
-    color: #f6c23e !important; /* Ubah breadcrumb aktif menjadi kuning */
-  }
-
-  .font-weight-bolder {
-    color: #f6c23e !important; /* Ubah teks judul menjadi kuning */
-  }
-
-  /* Tombol navbar dan elemen lainnya */
-  .nav-link.text-body {
-    color: #f6c23e !important; /* Ubah warna ikon navigasi menjadi kuning */
-  }
-
-  .fa-cog, .fa-bell, .fa-user {
-    color: #f6c23e !important; /* Ubah ikon navbar menjadi kuning */
-  }
-</style>
 
 
 </head>
@@ -226,7 +228,7 @@
             tension: 0.4,
             borderWidth: 0,
             pointRadius: 0,
-            borderColor: "#cb0c9f",
+            borderColor: "#0D3B66",
             borderWidth: 3,
             backgroundColor: gradientStroke1,
             fill: true,

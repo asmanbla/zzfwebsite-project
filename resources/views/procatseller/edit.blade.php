@@ -32,10 +32,10 @@
                         <option value="bundling" {{ old('kategori', $procatseller->kategori) == 'bundling' ? 'selected' : '' }}>Bundling</option>
                       </select>
                      </div>
-                       <div class="mb-3 ms-3 me-3">
-                            <label for="sellers_id" class="form-label">Seller ID</label>
-                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" readonly>
-                       </div>
+                     
+                     <label for="sellers_id" class="form-label"></label>
+                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" hidden>
+                       
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
                     <a href="{{ route('procatseller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>

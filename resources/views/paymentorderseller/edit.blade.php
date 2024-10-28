@@ -23,9 +23,7 @@
                 <form action="{{route('paymentorderseller.update', $paymentorderseller)}}" method="POST" id="frmpaymentorderseller">
                 @method('PUT')
                 @csrf
-                <div class="mb-3 ms-3 me-3">
-                            <label for="sellers_id" class="form-label">Seller ID</label>
-                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" readonly>
+               
                 <div class="mb-3 ms-3 me-3">
     <label for="order_sellers_id" class="form-label">Order Id</label>
     <select name="order_sellers_id" id="order_sellers_id" class="form-control" required>
@@ -57,6 +55,8 @@
                         <label for="amount" class="form-label">Amount</label>
                         <input type="text" id="amount" name="amount" class="form-control" placeholder="Enter Your amount" aria-label="amount" required value="{{$paymentorderseller->amount ?? old('amount')}}">
                      </div>
+                     <label for="sellers_id" class="form-label"></label>
+                            <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" hidden>
                 <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
                     <a href="{{ route('paymentorderseller.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>

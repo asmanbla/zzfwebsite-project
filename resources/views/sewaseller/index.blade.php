@@ -51,7 +51,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group me-2">
-                                            <a href="{{ route('sewaseller.edit', $data) }}"  class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="{{ route('sewaseller.edit', $data) }}"  class="btn btn-sm btn-edit">Edit</a>
                                     <form action="{{ route('sewaseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
                                             @csrf
                                             @method('DELETE')
