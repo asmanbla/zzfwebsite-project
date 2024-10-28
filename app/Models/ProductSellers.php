@@ -40,8 +40,9 @@ class ProductSellers extends Model
         return $this->hasMany(ProductReviewsSellers::class);
     }
 
-    public function idseller()
+    public function seller()
     {
         return $this->belongsTo(Sellers::class, 'sellers_id');
     }
+
 }

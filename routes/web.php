@@ -33,6 +33,8 @@ use App\Http\Controllers\HomeBladeController;
 use App\Http\Controllers\DetailProdukController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartHomeController;
+use App\Http\Controllers\OrderPageController;
+use App\Http\Controllers\ProductViewController;
 use App\Http\Controllers\AuthController;
 
 
@@ -181,6 +183,12 @@ Route::middleware(['auth:customers'])->group(function () {
     Route::post('/cart/add/seller/{id}', [CartHomeController::class, 'addToCartSellers'])->name('cart.addToCartSellers'); // Menambahkan item ke cart (product_sellers)
 
     Route::delete('/cart/remove/{id}', [CartHomeController::class, 'destroy'])->name('carthome.destroy'); // Menghapus item dari cart
+
+    Route::resource('orderpage', OrderPageController::class);
+    // Route untuk menyimpan data ke tabel orders atau sewas
+    Route::post('/orderpage/store', [OrderPageController::class, 'storezzf'])->name('orderpage.storezzf');
+
+    Route::resource('prodview', ProductViewController::class);
 });
 
 
