@@ -65,14 +65,22 @@ class AuthController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:sellers,email',
             'password' => 'required|string|min:2',
+<<<<<<< HEAD
             'account_number' => 'required|',
+=======
+            'account_number' => 'required|string|min:2',
+>>>>>>> 8317e28f383176cc1a6b8f75a5f8aab1d78dd4ab
         ]);
     
         // Membuat Seller baru
         Sellers::create([
             'name' => $request->name,
             'email' => $request->email,
+<<<<<<< HEAD
             'password' => $request->password, // Mengamankan password
+=======
+            'password' => $request->password, 
+>>>>>>> 8317e28f383176cc1a6b8f75a5f8aab1d78dd4ab
             'account_number' => $request->account_number,
         ]);
     
@@ -98,7 +106,7 @@ class AuthController extends Controller
         Customers::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Mengamankan password
+            'password' => $request->password, // Mengamankan password
             'phone' => $request->phone,
             'address1' => $request->address1,
             'address2' => $request->address2,

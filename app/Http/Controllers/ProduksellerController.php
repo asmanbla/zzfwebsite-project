@@ -47,8 +47,8 @@ class produksellerController extends Controller
         // Validasi input
         $request->validate([
             'product_category_id' => 'required|exists:product_categories_sellers,id',
-            'product_name' => 'required|string|max:255|unique:product_sellers,product_name',
-            'type'=>'required|in:rent, purchase, rent_and_purchase',
+            'product_name' => 'required|string|max:255',
+            'type' => 'required|in:rent,purchase,rent_and_purchase',
             'purchase_price' => 'nullable|numeric|min:0',
             'rent_price' => 'nullable|numeric|min:0',
             'stok_quantity' => 'nullable|numeric|min:0',
@@ -58,9 +58,8 @@ class produksellerController extends Controller
             'image3_url' => 'nullable|image|max:6000'
         ]);
     
-        // Upload image and store data
         try {
-            // Hanya ambil field yang dibutuhkan
+            // Ambil data yang diperlukan dan tambahkan sellers_id
             $data = $request->only([
                 'product_category_id',
                 'product_name',
@@ -70,7 +69,7 @@ class produksellerController extends Controller
                 'rent_price',
                 'description'
             ]);
-
+    
             // Tambahkan sellers_id berdasarkan pengguna yang sedang login
             $data['sellers_id'] = Auth::id();
     
@@ -90,7 +89,7 @@ class produksellerController extends Controller
             // Simpan data produk ke database
             ProductSellers::create($data);
     
-            // Redirect ke halaman index dengan pesan success
+            // Redirect ke halaman index dengan pesan sukses
             return redirect()->route('produkseller.index')->with('success', 'New Product Successfully Added!');
         } catch (\Exception $e) {
             // Tangani error jika terjadi kesalahan

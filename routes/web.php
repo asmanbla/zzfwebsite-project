@@ -87,9 +87,9 @@ Route::get('/hapusprodcatzzf/{id}', [ProductCategoriZzfController::class, 'hapus
 Route::get('/prodcat/hapusprodcatzzf/{id}', [ProductCategoriZzfController::class, 'hapusprodcatzzf']);
 
 // Route Product 
-Route::resource('produkzzf', ProductZzfController::class);
-Route::get('/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf'])->name('hapusprodukzzf');
-Route::get('/produkzzf/hapusprodukzzf/{id}', [ProductZzfController::class, 'hapusprodukzzf']);
+Route::resource('produkall', ProductZzfController::class);
+Route::get('/hapusprodukall/{id}', [ProductZzfController::class, 'hapusprodukall'])->name('hapusprodukall');
+Route::get('/produkall/hapusprodukall/{id}', [ProductZzfController::class, 'hapusprodukall']);
 
 // Route Orders ZZF 
 Route::resource('orderzzf', OrderZzfController::class);
