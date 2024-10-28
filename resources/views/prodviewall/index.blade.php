@@ -27,10 +27,10 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Logo Website-->
-        <link rel="icon" type="image/x-icon" href="img/imgzzf/logo.png" />
+        <link rel="icon" type="image/x-icon" href="../img/imgzzf/logo.png" />
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template File CSS -->
         <link href="../css/style.css" rel="stylesheet">
@@ -295,7 +295,7 @@ h2, h3, .customer-info {
 
         <!-- Menggunakan grid Bootstrap -->
                 <div class="row">
-                    @foreach($products as $product)
+                    @foreach($productsForAll as $product)
                         <div class="col-lg-4 col-md-6 mb-4"> <!-- Mengatur 3 produk per baris -->
                             <div class="categories-item p-4 h-100">
                                 <div class="categories-item-inner">
@@ -307,8 +307,12 @@ h2, h3, .customer-info {
                                         <!-- Menampilkan nama produk -->
                                         <h4>{{ $product->product_name }}</h4>
                                         <div class="mb-4">
-                                            <!-- Menampilkan harga produk -->
-                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->price }}/Day</h4>
+                                            <!-- Menampilkan harga produk price-->
+                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Sale : Rp{{ $product->purchase_price }}</h4>
+                                        </div>
+                                        <div class="mb-4">
+                                            <!-- Menampilkan harga produk rent -->
+                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rent : Rp{{ $product->rent_price }}/Day</h4>
                                         </div>
                                         <!-- Tombol detail produk -->
                                         <a href="{{ route('detailproduk.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
@@ -320,47 +324,6 @@ h2, h3, .customer-info {
                 </div>
             </div>
         </div>
-
-
-             <br><br>
-
- <!-- Produk Kami (Seller) -->
-<div class="container-fluid categories pb-5">
-    <div class="container pb-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Other <span class="text-primary">Products</span></h1>
-            <p class="mb-0">The following are products produced by partners or sellers of PT ZZF Indonesia</p>
-        </div>
-
-        <div class="row">
-            @foreach($productsseller as $ps)
-                <div class="col-lg-4 col-md-6 mb-4"> 
-                    <div class="categories-item p-4 h-100">
-                        <div class="categories-item-inner">
-                            <div class="categories-img rounded-top">
-                                <!-- Menampilkan gambar produk -->
-                                <img src="{{ asset('storage/' . $ps->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $ps->product_name }}">
-                            </div>
-                            <div class="categories-content rounded-bottom p-4">
-                                <!-- Menampilkan nama produk -->
-                                <h4>{{ $ps->product_name }}</h4>
-                                <div class="mb-4">
-                                    <!-- Menampilkan harga produk -->
-                                    <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $ps->price }}/Day</h4>
-                                </div>
-                                <!-- Tombol detail produk -->
-                                <a href="{{ route('detailprodukseller.show',  $ps->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-
-
 <br><br>
 
     

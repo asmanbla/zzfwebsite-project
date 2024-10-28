@@ -46,6 +46,14 @@ Route::resource('/', HomeBladeController::class);
 Route::get('/produkdetails/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
 Route::get('/produkdetailseller/{id}', [DetailProdukController::class, 'showseller'])->name('detailprodukseller.show');
 
+// Route untuk menampilkan produk tipe 'purchase'
+Route::get('/products/purchase', [ProductViewController::class, 'showProductPurchase'])->name('products.purchase');
+
+// Route untuk menampilkan produk tipe 'rent'
+Route::get('/products/rent', [ProductViewController::class, 'showProductRent'])->name('products.rent');
+
+// Route untuk menampilkan semua produk tipe 'rent_and_purchase'
+Route::get('/products/all', [ProductViewController::class, 'showProductAll'])->name('products.all');
 
 // Route login 
 // Route::get('/login', [LoginController::class, 'index'])->name('auth.login');

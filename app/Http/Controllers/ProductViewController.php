@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\ProductsZzf;
 use App\Models\ProductSellers;
@@ -10,73 +11,73 @@ use Illuminate\Support\Facades\Auth;
 class ProductViewController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource for products with type 'purchase'.
      */
-    public function index()
+    public function showProductPurchase()
     {
-        $products = ProductsZzf::all(); // Mengambil semua produk
-        $productsseller = ProductSellers::all(); // Mengambil semua produk dari seller
+        // Ambil produk yang dijual dengan tipe 'purchase'
+        $productsForSale = ProductSellers::with(['seller', 'category'])
+            ->where('type', 'purchase')
+            ->get();
     
-        // Cek apakah user sudah login sebagai customer
-        if (Auth::guard('customers')->check()) {
-            $customerId = Auth::guard('customers')->id(); // Mendapatkan ID customer yang login
-            $totalItems = Carts::where('customer_id', $customerId)->sum('quantity'); // Hitung jumlah item dalam cart
-        } else {
-            $totalItems = 0; // Jika tidak login, jumlah item 0
-        }
+        // Hitung total item di keranjang
+        $totalItems = $this->getTotalCartItems();
     
-        return view('prodview.index', [
-            'products' => $products,
-            'productsseller' => $productsseller,
-            'totalItems' => $totalItems, // Mengirimkan jumlah item ke view
+        return view('prodviewpurchase.index', [
+            'productsForSale' => $productsForSale,
+            'totalItems' => $totalItems,
+        ]);
+    }
+    
+
+    /**
+     * Display a listing of the resource for products with type 'rent'.
+     */
+    public function showProductRent()
+    {
+        // Ambil produk yang dijual dengan tipe 'purchase'
+        $productsForRent = ProductSellers::with(['seller', 'category'])
+            ->where('type', 'rent')
+            ->get();
+    
+        // Hitung total item di keranjang
+        $totalItems = $this->getTotalCartItems();
+    
+        return view('prodviewrent.index', [
+            'productsForRent' => $productsForRent,
+            'totalItems' => $totalItems,
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource for products with type 'rent_and_purchase'.
      */
-    public function create()
+    public function showProductAll()
     {
-        //
+        // Ambil produk yang dijual dengan tipe 'purchase'
+        $productsForAll = ProductSellers::with(['seller', 'category'])
+            ->where('type', 'rent_and_purchase')
+            ->get();
+    
+        // Hitung total item di keranjang
+        $totalItems = $this->getTotalCartItems();
+    
+        return view('prodviewall.index', [
+            'productsForAll' => $productsForAll,
+            'totalItems' => $totalItems,
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Get total items in cart for the logged-in customer.
      */
-    public function store(Request $request)
+    private function getTotalCartItems()
     {
-        //
-    }
+        if (Auth::guard('customers')->check()) {
+            $customerId = Auth::guard('customers')->id();
+            return Carts::where('customer_id', $customerId)->sum('quantity');
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return 0;
     }
 }

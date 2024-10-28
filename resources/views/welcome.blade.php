@@ -225,12 +225,14 @@
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->purchase_price }}</h4>
                             </div>
-                            <a href="{{ route('detailproduk.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+        <br>
+        <a href="/products/purchase" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Purchase Product</a>
     </div>
 </div>
 
@@ -259,10 +261,12 @@
                 </div>
             @endforeach
         </div>
+        <br>
+        <a href="/products/rent" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Rent Products</a>
     </div>
 </div>
 
-<!-- Product For Rent -->
+<!-- Product For All -->
 <div class="container-fluid categories pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
@@ -287,6 +291,8 @@
                 </div>
             @endforeach
         </div>
+        <br>
+        <a href="/products/all" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Purchase and Rent Products</a>
     </div>
 </div>
 

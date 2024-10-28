@@ -33,11 +33,10 @@ class produksellerController extends Controller
     public function create()
     {
         $procatseller = ProductCategoriesSeller::where('sellers_id', Auth::id())->get();
-
-        return view('produkseller.create', [
-            'procatseller' => ProductCategoriesSeller::where('sellers_id', Auth::id())->get(),
-        ]);
+    
+        return view('produkseller.create', compact('procatseller'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
