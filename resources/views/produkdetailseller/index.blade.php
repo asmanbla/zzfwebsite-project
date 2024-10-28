@@ -170,6 +170,9 @@
             font-weight: bold;
         }
 
+        .ppn {
+            color: #B40707;
+        }
 
         footer {
             background-color: #343a40; /* Warna latar belakang footer */
@@ -386,7 +389,7 @@
                         @foreach ([ $productseller->image1_url,  $productseller->image2_url,  $productseller->image3_url,  $productseller->image4_url,  $productseller->image5_url] as $image)
                             @if($image)
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('storage/' . $image) }}" alt="{{  $productseller->product_name }}" style="width: 520x; height: 445px;" class="product-image">
+                                    <img src="{{ asset('storage/' . $image) }}" alt="{{  $productseller->product_name }}" style="width: 520x; height: 480px;" class="product-image">
                                 </div>
                             @endif
                         @endforeach
@@ -417,6 +420,9 @@
                             </button>
                         </form>
                     </div>
+                    <div class="ppn">
+                             <h7>*biaya belum termasuk ppn 11%<h7>
+                        </div>
                 </div>
             </div>
         </div>

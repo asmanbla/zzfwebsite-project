@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Carts;
 use App\Models\ProductsZzf;
 use App\Models\ProductSellers;
+use App\Models\Sellers;
 use Illuminate\Support\Facades\Auth;
 
 class CartHomeController extends Controller
@@ -18,26 +19,30 @@ class CartHomeController extends Controller
         // Ambil data dari tabel cart berdasarkan customer_id
         $customerId = Auth::id(); // Mendapatkan ID customer yang login
         $cartItems = Carts::where('customer_id', $customerId)
-                        ->with(['product', 'productSellers']) // Ambil relasi produk dan produk seller
+                        ->with(['product', 'productSellers.seller']) // Ambil relasi produk dan seller
                         ->get();
-
-        // Hitung total harga belanjaan berdasarkan produk yang dipilih
+    
+        // Kelompokkan item berdasarkan seller atau PT ZZF Industry
+        $groupedCartItems = $cartItems->groupBy(function($item) {
+            return $item->product ? 'PT ZZF Industry' : ($item->productSellers->seller ? $item->productSellers->seller->name : 'No Seller');
+        });
+    
+        // Hitung total harga belanjaan
         $totalPrice = $cartItems->sum(function ($cartItem) {
             if ($cartItem->product) {
-                return $cartItem->product->price * $cartItem->quantity; // Harga dari products_zzfs
+                return $cartItem->product->price * $cartItem->quantity;
             } elseif ($cartItem->productSellers) {
-                return $cartItem->productSellers->price * $cartItem->quantity; // Harga dari product_sellers
+                return $cartItem->productSellers->price * $cartItem->quantity;
             }
             return 0;
         });
-
+    
         // Hitung jumlah item dalam keranjang
         $totalItems = $cartItems->sum('quantity');
-
-        // Tampilkan halaman cart dengan data produk yang sesuai dan total harga belanjaan
-        return view('carthome.index', compact('cartItems', 'totalPrice', 'totalItems'));
+    
+        return view('carthome.index', compact('groupedCartItems', 'totalPrice', 'totalItems'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */

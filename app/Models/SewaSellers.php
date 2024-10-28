@@ -29,7 +29,6 @@ class SewaSellers extends Model
         return $this->belongsTo(Customers::class, 'customers_id');
     }
 
-<<<<<<< HEAD
     public function payments()
 {
     return $this->hasMany(PaymentsSewaSeller::class, 'sewa_sellers_id');
@@ -38,10 +37,5 @@ class SewaSellers extends Model
 public function details()
     {
         return $this->hasMany(SewaDetailsSellers::class, 'sewa_sellers_id');
-=======
-    public function idseller()
-    {
-        return $this->belongsTo(Sellers::class, 'sellers_id');
->>>>>>> 0ba2fa2d6c92d86dc4f6239152e448078125dd41
     }
 }

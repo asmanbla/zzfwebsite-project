@@ -35,54 +35,36 @@
         <!-- Template File CSS -->
         <link href="css/style.css" rel="stylesheet">
 <style>
-        .footer {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-}
+    .categories-img img {
+        height: 250px; /* Atur tinggi gambar sesuai keinginan */
+        object-fit: cover; /* Agar gambar tetap proporsional dan tidak terdistorsi */
+        width: 100%; /* Lebar gambar diatur penuh agar mengikuti ukuran kolom */
+    }
 
-.footer .container {
-    max-width: 100%;
-}
+    a.btn {
+        display: inline-block; /* Atur sebagai inline-block agar dapat diberi margin */
+        margin-bottom: 10px;/* Atur jarak bawah pada tombol pertama */
+    }
 
-.footer-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-}
+    a.btn {
+        margin-right: 10px; /* Jarak horizontal antar tombol */
+    }
 
-.footer .row {
-    display: flex;
-    justify-content: space-around;
-}
+    a.btn.btn-secondary {
+        border-radius: 8px !important; /* Lekukan kecil dengan prioritas tinggi */
+        padding: 12px 24px !important; /* Ukuran padding agar berbentuk persegi panjang */
+        display: inline-block; /* Pastikan tombol tetap inline */
+    }
 
-.footer-item a {
-    text-align: left;
-}
+    .custom-btn2 {
+            background-color: #050436; /* Warna biru */
+            color: white; /* Warna font putih */
+            border: none; /* Menghilangkan border default */
+            border-radius: 20px; /* Sudut sedikit bulat */
+            padding: 10px 20px; /* Ruang di dalam tombol */
+            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
+        }
 
-.categories-img img {
-    height: 250px; /* Atur tinggi gambar sesuai keinginan */
-    object-fit: cover; /* Agar gambar tetap proporsional dan tidak terdistorsi */
-    width: 100%; /* Lebar gambar diatur penuh agar mengikuti ukuran kolom */
-}
-
-a.btn {
-    display: inline-block; /* Atur sebagai inline-block agar dapat diberi margin */
-    margin-bottom: 10px;/* Atur jarak bawah pada tombol pertama */
-}
-
-a.btn {
-    margin-right: 10px; /* Jarak horizontal antar tombol */
-}
-
-a.btn.btn-secondary {
-    border-radius: 8px !important; /* Lekukan kecil dengan prioritas tinggi */
-    padding: 12px 24px !important; /* Ukuran padding agar berbentuk persegi panjang */
-    display: inline-block; /* Pastikan tombol tetap inline */
-}
 </style>
 
     </head>
@@ -229,7 +211,7 @@ a.btn.btn-secondary {
                 </div>
                 <div class="categories-carousel owl-carousel wow fadeInUp" data-wow-delay="0.1s">
                 @foreach($products as $product)
-                    <div class="categories-item p-4">
+                    <div class="categories-item p-6">
                         <div class="categories-item-inner">
                             <div class="categories-img rounded-top">
                                 <!-- Menampilkan gambar produk -->
@@ -249,6 +231,8 @@ a.btn.btn-secondary {
                     </div>
                 @endforeach
              </div>
+             <br>
+             <a href="/prodview" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Products</a>
         <br> <br>
         <!-- end -->
 
@@ -350,7 +334,6 @@ a.btn.btn-secondary {
 </div>
 
         <!-- About End -->
-
 
         <!-- Features Start -->
         <div class="container-fluid feature py-5" id="keunggulan">
@@ -649,6 +632,27 @@ a.btn.btn-secondary {
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     </body>
+
+    <!-- Script untuk inisialisasi Owl Carousel -->
+<script>
+    $(document).ready(function(){
+        $(".categories-carousel").owlCarousel({
+            items: 1, // Menampilkan satu slide pada satu waktu
+            loop: true, // Mengulangi slide setelah selesai
+            nav: true, // Mengaktifkan tombol navigasi
+            navText: [
+                '<span class="text-danger">&#10094;</span>', // Ikon panah merah kiri
+                '<span class="text-danger">&#10095;</span>'  // Ikon panah merah kanan
+            ],
+            autoplay: false, // Menonaktifkan autoplay agar pengguna menggeser manual
+            responsive: {
+                0: { items: 1 },   // Pada layar kecil (mobile) menampilkan 1 slide
+                768: { items: 1 }, // Pada layar sedang (tablet) menampilkan 1 slide
+                992: { items: 1 }  // Pada layar besar (desktop) menampilkan 1 slide
+            }
+        });
+    });
+</script>
 
 
 </html>
