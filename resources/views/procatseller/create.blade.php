@@ -36,12 +36,7 @@
                                             </ul>
                                         </div>
                                     @endif
-<<<<<<< HEAD
                                     @csrf
-=======
-                                    @csrf           
-
->>>>>>> 8317e28f383176cc1a6b8f75a5f8aab1d78dd4ab
                                     <div class="mb-3 ms-3 me-3">
                                         <label for="kategori" class="form-label">Category</label>
                                         <select class="form-select" aria-label="Default select example" id="kategori" name="kategori">
@@ -52,12 +47,7 @@
                                         </select>
                                     </div>
                                     <label for="sellers_id" class="form-label"></label>
-<<<<<<< HEAD
                             <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" hidden>
-=======
-                                        <input type="text" class="form-control" id="sellers_id" name="sellers_id" value="{{ Auth::user()->id }}" hidden>
-                                    </div>
->>>>>>> 8317e28f383176cc1a6b8f75a5f8aab1d78dd4ab
 
                                     <div class="row ms-3 me-3 justify-content-end">
                                         <div class="col-3">

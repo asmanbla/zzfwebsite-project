@@ -28,11 +28,7 @@
         <label>Enter your Email</label>
       </div>
       <div class="input-field">
-<<<<<<< HEAD
         <input type="number" name="account_number" required>
-=======
-        <input type="number" name="account_number" required title="Please enter numbers only" maxlength="20">
->>>>>>> 8317e28f383176cc1a6b8f75a5f8aab1d78dd4ab
         <label>Enter your Account Number</label>
       </div>
       <div class="input-field">

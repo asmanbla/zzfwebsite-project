@@ -405,7 +405,10 @@
                 <h1>{{ $productseller->product_name }}</h1>
                 <p>{{ $productseller->description }}</p>
                 <p class="card-text">
-                    <span class="price" style="color: #A00000;">Price: Rp{{ number_format($productseller->price, 0) }}</span>
+                    <span class="price" style="color: #A00000;">Purchase Price: Rp{{ number_format($productseller->purchase_price, 0) }}</span>
+                </p>
+                <p class="card-text">
+                    <span class="price" style="color: #A00000;">Rent Price: Rp{{ number_format($productseller->rent_price, 0) }}</span>
                 </p>
                 <p>Stock: {{ $productseller->stok_quantity }}</p>
                 <div class="d-flex justify-content-start align-items-center mb-5">
