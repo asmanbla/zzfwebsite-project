@@ -34,20 +34,21 @@ class ProductViewController extends Controller
      * Display a listing of the resource for products with type 'rent'.
      */
     public function showProductRent()
-    {
-        // Ambil produk yang dijual dengan tipe 'purchase'
-        $productsForRent = ProductSellers::with(['seller', 'category'])
-            ->where('type', 'rent')
-            ->get();
-    
-        // Hitung total item di keranjang
-        $totalItems = $this->getTotalCartItems();
-    
-        return view('prodviewrent.index', [
-            'productsForRent' => $productsForRent,
-            'totalItems' => $totalItems,
-        ]);
-    }
+        {
+            // Ambil produk yang disewakan dengan tipe 'rent'
+            $productsForRent = ProductSellers::with(['seller', 'category'])
+                ->where('type', 'rent')
+                ->get();
+
+            // Hitung total item di keranjang
+            $totalItems = $this->getTotalCartItems();
+
+            return view('prodviewrent.index', [
+                'productsForRent' => $productsForRent,
+                'totalItems' => $totalItems,
+            ]);
+        }
+
 
     /**
      * Display a listing of the resource for products with type 'rent_and_purchase'.

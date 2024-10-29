@@ -306,6 +306,9 @@ h2, h3, .customer-info {
                                     <div class="categories-content rounded-bottom p-4">
                                         <!-- Menampilkan nama produk -->
                                         <h4>{{ $product->product_name }}</h4>
+                                        <h6 class="text-secondary">
+                                            <i class="fa fa-user"></i> {{ $product->seller->name }}
+                                        </h6>
                                         <div class="mb-4">
                                             <!-- Menampilkan harga produk price-->
                                             <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Sale : Rp{{ $product->purchase_price }}</h4>
@@ -315,7 +318,7 @@ h2, h3, .customer-info {
                                             <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rent : Rp{{ $product->rent_price }}/Day</h4>
                                         </div>
                                         <!-- Tombol detail produk -->
-                                        <a href="{{ route('detailproduk.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                                        <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                                     </div>
                                 </div>
                             </div>

@@ -190,13 +190,15 @@ Route::middleware(['auth:customers'])->group(function () {
     // Route untuk menambahkan produk dari product_sellers
     Route::post('/cart/add/seller/{id}', [CartHomeController::class, 'addToCartSellers'])->name('cart.addToCartSellers'); // Menambahkan item ke cart (product_sellers)
 
-    Route::delete('/cart/remove/{id}', [CartHomeController::class, 'destroy'])->name('carthome.destroy'); // Menghapus item dari cart
+    Route::delete('/cart/remove/{id}', [CartHomeController::class, 'destroy'])->name('carthome.destroy');
 
-    Route::resource('orderpage', OrderPageController::class);
-    // Route untuk menyimpan data ke tabel orders atau sewas
-    Route::post('/orderpage/store', [OrderPageController::class, 'storezzf'])->name('orderpage.storezzf');
+ // Menghapus item dari cart
 
-    Route::resource('prodview', ProductViewController::class);
+    // Route::resource('orderpage', OrderPageController::class);
+    // // Route untuk menyimpan data ke tabel orders atau sewas
+    // Route::post('/orderpage/store', [OrderPageController::class, 'storezzf'])->name('orderpage.storezzf');
+
+    // Route::resource('prodview', ProductViewController::class);
 });
 
 

@@ -420,7 +420,7 @@ h2.section-heading {
                         </tr>
                     </thead>
                     <tbody>
-                    <form action="{{ route('orderpage.storezzf') }}" method="POST" id="checkout-form">
+                    <form action="" method="POST" id="checkout-form">
                     @csrf
                         @foreach ($groupedCartItems as $seller => $items)
                             <!-- Menampilkan nama seller di posisi ujung atas kelompok produk -->
@@ -449,7 +449,7 @@ h2.section-heading {
                                     <td>
                                         Rp{{ number_format($item->product ? $item->product->price : $item->productSellers->price, 0, ',', '.') }}
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <input type="number" class="form-control text-center quantity-input" 
                                             value="{{ $item->quantity }}" 
                                             data-price="{{ $item->product ? $item->product->price : $item->productSellers->price }}" 
@@ -460,10 +460,12 @@ h2.section-heading {
                                         Rp{{ number_format($item->total, 0, ',', '.') }}
                                     </td>
                                     <td>
-                                        <form action="{{ route('carthome.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
+                                        <form action="/cart/remove/{{ $item->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn-icon"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-icon">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
