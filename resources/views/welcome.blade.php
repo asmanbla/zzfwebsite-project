@@ -71,6 +71,37 @@
             transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
         }
 
+        .footer {
+   
+    text-align: center; /* Teks di tengah */
+}
+
+.footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-item a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.footer-item a:hover {
+    color: #ddd; /* Warna teks saat hover */
+}
+
+.footer .container .row {
+    justify-content: center;
+}
+
+.footer .col-md-6 {
+    text-align: left;
+}
+
+
 </style>
 
     </head>
@@ -91,7 +122,7 @@
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
-                            <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>Location here</a>
+                            <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
                             <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
                             <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
                         </div>

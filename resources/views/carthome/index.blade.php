@@ -469,7 +469,6 @@ h2.section-heading {
                                 </tr>
                             @endforeach
                         @endforeach
-<<<<<<< HEAD
                     </tbody>
                     <tfoot>
                         <tr>
@@ -487,25 +486,6 @@ h2.section-heading {
                         <option value="purchase">Order</option>
                       </select>
                      </div>
-=======
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="4" class="text-end"><strong>Total Keseluruhan:</strong></td>
-                                <td id="grand-total">Rp{{ number_format($totalPrice, 0, ',', '.') }}</td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <div class="mb-3 ms-3 me-3">
-                        <label for="level" class="form-label">Action</label>
-                        <select class="form-select" aria-label="Default select example" id="roles" name="action" >
-                            <option selected>Choose Action Type</option>
-                            <option value="rent">Rent</option>
-                            <option value="buy">Order</option>
-                        </select>
-                        </div>
->>>>>>> aff0d9c37861ac451f315be354669dab82854234
                 <div class="d-flex justify-content-between">
                     <a href="/" class="btn1 btn-info">Continue To Shoping</a>
                     <a href="/checkout" class="btn2 btn-info">Proceed to Checkout</a>

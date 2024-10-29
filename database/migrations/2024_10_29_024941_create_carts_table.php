@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('products_zzfs_id')->nullable();
             $table->unsignedBigInteger('products_sellers_id')->nullable();
+            $table->string('purchase_price');
+            $table->string('rent_price');
             $table->string('quantity');
             $table->string('total');
             $table->string('endtotal');
@@ -24,7 +25,6 @@ return new class extends Migration
 
             // Foreign key constraints
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('products_zzfs_id')->references('id')->on('products_zzfs')->onDelete('cascade');
             $table->foreign('products_sellers_id')->references('id')->on('product_sellers')->onDelete('cascade');
         });
     }
