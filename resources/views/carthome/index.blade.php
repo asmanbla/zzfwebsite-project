@@ -420,7 +420,7 @@ h2.section-heading {
                         </tr>
                     </thead>
                     <tbody>
-                    <form action="{{ route('orderpage.storezzf') }}" method="POST" id="checkout-form">
+                    <form action="" method="POST" id="checkout-form">
                     @csrf
                         @foreach ($groupedCartItems as $seller => $items)
                             <!-- Menampilkan nama seller di posisi ujung atas kelompok produk -->
@@ -449,7 +449,7 @@ h2.section-heading {
                                     <td>
                                         Rp{{ number_format($item->product ? $item->product->price : $item->productSellers->price, 0, ',', '.') }}
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <input type="number" class="form-control text-center quantity-input" 
                                             value="{{ $item->quantity }}" 
                                             data-price="{{ $item->product ? $item->product->price : $item->productSellers->price }}" 
@@ -460,16 +460,17 @@ h2.section-heading {
                                         Rp{{ number_format($item->total, 0, ',', '.') }}
                                     </td>
                                     <td>
-                                        <form action="{{ route('carthome.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
+                                        <form action="/cart/remove/{{ $item->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn-icon"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-icon">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
                             @endforeach
                         @endforeach
-<<<<<<< HEAD
                     </tbody>
                     <tfoot>
                         <tr>
@@ -487,25 +488,6 @@ h2.section-heading {
                         <option value="purchase">Order</option>
                       </select>
                      </div>
-=======
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="4" class="text-end"><strong>Total Keseluruhan:</strong></td>
-                                <td id="grand-total">Rp{{ number_format($totalPrice, 0, ',', '.') }}</td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <div class="mb-3 ms-3 me-3">
-                        <label for="level" class="form-label">Action</label>
-                        <select class="form-select" aria-label="Default select example" id="roles" name="action" >
-                            <option selected>Choose Action Type</option>
-                            <option value="rent">Rent</option>
-                            <option value="buy">Order</option>
-                        </select>
-                        </div>
->>>>>>> aff0d9c37861ac451f315be354669dab82854234
                 <div class="d-flex justify-content-between">
                     <a href="/" class="btn1 btn-info">Continue To Shoping</a>
                     <a href="/checkout" class="btn2 btn-info">Proceed to Checkout</a>
