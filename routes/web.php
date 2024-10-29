@@ -187,8 +187,12 @@ Route::middleware(['auth:customers'])->group(function () {
     // Route untuk menambahkan produk dari products_zzfs
     Route::post('/cart/add/product/{id}', [CartHomeController::class, 'addToCart'])->name('cart.addToCart'); // Menambahkan item ke cart (products_zzfs)
     
-    // Route untuk menambahkan produk dari product_sellers
-    Route::post('/cart/add/seller/{id}', [CartHomeController::class, 'addToCartSellers'])->name('cart.addToCartSellers'); // Menambahkan item ke cart (product_sellers)
+   // Route untuk menambahkan produk dari product_sellers berdasarkan harga purchase
+    Route::post('/cart/add/seller/purchase/{id}', [CartHomeController::class, 'addToCartPurchase'])->name('cart.addToCartPurchase'); 
+
+    // Route untuk menambahkan produk dari product_sellers berdasarkan harga rent
+    Route::post('/cart/add/seller/rent/{id}', [CartHomeController::class, 'addToCartRent'])->name('cart.addToCartRent');
+
 
     Route::delete('/cart/remove/{id}', [CartHomeController::class, 'destroy'])->name('carthome.destroy');
 

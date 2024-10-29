@@ -11,8 +11,9 @@ class Carts extends Model
     protected $fillable = [
         'id',
         'customer_id',
-        'products_zzfs_id',
         'products_sellers_id',
+        'purchase_price',
+        'rent_price',
         'quantity',
         'total',
         'endtotal',
@@ -21,7 +22,7 @@ class Carts extends Model
 
     public function product()
     {
-        return $this->belongsTo(ProductsZzf::class, 'products_zzfs_id');
+        return $this->belongsTo(productSellers::class, 'products_sellers_id');
     }
 
     public function productSellers()

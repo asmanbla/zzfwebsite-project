@@ -413,7 +413,8 @@ h2.section-heading {
                         <tr>
                             <th>Image</th>
                             <th>Product</th>
-                            <th>Price</th>
+                            <th>Price (Purchase)</th>
+                            <th>Price (Rent)</th>
                             <th>Quantity</th>
                             <th>Total</th>
                             <th>Action</th>
@@ -421,57 +422,62 @@ h2.section-heading {
                     </thead>
                     <tbody>
                     <form action="" method="POST" id="checkout-form">
-                    @csrf
-                        @foreach ($groupedCartItems as $seller => $items)
-                            <!-- Menampilkan nama seller di posisi ujung atas kelompok produk -->
-                            <tr>
-                                <td colspan="6" style="text-align: left;">
-                                    <h6>{{ $seller }}</h6> <!-- Menampilkan nama seller atau 'PT ZZF Industry' -->
-                                </td>
-                            </tr>
-                            @foreach ($items as $item)
+                            @csrf
+                            @foreach ($groupedCartItems as $seller => $items)
+                                <!-- Menampilkan nama seller di posisi ujung atas kelompok produk -->
                                 <tr>
-                                    <td class="product-thumbnail">
-                                        <!-- Checkbox untuk memilih produk -->
-                                        <input type="checkbox" name="total_amount" value="{{ $item->id }}" style="margin-right: 10px;">
-                                        
-                                        @if ($item->product) <!-- Jika produk dari tabel ProductsZzf -->
-                                            <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
-                                        @elseif ($item->productSellers) <!-- Jika produk dari tabel ProductSellers -->
-                                            <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
-                                        @else
-                                            No Image
-                                        @endif
-                                    </td>
-                                    <td>
-                                        {{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}
-                                    </td>
-                                    <td>
-                                        Rp{{ number_format($item->product ? $item->product->price : $item->productSellers->price, 0, ',', '.') }}
-                                    </td>
-                                    <td class="text-center">
-                                        <input type="number" class="form-control text-center quantity-input" 
-                                            value="{{ $item->quantity }}" 
-                                            data-price="{{ $item->product ? $item->product->price : $item->productSellers->price }}" 
-                                            style="width: 70px;"
-                                            onchange="updateTotal(this)">
-                                    </td>
-                                    <td class="total-price" data-total="{{ $item->total }}">
-                                        Rp{{ number_format($item->total, 0, ',', '.') }}
-                                    </td>
-                                    <td>
-                                        <form action="/cart/remove/{{ $item->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-icon">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </form>
+                                    <td colspan="7" style="text-align: left;">
+                                        <h6>{{ $items[0]->productSellers && $items[0]->productSellers->seller ? $items[0]->productSellers->seller->name : 'PT ZZF Industry' }}</h6>
                                     </td>
                                 </tr>
+                                @foreach ($items as $item)
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <!-- Checkbox untuk memilih produk -->
+                                            <input type="checkbox" name="total_amount" value="{{ $item->id }}" style="margin-right: 10px;">
+                                            
+                                            @if ($item->product) <!-- Jika produk dari tabel ProductsZzf -->
+                                                <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
+                                            @elseif ($item->productSellers) <!-- Jika produk dari tabel ProductSellers -->
+                                                <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
+                                            @else
+                                                No Image
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}
+                                        </td>
+                                        <td>
+                                            Rp{{ number_format($item->product && $item->product->purchase_price ? $item->product->purchase_price : ($item->productSellers && $item->productSellers->purchase_price ? $item->productSellers->purchase_price : 0), 0, ',', '.') }}
+                                        </td>
+                                        <td>
+                                            Rp{{ number_format($item->product && $item->product->rent_price ? $item->product->rent_price : ($item->productSellers && $item->productSellers->rent_price ? $item->productSellers->rent_price : 0), 0, ',', '.') }}
+                                        </td>
+
+                                        <td class="text-center">
+                                            <input type="number" class="form-control text-center quantity-input" 
+                                                value="{{ $item->quantity }}" 
+                                                data-price="{{ $item->product ? $item->product->price : $item->productSellers->price }}" 
+                                                style="width: 70px;"
+                                                onchange="updateTotal(this)">
+                                        </td>
+                                        <td class="total-price" data-total="{{ $item->total }}">
+                                            Rp{{ number_format($item->total, 0, ',', '.') }}
+                                        </td>
+                                        <td>
+                                            <form action="/cart/remove/{{ $item->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-icon">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @endforeach
-                        @endforeach
-                    </tbody>
+                        </form>
+                      </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="4" class="text-end"><strong>Total Keseluruhan:</strong></td>

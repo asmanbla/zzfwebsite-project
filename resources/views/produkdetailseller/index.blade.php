@@ -257,7 +257,16 @@
             background-color: #050436; /* Warna biru */
             color: white; /* Warna font putih */
             border: none; /* Menghilangkan border default */
-            border-radius: 20px; /* Sudut sedikit bulat */
+            border-radius: 10px; /* Sudut sedikit bulat */
+            padding: 10px 20px; /* Ruang di dalam tombol */
+            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
+        }
+
+        .custom-btn3 {
+            background-color: #475054; /* Warna biru */
+            color: white; /* Warna font putih */
+            border: none; /* Menghilangkan border default */
+            border-radius: 10px; /* Sudut sedikit bulat */
             padding: 10px 20px; /* Ruang di dalam tombol */
             transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
         }
@@ -412,15 +421,18 @@
                 </p>
                 <p>Stock: {{ $productseller->stok_quantity }}</p>
                 <div class="d-flex justify-content-start align-items-center mb-5">
-                        <a href="https://wa.link/nr4xkp" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">Deliveries via online</a>
                         <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
-                        <form action="{{ route('cart.addToCartSellers', $productseller->id) }}" method="POST" class="d-inline me-2">
+                        <form action="{{ route('cart.addToCartPurchase', $productseller->id) }}" method="POST" class="d-inline me-2">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $productseller->id }}">
-                            <input type="hidden" name="quantity" value="1"> <!-- Menyimpan quantity jika perlu -->
-                            <button type="submit" class="btn btn-secondary">
-                                <i class="bi bi-cart-fill"></i>
-                            </button>
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn custom-btn2">Purchase</button>
+                        </form>
+                        <form action="{{ route('cart.addToCartRent', $productseller->id) }}" method="POST" class="d-inline me-2">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $productseller->id }}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn custom-btn3">Rent</button>
                         </form>
                     </div>
                     <div class="ppn">
@@ -469,5 +481,25 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
+
+@if (Session::has('success'))
+      <script>
+        swal("Success", "{{ Session::get('success') }}", "success", {
+          button: true,
+          button: "OK",
+          timer: 5000
+        });
+      </script>
+    @endif 
+
+    @if (Session::has('error'))
+      <script>
+        swal("Error", "{{ Session::get('error') }}", "error", {
+          button: true,
+          button: "OK",
+          timer: 5000
+        });
+      </script>
+    @endif 
 
 </html>

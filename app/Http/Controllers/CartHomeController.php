@@ -22,10 +22,17 @@ class CartHomeController extends Controller
                         ->with(['product', 'productSellers.seller']) // Ambil relasi produk dan seller
                         ->get();
     
-        // Kelompokkan item berdasarkan seller atau PT ZZF Industry
-        $groupedCartItems = $cartItems->groupBy(function($item) {
-            return $item->product ? 'PT ZZF Industry' : ($item->productSellers->seller ? $item->productSellers->seller->name : 'No Seller');
-        });
+                        $groupedCartItems = $cartItems->groupBy(function($item) {
+                            
+                            // Jika produk berasal dari tabel ProductSellers, gunakan nama dari relasi seller
+                            if ($item->productSellers && $item->productSellers->seller) {
+                                return $item->productSellers->seller->name;
+                            }
+                        
+                            // Jika tidak ada relasi seller atau product, kelompokkan sebagai "No Seller"
+                            return 'No Seller';
+                        });
+                        
     
         // Hitung total harga belanjaan
         $totalPrice = $cartItems->sum(function ($cartItem) {
@@ -88,26 +95,27 @@ class CartHomeController extends Controller
     //     return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
     // }
 
-    public function addToCartSellers(Request $request)
+    public function addToCartPurchase(Request $request)
         {
             $productSellersId = $request->input('product_id');
-            $product = ProductSellers::find($productSellersId); // Mengambil produk dari product_sellers berdasarkan ID
+            $product = Carts::find($productSellersId); // Mengambil produk dari product_sellers berdasarkan ID
             $userId = auth()->id();
-
+        
             if (!$product) {
                 return redirect()->back()->with('error', 'Product not found.');
             }
-
+        
             $quantityToAdd = $request->input('quantity', 1);
-
+        
             // Menentukan harga sesuai dengan tipe produk (purchase atau rent)
-            $price = ($product->type === 'purchase') ? $product->purchase_price : $product->rent_price;
-
-            // Mencari item di keranjang berdasarkan ID produk
+            $price = $product->purchase_price;
+        
+            // Mencari item di keranjang berdasarkan ID produk dan tipe
             $cartItem = Carts::where('customer_id', $userId)
                             ->where('products_sellers_id', $product->id)
+                            ->where('action', 'purchase')
                             ->first();
-
+        
             if ($cartItem) {
                 // Update item yang sudah ada di keranjang
                 $cartItem->quantity += $quantityToAdd;
@@ -117,20 +125,63 @@ class CartHomeController extends Controller
                 // Menambahkan item baru ke keranjang
                 Carts::create([
                     'customer_id' => $userId,
-                    'products_zzfs_id' => null, // Tidak ada produk dari tabel products_zzfs
                     'products_sellers_id' => $product->id,
+                    'purchase_price' => $price,
+                    'rent_price' => null,
                     'quantity' => $quantityToAdd,
                     'total' => $quantityToAdd * $price,
                     'endtotal' => $quantityToAdd * $price,
+                    'action' => 'purchase', // Menandai sebagai pembelian
+                ]);
+            }
+        
+            // Menghitung total akhir untuk keranjang saat ini
+            $endtotal = Carts::where('customer_id', $userId)->sum('total');
+            Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
+        
+            return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
+        }
+        
+        public function addToCartRent(Request $request)
+        {
+            $productSellersId = $request->input('product_id');
+            $product = Carts::find($productSellersId);
+            $userId = auth()->id();
+
+            if (!$product) {
+                return redirect()->back()->with('error', 'Product not found.');
+            }
+
+            $quantityToAdd = $request->input('quantity', 1);
+            $price = $product->rent_price;
+
+            $cartItem = Carts::where('customer_id', $userId)
+                            ->where('products_sellers_id', $product->id)
+                            ->first();
+
+            if ($cartItem) {
+                $cartItem->quantity += $quantityToAdd;
+                $cartItem->total = $cartItem->quantity * $price;
+                $cartItem->save();
+            } else {
+                Carts::create([
+                    'customer_id' => $userId,
+                    'products_sellers_id' => $product->id,
+                    'purchase_price' => null,
+                    'rent_price' => $price,
+                    'quantity' => $quantityToAdd,
+                    'total' => $quantityToAdd * $price,
+                    'endtotal' => $quantityToAdd * $price,
+                    'action' => 'rent',
                 ]);
             }
 
-            // Menghitung total akhir untuk keranjang saat ini
             $endtotal = Carts::where('customer_id', $userId)->sum('total');
             Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
 
             return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
         }
+
 
 
     /**
