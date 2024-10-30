@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <meta charset="utf-8">
-        <title>ZZF Industri - Cart Page</title>
+        <title>ZZF Industri - Checkout Page</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -400,91 +400,6 @@ h2.section-heading {
         <!-- Navbar & Hero End -->
 
 <br><br>
-
-               <!-- Cart Section -->
-<section class="page-section" id="tentang">
-    <div class="container text-center">
-        <h2 class="section-heading text-uppercase">Your Cart</h2>
-        <h3 class="section-subheading text-muted">Review your selected products and proceed to checkout</h3>
-        <div class="cart-info">
-                    <form action="{{ route('checkout.store') }}" method="POST" id="checkout-form">
-                @csrf
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Product</th>
-                            <th>Price (Purchase)</th>
-                            <th>Price (Rent)</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            @foreach ($groupedCartItems as $seller => $items)
-                                <tr>
-                                    <td colspan="7" style="text-align: left;">
-                                        <h6>{{ $items[0]->productSellers && $items[0]->productSellers->seller ? $items[0]->productSellers->seller->name : 'PT ZZF Industry' }}</h6>
-                                    </td>
-                                </tr>
-                                @foreach ($items as $item)
-                                    <tr>
-                                        <td class="product-thumbnail">
-                                            <input type="checkbox" class="item-checkbox" name="selected_items[]" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
-                                            @if ($item->product)
-                                                <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
-                                            @elseif ($item->productSellers)
-                                                <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
-                                            @else
-                                                No Image
-                                            @endif
-                                        </td>
-                                        <td>{{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}</td>
-                                        <td>Rp{{ number_format($item->product ? $item->product->purchase_price : $item->productSellers->purchase_price, 0, ',', '.') }}</td>
-                                        <td>Rp{{ number_format($item->product ? $item->product->rent_price : $item->productSellers->rent_price, 0, ',', '.') }}</td>
-                                        <td class="text-center">
-                                            <span class="quantity-text">{{ $item->quantity }}</span>
-                                        </td>
-                                        <td class="total-price" data-total="{{ $item->total }}">
-                                            Rp{{ number_format($item->total, 0, ',', '.') }}
-                                        </td>
-                                        <td>
-                                            <a href="/hapuscart/{{ $item->id }}"  class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)">Remove</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="5" class="text-end"><strong>Total Keseluruhan:</strong></td>
-                            <td id="grand-total" name="total_amount">Rp0</td> <!-- Inisialisasi grand total -->
-                            <td></td>
-                        </tr>
-                    </tfoot>
-                    <input type="hidden" name="total_amount" id="hidden-grand-total">
-                </table>
-
-                <div class="mb-3">
-                    <label for="action" class="form-label">Action</label>
-                    <select class="form-select" aria-label="Default select example" id="action" name="checkout_type" required>
-                        <option selected disabled>Choose Action Type</option>
-                        <option value="rent">Rent</option>
-                        <option value="purchase">Order</option>
-                    </select>
-                </div>
-
-                <div class="d-flex justify-content-between mb-3">
-                    <a href="/" class="btn1 btn-info">Continue To Shopping</a>
-                    <button type="submit" class="btn2 btn-info">Proceed to Checkout</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-
-<br><br>
        <!-- Copyright Start -->
        <div class="container-fluid copyright py-4">
             <div class="container">
@@ -517,83 +432,6 @@ h2.section-heading {
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     </body>
-
-    <!-- Js Logic -->
-
-    <script>
-    function updateTotal(input) {
-        let row = input.closest('tr'); // Ambil elemen <tr> terdekat
-        let price = parseFloat(input.dataset.price); // Ambil harga dari data atribut
-        let quantity = parseInt(input.value); // Ambil nilai quantity
-        let totalPrice = price * quantity; // Hitung total untuk item ini
-
-        // Update total price di row ini
-        row.querySelector('.total-price').textContent = 'Rp' + totalPrice.toLocaleString('id-ID', { minimumFractionDigits: 0 });
-        row.querySelector('.total-price').setAttribute('data-total', totalPrice); // Update data atribut total
-
-        // Hitung total keseluruhan
-        let grandTotal = 0;
-        document.querySelectorAll('.total-price').forEach(function(item) {
-            grandTotal += parseFloat(item.getAttribute('data-total')); // Ambil data total dari setiap item
-        });
-
-        // Update total keseluruhan
-        document.getElementById('grand-total').textContent = 'Rp' + grandTotal.toLocaleString('id-ID', { minimumFractionDigits: 0 });
-    }
-
-    // Ambil semua checkbox dan elemen grand total
-    const checkboxes = document.querySelectorAll('.item-checkbox');
-    const grandTotalElement = document.getElementById('grand-total');
-
-    // Fungsi untuk menghitung ulang total
-    function updateGrandTotal() {
-        let grandTotal = 0;
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                grandTotal += parseFloat(checkbox.value); // Tambahkan nilai item yang dipilih
-            }
-        });
-        grandTotalElement.textContent = 'Rp' + new Intl.NumberFormat('id-ID').format(grandTotal); // Format ke Rupiah
-    }
-
-    // Event listener untuk setiap checkbox
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateGrandTotal);
-    });
-
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const checkboxes = document.querySelectorAll('.item-checkbox');
-        const grandTotalElement = document.getElementById('grand-total');
-        const hiddenGrandTotal = document.getElementById('hidden-grand-total');
-
-        // Fungsi untuk menghitung total
-        function calculateGrandTotal() {
-            let grandTotal = 0;
-            checkboxes.forEach(checkbox => {
-                if (checkbox.checked) {
-                    const row = checkbox.closest('tr');
-                    const totalPrice = parseFloat(row.querySelector('.total-price').getAttribute('data-total'));
-                    grandTotal += totalPrice; // Tambahkan total harga item ke grand total
-                }
-            });
-            // Update grand total di elemen
-            grandTotalElement.innerText = 'Rp' + grandTotal.toLocaleString('id-ID');
-            hiddenGrandTotal.value = grandTotal; // Update hidden input dengan grand total
-        }
-
-        // Tambahkan event listener untuk checkbox
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', calculateGrandTotal);
-        });
-
-        // Panggil fungsi untuk menghitung total saat halaman dimuat
-        calculateGrandTotal();
-    });
-</script>
-
 
 @if (Session::has('success'))
       <script>

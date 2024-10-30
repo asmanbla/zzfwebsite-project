@@ -35,6 +35,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartHomeController;
 use App\Http\Controllers\OrderPageController;
 use App\Http\Controllers\ProductViewController;
+use App\Http\Controllers\CheckoutViewController;
 use App\Http\Controllers\AuthController;
 
 
@@ -183,7 +184,7 @@ Route::resource('dashprofileseller', App\Http\Controllers\DashProfileSellerContr
 // Route Halaman Customer 
 Route::middleware(['auth:customers'])->group(function () {
     Route::get('/cartpage', [CartHomeController::class, 'index'])->name('carthome.index'); // Menampilkan halaman cart
-    
+
     // Route untuk menambahkan produk dari products_zzfs
     Route::post('/cart/add/product/{id}', [CartHomeController::class, 'addToCart'])->name('cart.addToCart'); // Menambahkan item ke cart (products_zzfs)
     
@@ -194,7 +195,14 @@ Route::middleware(['auth:customers'])->group(function () {
     Route::post('/cart/add/seller/rent/{id}', [CartHomeController::class, 'addToCartRent'])->name('cart.addToCartRent');
 
 
-    Route::delete('/cart/remove/{id}', [CartHomeController::class, 'destroy'])->name('carthome.destroy');
+    // Route::delete('/cart/remove/{id}', [CheckoutViewController::class, 'destroy'])->name('carthome.destroy');
+    Route::get('/hapuscart/{id}', [CartHomeController::class, 'hapuscart'])->name('hapuscart');
+
+    // Route Halaman Checkout 
+    Route::get('/checkout', [CheckoutViewController::class, 'index'])->name('checkout.index'); // Menampilkan halaman Checkout
+
+    Route::post('/checkout/store', [CheckoutViewController::class, 'store'])->name('checkout.store');
+
 
  // Menghapus item dari cart
 

@@ -166,13 +166,12 @@
 
             <div class="row mt-4 justify-content-center">
                 <div class="col-md-6">
-                    <a href="/dashboardseller" type="button" class="btn btn-warning">
+                    <a href="/dashboardseller" type="button" class="btn btn-secondary">
                         <i class="fas fa-arrow-left me-2"></i>Back To Dashboard Page
                     </a>
                 </div>
             </div>
         </div>
-
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">

@@ -95,103 +95,102 @@ class CartHomeController extends Controller
     //     return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
     // }
 
-    public function addToCartPurchase(Request $request)
-        {
-            $productSellersId = $request->input('product_id');
-            $product = Carts::find($productSellersId); // Mengambil produk dari product_sellers berdasarkan ID
-            $userId = auth()->id();
-        
-            if (!$product) {
-                return redirect()->back()->with('error', 'Product not found.');
-            }
-        
-            $quantityToAdd = $request->input('quantity', 1);
-        
-            // Menentukan harga sesuai dengan tipe produk (purchase atau rent)
-            $price = $product->purchase_price;
-        
-            // Mencari item di keranjang berdasarkan ID produk dan tipe
-            $cartItem = Carts::where('customer_id', $userId)
-                            ->where('products_sellers_id', $product->id)
-                            ->where('action', 'purchase')
-                            ->first();
-        
-            if ($cartItem) {
-                // Update item yang sudah ada di keranjang
-                $cartItem->quantity += $quantityToAdd;
-                $cartItem->total = $cartItem->quantity * $price;
-                $cartItem->save();
-            } else {
-                // Menambahkan item baru ke keranjang
-                Carts::create([
-                    'customer_id' => $userId,
-                    'products_sellers_id' => $product->id,
-                    'purchase_price' => $price,
-                    'rent_price' => null,
-                    'quantity' => $quantityToAdd,
-                    'total' => $quantityToAdd * $price,
-                    'endtotal' => $quantityToAdd * $price,
-                    'action' => 'purchase', // Menandai sebagai pembelian
-                ]);
-            }
-        
-            // Menghitung total akhir untuk keranjang saat ini
-            $endtotal = Carts::where('customer_id', $userId)->sum('total');
-            Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
-        
-            return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
-        }
-        
-        public function addToCartRent(Request $request)
-        {
-            $productSellersId = $request->input('product_id');
-            $product = Carts::find($productSellersId);
-            $userId = auth()->id();
+   public function addToCartPurchase(Request $request)
+{
+    $productSellersId = $request->input('product_id');
+    $product = ProductSellers::find($productSellersId); // Mengambil produk dari product_sellers
+    $userId = auth()->id();
 
-            if (!$product) {
-                return redirect()->back()->with('error', 'Product not found.');
-            }
+    if (!$product) {
+        return redirect()->back()->with('error', 'Product not found.');
+    }
 
-            $quantityToAdd = $request->input('quantity', 1);
-            $price = $product->rent_price;
+    $quantityToAdd = $request->input('quantity', 1);
+    $price = $product->purchase_price;
 
-            $cartItem = Carts::where('customer_id', $userId)
-                            ->where('products_sellers_id', $product->id)
-                            ->first();
+    $cartItem = Carts::where('customer_id', $userId)
+                    ->where('products_sellers_id', $product->id)
+                    ->where('action', 'purchase')
+                    ->first();
 
-            if ($cartItem) {
-                $cartItem->quantity += $quantityToAdd;
-                $cartItem->total = $cartItem->quantity * $price;
-                $cartItem->save();
-            } else {
-                Carts::create([
-                    'customer_id' => $userId,
-                    'products_sellers_id' => $product->id,
-                    'purchase_price' => null,
-                    'rent_price' => $price,
-                    'quantity' => $quantityToAdd,
-                    'total' => $quantityToAdd * $price,
-                    'endtotal' => $quantityToAdd * $price,
-                    'action' => 'rent',
-                ]);
-            }
+    if ($cartItem) {
+        $cartItem->quantity += $quantityToAdd;
+        $cartItem->total = $cartItem->quantity * $price;
+        $cartItem->save();
+    } else {
+        Carts::create([
+            'customer_id' => $userId,
+            'products_sellers_id' => $product->id,
+            'purchase_price' => $price,
+            'quantity' => $quantityToAdd,
+            'total' => $quantityToAdd * $price,
+            'endtotal' => $quantityToAdd * $price,
+            'action' => 'purchase',
+        ]);
+    }
 
-            $endtotal = Carts::where('customer_id', $userId)->sum('total');
-            Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
+    $endtotal = Carts::where('customer_id', $userId)->sum('total');
+    Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
 
-            return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
-        }
+    return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
+}
+
+public function addToCartRent(Request $request)
+{
+    $productSellersId = $request->input('product_id');
+    $product = ProductSellers::find($productSellersId);
+    $userId = auth()->id();
+
+    if (!$product) {
+        return redirect()->back()->with('error', 'Product not found.');
+    }
+
+    $quantityToAdd = $request->input('quantity', 1);
+    $price = $product->rent_price;
+
+    $cartItem = Carts::where('customer_id', $userId)
+                    ->where('products_sellers_id', $product->id)
+                    ->where('action', 'rent')
+                    ->first();
+
+    if ($cartItem) {
+        $cartItem->quantity += $quantityToAdd;
+        $cartItem->total = $cartItem->quantity * $price;
+        $cartItem->save();
+    } else {
+        Carts::create([
+            'customer_id' => $userId,
+            'products_sellers_id' => $product->id,
+            'rent_price' => $price,
+            'quantity' => $quantityToAdd,
+            'total' => $quantityToAdd * $price,
+            'endtotal' => $quantityToAdd * $price,
+            'action' => 'rent',
+        ]);
+    }
+
+    $endtotal = Carts::where('customer_id', $userId)->sum('total');
+    Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
+
+    return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
+}
 
 
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function hapuscart($id)
     {
+        // Temukan dan hapus item wishlist berdasarkan ID
         $cartItem = Carts::findOrFail($id);
-        $cartItem->delete();
 
-        return redirect()->back()->with('success', 'Item berhasil dihapus dari keranjang!');
+        // Pastikan item wishlist milik pengguna yang saat ini login
+        if ($cartItem->customer_id === Auth::id()) {
+            $cartItem->delete();
+            return redirect()->route('carthome.index')->with('success', 'Product Berhasil Dihapus dari carthome');
+        } else {
+            return redirect()->route('carthome.index')->with('error', 'You are not authorized to delete this item.');
+        }
     }
 }
