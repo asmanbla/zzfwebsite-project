@@ -71,6 +71,7 @@
             transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
         }
 
+
         .footer {
    
     text-align: center; /* Teks di tengah */
@@ -407,89 +408,87 @@
 
         <!-- About End -->
 
-        <!-- Features Start -->
-        <div class="container-fluid feature py-5" id="keunggulan">
-            <div class="container py-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Speciality</span></h1>
-                    <p class="mb-0">PT ZZF offers a variety of products with very high quality and affordable
-                    </p>
-                </div>
-                <div class="row g-4 align-items-center">
-                    <div class="col-xl-4">
-                        <div class="row gy-4 gx-0">
-                            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="feature-item">
-                                    <div class="feature-icon">
-                                        <span class="fa fa-trophy fa-2x"></span>
-                                    </div>
-                                    <div class="ms-4">
-                                        <h5 class="mb-3">Low Price</h5>
-                                        <p class="mb-0">Offer quality solutions at a more affordable cost than competitors.
-                                        </p>
-                                    </div>
-                                </div>
+<!-- Features Start -->
+<div class="container-fluid feature py-5" id="keunggulan">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Speciality</span></h1>
+            <p class="mb-0">PT ZZF offers a variety of products with very high quality and affordable</p>
+        </div>
+        <div class="row g-4 align-items-center">
+            <div class="col-xl-4">
+                <div class="row gy-4 gx-0">
+                    <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <span class="fa fa-dollar-sign fa-2x"></span> <!-- Ikon untuk Low Price -->
                             </div>
-                            <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="feature-item">
-                                    <div class="feature-icon">
-                                        <span class="fa fa-road fa-2x"></span>
-                                    </div>
-                                    <div class="ms-4">
-                                        <h5 class="mb-3">Time Efficiency</h5>
-                                        <p class="mb-0">Efficiently complete projects in faster time without sacrificing quality.</p>
-                                    </div>
-                                </div>
+                            <div class="ms-4">
+                                <h5 class="mb-3">Low Price</h5>
+                                <p class="mb-0">Offer quality solutions at a more affordable cost than competitors.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="img/keunggulan.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="row gy-4 gx-0">
-                            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="feature-item justify-content-end">
-                                    <div class="text-end me-4">
-                                        <h5 class="mb-3">Service Flexibility</h5>
-                                        <p class="mb-0">Offer solutions that can be tailored to the specific needs of the project.</p>
-                                    </div>
-                                    <div class="feature-icon">
-                                        <span class="fa fa-tag fa-2x"></span>
-                                    </div>
-                                </div>
+                    <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <span class="fa fa-clock fa-2x"></span> <!-- Ikon untuk Time Efficiency -->
                             </div>
-                            <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="feature-item justify-content-end">
-                                    <div class="text-end me-4">
-                                        <h5 class="mb-3">Machine Reliability</h5>
-                                        <p class="mb-0">Using reliable, durable high-quality tools to ensure maximum productivity.</p>
-                                    </div>
-                                    <div class="feature-icon">
-                                        <span class="fa fa-map-pin fa-2x"></span>
-                                    </div>
-                                </div>
+                            <div class="ms-4">
+                                <h5 class="mb-3">Time Efficiency</h5>
+                                <p class="mb-0">Efficiently complete projects in faster time without sacrificing quality.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                <img src="img/keunggulan.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
+            </div>
+            <div class="col-xl-4">
+                <div class="row gy-4 gx-0">
+                    <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="feature-item justify-content-end">
+                            <div class="text-end me-4">
+                                <h5 class="mb-3">Service Flexibility</h5>
+                                <p class="mb-0">Offer solutions that can be tailored to the specific needs of the project.</p>
+                            </div>
+                            <div class="feature-icon">
+                                <span class="fa fa-cogs fa-2x"></span> <!-- Ikon untuk Service Flexibility -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="feature-item justify-content-end">
+                            <div class="text-end me-4">
+                                <h5 class="mb-3">Machine Reliability</h5>
+                                <p class="mb-0">Using reliable, durable high-quality tools to ensure maximum productivity.</p>
+                            </div>
+                            <div class="feature-icon">
+                                <span class="fa fa-check-circle fa-2x"></span> <!-- Ikon untuk Machine Reliability -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Features End -->
+    </div>
+</div>
+<!-- Features End -->
 
-        <!-- Services Start -->
-        <div class="container-fluid service py-5" id="service">
+
+<!-- Services Start -->
+<div class="container-fluid service py-5" id="service">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">Type Of <span class="text-primary">Services</span></h1>
             <p class="mb-0">Choose According to your needs</p>
         </div>
-        <!-- <a href="/dashboardseller" class="text-decoration-none"> -->
         <div class="row g-4 d-flex justify-content-center">
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item p-4">
                     <div class="service-icon mb-4">
-                        <i class="fa fa-phone-alt fa-2x"></i>
+                        <i class="fa fa-truck fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Heavy Equipment Sales</h5>
                 </div>
@@ -497,7 +496,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item p-4">
                     <div class="service-icon mb-4">
-                        <i class="fa fa-money-bill-alt fa-2x"></i>
+                        <i class="fa fa-tools fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Heavy Equipment Rental</h5>
                 </div>
@@ -505,7 +504,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item p-4">
                     <div class="service-icon mb-4">
-                        <i class="fa fa-road fa-2x"></i>
+                        <i class="fa fa-cogs fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Component Rental</h5>
                 </div>
@@ -513,16 +512,34 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item p-4">
                     <div class="service-icon mb-4">
-                        <i class="fa fa-road fa-2x"></i>
+                        <i class="fa fa-box fa-2x"></i>
                     </div>
                     <h5 class="mb-3">Component Sales</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item p-4">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-tags fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Bundling Sales</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.9s">
+                <div class="service-item p-4">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Bundling Rental</h5>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Services End -->
 
-        <!-- Services End -->
+
+
 
         <!-- Banner Start -->
         <div class="container-fluid banner pb-5 wow zoomInDown" data-wow-delay="0.1s" id="kontak">

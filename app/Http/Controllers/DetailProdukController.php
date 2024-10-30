@@ -11,6 +11,7 @@ use App\Models\ProductReviewsSellers;
 use App\Models\Carts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
 
 class DetailProdukController extends Controller
 {
@@ -34,6 +35,7 @@ class DetailProdukController extends Controller
                     $imageUrls[] = asset('storage/' . $product->{'image'.$i.'_url'});
                 }
             }
+            
     
             // Kirim variabel $totalItems ke view
             return view('produkdetails.index', compact('product', 'imageUrls', 'totalItems'));
@@ -53,11 +55,17 @@ class DetailProdukController extends Controller
         }
     
         try {
-            $productseller = ProductSellers::findOrFail($id); // Mengambil produk berdasarkan ID
+            // Mengambil produk berdasarkan ID dari vwprodukseller
+            $productseller = DB::table('vwprodukseller')->where('id', $id)->first(); 
+    
+            // Jika produk tidak ditemukan, lempar exception
+            if (!$productseller) {
+                abort(404); // Jika produk tidak ditemukan
+            }
     
             // Mendapatkan URL gambar (jika ada)
             $imageUrls = [];
-            for ($i = 1; $i <= 5; $i++) {
+            for ($i = 1; $i <=3 ; $i++) {
                 if ($productseller->{'image'.$i.'_url'}) {
                     $imageUrls[] = asset('storage/' . $productseller->{'image'.$i.'_url'});
                 }
@@ -65,11 +73,10 @@ class DetailProdukController extends Controller
     
             // Kirim variabel $totalItems ke view
             return view('produkdetailseller.index', compact('productseller', 'imageUrls', 'totalItems'));
+            
         } catch (ModelNotFoundException $e) {
             abort(404); // Jika produk tidak ditemukan
         }
     }
-    
-
     
 }

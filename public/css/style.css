@@ -288,21 +288,28 @@
 }
 
 .feature .feature-item .feature-icon span {
-    width: 90px; 
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--bs-secondary);
-    background: var(--bs-primary);
-    border-radius: 67% 33% 29% 71% / 39% 46% 54% 61%;;
-    animation-name: icon-animat;
-    animation-duration: 5s;
-    animation-delay: 1s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    transition: 0.5s;
+    width: 90px !important; 
+    height: 90px !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--bs-secondary) !important;
+    background: var(--bs-primary) !important;
+    border-radius: 50% !important; /* bikin lingkaran sempurna */
+    box-sizing: border-box !important; /* pastikan ukuran menghitung padding dan border */
+    animation-name: icon-animat !important;
+    animation-duration: 5s !important;
+    animation-delay: 1s !important;
+    animation-direction: alternate !important;
+    animation-iteration-count: infinite !important;
+    transition: 0.5s !important;
 }
+
+.feature .feature-item .feature-icon span i {
+    font-size: 40px !important; /* atur ukuran icon */
+}
+
+
 
 /*** Features End ***/
 
@@ -457,21 +464,23 @@
 }
 
 .service .service-item .service-icon {
-    width: 90px; 
-    height: 90px; 
-    border-radius: 67% 33% 29% 71% / 39% 46% 54% 61%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--bs-secondary);
-    background: var(--bs-primary);
-    animation-name: icon-animat;
-    animation-duration: 5s;
-    animation-delay: 1s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    transition: 0.5s;
+    width: 90px !important; 
+    height: 90px !important; 
+    border-radius: 50% !important; /* bikin lingkaran sempurna */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--bs-secondary) !important;
+    background: var(--bs-primary) !important;
+    animation-name: icon-animat !important;
+    animation-duration: 5s !important;
+    animation-delay: 1s !important;
+    animation-direction: alternate !important;
+    animation-iteration-count: infinite !important;
+    transition: 0.5s !important;
 }
+
+
 /*** Service End ***/
 
 /*** Cars Categories Start ***/
