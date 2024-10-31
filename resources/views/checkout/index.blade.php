@@ -327,6 +327,106 @@ h2.section-heading {
             border: none;
         }
 
+        .checkoutpage {
+            max-width: 1200px; /* Lebar maksimum untuk kontainer */
+            margin: 40px auto; /* Memusatkan konten dan memberi jarak atas-bawah */
+            padding: 20px;
+        }
+
+        /* Checkout Page Layout */
+        .checkoutpage .row {
+            display: flex;
+            justify-content: space-between; /* Memberi jarak antara kotak */
+            flex-wrap: wrap; /* Supaya responsif dan pindah ke bawah di layar kecil */
+            gap: 25px; /* Jarak antar-kotak */
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+       /* Gaya Umum */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Latar belakang abu-abu terang untuk kontras */
+            color: #333; /* Warna teks utama */
+        }
+
+       /* Gaya Umum */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Checkout Page Layout */
+.checkoutpage .row {
+    display: flex;
+    justify-content: space-between; /* Memberi jarak antara kotak */
+    flex-wrap: wrap; /* Supaya responsif dan pindah ke bawah di layar kecil */
+    gap: 20px; /* Jarak antar-kotak */
+    padding: 20px; /* Ruang di sekitar konten */
+}
+
+/* Kotak Data Customer dan Barang yang Dipilih */
+.stylekotak {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 48%; /* Agar kotak berukuran setengah layar dan responsif */
+    min-width: 300px; /* Menjaga lebar minimum kotak */
+}
+
+/* Judul Kotak */
+.stylekotak h3 {
+    color: #b71c1c;
+    margin-bottom: 10px;
+}
+
+/* Daftar Barang yang Dipilih */
+#selected-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Item Daftar */
+#selected-items li {
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Item terakhir tanpa garis bawah */
+#selected-items li:last-child {
+    border-bottom: none;
+}
+
+/* Gaya untuk Tombol */
+.btn1, .btn2 {
+    background-color: #0d47a1;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efek hover untuk tombol */
+.btn1:hover, .btn2:hover {
+    background-color: #1976d2;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .checkoutpage .row {
+        flex-direction: column; /* Menyusun kotak ke bawah di layar kecil */
+    }
+}
+
+
         </style>
 
     </head>
@@ -398,6 +498,35 @@ h2.section-heading {
             </div>
         </div>
         <!-- Navbar & Hero End -->
+
+          <!-- Isi dari halaman -->
+
+          <div class="checkoutpage">
+            <div class="row">
+
+                <!-- Kotak Kanan: Data Customer -->
+                <div class="stylekotak">
+                    <h3>Data Customer</h3>
+                    <p>Nama: {{ $customer->name }}</p>
+                    <p>Email: {{ $customer->email }}</p>
+                    <p>Telepon: {{ $customer->phone }}</p>
+                    <p>Address: {{ $customer->address1 }}</p>
+                    <p>Another Address: {{ $customer->address2 }}</p>
+                    <!-- Tambahkan field lain sesuai kebutuhan -->
+                </div>
+
+                <div class="stylekotak">
+                    <h3>Barang yang Dipilih</h3>
+                    <ul id="selected-items">
+                        @forelse($selectedItems as $item)
+                            <li>{{ $item->productSellers->product_name }} - Rp{{ number_format($item->productSellers->purchase_price ?? $item->productSellers->rent_price, 0, ',', '.') }}</li>
+                        @empty
+                            <li>Tidak ada barang yang dipilih.</li>
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 <br><br>
        <!-- Copyright Start -->

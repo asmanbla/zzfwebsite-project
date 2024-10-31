@@ -429,6 +429,7 @@ h2.section-heading {
                                     </td>
                                 </tr>
                                 @foreach ($items as $item)
+<<<<<<< HEAD
 <tr>
     <td class="product-thumbnail">
         <input type="checkbox" class="item-checkbox" name="selected_items[]" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
@@ -469,6 +470,33 @@ h2.section-heading {
 </tr>
 @endforeach
 
+=======
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <input type="checkbox" class="item-checkbox" name="selected_items[]" id ="selectedItems" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
+                                            @if ($item->product)
+                                                <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
+                                            @elseif ($item->productSellers)
+                                                <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
+                                            @else
+                                                No Image
+                                            @endif
+                                        </td>
+                                        <td>{{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}</td>
+                                        <td>Rp{{ number_format($item->product ? $item->product->purchase_price : $item->productSellers->purchase_price, 0, ',', '.') }}</td>
+                                        <td>Rp{{ number_format($item->product ? $item->product->rent_price : $item->productSellers->rent_price, 0, ',', '.') }}</td>
+                                        <td class="text-center">
+                                            <span class="quantity-text">{{ $item->quantity }}</span>
+                                        </td>
+                                        <td class="total-price" data-total="{{ $item->total }}">
+                                            Rp{{ number_format($item->total, 0, ',', '.') }}
+                                        </td>
+                                        <td>
+                                            <a href="/hapuscart/{{ $item->id }}"  class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)">Remove</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+>>>>>>> 0252c3ea99e7c8f525c207540569881463bf7c18
                             @endforeach
                     </tbody>
 
@@ -487,7 +515,7 @@ h2.section-heading {
                     <select class="form-select" aria-label="Default select example" id="action" name="checkout_type" required>
                         <option selected disabled>Choose Action Type</option>
                         <option value="rent">Rent</option>
-                        <option value="purchase">Order</option>
+                        <option value="purchase">Purchase</option>
                     </select>
                 </div>
 
