@@ -12,6 +12,7 @@ class SewaSellers extends Model
         'id',
         'sellers_id',
         'customers_id',
+        'product_sellers_id',
         'start_date',
         'finish_date',
         'total_amount',

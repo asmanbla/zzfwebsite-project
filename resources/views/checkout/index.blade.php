@@ -519,11 +519,32 @@ body {
                     <h3>Barang yang Dipilih</h3>
                     <ul id="selected-items">
                         @forelse($selectedItems as $item)
-                            <li>{{ $item->productSellers->product_name }} - Rp{{ number_format($item->productSellers->purchase_price ?? $item->productSellers->rent_price, 0, ',', '.') }}</li>
+                            <li class="item-container" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <img src="{{ asset('storage/' .$item->image1_url) }}" alt="{{ $item->product_name }}" style="width: 100px; height: auto; margin-right: 10px;">
+                                <div class="item-details">
+                                    <h4>{{ $item->product_name }}</h4>
+                                    <p>Penjual: {{ $item->seller->name }}</p>
+                                    <p>Harga: 
+                                        @if($item->type == 'purchase')
+                                            Rp{{ number_format($item->purchase_price, 0, ',', '.') }}
+                                        @elseif($item->type == 'rent')
+                                            Rp{{ number_format($item->rent_price, 0, ',', '.') }}
+                                        @else
+                                            Harga tidak tersedia
+                                        @endif
+                                    </p>
+                                </div>
+                            </li>
                         @empty
                             <li>Tidak ada barang yang dipilih.</li>
                         @endforelse
                     </ul>
+                    @if($selectedItems->isNotEmpty())
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                            <h4>Total Harga: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
+                            <a href="" class="btn btn-primary">Bayar</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
