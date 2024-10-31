@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('product_sellers_id');
             $table->foreign('product_sellers_id')->references('id')->on('product_sellers')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('carts_id');
+            $table->foreign('carts_id')->references('id')->on('carts')->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('start_date'); 
             $table->dateTime('finish_date'); 
             $table->bigInteger('total_amount'); 
