@@ -29,5 +29,10 @@ class OrderSellers extends Model
     {
         return $this->belongsTo(Customers::class, 'customers_id');
     }
-    
+
+    public function productSellers()
+    {
+        return $this->belongsTo(ProductSellers::class, 'product_id');
     }
+
+}

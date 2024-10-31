@@ -431,7 +431,7 @@ h2.section-heading {
                                 @foreach ($items as $item)
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <input type="checkbox" class="item-checkbox" name="selected_items[]" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
+                                            <input type="checkbox" class="item-checkbox" name="selected_items[]" id ="selectedItems" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
                                             @if ($item->product)
                                                 <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
                                             @elseif ($item->productSellers)
@@ -471,7 +471,7 @@ h2.section-heading {
                     <select class="form-select" aria-label="Default select example" id="action" name="checkout_type" required>
                         <option selected disabled>Choose Action Type</option>
                         <option value="rent">Rent</option>
-                        <option value="purchase">Order</option>
+                        <option value="purchase">Purchase</option>
                     </select>
                 </div>
 
