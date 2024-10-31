@@ -429,33 +429,49 @@ h2.section-heading {
                                     </td>
                                 </tr>
                                 @foreach ($items as $item)
-                                    <tr>
-                                        <td class="product-thumbnail">
-                                            <input type="checkbox" class="item-checkbox" name="selected_items[]" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
-                                            @if ($item->product)
-                                                <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
-                                            @elseif ($item->productSellers)
-                                                <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
-                                            @else
-                                                No Image
-                                            @endif
-                                        </td>
-                                        <td>{{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}</td>
-                                        <td>Rp{{ number_format($item->product ? $item->product->purchase_price : $item->productSellers->purchase_price, 0, ',', '.') }}</td>
-                                        <td>Rp{{ number_format($item->product ? $item->product->rent_price : $item->productSellers->rent_price, 0, ',', '.') }}</td>
-                                        <td class="text-center">
-                                            <span class="quantity-text">{{ $item->quantity }}</span>
-                                        </td>
-                                        <td class="total-price" data-total="{{ $item->total }}">
-                                            Rp{{ number_format($item->total, 0, ',', '.') }}
-                                        </td>
-                                        <td>
-                                            <a href="/hapuscart/{{ $item->id }}"  class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)">Remove</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+<tr>
+    <td class="product-thumbnail">
+        <input type="checkbox" class="item-checkbox" name="selected_items[]" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
+        @if ($item->product)
+            <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
+        @elseif ($item->productSellers)
+            <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
+        @else
+            No Image
+        @endif
+    </td>
+    <td>{{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}</td>
+    <td class="purchase-price" data-price="{{ $item->product ? $item->product->purchase_price : $item->productSellers->purchase_price }}">
+    Rp{{ number_format($item->product ? $item->product->purchase_price : $item->productSellers->purchase_price, 0, ',', '.') }}
+</td>
+<td class="rent-price" data-price="{{ $item->product ? $item->product->rent_price : $item->productSellers->rent_price }}">
+    Rp{{ number_format($item->product ? $item->product->rent_price : $item->productSellers->rent_price, 0, ',', '.') }}
+</td>
+    <td class="text-center">
+    <form action="{{ route('cart.updateQuantity', $item->id) }}" method="POST" style="display: inline;">
+        @csrf
+        <input type="hidden" name="quantity" value="{{ $item->quantity - 1 }}">
+        <button type="submit" class="btn btn-sm btn-light">-</button>
+    </form>
+    <span class="quantity-text">{{ $item->quantity }}</span>
+    <form action="{{ route('cart.updateQuantity', $item->id) }}" method="POST" style="display: inline;">
+        @csrf
+        <input type="hidden" name="quantity" value="{{ $item->quantity + 1 }}">
+        <button type="submit" class="btn btn-sm btn-light">+</button>
+    </form>
+</td>
+<td class="total-price">
+    Rp{{ number_format($item->total, 0, ',', '.') }}
+</td>
+    <td>
+        <a href="/hapuscart/{{ $item->id }}" class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)">Remove</a>
+    </td>
+</tr>
+@endforeach
+
                             @endforeach
                     </tbody>
+
                     <tfoot>
                         <tr>
                             <td colspan="5" class="text-end"><strong>Total Keseluruhan:</strong></td>
@@ -484,6 +500,65 @@ h2.section-heading {
     </div>
 </section>
 
+<script>
+    // Fungsi untuk mengupdate grand total
+function updateGrandTotal() {
+    let grandTotal = 0;
+
+    document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
+        const row = checkbox.closest('tr');
+        const totalCell = row.querySelector('.total-price');
+        const total = parseFloat(totalCell.getAttribute('data-total'));
+
+        if (!isNaN(total)) {
+            grandTotal += total;
+        }
+    });
+
+    document.getElementById('grand-total').innerText = 'Rp' + grandTotal.toLocaleString('id-ID');
+}
+
+// Fungsi untuk mengupdate total per item saat quantity berubah
+function updateItemTotal(row) {
+    const quantity = parseInt(row.querySelector('.quantity-input').value);
+    const price = parseFloat(row.querySelector('.price').getAttribute('data-price'));
+    const totalCell = row.querySelector('.total-price');
+    const total = quantity * price;
+
+    totalCell.innerText = 'Rp' + total.toLocaleString('id-ID');
+    totalCell.setAttribute('data-total', total);
+
+    updateGrandTotal();  // Perbarui grand total setelah item total diperbarui
+}
+
+// Event listener untuk tombol +
+document.querySelectorAll('.quantity-increase').forEach(button => {
+    button.addEventListener('click', function() {
+        const row = button.closest('tr');
+        const quantityInput = row.querySelector('.quantity-input');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        updateItemTotal(row);
+    });
+});
+
+// Event listener untuk tombol -
+document.querySelectorAll('.quantity-decrease').forEach(button => {
+    button.addEventListener('click', function() {
+        const row = button.closest('tr');
+        const quantityInput = row.querySelector('.quantity-input');
+        if (parseInt(quantityInput.value) > 1) {  // Cegah quantity < 1
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+            updateItemTotal(row);
+        }
+    });
+});
+
+// Checkbox change event to update grand total
+document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', updateGrandTotal);
+});
+
+</script>
 <br><br>
        <!-- Copyright Start -->
        <div class="container-fluid copyright py-4">
@@ -516,6 +591,9 @@ h2.section-heading {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+
+
     </body>
 
     <!-- Js Logic -->
@@ -560,6 +638,45 @@ h2.section-heading {
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateGrandTotal);
     });
+</script>
+
+<script>
+    document.querySelectorAll('.quantity-button').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const row = this.closest('tr');
+        const actionType = document.getElementById('action').value; // Check selected action
+
+        // Select price based on action type
+        const price = parseFloat(row.querySelector(
+            actionType === 'purchase' ? '.purchase-price' : '.rent-price'
+        ).textContent.replace(/[^0-9.-]+/g, ""));
+        
+        const quantity = parseInt(row.querySelector('.quantity-input').value);
+        const total = price * quantity;
+
+        
+    });
+});
+</script>
+
+<script>
+    document.querySelectorAll('.decrease-quantity').forEach(button => {
+    button.addEventListener('click', function() {
+        const quantityField = this.parentElement.querySelector('.quantity-input');
+        let quantity = parseInt(quantityField.value);
+
+        if (quantity > 1) {  // Hanya kurangi jika quantity > 1
+            quantity--;
+            quantityField.value = quantity;
+
+            // Update harga total produk dan grand total
+            updateTotalPrice(this, quantity);
+            updateGrandTotal();
+        }
+    });
+});
 
 </script>
 

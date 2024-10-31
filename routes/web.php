@@ -194,6 +194,7 @@ Route::middleware(['auth:customers'])->group(function () {
     // Route untuk menambahkan produk dari product_sellers berdasarkan harga rent
     Route::post('/cart/add/seller/rent/{id}', [CartHomeController::class, 'addToCartRent'])->name('cart.addToCartRent');
 
+    Route::post('/cart/updateQuantity/{id}', [CartHomeController::class, 'updateQuantity'])->name('cart.updateQuantity');
 
     // Route::delete('/cart/remove/{id}', [CheckoutViewController::class, 'destroy'])->name('carthome.destroy');
     Route::get('/hapuscart/{id}', [CartHomeController::class, 'hapuscart'])->name('hapuscart');
