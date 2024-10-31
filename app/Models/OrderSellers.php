@@ -12,6 +12,7 @@ class OrderSellers extends Model
         'id',
         'sellers_id',
         'customers_id',
+        'product_sellers_id',
         'order_date',
         'total_amount',
         'status'
