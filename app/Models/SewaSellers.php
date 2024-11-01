@@ -17,6 +17,7 @@ class SewaSellers extends Model
         'start_date',
         'finish_date',
         'total_amount',
+        'status_cart',
         'status'
     ];
 

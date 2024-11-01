@@ -16,6 +16,7 @@ class OrderSellers extends Model
         'product_sellers_id',
         'order_date',
         'total_amount',
+        'status_cart',
         'status'
     ];
 

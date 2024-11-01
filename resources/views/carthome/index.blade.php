@@ -422,7 +422,6 @@ h2.section-heading {
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
                     @foreach ($groupedCartItems as $seller => $items)
                         <tr style="height: 10px;"> <!-- Kurangi nilai tinggi sesuai keinginan -->
                             <td colspan="7" style="text-align: left; line-height: 10px;">
@@ -457,41 +456,7 @@ h2.section-heading {
                                         </td>
                                     </tr>
                                 @endforeach
-=======
-                        @foreach ($groupedCartItems as $seller => $items)
-                            <tr>
-                                <td colspan="7" style="text-align: left;">
-                                    <h6>{{ $items[0]->productSellers && $items[0]->productSellers->seller ? $items[0]->productSellers->seller->name : 'PT ZZF Industry' }}</h6>
-                                </td>
-                            </tr>
-                            @foreach ($items as $item)
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <input type="checkbox" class="item-checkbox" name="selected_items[]" value="{{ $item->productSellers->id }}" style="margin-right: 10px;" onclick="updateTotal()">
-                                        @if ($item->product)
-                                            <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
-                                        @elseif ($item->productSellers)
-                                            <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" style="width: 50px; height: 50px;">
-                                        @else
-                                            No Image
-                                        @endif
-                                    </td>
-                                    <td>{{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}</td>
-                                    <td>Rp{{ number_format($item->product ? $item->product->purchase_price : $item->productSellers->purchase_price, 0, ',', '.') }}</td>
-                                    <td>Rp{{ number_format($item->product ? $item->product->rent_price : $item->productSellers->rent_price, 0, ',', '.') }}</td>
-                                    <td class="text-center">
-                                        <span class="quantity-text">{{ $item->quantity }}</span>
-                                    </td>
-                                    <td class="total-price" data-total="{{ $item->total }}">
-                                        Rp{{ number_format($item->total, 0, ',', '.') }}
-                                    </td>
-                                    <td>
-                                        <a href="/hapuscart/{{ $item->id }}" class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)">Remove</a>
-                                    </td>
-                                </tr>
->>>>>>> c88346414f4b1c080dc93edfaf5aa5da0d4b54b9
                             @endforeach
-                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr>

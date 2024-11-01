@@ -184,51 +184,26 @@ class CartHomeController extends Controller
     
         return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
     }
-
-    $endtotal = Carts::where('customer_id', $userId)->sum('total');
-    Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
-
-    return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
-}
-
-public function addToCartRent(Request $request)
+    
+// Tambahkan metode di CartHomeController
+public function updateQuantity(Request $request, $id)
 {
-    $productSellersId = $request->input('product_id');
-    $product = ProductSellers::find($productSellersId);
-    $userId = auth()->id();
+    $cartItem = Carts::findOrFail($id);
+    $quantity = $request->input('quantity');
 
-    if (!$product) {
-        return redirect()->back()->with('error', 'Product not found.');
+    // Pastikan quantity minimal 1
+    $cartItem->quantity = max($quantity, 1);
+
+    // Update total berdasarkan action
+    if ($cartItem->action === 'purchase') {
+        $cartItem->total = $cartItem->quantity * $cartItem->productSellers->purchase_price;
+    } elseif ($cartItem->action === 'rent') {
+        $cartItem->total = $cartItem->quantity * $cartItem->productSellers->rent_price;
     }
 
-    $quantityToAdd = $request->input('quantity', 1);
-    $price = $product->rent_price;
+    $cartItem->save();
 
-    $cartItem = Carts::where('customer_id', $userId)
-                    ->where('products_sellers_id', $product->id)
-                    ->where('action', 'rent')
-                    ->first();
-
-    if ($cartItem) {
-        $cartItem->quantity += $quantityToAdd;
-        $cartItem->total = $cartItem->quantity * $price;
-        $cartItem->save();
-    } else {
-        Carts::create([
-            'customer_id' => $userId,
-            'products_sellers_id' => $product->id,
-            'rent_price' => $price,
-            'quantity' => $quantityToAdd,
-            'total' => $quantityToAdd * $price,
-            'endtotal' => $quantityToAdd * $price,
-            'action' => 'rent',
-        ]);
-    }
-
-    $endtotal = Carts::where('customer_id', $userId)->sum('total');
-    Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
-
-    return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
+    return redirect()->route('carthome.index');
 }
 
     /**
