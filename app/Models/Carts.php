@@ -17,6 +17,7 @@ class Carts extends Model
         'quantity',
         'total',
         'endtotal',
+        'status_cart',
         'action',
     ];
 

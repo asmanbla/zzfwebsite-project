@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('quantity');
             $table->string('total');
             $table->string('endtotal');
+            $table->enum('status_cart', ['in_cart','in_checkout','completed'])->default('in_cart'); 
             $table->enum('action', ['rent', 'purchase'])->default('rent');
             $table->timestamps();
-
             // Foreign key constraints
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('products_sellers_id')->references('id')->on('product_sellers')->onDelete('cascade');

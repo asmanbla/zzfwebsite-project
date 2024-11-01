@@ -22,7 +22,6 @@ return new class extends Migration
                 $table->foreign('carts_id')->references('id')->on('carts')->onDelete('cascade')->onUpdate('cascade');
                 $table->dateTime('order_date'); 
                 $table->bigInteger('total_amount');
-                $table->enum('status_cart', ['in_cart','in_checkout','completed'])->default('in_cart'); 
                 $table->enum('status', ['waiting for payment','processed','completed'])->default('waiting for payment');
                 $table->timestamps();
                 //Foreign Key Constraint
