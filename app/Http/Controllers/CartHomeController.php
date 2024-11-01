@@ -95,38 +95,94 @@ class CartHomeController extends Controller
     //     return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
     // }
 
-   public function addToCartPurchase(Request $request)
-{
-    $productSellersId = $request->input('product_id');
-    $product = ProductSellers::find($productSellersId); // Mengambil produk dari product_sellers
-    $userId = auth()->id();
-
-    if (!$product) {
-        return redirect()->back()->with('error', 'Product not found.');
+    public function addToCartPurchase(Request $request)
+    {
+        $productSellersId = $request->input('product_id');
+        $product = ProductSellers::find($productSellersId); // Mengambil produk dari product_sellers
+        $userId = auth()->id();
+    
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
+    
+        $quantityToAdd = $request->input('quantity', 1);
+        $price = $product->purchase_price;
+    
+        // Jika harga purchase_price adalah 0, berikan alert SweetAlert
+        if ($price == 0) {
+            return redirect()->back()->with('error', 'Barang tidak tersedia');
+        }
+    
+        $cartItem = Carts::where('customer_id', $userId)
+                        ->where('products_sellers_id', $product->id)
+                        ->where('action', 'purchase')
+                        ->first();
+    
+        if ($cartItem) {
+            $cartItem->quantity += $quantityToAdd;
+            $cartItem->total = $cartItem->quantity * $price;
+            $cartItem->save();
+        } else {
+            Carts::create([
+                'customer_id' => $userId,
+                'products_sellers_id' => $product->id,
+                'purchase_price' => $price,
+                'quantity' => $quantityToAdd,
+                'total' => $quantityToAdd * $price,
+                'endtotal' => $quantityToAdd * $price,
+                'action' => 'purchase',
+            ]);
+        }
+    
+        $endtotal = Carts::where('customer_id', $userId)->sum('total');
+        Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
+    
+        return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
     }
-
-    $quantityToAdd = $request->input('quantity', 1);
-    $price = $product->purchase_price;
-
-    $cartItem = Carts::where('customer_id', $userId)
-                    ->where('products_sellers_id', $product->id)
-                    ->where('action', 'purchase')
-                    ->first();
-
-    if ($cartItem) {
-        $cartItem->quantity += $quantityToAdd;
-        $cartItem->total = $cartItem->quantity * $price;
-        $cartItem->save();
-    } else {
-        Carts::create([
-            'customer_id' => $userId,
-            'products_sellers_id' => $product->id,
-            'purchase_price' => $price,
-            'quantity' => $quantityToAdd,
-            'total' => $quantityToAdd * $price,
-            'endtotal' => $quantityToAdd * $price,
-            'action' => 'purchase',
-        ]);
+    
+    public function addToCartRent(Request $request)
+    {
+        $productSellersId = $request->input('product_id');
+        $product = ProductSellers::find($productSellersId);
+        $userId = auth()->id();
+    
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
+    
+        $quantityToAdd = $request->input('quantity', 1);
+        $price = $product->rent_price;
+    
+        // Jika harga rent_price adalah 0, berikan alert SweetAlert
+        if ($price == 0) {
+            return redirect()->back()->with('error', 'Barang tidak tersedia');
+        }
+    
+        $cartItem = Carts::where('customer_id', $userId)
+                        ->where('products_sellers_id', $product->id)
+                        ->where('action', 'rent')
+                        ->first();
+    
+        if ($cartItem) {
+            $cartItem->quantity += $quantityToAdd;
+            $cartItem->total = $cartItem->quantity * $price;
+            $cartItem->save();
+        } else {
+            Carts::create([
+                'customer_id' => $userId,
+                'products_sellers_id' => $product->id,
+                'rent_price' => $price,
+                'quantity' => $quantityToAdd,
+                'total' => $quantityToAdd * $price,
+                'endtotal' => $quantityToAdd * $price,
+                'action' => 'rent',
+            ]);
+        }
+    
+        $endtotal = Carts::where('customer_id', $userId)->sum('total');
+        Carts::where('customer_id', $userId)->update(['endtotal' => $endtotal]);
+    
+        return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
     }
 
     $endtotal = Carts::where('customer_id', $userId)->sum('total');

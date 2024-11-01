@@ -10,6 +10,7 @@ class SewaSellers extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'carts_id',
         'sellers_id',
         'customers_id',
         'product_sellers_id',
