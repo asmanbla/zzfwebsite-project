@@ -336,10 +336,10 @@ h2.section-heading {
             <div class="container">
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location here</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-primary me-2"></i>asmanabila03@gmail.com</a>
+                        <div class="d-flex flex-wrap text-white">
+                            <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
+                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
+                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -422,12 +422,14 @@ h2.section-heading {
                         </tr>
                     </thead>
                     <tbody>
-                            @foreach ($groupedCartItems as $seller => $items)
-                                <tr>
-                                    <td colspan="7" style="text-align: left;">
-                                        <h6>{{ $items[0]->productSellers && $items[0]->productSellers->seller ? $items[0]->productSellers->seller->name : 'PT ZZF Industry' }}</h6>
-                                    </td>
-                                </tr>
+                    @foreach ($groupedCartItems as $seller => $items)
+                        <tr style="height: 10px;"> <!-- Kurangi nilai tinggi sesuai keinginan -->
+                            <td colspan="7" style="text-align: left; line-height: 10px;">
+                                <h6 style="font-weight: bold; display: inline-block; line-height: normal;">
+                                    {{ $items[0]->productSellers && $items[0]->productSellers->seller ? $items[0]->productSellers->seller->name : 'PT ZZF Industry' }}
+                                </h6>
+                            </td>
+                        </tr>
                                 @foreach ($items as $item)
                                     <tr>
                                         <td class="product-thumbnail">
@@ -569,30 +571,27 @@ h2.section-heading {
         const grandTotalElement = document.getElementById('grand-total');
         const hiddenGrandTotal = document.getElementById('hidden-grand-total');
 
-        // Fungsi untuk menghitung total
         function calculateGrandTotal() {
             let grandTotal = 0;
             checkboxes.forEach(checkbox => {
                 if (checkbox.checked) {
                     const row = checkbox.closest('tr');
-                    const totalPrice = parseFloat(row.querySelector('.total-price').getAttribute('data-total'));
-                    grandTotal += totalPrice; // Tambahkan total harga item ke grand total
+                    const totalPrice = parseFloat(row.querySelector('.total-price').getAttribute('data-total')) || 0;
+                    grandTotal += totalPrice;
                 }
             });
-            // Update grand total di elemen
             grandTotalElement.innerText = 'Rp' + grandTotal.toLocaleString('id-ID');
-            hiddenGrandTotal.value = grandTotal; // Update hidden input dengan grand total
+            hiddenGrandTotal.value = grandTotal;
         }
 
-        // Tambahkan event listener untuk checkbox
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', calculateGrandTotal);
-        });
+        // add event listener to each checkbox
+        checkboxes.forEach(checkbox => checkbox.addEventListener('change', calculateGrandTotal));
 
-        // Panggil fungsi untuk menghitung total saat halaman dimuat
+        // initial calculation on page load
         calculateGrandTotal();
     });
 </script>
+
 
 
 @if (Session::has('success'))

@@ -175,27 +175,6 @@ public function addToCartRent(Request $request)
     return redirect()->route('carthome.index')->with('success', 'Product added to cart successfully!');
 }
 
-// Tambahkan metode di CartHomeController
-public function updateQuantity(Request $request, $id)
-{
-    $cartItem = Carts::findOrFail($id);
-    $quantity = $request->input('quantity');
-
-    // Pastikan quantity minimal 1
-    $cartItem->quantity = max($quantity, 1);
-
-    // Update total berdasarkan action
-    if ($cartItem->action === 'purchase') {
-        $cartItem->total = $cartItem->quantity * $cartItem->productSellers->purchase_price;
-    } elseif ($cartItem->action === 'rent') {
-        $cartItem->total = $cartItem->quantity * $cartItem->productSellers->rent_price;
-    }
-
-    $cartItem->save();
-
-    return redirect()->route('carthome.index');
-}
-
     /**
      * Remove the specified resource from storage.
      */

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->dateTime('start_date'); 
             $table->dateTime('finish_date'); 
             $table->bigInteger('total_amount'); 
+            $table->enum('status_cart', ['in_cart','in_checkout','completed'])->default('in_cart'); 
             $table->enum('status', ['waiting for payment','processed','shipped','used','returned','done'])->default('waiting for payment');
             $table->timestamps();
             //Foreign Key Constraint

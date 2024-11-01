@@ -258,7 +258,7 @@
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
                             <div class="mb-4">
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->purchase_price }}</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->purchase_price, 2, ',', '.') }}</h4>
                             </div>
                             <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                         </div>
@@ -291,7 +291,7 @@
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
                             <div class="mb-4">
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->rent_price }}/Day</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
                             <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                         </div>
@@ -324,10 +324,10 @@
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
                             <div class="mb-4">
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->rent_price }}/Day</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
                             <div class="mb-4">
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->purchase_price }}</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->purchase_price, 2, ',', '.') }}</h4>
                             </div>
                             <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                         </div>

@@ -337,10 +337,10 @@ h2.section-heading {
             <div class="container">
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location here</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-primary me-2"></i>asmanabila03@gmail.com</a>
+                        <div class="d-flex flex-wrap text-white">
+                            <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
+                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
+                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
                         </div>
                     </div>
                 </div>

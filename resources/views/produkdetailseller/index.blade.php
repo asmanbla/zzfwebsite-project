@@ -312,7 +312,7 @@
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
-                            <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>Location here</a>
+                            <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
                             <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
                             <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
                         </div>
@@ -414,10 +414,10 @@
                 <h1>{{ $productseller->product_name }}</h1>
                 <p>{{ $productseller->description }}</p>
                 <p class="card-text">
-                    <span class="price" style="color: #A00000;">Purchase Price: Rp{{ number_format($productseller->purchase_price, 0) }}</span>
+                    <span class="price" style="color: #A00000;">Purchase Price: Rp{{ number_format($productseller->purchase_price, 2, ',', '.') }}</span>
                 </p>
                 <p class="card-text">
-                    <span class="price" style="color: #A00000;">Rent Price: Rp{{ number_format($productseller->rent_price, 0) }}</span>
+                    <span class="price" style="color: #A00000;">Rent Price: Rp{{ number_format($productseller->rent_price, 2, ',', '.') }}</span>
                 </p>
                 <p>Stock: {{ $productseller->stok_quantity }}</p>
                 <div class="d-flex justify-content-start align-items-center mb-5">

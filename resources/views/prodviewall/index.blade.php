@@ -215,10 +215,10 @@ h2, h3, .customer-info {
             <div class="container">
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
-                        <div class="d-flex flex-wrap">
-                            <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Location here</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-primary me-2"></i>asmanabila03@gmail.com</a>
+                        <div class="d-flex flex-wrap text-white">
+                            <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
+                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
+                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -273,9 +273,8 @@ h2, h3, .customer-info {
                 </div>
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
-                    <!-- Jika kamu ingin menampilkan badge jumlah item -->
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0 <!-- Ganti dengan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
                     </span>
                 </a>
             </div>
@@ -311,11 +310,11 @@ h2, h3, .customer-info {
                                         </h6>
                                         <div class="mb-4">
                                             <!-- Menampilkan harga produk price-->
-                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Sale : Rp{{ $product->purchase_price }}</h4>
+                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Sale : Rp{{ $product->purchase_price, 2, ',', '.' }}</h4>
                                         </div>
                                         <div class="mb-4">
                                             <!-- Menampilkan harga produk rent -->
-                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rent : Rp{{ $product->rent_price }}/Day</h4>
+                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rent : Rp{{ $product->rent_price, 2, ',', '.' }}/Day</h4>
                                         </div>
                                         <!-- Tombol detail produk -->
                                         <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
@@ -325,6 +324,9 @@ h2, h3, .customer-info {
                         </div>
                     @endforeach
                 </div>
+                <div class="d-flex justify-content-start align-items-center mb-5">
+                        <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
+                        </div>
             </div>
         </div>
 <br><br>
