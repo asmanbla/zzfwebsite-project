@@ -39,281 +39,7 @@
         <link href="../css/style.css" rel="stylesheet">
 <style>
 
-<style>
-        .footer {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-    color: white;
-}
-
-.footer .container {
-    max-width: 100%;
-}
-
-.footer-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    text-align: left;
-}
-
-.footer .row {
-    display: flex;
-    justify-content: space-around;
-}
-
-.footer-item a {
-    text-align: left;
-}
-
-.categories-img img {
-    height: 250px; /* Atur tinggi gambar sesuai keinginan */
-    object-fit: cover; /* Agar gambar tetap proporsional dan tidak terdistorsi */
-    width: 100%; /* Lebar gambar diatur penuh agar mengikuti ukuran kolom */
-}
-
-a.btn {
-    display: inline-block; /* Atur sebagai inline-block agar dapat diberi margin */
-    margin-bottom: 10px;/* Atur jarak bawah pada tombol pertama */
-}
-
-a.btn {
-    margin-right: 10px; /* Jarak horizontal antar tombol */
-}
-
-a.btn.btn-secondary {
-    border-radius: 8px !important; /* Lekukan kecil dengan prioritas tinggi */
-    padding: 12px 24px !important; /* Ukuran padding agar berbentuk persegi panjang */
-    display: inline-block; /* Pastikan tombol tetap inline */
-}
-</style>
-
-<style>
-
-/* Umum */
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-h2.section-heading {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #c0392b; /* Merah */
-    margin-bottom: 1rem;
-    text-align: center; /* Rata tengah */
-}
-
-h3.section-subheading {
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #6c757d;
-    margin-bottom: 2rem;
-    text-align: center; /* Rata tengah */
-}
-
-.cart-info {
-    background-color: #fff; /* Warna isian putih */
-    border: 2px solid #2c3e50; /* Outline biru dongker */
-    border-radius: 12px;
-    padding: 30px;
-    max-width: 800px; /* Lebar kotak */
-    margin: 0 auto;
-    color: #333; /* Teks hitam */
-    text-align: left; /* Konten di dalam kotak tetap rata kiri */
-    transition: box-shadow 0.3s ease;
-}
-
-.cart-info:hover {
-    box-shadow: 0px 8px 15px rgba(44, 62, 80, 0.2); /* Bayangan saat hover */
-}
-
-.cart-info p {
-    font-size: 1.2rem;
-    margin: 12px 0;
-}
-
-.cart-info strong {
-    color: #2c3e50; /* Biru dongker untuk label */
-}
-
-/* Icon Profil */
-.cart-info i {
-    color: #e74c3c; /* Merah untuk icon */
-    margin-right: 15px;
-    font-size: 3rem;
-    display: block; /* Buat icon menjadi block */
-    text-align: center; /* Posisikan icon ke tengah */
-    margin-bottom: 20px; /* Beri jarak dengan teks profil */
-}
-
-.btn-info {
-    background-color: #e74c3c; /* Warna merah */
-    border-color: #e74c3c;
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 12px 28px;
-    border-radius: 50px;
-    margin-top: 25px;
-    color: #fff;
-}
-
-.btn-info:hover {
-    background-color: #c0392b; /* Merah lebih gelap saat hover */
-    border-color: #c0392b;
-    transition: all 0.3s ease;
-}
-
-/* Animasi */
-h2, h3, .cart-info {
-    animation: fadeInUp 1s ease-in-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-h2.section-heading {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #c0392b;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        h3.section-subheading {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #6c757d;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .cart-info {
-            background-color: #fff;
-            border: 2px solid #2c3e50;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 0 auto;
-            max-width: 1000px;
-            text-align: left;
-        }
-
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .cart-info img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-        }
-
-        .btn-info, .btn-secondary {
-            font-size: 1.1rem;
-            padding: 10px 20px;
-            border-radius: 50px;
-        }
-
-        .btn-info:hover {
-            background-color: #c0392b;
-        }
-
-        @media (max-width: 768px) {
-            .cart-info {
-                padding: 15px;
-            }
-
-            h2.section-heading {
-                font-size: 2rem;
-            }
-
-            h3.section-subheading {
-                font-size: 1rem;
-            }
-        }
-
-        /* Button Style */
-        .d-flex {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .btn1 {
-            border-radius: 15px; /* Membuat sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            background-color: #050436; /* Warna tombol biru */
-            color: white;
-            border: none;
-            transition: box-shadow 0.3s ease; /* Efek transisi */
-        }
-
-        .btn1:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Efek bayangan saat hover */
-            background-color: #CCD0B6; /* Ubah warna tombol saat hover */
-        }
-
-        .btn2 {
-            border-radius: 15px; /* Membuat sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            background-color: #590d0b; /* Warna tombol biru */
-            color: white;
-            border: none;
-            transition: box-shadow 0.3s ease; /* Efek transisi */
-        }
-
-        .btn2:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Efek bayangan saat hover */
-            background-color: #CCD0B6; /* Ubah warna tombol saat hover */
-        }
-
-        /* Style Button Trash */
-                .btn-icon {
-            background-color: transparent; /* Menghilangkan background button */
-            border: none; /* Menghilangkan outline atau border */
-            color: black; /* Warna ikon hitam */
-            padding: 0; /* Menghapus padding agar hanya ikon yang tampil */
-            cursor: pointer; /* Pointer saat hover */
-        }
-
-        .btn-icon i {
-            font-size: 18px; /* Ukuran ikon */
-        }
-
-        .btn-icon:hover {
-            color: #555; /* Warna saat hover (abu-abu gelap) */
-        }
-
-        .cart-item {
-            display: grid;
-            grid-template-columns: 100px 2fr 1fr 1fr 1fr;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .product-thumbnail img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .product-name {
+.product-name {
             font-size: 1.2em;
             font-weight: bold;
         }
@@ -360,30 +86,65 @@ body {
     color: #333;
 }
 
+    .item-image {
+        width: 100px; /* Atur lebar gambar */
+        height: 100px; /* Atur tinggi gambar */
+        object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+        margin-right: 10px;
+    }
+
+h2.section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #c0392b; /* Merah */
+    margin-bottom: 1rem;
+    text-align: center; /* Rata tengah */
+}
+
+h3.section-subheading {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #6c757d;
+    margin-bottom: 2rem;
+    text-align: center; /* Rata tengah */
+}
+
 /* Checkout Page Layout */
-.checkoutpage .row {
-    display: flex;
-    justify-content: space-between; /* Memberi jarak antara kotak */
-    flex-wrap: wrap; /* Supaya responsif dan pindah ke bawah di layar kecil */
-    gap: 20px; /* Jarak antar-kotak */
-    padding: 20px; /* Ruang di sekitar konten */
-}
-
-/* Kotak Data Customer dan Barang yang Dipilih */
-.stylekotak {
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
+/* Container for the checkout page */
+.checkoutpage .stylekotak {
+    text-align: left; /* Ensures all text aligns to the left */
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1 1 48%; /* Agar kotak berukuran setengah layar dan responsif */
-    min-width: 300px; /* Menjaga lebar minimum kotak */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #fff; /* Adds a background color to make it look more boxed */
 }
 
-/* Judul Kotak */
-.stylekotak h3 {
-    color: #b71c1c;
-    margin-bottom: 10px;
+/* Additional styling for the left-aligned data */
+.checkoutpage .stylekotak h3 {
+    color: #d80000; /* Adjust heading color */
+    margin-bottom: 15px;
+}
+
+.checkoutpage .stylekotak p,
+.checkoutpage .stylekotak ul {
+    margin: 5px 0; /* Adds some spacing between paragraphs and list items */
+}
+
+.item-container {
+    display: flex;
+    align-items: flex-start; /* Aligns items to the top-left */
+    margin-bottom: 15px;
+}
+
+.item-container img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.item-container .item-details {
+    text-align: left; /* Ensures details are aligned to the left */
 }
 
 /* Daftar Barang yang Dipilih */
@@ -403,21 +164,6 @@ body {
     border-bottom: none;
 }
 
-/* Gaya untuk Tombol */
-.btn1, .btn2 {
-    background-color: #0d47a1;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* Efek hover untuk tombol */
-.btn1:hover, .btn2:hover {
-    background-color: #1976d2;
-}
 
 /* Responsif untuk layar kecil */
 @media (max-width: 768px) {
@@ -427,9 +173,8 @@ body {
 }
 
 
-        </style>
-
-    </head>
+</style>
+</head>
 
       <!-- Topbar Start -->
       <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
@@ -499,58 +244,56 @@ body {
         </div>
         <!-- Navbar & Hero End -->
 
+<br><br>
+
           <!-- Isi dari halaman -->
 
-          <div class="checkoutpage">
-            <div class="row">
+     <!-- About Section -->
+     <section class="page-section" id="tentang">
+                <div class="container text-center">
+                    <div>
+                        <h2 class="section-heading text-uppercase">Checkout Page</h2>
+                        <h3 class="section-subheading text-muted">This is your item from the cart page and will be processed for payment</h3>
+                    </div>
+                    <div class="checkoutpage">
+                        <div class="row">
+                            <!-- Kotak Kanan: Data Customer -->
+                            <div class="stylekotak">
+                                <h3>Data Customer</h3>
+                                <p>Nama: {{ $customer->name }}</p>
+                                <p>Email: {{ $customer->email }}</p>
+                                <p>Telepon: {{ $customer->phone }}</p>
+                                <p>Address: {{ $customer->address1 }}</p>
+                                <p>Another Address: {{ $customer->address2 }}</p>
+                                <!-- Tambahkan field lain sesuai kebutuhan -->
+                            </div>
 
-                <!-- Kotak Kanan: Data Customer -->
-                <div class="stylekotak">
-                    <h3>Data Customer</h3>
-                    <p>Nama: {{ $customer->name }}</p>
-                    <p>Email: {{ $customer->email }}</p>
-                    <p>Telepon: {{ $customer->phone }}</p>
-                    <p>Address: {{ $customer->address1 }}</p>
-                    <p>Another Address: {{ $customer->address2 }}</p>
-                    <!-- Tambahkan field lain sesuai kebutuhan -->
-                </div>
+                            <div class="stylekotak">
+                        <h3>Barang yang Dipilih</h3>
+                        <ul id="selected-items">
+                            @forelse($selectedItems as $item)
+                                <li class="item-container" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                    <img src="{{ asset('storage/' . $item->image1_url) }}" alt="{{ $item->product_name }}" class="item-image">
+                                    <div class="item-details">
+                                        <h4>{{ $item->product_name }}</h4>
+                                        <p>Penjual: {{ $item->seller_name }}</p>
+                                        <p>Harga: Rp{{ number_format($item->total, 0, ',', '.') }}</p>
+                                    </div>
+                                </li>
+                            @empty
+                                <li>Tidak ada barang yang dipilih.</li>
+                            @endforelse
+                        </ul>
+                        @if($selectedItems->isNotEmpty())
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                                <h4>Total Harga: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
+                                <a href="" class="btn btn-primary">Bayar</a>
+                            </div>
+                        @endif
+                    </div>
+            </section>
 
-                <div class="stylekotak">
-                    <h3>Barang yang Dipilih</h3>
-                    <ul id="selected-items">
-                        @forelse($selectedItems as $item)
-                            <li class="item-container" style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <img src="{{ asset('storage/' .$item->image1_url) }}" alt="{{ $item->product_name }}" style="width: 100px; height: auto; margin-right: 10px;">
-                                <div class="item-details">
-                                    <h4>{{ $item->product_name }}</h4>
-                                    <p>Penjual: {{ $item->seller->name }}</p>
-                                    <p>Harga: 
-                                        @if($item->type == 'purchase')
-                                            Rp{{ number_format($item->purchase_price, 0, ',', '.') }}
-                                        @elseif($item->type == 'rent')
-                                            Rp{{ number_format($item->rent_price, 0, ',', '.') }}
-                                        @else
-                                            Harga tidak tersedia
-                                        @endif
-                                    </p>
-                                </div>
-                            </li>
-                        @empty
-                            <li>Tidak ada barang yang dipilih.</li>
-                        @endforelse
-                    </ul>
-                    @if($selectedItems->isNotEmpty())
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                            <h4>Total Harga: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
-                            <a href="" class="btn btn-primary">Bayar</a>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-<br><br>
-       <!-- Copyright Start -->
+         <!-- Copyright Start -->
        <div class="container-fluid copyright py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
@@ -558,6 +301,9 @@ body {
                         <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>PT ZZF Industri</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 text-center text-md-end text-body">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
                         Designed By <a class="border-bottom text-white">ZZF Industri</a>
                     </div>
                 </div>
