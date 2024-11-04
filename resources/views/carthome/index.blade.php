@@ -402,7 +402,7 @@ h2.section-heading {
 
 <br><br>
 
-               <!-- Cart Section -->
+    <!-- Cart Section -->
         <section class="page-section" id="tentang">
             <div class="container text-center">
                 <h2 class="section-heading text-uppercase">Your Cart</h2>
@@ -453,10 +453,10 @@ h2.section-heading {
                                             Rp{{ number_format($item->total, 0, ',', '.') }}
                                         </td>
                                         <td style="text-align: center; vertical-align: middle;"> <!-- Menambahkan styling untuk tengah -->
-    <a href="/hapuscart/{{ $item->id }}" class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)" style="background-color: transparent; border: none;">
-        <i class="bi bi-trash" style="color: red; font-size: 1.2rem;"></i>
-    </a>
-</td>
+                                            <a href="/hapuscart/{{ $item->id }}" class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)" style="background-color: transparent; border: none;">
+                                                <i class="bi bi-trash" style="color: red; font-size: 1.2rem;"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endforeach

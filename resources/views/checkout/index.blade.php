@@ -249,49 +249,54 @@ h3.section-subheading {
           <!-- Isi dari halaman -->
 
      <!-- About Section -->
-     <section class="page-section" id="tentang">
-                <div class="container text-center">
-                    <div>
-                        <h2 class="section-heading text-uppercase">Checkout Page</h2>
-                        <h3 class="section-subheading text-muted">This is your item from the cart page and will be processed for payment</h3>
-                    </div>
-                    <div class="checkoutpage">
-                        <div class="row">
-                            <!-- Kotak Kanan: Data Customer -->
-                            <div class="stylekotak">
-                                <h3>Data Customer</h3>
-                                <p>Nama: {{ $customer->name }}</p>
-                                <p>Email: {{ $customer->email }}</p>
-                                <p>Telepon: {{ $customer->phone }}</p>
-                                <p>Address: {{ $customer->address1 }}</p>
-                                <p>Another Address: {{ $customer->address2 }}</p>
-                                <!-- Tambahkan field lain sesuai kebutuhan -->
-                            </div>
+<section class="page-section" id="tentang">
+    <div class="container text-center">
+        <div>
+            <h2 class="section-heading text-uppercase">Checkout Page</h2>
+            <h3 class="section-subheading text-muted">This is your item from the cart page and will be processed for payment</h3>
+        </div>
+        <div class="checkoutpage">
+            <div class="row">
+                <!-- Kotak Kanan: Data Customer -->
+                <div class="stylekotak">
+                    <h3>Data Customer</h3>
+                    <p>Name: {{ $customer->name }}</p>
+                    <p>Email: {{ $customer->email }}</p>
+                    <p>Telephone: {{ $customer->phone }}</p>
+                    <p>Address: {{ $customer->address1 }}</p>
+                    <p>Another Address: {{ $customer->address2 }}</p>
+                    <!-- Tambahkan field lain sesuai kebutuhan -->
+                </div>
 
-                            <div class="stylekotak">
-                        <h3>Barang yang Dipilih</h3>
-                        <ul id="selected-items">
-                            @forelse($selectedItems as $item)
-                                <li class="item-container" style="display: flex; align-items: center; margin-bottom: 15px;">
-                                    <img src="{{ asset('storage/' . $item->image1_url) }}" alt="{{ $item->product_name }}" class="item-image">
-                                    <div class="item-details">
-                                        <h4>{{ $item->product_name }}</h4>
-                                        <p>Penjual: {{ $item->seller_name }}</p>
-                                        <p>Harga: Rp{{ number_format($item->total, 0, ',', '.') }}</p>
-                                    </div>
-                                </li>
-                            @empty
-                                <li>Tidak ada barang yang dipilih.</li>
-                            @endforelse
-                        </ul>
-                        @if($selectedItems->isNotEmpty())
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                                <h4>Total Harga: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
-                                <a href="" class="btn btn-primary">Bayar</a>
-                            </div>
-                        @endif
-                    </div>
-            </section>
+                <div class="stylekotak">
+                <h3>Item Selected</h3>
+                    <ul id="selected-items">
+                        @forelse($selectedItems as $item)
+                            <li class="item-container" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" class="item-image" style="width: 100px; height: 100px; object-fit: cover; margin-right: 15px;">
+                                <div class="item-details">
+                                    <h4>{{ $item->productSellers->product_name }}</h4>
+                                    <p>Seller Name: {{ $item->productSellers->seller->name }}</p> <!-- Menampilkan nama penjual -->
+                                    <p>Price: Rp{{ number_format($item->total, 0, ',', '.') }}</p>
+                                    <p>Total Items: {{ $item->quantity }}</p>
+                                </div>
+                            </li>
+                        @empty
+                            <li>No Items Selected</li>
+                        @endforelse
+                    </ul>
+                    @if($selectedItems->isNotEmpty())
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                            <h4>Total Price: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
+                            <a href="" class="btn btn-primary">Pay Now</a>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
          <!-- Copyright Start -->
        <div class="container-fluid copyright py-4">

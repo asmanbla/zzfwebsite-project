@@ -167,6 +167,34 @@ h3.section-subheading {
     transition: all 0.3s ease;
 }
 
+.custom-btn2 {
+            background-color: #050436; /* Warna biru */
+            color: white; /* Warna font putih */
+            border: none; /* Menghilangkan border default */
+            border-radius: 10px; /* Sudut sedikit bulat */
+            padding: 10px 20px; /* Ruang di dalam tombol */
+            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
+        }
+
+.custom-btn3 {
+            background-color: #475054; /* Warna biru */
+            color: white; /* Warna font putih */
+            border: none; /* Menghilangkan border default */
+            border-radius: 10px; /* Sudut sedikit bulat */
+            padding: 10px 20px; /* Ruang di dalam tombol */
+            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
+        }
+
+.custom-btn4 {
+            background-color: #B1AFB5; /* Warna biru */
+            color: white; /* Warna font putih */
+            border: none; /* Menghilangkan border default */
+            border-radius: 10px; /* Sudut sedikit bulat */
+            padding: 10px 20px; /* Ruang di dalam tombol */
+            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
+        }
+
+
 /* Animasi */
 h2, h3, .customer-info {
     animation: fadeInUp 1s ease-in-out;
@@ -318,6 +346,18 @@ h2, h3, .customer-info {
                                         </div>
                                         <!-- Tombol detail produk -->
                                         <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                                        <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline me-2">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button type="submit" class="btn custom-btn4">Purchase</button>
+                                        </form>
+                                        <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline me-2">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button type="submit" class="btn custom-btn3">Rent</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

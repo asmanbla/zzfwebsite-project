@@ -10,6 +10,7 @@ use App\Models\ProductSellers;
 use App\Models\Carts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class CheckoutViewController extends Controller
 {
@@ -20,29 +21,51 @@ class CheckoutViewController extends Controller
      public function index(Request $request)
      {
          $customer = Auth::user();
+         
+         // Ambil ID barang yang dipilih dari session
+         $selectedItemIds = session('selected_items', []);
+         
+         if (empty($selectedItemIds)) {
+             // Jika tidak ada barang dipilih
+             $selectedItems = collect();
+             $message = "Tidak ada barang dipilih";
+             $totalPrice = 0;
+         } else {
+             // Ambil item dari tabel carts dengan data produk terkait di tabel product_sellers
+             $selectedItems = Carts::with('productSellers') // Ambil data produk dari relasi
+                                 ->whereIn('products_sellers_id', $selectedItemIds)
+                                 ->where('customer_id', $customer->id)
+                                 ->get();
      
-         // Ambil data dari view `vworderseller` hanya untuk item yang baru ditambahkan ke cart customer
-         $orderItems = DB::table('vworderseller')
-                         ->where('customers_id', $customer->id)
-                         ->where('status_cart', 'in_cart')  // Pastikan hanya mengambil item di cart
-                         ->get();
+             $message = null; // Tidak ada pesan karena ada barang yang dipilih
+             
+             // Menghitung total harga berdasarkan kolom 'total' di tabel carts
+             $totalPrice = $selectedItems->sum('total');
+         }
      
-         // Ambil data dari view `vwsewaseller` hanya untuk item yang baru ditambahkan ke cart customer
-         $rentalItems = DB::table('vwsewaseller')
-                          ->where('customers_id', $customer->id)
-                          ->where('status_cart', 'in_cart')  // Pastikan hanya mengambil item di cart
-                          ->get();
-     
-         // Gabungkan hasil dari kedua view menjadi `selectedItems`
-         $selectedItems = $orderItems->merge($rentalItems);
-     
-         // Hitung total harga
-         $totalPrice = $selectedItems->sum('total');
-     
-         return view('checkout.index', compact('customer', 'selectedItems', 'totalPrice'));
+         return view('checkout.index', compact('customer', 'selectedItems', 'totalPrice', 'message'));
      }
      
-     public function store(Request $request)
+
+     
+
+    public function store(Request $request)
+    {
+        // Get selected product IDs from the request
+        $selectedItems = $request->input('selected_items', []);
+
+        // Ensure $selectedItems is an array
+        $selectedItems = is_array($selectedItems) ? $selectedItems : [];
+
+        // Store selected product IDs in the session
+        session(['selected_items' => $selectedItems]);
+
+        // Redirect to the checkout page
+        return Redirect::route('checkout.index')->with('success', 'Products successfully added to checkout!');
+    }
+    
+
+     public function storecheckout(Request $request)
      {
          $request->validate([
              'checkout_type' => 'required|in:purchase,rent',
@@ -55,6 +78,9 @@ class CheckoutViewController extends Controller
          $customerId = auth()->user()->id;
          $totalAmount = $request->input('total_amount');
      
+         // Array untuk menyimpan ID cart yang diupdate
+         $updatedCartIds = [];
+     
          foreach ($selectedItems as $itemId) {
              $item = ProductSellers::find($itemId);
              if (!$item) continue;
@@ -62,15 +88,19 @@ class CheckoutViewController extends Controller
              // Mendapatkan carts_id dari tabel Carts berdasarkan customer dan produk
              $cart = Carts::where('customer_id', $customerId)
                           ->where('products_sellers_id', $item->id)
-                          ->where('status_cart', 'in_cart') // Pastikan hanya mengambil yang status_cart 'in_cart'
+                          ->where('status_cart', 'in_cart')
                           ->first();
      
              if (!$cart) {
                  return redirect()->back()->with('error', 'Cart item tidak ditemukan untuk produk ini.');
              }
      
-             // Mengupdate status cart menjadi 'in_checkout'
-             $cart->update(['status_cart' => 'in_checkout']);
+             // Mengupdate status cart menjadi 'in_checkout' hanya untuk item yang dipilih
+             $cart->status_cart = 'in_checkout';
+             $cart->save(); // Simpan perubahan status cart
+     
+             // Simpan id cart yang telah diupdate
+             $updatedCartIds[] = $cart->id;
      
              if ($checkoutType == 'purchase') {
                  OrderSellers::create([
@@ -96,9 +126,11 @@ class CheckoutViewController extends Controller
              }
          }
      
-         return redirect()->route('checkout.index')->with('success', 'Checkout berhasil!');
+         return redirect()->route('checkout.index')->with('success', 'Checkout Successfully!');
      }
      
+
+
     /**
      * Display the specified resource.
      */
