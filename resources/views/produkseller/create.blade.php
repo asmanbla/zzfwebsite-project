@@ -36,9 +36,13 @@
                         <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required>
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" name="description" class="form-control" placeholder="Enter Your description" aria-label="description" required>
+                        <label for="specification" class="form-label">Specification Of Product</label>
+                        <input type="text" id="specification" name="specification" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required>
                      </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" name="description" class="form-control" placeholder="Enter Your description" aria-label="description" required></textarea>
+                    </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="type" class="form-label">Type</label>
                           <select class="form-select" aria-label="Default select example" id="type" name="type">

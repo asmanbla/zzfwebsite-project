@@ -33,11 +33,9 @@ class SewaDetailsSellers extends Model
         return $this->belongsTo(SewaSellers::class, 'sewa_sellers_id');
     }
 
-<<<<<<< HEAD
-=======
     public function idseller()
     {
         return $this->belongsTo(Sellers::class, 'sellers_id');
     }
->>>>>>> 0ba2fa2d6c92d86dc4f6239152e448078125dd41
+
 }

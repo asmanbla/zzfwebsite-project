@@ -47,6 +47,7 @@ class produksellerController extends Controller
         $request->validate([
             'product_category_id' => 'required|exists:product_categories_sellers,id',
             'product_name' => 'required|string|max:255',
+            'specification' => 'required|string|max:255',
             'type' => 'required|in:rent,purchase,rent_and_purchase',
             'purchase_price' => 'nullable|numeric|min:0',
             'rent_price' => 'nullable|numeric|min:0',
@@ -62,6 +63,7 @@ class produksellerController extends Controller
             $data = $request->only([
                 'product_category_id',
                 'product_name',
+                'specification',
                 'stok_quantity',
                 'type',
                 'purchase_price',
@@ -117,6 +119,7 @@ class produksellerController extends Controller
     {
         $request->validate([
             'product_name' => 'required|string|max:255',
+            'specification' => 'required|string|max:255',
             'product_category_id' => 'required|exists:product_categories_sellers,id',
             'type'=>'required|in:rent, purchase, rent_and_purchase',
             'purchase_price' => 'nullable|numeric|min:0',
@@ -130,6 +133,7 @@ class produksellerController extends Controller
     
         $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->firstOrFail();
         $produkseller->product_name = $request->input('product_name');
+        $produkseller->specification = $request->input('specification');
         $produkseller->product_category_id = $request->input('product_category_id');
         $produkseller->type = $request->input('type');
         $produkseller->purchase_price = $request->input('purchase_price');

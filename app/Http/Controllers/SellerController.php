@@ -70,6 +70,7 @@ class SellerController extends Controller
     $sellers = Sellers::find($id);
     $sellers->name = $request->name;
     $sellers->email = $request->email;
+    $sellers->phone = $request->phone;
     $sellers->account_number = $request->account_number;
     if ($request->password) {
         $sellers->password = $request->password; // Menyimpan password apa adanya

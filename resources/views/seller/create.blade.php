@@ -24,19 +24,23 @@
                   @csrf
                     <div class="mb-3 ms-3 me-3">
                         <label type="nama" class="form-label">Seller Name</label>
-                        <input type="text" name="name" id="nama" class="form-control" placeholder="masukkan nama anda" aria-label="email">
+                        <input type="text" name="name" id="nama" class="form-control" placeholder="Enter sellers Name" aria-label="email">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="email" class="form-label">Email</label>
-                        <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email">
+                        <input type="text" name="email" id="email" class="form-control" placeholder="Enter sellers email" aria-label="email">
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
+                        <label type="number" class="form-label">Phone Number</label>
+                        <input type="number" name="phone" id="phone" class="form-control" placeholder="Enter sellers phone number" aria-label="account_number">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="text" class="form-label">Account Number</label>
-                        <input type="text" name="account_number" id="account_number" class="form-control" placeholder="masukkan account number anda" aria-label="account_number">
+                        <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Enter sellers account number" aria-label="account_number">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label type="password"class="form-label">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="masukkan password anda" aria-label="password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Enter the password" aria-label="password">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                       <label for="level" class="form-label">Roles</label>
