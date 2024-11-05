@@ -16,6 +16,7 @@ class Sellers extends Authenticatable // Mewarisi Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'account_number',
         'password',
         'roles',

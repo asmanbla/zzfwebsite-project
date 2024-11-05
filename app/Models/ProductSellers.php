@@ -13,6 +13,7 @@ class ProductSellers extends Model
         'sellers_id',
         'product_category_id',
         'product_name',
+        'specification',
         'description',
         'type',
         'purchase_price',
