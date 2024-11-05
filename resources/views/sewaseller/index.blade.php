@@ -44,7 +44,7 @@
                                         {{ $data->order_date}}
                                     </td>
                                     <td>
-                                        {{ $data->total_amount}}
+                                    Rp{{ number_format($data->total_amount, 0, ',', '.') }}
                                     </td>
                                     <td>
                                         {{ $data->status}}

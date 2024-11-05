@@ -269,28 +269,35 @@ h3.section-subheading {
                 </div>
 
                 <div class="stylekotak">
-                <h3>Item Selected</h3>
-                    <ul id="selected-items">
-                        @forelse($selectedItems as $item)
-                            <li class="item-container" style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" class="item-image" style="width: 100px; height: 100px; object-fit: cover; margin-right: 15px;">
-                                <div class="item-details">
-                                    <h4>{{ $item->productSellers->product_name }}</h4>
-                                    <p>Seller Name: {{ $item->productSellers->seller->name }}</p> <!-- Menampilkan nama penjual -->
-                                    <p>Price: Rp{{ number_format($item->total, 0, ',', '.') }}</p>
-                                    <p>Total Items: {{ $item->quantity }}</p>
-                                </div>
-                            </li>
-                        @empty
-                            <li>No Items Selected</li>
-                        @endforelse
-                    </ul>
-                    @if($selectedItems->isNotEmpty())
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                            <h4>Total Price: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
-                            <a href="" class="btn btn-primary">Pay Now</a>
-                        </div>
-                    @endif
+                    <h3>Item Selected</h3>
+                    <form action="{{ route('checkoutprocess.store') }}" method="POST">
+                        @csrf
+                        <ul id="selected-items">
+                            @forelse($selectedItems as $item)
+                                <li class="item-container" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                    <img src="{{ asset('storage/' . $item->productSellers->image1_url) }}" alt="{{ $item->productSellers->product_name }}" class="item-image" style="width: 100px; height: 100px; object-fit: cover; margin-right: 15px;">
+                                    <div class="item-details">
+                                        <h4>{{ $item->productSellers->product_name }}</h4>
+                                        <p>Seller Name: {{ $item->productSellers->seller->name }}</p>
+                                        <p>Price: Rp{{ number_format($item->total, 0, ',', '.') }}</p>
+                                        <p>Total Items: {{ $item->quantity }}</p>
+                                        <input type="hidden" name="selected_items[]" value="{{ $item->productSellers->id }}">
+                                    </div>
+                                </li>
+                            @empty
+                                <li>No Items Selected</li>
+                            @endforelse
+                        </ul>
+                        @if($selectedItems->isNotEmpty())
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                                <h4>Total Price: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
+                                <input type="hidden" name="total_amount" value="{{ $totalPrice }}">
+                                <p>Checkout Type: <strong>{{ ucfirst(session('checkout_type', 'purchase')) }}</strong></p>
+                                <input type="hidden" name="checkout_type" value="{{ session('checkout_type', 'purchase') }}">
+                                <button type="submit" class="btn btn-primary">Pay Now</button>
+                            </div>
+                        @endif
+                    </form>
                 </div>
             </div>
         </div>

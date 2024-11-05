@@ -16,7 +16,7 @@ use App\Http\Controllers\SewasellerController;
 use App\Http\Controllers\OrdetailsellerController;
 use App\Http\Controllers\SewadetailsellerController;
 use App\Http\Controllers\ProdrevsellerController;
-use App\Http\Controllers\PaymentordersellerController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentsewasellerController;
 use App\Http\Controllers\OrderZzfController;
 use App\Http\Controllers\OrderDetailsZzfController;
@@ -172,7 +172,7 @@ Route::resource('orderseller', App\Http\Controllers\OrdersellerController::class
 Route::resource('sewaseller', App\Http\Controllers\SewasellerController::class);
 Route::resource('ordetailseller', App\Http\Controllers\OrdetailsellerController::class);
 Route::resource('sewadetailseller', App\Http\Controllers\sewadetailsellerController::class);
-Route::resource('paymentorderseller', App\Http\Controllers\PaymentordersellerController::class);
+Route::resource('payment', App\Http\Controllers\PaymentController::class);
 Route::resource('paymentsewaseller', App\Http\Controllers\PaymentsewasellerController::class);
 Route::resource('prodrevseller', App\Http\Controllers\ProdrevsellerController::class);
 
@@ -203,6 +203,9 @@ Route::middleware(['auth:customers'])->group(function () {
     Route::get('/checkout', [CheckoutViewController::class, 'index'])->name('checkout.index'); // Menampilkan halaman Checkout
 
     Route::post('/checkout/store', [CheckoutViewController::class, 'store'])->name('checkout.store');
+
+    Route::post('/checkoutprocess/store', [CheckoutViewController::class, 'storecheckout'])->name('checkoutprocess.store');
+
 
 
  // Menghapus item dari cart
