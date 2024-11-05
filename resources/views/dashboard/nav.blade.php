@@ -248,33 +248,6 @@
   </a>
 </li>
        <li class="nav-item">
-  <a class="nav-link" href="{{ route('paymentorderszzf.index') }}">
-    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-      <svg width="12px" height="20px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <title>Money</title>
-        <g fill="#FFFFFF">
-          <path class="color-background" d="M20 0C9 0 0 9 0 20s9 20 20 20 20-9 20-20S31 0 20 0zm0 36c-8.83 0-16-7.17-16-16S11.17 4 20 4s16 7.17 16 16-7.17 16-16 16zm-2-26h-2v-2h2v2zm0 4h-2v-2h2v2zm2 6h-2v-2h2v2zm0 4h-2v-2h2v2zm6-10h-2v-2h2v2zm2-4h-2v-2h2v2z"/>
-        </g>
-      </svg>
-    </div>
-    <span class="nav-link-text ms-1">Payment Order</span>
-  </a>
-</li>
-
-<li class="nav-item">
-  <a class="nav-link" href="{{ route('paymentsewaszzf.index') }}">
-    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-      <svg width="12px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <title>Dollar</title>
-        <g fill="#FFFFFF">
-          <path class="color-background" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1 18h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V8h2v2zm-4 0h2V8h-2v2z"/>
-        </g>
-      </svg>
-    </div>
-    <span class="nav-link-text ms-1">Payment Rent</span>
-  </a>
-</li>
-       <li class="nav-item">
   <a class="nav-link d-flex align-items-center" href="/cart">
     <div style="background-color: #ffffff; border-radius: 8px; padding: 7px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
       <svg width="18px" height="18px" viewBox="0 0 24 24" style="fill: #2e3a59;">

@@ -49,7 +49,7 @@ class AuthController extends Controller
     }
 
     // Jika tidak ditemukan, arahkan kembali ke halaman login dengan pesan error
-    return redirect()->route('login')->withInput($request->only('email'))->with('error', 'Email atau Password yang dimasukkan tidak cocok.');
+    return redirect()->route('login')->withInput($request->only('email'))->with('error', 'Email or Password do not match.');
 }
 
 
