@@ -423,18 +423,18 @@ h2.section-heading {
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($groupedCartItems as $seller => $items)
-                        <tr style="height: 10px;"> <!-- Kurangi nilai tinggi sesuai keinginan -->
-                            <td colspan="7" style="text-align: left; line-height: 10px;">
-                                <h6 style="font-weight: bold; display: inline-block; line-height: normal;">
-                                    {{ $items[0]->productSellers && $items[0]->productSellers->seller ? $items[0]->productSellers->seller->name : 'PT ZZF Industry' }}
-                                </h6>
-                            </td>
-                        </tr>
+                            @foreach ($groupedCartItems as $seller => $items)
+                                <tr style="height: 10px;">
+                                    <td colspan="7" style="text-align: left; line-height: 10px;">
+                                        <h6 style="font-weight: bold; display: inline-block; line-height: normal;">
+                                            {{ $items[0]->productSellers && $items[0]->productSellers->seller ? $items[0]->productSellers->seller->name : 'PT ZZF Industry' }}
+                                        </h6>
+                                    </td>
+                                </tr>
                                 @foreach ($items as $item)
                                     <tr>
                                         <td class="product-thumbnail">
-                                            <input type="checkbox" class="item-checkbox" name="selected_items[]" id ="selectedItems" value="{{ $item->productSellers->id }}" style="margin-right: 10px;">
+                                            <input type="checkbox" class="item-checkbox" name="selected_items[]" id="selectedItems" value="{{ $item->productSellers->id ?? '' }}" style="margin-right: 10px;">
                                             @if ($item->product)
                                                 <img src="{{ asset('storage/' . $item->product->image1_url) }}" alt="{{ $item->product->product_name }}" style="width: 50px; height: 50px;">
                                             @elseif ($item->productSellers)
@@ -443,16 +443,16 @@ h2.section-heading {
                                                 No Image
                                             @endif
                                         </td>
-                                        <td>{{ $item->product ? $item->product->product_name : $item->productSellers->product_name }}</td>
-                                        <td>Rp{{ number_format($item->product ? $item->product->purchase_price : $item->productSellers->purchase_price, 0, ',', '.') }}</td>
-                                        <td>Rp{{ number_format($item->product ? $item->product->rent_price : $item->productSellers->rent_price, 0, ',', '.') }}</td>
+                                        <td>{{ $item->product ? $item->product->product_name : ($item->productSellers ? $item->productSellers->product_name : 'No Name') }}</td>
+                                        <td>Rp{{ number_format($item->product ? $item->product->purchase_price : ($item->productSellers ? $item->productSellers->purchase_price : 0), 0, ',', '.') }}</td>
+                                        <td>Rp{{ number_format($item->product ? $item->product->rent_price : ($item->productSellers ? $item->productSellers->rent_price : 0), 0, ',', '.') }}</td>
                                         <td class="text-center">
                                             <span class="quantity-text">{{ $item->quantity }}</span>
                                         </td>
                                         <td class="total-price" data-total="{{ $item->total }}">
                                             Rp{{ number_format($item->total, 0, ',', '.') }}
                                         </td>
-                                        <td style="text-align: center; vertical-align: middle;"> <!-- Menambahkan styling untuk tengah -->
+                                        <td style="text-align: center; vertical-align: middle;">
                                             <a href="/hapuscart/{{ $item->id }}" class="btn btn-danger btn-sm" onclick="return confirmDeletion(event)" style="background-color: transparent; border: none;">
                                                 <i class="bi bi-trash" style="color: red; font-size: 1.2rem;"></i>
                                             </a>
@@ -460,7 +460,7 @@ h2.section-heading {
                                     </tr>
                                 @endforeach
                             @endforeach
-                    </tbody>
+                        </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="5" class="text-end"><strong>Total Keseluruhan:</strong></td>

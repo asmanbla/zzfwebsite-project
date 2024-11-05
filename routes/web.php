@@ -36,6 +36,8 @@ use App\Http\Controllers\CartHomeController;
 use App\Http\Controllers\OrderPageController;
 use App\Http\Controllers\ProductViewController;
 use App\Http\Controllers\CheckoutViewController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\OrderdetailsellerController;
 use App\Http\Controllers\AuthController;
 
 
@@ -205,6 +207,8 @@ Route::middleware(['auth:customers'])->group(function () {
     Route::post('/checkout/store', [CheckoutViewController::class, 'store'])->name('checkout.store');
 
     Route::post('/checkoutprocess/store', [CheckoutViewController::class, 'storecheckout'])->name('checkoutprocess.store');
+
+    Route::resource('history', HistoryController::class);
 
 
 

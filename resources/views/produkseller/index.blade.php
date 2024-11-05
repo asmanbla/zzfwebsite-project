@@ -24,6 +24,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Id Category</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Specification</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Type</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Purchase Price</th>
@@ -51,6 +52,30 @@
             </td>
             <td>
                 {{ $data->product_name }}
+            </td>
+            <td>
+            @php
+                    // Pisahkan deskripsi menjadi array kata
+                    $words = explode(' ', $data->specification);
+                    $lines = [];
+                    $line = '';
+
+                    foreach ($words as $index => $word) {
+                        $line .= $word . ' ';
+                        if (($index + 1) % 5 == 0) {
+                            $lines[] = trim($line);
+                            $line = '';
+                        }
+                    }
+
+                    if (!empty($line)) {
+                        $lines[] = trim($line);
+                    }
+                @endphp
+
+                @foreach($lines as $line)
+                    {{ $line }}<br>
+                @endforeach
             </td>
             <td>
                 @php

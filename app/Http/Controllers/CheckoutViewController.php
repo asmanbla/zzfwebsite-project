@@ -153,7 +153,7 @@ class CheckoutViewController extends Controller
                 }
 
                 DB::commit(); // Commit transaksi jika semua berhasil
-                return redirect()->route('checkout.index')->with('success', 'Checkout Successfully!');
+                return redirect()->route('history.index')->with('success', 'Checkout Successfully!');
 
             } catch (\Exception $e) {
                 DB::rollback(); // Rollback jika terjadi error

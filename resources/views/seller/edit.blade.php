@@ -33,6 +33,10 @@
                         <input type="text" name="email" id="email" class="form-control" placeholder="masukkan email anda" aria-label="email" required value="{{$seller->email ?? old('email')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
+                        <label type="email" class="form-label">Phone Number</label>
+                        <input type="number" name="phone" id="phone" class="form-control" placeholder="masukkan phone anda" aria-label="phone" required value="{{$seller->phone ?? old('phone')}}">
+                     </div>
+                     <div class="mb-3 ms-3 me-3">
                         <label type="text" class="form-label">Account Number</label>
                         <input type="text" name="account_number" id="account_number" class="form-control" placeholder="masukkan account number anda" aria-label="account_number" required value="{{$seller->account_number ?? old('account_number')}}">
                      </div>

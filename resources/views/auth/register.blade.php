@@ -28,6 +28,10 @@
         <label>Enter your Email</label>
       </div>
       <div class="input-field">
+        <input type="number" name="phone" required>
+        <label>Enter your Phone Number</label>
+      </div>
+      <div class="input-field">
         <input type="number" name="account_number" required>
         <label>Enter your Account Number</label>
       </div>

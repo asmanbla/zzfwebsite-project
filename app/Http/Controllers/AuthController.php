@@ -64,6 +64,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:sellers,email',
+            'email' => 'required|',
             'password' => 'required|string|min:2',
             'account_number' => 'required|',
         ]);
@@ -72,6 +73,7 @@ class AuthController extends Controller
         Sellers::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => $request->password, // Mengamankan password
             'account_number' => $request->account_number,
         ]);

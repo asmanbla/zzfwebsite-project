@@ -120,15 +120,26 @@
             transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
         }
 
-.custom-btn4 {
-            background-color: #B1AFB5; /* Warna biru */
-            color: white; /* Warna font putih */
-            border: none; /* Menghilangkan border default */
-            border-radius: 10px; /* Sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
-        }
+        .custom-btn4 {
+    background-color: #6c757d; /* Warna background */
+    color: #ffffff; /* Warna teks */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Jarak antara ikon dan teks */
+    transition: background-color 0.3s ease;
+}
 
+.custom-btn4:hover {
+    background-color: #5a6268; /* Warna saat hover */
+}
+
+.contact-seller i {
+    font-size: 16px;
+}
 
 </style>
 
@@ -292,7 +303,12 @@
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn custom-btn4">Purchase</button>
+                            <div style="display: flex; align-items: center; gap: 10px;"> <!-- Flexbox untuk susunan tombol -->
+                                <button type="submit" class="btn custom-btn4">Purchase</button>
+                                <a href="https://wa.me/{{ $product->phone }}" class="btn custom-btn4 contact-seller" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Hubungi Penjual
+                                </a>
+                            </div>
                         </form>
                         </div>
                     </div>
@@ -332,6 +348,9 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit" class="btn custom-btn3">Rent</button>
+                            <a href="https://wa.me/{{ $product->phone }}" class="btn" style="background-color: #25D366; color: white; display: inline-flex; align-items: center; padding: 10px 15px; border-radius: 5px; text-decoration: none;" target="_blank">
+                                <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> 
+                            </a>
                         </form>
                         </div>
                     </div>
@@ -380,6 +399,9 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit" class="btn custom-btn3">Rent</button>
+                            <a href="https://wa.me/{{ $product->phone }}" class="btn" style="background-color: #25D366; color: white; display: inline-flex; align-items: center; padding: 10px 15px; border-radius: 5px; text-decoration: none;" target="_blank">
+                                <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> 
+                            </a>
                         </form>
                         </div>
                     </div>
