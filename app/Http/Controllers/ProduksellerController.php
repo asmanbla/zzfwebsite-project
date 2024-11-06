@@ -130,6 +130,13 @@ class produksellerController extends Controller
             'image2_url' => 'nullable|image|max:6000',
             'image3_url' => 'nullable|image|max:6000',
         ]);
+
+    // Custom validation to ensure at least one price is filled if type is rent or purchase
+    if (($request->type == 'rent' && empty($request->rent_price)) ||
+    ($request->type == 'purchase' && empty($request->purchase_price)) ||
+    ($request->type == 'rent_and_purchase' && empty($request->rent_price) && empty($request->purchase_price))) {
+    return back()->withErrors(['price' => 'Either rent price or purchase price must be provided based on the selected type.'])->withInput();
+}
     
         $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->firstOrFail();
         $produkseller->product_name = $request->input('product_name');

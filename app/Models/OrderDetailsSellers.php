@@ -16,6 +16,7 @@ class OrderDetailsSellers extends Model
     protected $fillable = [
         'id',
         'sellers_id',
+        'customers_id',
         'product_sellers_id',
         'order_sellers_id',
         'quantity',
@@ -37,5 +38,10 @@ class OrderDetailsSellers extends Model
     public function orderseller()
     {
         return $this->belongsTo(OrderSellers::class, 'order_sellers_id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customers::class, 'customers_id'); // Mengacu pada kolom 'customers_id'
     }
 }

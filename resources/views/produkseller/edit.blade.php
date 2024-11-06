@@ -24,14 +24,16 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3 ms-3 me-3">
-                        <label for="product_category_id" class="form-label">Product Category</label>
-                        <select name="product_category_id" id="product_category_id" class="form-control" required>
-                            <option value="">Pilih Kategori</option>
-                            @foreach($procatseller as $pc)
-                                <option value="{{ $pc->id }}">{{ $pc->kategori }}</option>
-                            @endforeach
-                        </select>
-                     </div>
+    <label for="product_category_id" class="form-label">Product Category</label>
+    <select name="product_category_id" id="product_category_id" class="form-control" required>
+        <option value="" disabled {{ old('product_category_id', $produkseller->product_category_id) == '' ? 'selected' : '' }}>Pilih Kategori</option>
+        @foreach($procatseller as $pc)
+            <option value="{{ $pc->id }}" {{ old('product_category_id', $produkseller->product_category_id) == $pc->id ? 'selected' : '' }}>
+                {{ $pc->kategori }}
+            </option>
+        @endforeach
+    </select>
+</div>
                     
                      <div class="mb-3 ms-3 me-3">
                         <label for="product_name" class="form-label">Product Name</label>
@@ -56,11 +58,11 @@
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="price" class="form-label"> Purchase Price</label>
-                        <input type="number" id="purchase_price" name="purchase_price" class="form-control" placeholder="Enter Your purchase_price" aria-label="purchase_price" required value="{{$produkseller->purchase_price ?? old('purchase_price')}}">
+                        <input type="number" id="purchase_price" name="purchase_price" class="form-control" placeholder="Enter Your purchase_price" aria-label="purchase_price" value="{{$produkseller->purchase_price ?? old('purchase_price')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="price" class="form-label">Rent Price</label>
-                        <input type="number" id="rent_price" name="rent_price" class="form-control" placeholder="Enter Your rent price (price /day)" aria-label="rent_price" required value="{{$produkseller->rent_price ?? old('rent_price')}}">
+                        <input type="number" id="rent_price" name="rent_price" class="form-control" placeholder="Enter Your rent price (price /day)" aria-label="rent_price" value="{{$produkseller->rent_price ?? old('rent_price')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="stok_quantity" class="form-label">Stock Quantity</label>

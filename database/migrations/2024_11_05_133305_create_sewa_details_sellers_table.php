@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_details_sellers', function (Blueprint $table) {
+        Schema::create('sewa_details_sellers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sellers_id');
+            $table->unsignedBigInteger('customers_id');
             $table->unsignedBigInteger('product_sellers_id');
             $table->foreign('product_sellers_id')->references('id')->on('product_sellers')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('order_sellers_id');
-            $table->foreign('order_sellers_id')->references('id')->on('order_sellers')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('sewa_sellers_id');
             $table->integer('quantity');
             $table->integer('subtotal');
             $table->timestamps();
             //Foreign Key Constraint
-            $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
+            $table->foreign('sewa_sellers_id')->references('id')->on('sewa_sellers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customers_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_details_sellers');
+        Schema::dropIfExists('sewa_details_sellers');
     }
 };

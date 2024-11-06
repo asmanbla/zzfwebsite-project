@@ -111,36 +111,40 @@
             transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
         }
 
-.custom-btn3 {
-            background-color: #475054; /* Warna biru */
-            color: white; /* Warna font putih */
-            border: none; /* Menghilangkan border default */
-            border-radius: 10px; /* Sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
-        }
-
-        .custom-btn4 {
-    background-color: #6c757d; /* Warna background */
-    color: #ffffff; /* Warna teks */
-    border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
+/* Atur ulang padding dan font-size untuk semua tombol agar seragam */
+.custom-btn3, .custom-btn4, .contact-seller {
+    padding: 10px 20px; /* Pastikan padding seragam */
     font-size: 14px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px; /* Jarak antara ikon dan teks */
+    height: 40px; /* Pastikan tinggi seragam */
+    border: none;
     transition: background-color 0.3s ease;
 }
 
-.custom-btn4:hover {
-    background-color: #5a6268; /* Warna saat hover */
+/* Warna dan background untuk tombol masing-masing */
+.custom-btn3 {
+    background-color: #475054; /* Warna biru */
+    color: white;
 }
 
-.contact-seller i {
-    font-size: 16px;
+.custom-btn4 {
+    background-color: #6c757d; /* Warna background */
+    color: #ffffff;
 }
 
+.contact-seller {
+    background-color: #28a745; /* Warna hijau */
+    color: #fff;
+}
+
+/* Hover efek untuk tombol Contact Seller */
+.contact-seller:hover {
+    background-color: #218838; /* Hijau lebih gelap saat hover */
+}
 </style>
 
     </head>
@@ -276,7 +280,7 @@
 <!-- Carousel End -->
          <br>
 
-   <!-- Product For Sale -->
+<!-- Product For Sale -->
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
@@ -296,20 +300,21 @@
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
                             <div class="mb-4">
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->purchase_price, 2, ',', '.') }}</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ number_format($product->purchase_price, 2, ',', '.') }}</h4>
                             </div>
-                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline me-2">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <div style="display: flex; align-items: center; gap: 10px;"> <!-- Flexbox untuk susunan tombol -->
-                                <button type="submit" class="btn custom-btn4">Purchase</button>
-                                <a href="https://wa.me/{{ $product->phone }}" class="btn custom-btn4 contact-seller" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Hubungi Penjual
-                                </a>
-                            </div>
-                        </form>
+                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3 mb-3">Detail</a>
+                            <!-- Button Section -->
+                            <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="quantity" value="1">
+                                <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
+                                    <button type="submit" class="btn custom-btn4">Purchase</button>
+                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
+                                        <i class="fab fa-whatsapp"></i> Contact Seller
+                                    </a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -319,6 +324,7 @@
         <a href="/products/purchase" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Purchase Product</a>
     </div>
 </div>
+
 
 <!-- Product For Rent -->
 <div class="container-fluid categories pb-5">
@@ -343,15 +349,18 @@
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
                             <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                            <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline me-2">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn custom-btn3">Rent</button>
-                            <a href="https://wa.me/{{ $product->phone }}" class="btn" style="background-color: #25D366; color: white; display: inline-flex; align-items: center; padding: 10px 15px; border-radius: 5px; text-decoration: none;" target="_blank">
-                                <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> 
-                            </a>
-                        </form>
+                            <!-- Button Section -->
+                            <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="quantity" value="1">
+                                <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
+                                    <button type="submit" class="btn custom-btn3">Rent</button>
+                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
+                                        <i class="fab fa-whatsapp"></i> Contact Seller
+                                    </a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -362,12 +371,11 @@
     </div>
 </div>
 
-<!-- Product For All -->
 <div class="container-fluid categories pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">For Rent and Purchase <span class="text-primary">Products</span></h1>
-            <p class="mb-0">The Following are the Product for Rent and Purchase</p>
+            <h1 class="display-5 text-capitalize mb-3">For Rent and Sale <span class="text-primary">Products</span></h1>
+            <p class="mb-0">The Following are the Product for Rent and Sale</p>
         </div>
         <div class="categories-carousel owl-carousel">
             @foreach($productsForAll as $product)
@@ -382,27 +390,30 @@
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
                             <div class="mb-4">
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
                             <div class="mb-4">
-                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->purchase_price, 2, ',', '.') }}</h4>
+                                <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ number_format($product->purchase_price, 2, ',', '.') }}</h4>
                             </div>
                             <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                        <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline me-2">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn custom-btn4">Purchase</button>
-                        </form>
-                        <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline me-2">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn custom-btn3">Rent</button>
-                            <a href="https://wa.me/{{ $product->phone }}" class="btn" style="background-color: #25D366; color: white; display: inline-flex; align-items: center; padding: 10px 15px; border-radius: 5px; text-decoration: none;" target="_blank">
-                                <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> 
-                            </a>
-                        </form>
+                            <!-- Flexbox untuk menyusun tombol -->
+                            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                                <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn custom-btn4">Purchase</button>
+                                </form>
+                                <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="btn custom-btn3">Rent</button>
+                                </form>
+                                <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Contact Seller
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -412,6 +423,7 @@
         <a href="/products/all" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Purchase and Rent Products</a>
     </div>
 </div>
+
 
 
         <!-- About Start -->

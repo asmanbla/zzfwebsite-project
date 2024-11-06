@@ -37,7 +37,7 @@
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="specification" class="form-label">Specification Of Product</label>
-                        <input type="text" id="specification" name="specification" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required>
+                        <textarea id="specification" name="specification" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required></textarea>
                      </div>
                      <div class="mb-3 ms-3 me-3">
                         <label for="description" class="form-label">Description</label>

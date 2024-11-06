@@ -15,6 +15,7 @@ class SewaDetailsSellers extends Model
     protected $fillable = [
         'id',
         'sellers_id',
+        'customers_id',
         'product_sellers_id',
         'sewa_sellers_id',
         'quantity',
@@ -36,5 +37,10 @@ class SewaDetailsSellers extends Model
     public function idseller()
     {
         return $this->belongsTo(Sellers::class, 'sellers_id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customers::class, 'customers_id'); // Mengacu pada kolom 'customers_id'
     }
 }
