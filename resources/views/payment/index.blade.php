@@ -9,6 +9,8 @@
 @section('main')
     @include('dashboardseller.main')
 
+    
+
     <!-- Table -->
     <div class="container-fluid py-4">
         <div class="row">
@@ -55,15 +57,15 @@
                                                 Rp{{ number_format($data->amount, 0, ',', '.') }} <!-- Format jumlah dengan mata uang -->
                                             </td>
                                             <td class="text-center">
-                                                <div class="btn-group me-2">
-                                                    <a href="{{ route('payment.edit', $data) }}" class="btn btn-sm btn-edit">Edit</a>
-                                                    <form action="{{ route('payment.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                    </form>
-                                                </div>
-                                            </td>
+                                            <div class="btn-group-wrapper">
+                                                <a href="{{ route('payment.edit', $data->id) }}" class="btn btn-sm btn-edit">Edit</a>
+                                                <form action="{{ route('payment.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

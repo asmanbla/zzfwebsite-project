@@ -105,9 +105,9 @@ class CheckoutViewController extends Controller
                             ->where('status_cart', 'in_cart')
                             ->first();
 
-                if (!$cart) {
-                    return redirect()->back()->with('error', 'Cart item tidak ditemukan untuk produk ini.');
-                }
+                    if (!$cart) {
+                        return redirect()->back()->with('error', 'Cant Find Cart Item For This Product');
+                    }
 
                 // Update status cart
                 $cart->status_cart = 'in_checkout';
@@ -219,6 +219,6 @@ class CheckoutViewController extends Controller
         $cartItem = Carts::findOrFail($id);
         $cartItem->delete();
 
-        return redirect()->back()->with('success', 'Item berhasil dihapus dari keranjang!');
+        return redirect()->back()->with('success', 'Item Successfully Deleted From Cart');
     }
 }

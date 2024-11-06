@@ -37,5 +37,4 @@ class SewaDetailsSellers extends Model
     {
         return $this->belongsTo(Sellers::class, 'sellers_id');
     }
-
 }

@@ -224,7 +224,7 @@ public function updateQuantity(Request $request, $id)
         // Pastikan item wishlist milik pengguna yang saat ini login
         if ($cartItem->customer_id === Auth::id()) {
             $cartItem->delete();
-            return redirect()->route('carthome.index')->with('success', 'Product Berhasil Dihapus dari carthome');
+            return redirect()->route('carthome.index')->with('success', 'Product Successfully Deleted');
         } else {
             return redirect()->route('carthome.index')->with('error', 'You are not authorized to delete this item.');
         }

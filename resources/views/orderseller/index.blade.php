@@ -6,7 +6,33 @@
 @section('main')
       @include('dashboardseller.main')
 
-    
+      <style>
+/* Wrapper untuk memastikan tombol dalam satu baris */
+.btn-group-wrapper {
+    display: flex;
+    gap: 5px; /* Jarak antara tombol */
+    justify-content: center; /* Posisi tombol di tengah */
+    align-items: center; /* Agar tombol sejajar secara vertikal */
+}
+
+/* Styling tambahan untuk tombol */
+.btn-edit {
+    background-color: #007bff; /* Warna tombol Edit */
+    color: #ffffff;
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Warna tombol Delete */
+    color: #ffffff;
+    border: none;
+}
+
+/* Hover effect */
+.btn-edit:hover, .btn-danger:hover {
+    opacity: 0.9;
+}
+
+    </style>
  <!-- Table -->
  <div class="container-fluid py-4">
       <div class="row">
@@ -51,15 +77,15 @@
                                         {{ $data->status}}
                                     </td>
                                     <td class="text-center">
-                                        <div class="btn-group me-2">
-                                            <a href="{{ route('orderseller.edit', $data) }}"  class="btn btn-sm btn-edit">Edit</a>
-                                    <form action="{{ route('orderseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                            </div>
-                                        </td>
+                                      <div class="btn-group-wrapper">
+                                          <a href="{{ route('orderseller.edit', $data) }}" class="btn btn-sm btn-edit">Edit</a>
+                                          <form action="{{ route('orderseller.destroy', $data->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this data?')">
+                                              @csrf
+                                              @method('DELETE')
+                                              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                          </form>
+                                      </div>
+                                  </td>
                                     </tr>
                                 @endforeach
                         </tbody>
