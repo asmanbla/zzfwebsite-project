@@ -86,6 +86,51 @@ a.btn.btn-secondary {
     padding: 12px 24px !important; /* Ukuran padding agar berbentuk persegi panjang */
     display: inline-block; /* Pastikan tombol tetap inline */
 }
+
+
+    /* Style untuk search bar */
+    .search-container-purchase {
+    display: flex;
+    justify-content: center; /* Mengatur agar elemen berada di tengah */
+    margin-bottom: 20px; /* Jarak bawah */
+}
+
+.search-form-purchase {
+    display: flex; /* Mengatur agar input dan button berada dalam satu baris */
+    border: 2px solid #b22222; /* Warna border merah tua */
+    border-radius: 30px; /* Membuat sudut rounded */
+    overflow: hidden; /* Menyembunyikan bagian yang melebihi sudut */
+    width: 80%; /* Mengatur lebar search bar, bisa disesuaikan */
+    max-width: 600px; /* Lebar maksimal */
+}
+
+.search-input-purchase {
+    border: none; /* Menghilangkan border default */
+    padding: 10px 20px; /* Jarak dalam input */
+    outline: none; /* Menghilangkan outline saat input terpilih */
+    flex: 1; /* Membuat input mengisi ruang yang tersedia */
+    font-size: 16px; /* Ukuran font */
+    border-radius: 30px 0 0 30px; /* Rounded pada kiri */
+}
+
+.search-input-purchase::placeholder {
+    color: #aaa; /* Warna placeholder */
+}
+
+.search-button-purchase {
+    background-color: #b22222; /* Warna latar belakang merah tua */
+    border: none; /* Menghilangkan border default */
+    color: white; /* Warna teks */
+    padding: 10px 15px; /* Jarak dalam button */
+    cursor: pointer; /* Menampilkan pointer saat hover */
+    transition: background-color 0.3s; /* Efek transisi pada hover */
+    border-radius: 0 30px 30px 0; /* Rounded pada kanan */
+}
+
+.search-button-purchase:hover {
+    background-color: #8b0000; /* Warna latar belakang lebih gelap saat hover */
+}
+
 </style>
 
 <style>
@@ -242,6 +287,7 @@ h2, h3, .customer-info {
     .customer-info i {
         font-size: 2.5rem;
     }
+
 }
 </style>
 
@@ -321,6 +367,8 @@ h2, h3, .customer-info {
 <!-- Navbar & Hero End -->
 
 <br><br>
+
+            
   <!-- Produk Kami Purchase -->
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
@@ -328,6 +376,15 @@ h2, h3, .customer-info {
             <h1 class="display-5 text-capitalize mb-3">Products <span class="text-primary">for Sale</span></h1>
             <p class="mb-0">The following are the products for sale</p>
         </div>
+
+<!-- Product Search -->
+<div class="search-container-purchase">
+                <form action="{{ url('product_search_purchase') }}" method="GET" class="search-form">
+                    <input class="search-input-purchase" type="text" name="search" placeholder="Search Products Here">
+                    <button class="search-button-purchase" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <br>
 
         <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
         <div class="row">
@@ -343,6 +400,9 @@ h2, h3, .customer-info {
                                 <h6 class="text-secondary">
                                     <i class="fa fa-user"></i> {{ $product->seller->name }}
                                 </h6>
+                                <h8 class="text-secondary">
+                                    <i class="fa fa-cogs"></i> {{ $product->specification }}
+                                </h8>
                                 <div class="mb-4">
                                     <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->purchase_price, 2, ',', '.') }}</h4>
                                 </div>

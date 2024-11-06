@@ -86,4 +86,129 @@ class HomeBladeController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+{
+    $query = $request->input('search');
+    $productsForSale = DB::table('vwprodukseller')
+        ->where('type', 'purchase')
+        ->where(function($q) use ($query) {
+            $q->where('product_name', 'LIKE', '%' . $query . '%')
+              ->orWhere('specification', 'LIKE', '%' . $query . '%');
+        })
+        ->get();
+
+    $productsForRent = DB::table('vwprodukseller')
+        ->where('type', 'rent')
+        ->where(function($q) use ($query) {
+            $q->where('product_name', 'LIKE', '%' . $query . '%')
+              ->orWhere('specification', 'LIKE', '%' . $query . '%');
+        })
+        ->get();
+
+    $productsForAll = DB::table('vwprodukseller')
+        ->where('type', 'rent_and_purchase')
+        ->where(function($q) use ($query) {
+            $q->where('product_name', 'LIKE', '%' . $query . '%')
+              ->orWhere('specification', 'LIKE', '%' . $query . '%');
+        })
+        ->get();
+
+    return view('welcome', [
+        'productsForSale' => $productsForSale,
+        'productsForRent' => $productsForRent,
+        'productsForAll' => $productsForAll,
+        'totalItems' => 0,  // atau hitung jika user login
+    ]);
+    
+}
+
+public function product_search(Request $request)
+{
+    $search_text = $request->search;
+    $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
+    $productQuery = ProductSellers::query();
+
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Ambil produk yang dicari
+    $products = $productQuery->get();
+
+    // Untuk keperluan tampilan, kita bisa memisahkan produk yang dijual dan disewa, jika perlu
+    $productsForSale = $products->where('type', 'purchase'); // Misalkan ada kolom 'type' di database
+    $productsForRent = $products->where('type', 'rent');
+    $productsForAll = $products->where('type', 'rent_and_purchase');
+
+    return view('welcome', compact('products', 'productsForSale', 'productsForRent', 'productsForAll'));
+}
+
+public function product_search_purchase(Request $request)
+{
+    $search_text = $request->search;
+    $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
+    $productQuery = ProductSellers::query();
+
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Ambil produk yang dicari
+    $products = $productQuery->get();
+
+    $productsForSale = $products->where('type', 'purchase'); // 
+
+    return view('prodviewpurchase.index', compact('products', 'productsForSale'));
+}
+
+public function product_search_rent(Request $request)
+{
+    $search_text = $request->search;
+    $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
+    $productQuery = ProductSellers::query();
+
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Ambil produk yang dicari
+    $products = $productQuery->get();
+
+    $productsForRent = $products->where('type', 'rent'); // 
+
+    return view('prodviewrent.index', compact('products', 'productsForRent'));
+}
+
+public function product_search_all(Request $request)
+{
+    $search_text = $request->search;
+    $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
+    $productQuery = ProductSellers::query();
+
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Ambil produk yang dicari
+    $products = $productQuery->get();
+
+    $productsForAll = $products->where('type', 'rent_and_purchase'); 
+
+    return view('prodviewall.index', compact('products', 'productsForAll'));
+}
+
+
 }

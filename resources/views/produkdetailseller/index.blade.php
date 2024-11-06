@@ -398,7 +398,7 @@
                         @foreach ([ $productseller->image1_url,  $productseller->image2_url,  $productseller->image3_url] as $image)
                             @if($image)
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('storage/' . $image) }}" alt="{{  $productseller->product_name }}" style="width: 520x; height: 480px;" class="product-image">
+                                    <img src="{{ asset('storage/' . $image) }}" alt="{{  $productseller->product_name }}" style="width: 520x; height: 700px;" class="product-image">
                                 </div>
                             @endif
                         @endforeach
@@ -411,7 +411,9 @@
                 </div>
             </div>
             <div class="product-info">
-                <h1>{{ $productseller->product_name }}</h1>
+                <h1><b>{{ $productseller->product_name }}</b></h1>
+                <br>
+                <h5>Specification Of Product: {{ $productseller->specification }}</h5>
                 <p>{{ $productseller->description }}</p>
                 <p class="card-text">
                     <span class="price" style="color: #A00000;">Purchase Price: Rp{{ number_format($productseller->purchase_price, 2, ',', '.') }}</span>

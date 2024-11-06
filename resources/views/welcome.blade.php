@@ -280,7 +280,20 @@
 <!-- Carousel End -->
          <br>
 
+<<<<<<< HEAD
 <!-- Product For Sale -->
+=======
+   <!-- Product Search -->
+   <div class="search-container">
+                <form action="{{ url('product_search') }}" method="GET" class="search-form">
+                    <input class="search-input" type="text" name="search" placeholder="Search Products Here">
+                    <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <br>
+
+            <!-- Product For Sale -->
+>>>>>>> 65bd0c04f83d38d87bcc43209e9e722879ed3ed7
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
@@ -299,6 +312,10 @@
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
+                            <h8 class="text-secondary">
+                                <i class="fa fa-cogs"></i> {{ $product->specification }}
+                            </h8>
+                            <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ number_format($product->purchase_price, 2, ',', '.') }}</h4>
                             </div>
@@ -345,6 +362,10 @@
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
+                            <h8 class="text-secondary">
+                                <i class="fa fa-cogs"></i> {{ $product->specification }}
+                            </h8>
+                            <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
@@ -389,6 +410,10 @@
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
+                            <h8 class="text-secondary">
+                                <i class="fa fa-cogs"></i> {{ $product->specification }}
+                            </h8>
+                            <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
