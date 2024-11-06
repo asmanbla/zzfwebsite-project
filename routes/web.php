@@ -43,6 +43,12 @@ use App\Http\Controllers\AuthController;
 
 
 Route::resource('/', HomeBladeController::class);
+ // Search Button Controller : 
+ Route::get ('/product_search', [HomeBladeController::class,'product_search']);
+ Route::get ('/product_search_purchase', [HomeBladeController::class,'product_search_purchase']);
+ Route::get ('/product_search_rent', [HomeBladeController::class,'product_search_rent']);
+ Route::get ('/product_search_all', [HomeBladeController::class,'product_search_all']);
+
 
 //Produk Details View
 
@@ -209,7 +215,6 @@ Route::middleware(['auth:customers'])->group(function () {
     Route::post('/checkoutprocess/store', [CheckoutViewController::class, 'storecheckout'])->name('checkoutprocess.store');
 
     Route::resource('history', HistoryController::class);
-
 
 
  // Menghapus item dari cart

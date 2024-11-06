@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SewaSellers;
 use App\Models\OrderSellers;
+use App\Models\SewaDetailsSellers;
+use App\Models\OrderDetailsSellers;
 use App\Models\Customers;
 use App\Models\ProductSellers;
 use App\Models\Carts;
@@ -79,87 +81,111 @@ class CheckoutViewController extends Controller
 
 
     public function storecheckout(Request $request)
-        {
-            $request->validate([
-                'checkout_type' => 'required|in:purchase,rent',
-                'selected_items' => 'required|array|min:1',
-                'total_amount' => 'required|numeric|min:0',
-            ]);
+    {
+        $request->validate([
+            'checkout_type' => 'required|in:purchase,rent',
+            'selected_items' => 'required|array|min:1',
+            'total_amount' => 'required|numeric|min:0',
+        ]);
 
-            $checkoutType = $request->input('checkout_type');
-            $selectedItems = $request->input('selected_items');
-            $customerId = auth()->user()->id;
-            $totalAmount = $request->input('total_amount');
+        $checkoutType = $request->input('checkout_type');
+        $selectedItems = $request->input('selected_items');
+        $customerId = auth()->user()->id;
+        $totalAmount = $request->input('total_amount');
 
-            DB::beginTransaction(); // Memulai transaksi
+        DB::beginTransaction();
 
-            try {
-                foreach ($selectedItems as $itemId) {
-                    $item = ProductSellers::find($itemId);
-                    if (!$item) continue;
+        try {
+            foreach ($selectedItems as $itemId) {
+                $item = ProductSellers::find($itemId);
+                if (!$item) continue;
 
-                    $cart = Carts::where('customer_id', $customerId)
-                                ->where('products_sellers_id', $item->id)
-                                ->where('status_cart', 'in_cart')
-                                ->first();
+                $cart = Carts::where('customer_id', $customerId)
+                            ->where('products_sellers_id', $item->id)
+                            ->where('status_cart', 'in_cart')
+                            ->first();
 
-                    if (!$cart) {
-                        return redirect()->back()->with('error', 'Cart item tidak ditemukan untuk produk ini.');
-                    }
-
-                    $cart->status_cart = 'in_checkout';
-                    $cart->save();
-
-                    if ($checkoutType == 'purchase') {
-                        $order = OrderSellers::create([
-                            'carts_id' => $cart->id,
-                            'sellers_id' => $item->sellers_id,
-                            'customers_id' => $customerId,
-                            'product_sellers_id' => $item->id,
-                            'order_date' => now(),
-                            'total_amount' => $totalAmount,
-                            'status' => 'waiting for payment',
-                        ]);
-
-                        // Simpan data ke tabel Payments
-                        Payments::create([
-                            'sellers_id' => $item->sellers_id,
-                            'order_sellers_id' => $order->id,
-                            'payment_date' => now(),
-                            'payment_method' => 'Transfer',
-                            'amount' => $totalAmount,
-                        ]);
-                    } elseif ($checkoutType == 'rent') {
-                        $sewa = SewaSellers::create([
-                            'carts_id' => $cart->id,
-                            'sellers_id' => $item->sellers_id,
-                            'customers_id' => $customerId,
-                            'product_sellers_id' => $item->id,
-                            'start_date' => now(),
-                            'finish_date' => now()->addDays(7),
-                            'total_amount' => $totalAmount,
-                            'status' => 'waiting for payment',
-                        ]);
-
-                        // Simpan data ke tabel Payments
-                        Payments::create([
-                            'sellers_id' => $item->sellers_id,
-                            'sewa_sellers_id' => $sewa->id,
-                            'payment_date' => now(),
-                            'payment_method' => 'Transfer',
-                            'amount' => $totalAmount,
-                        ]);
-                    }
+                if (!$cart) {
+                    return redirect()->back()->with('error', 'Cart item tidak ditemukan untuk produk ini.');
                 }
 
-                DB::commit(); // Commit transaksi jika semua berhasil
-                return redirect()->route('history.index')->with('success', 'Checkout Successfully!');
+                // Update status cart
+                $cart->status_cart = 'in_checkout';
+                $cart->save();
 
-            } catch (\Exception $e) {
-                DB::rollback(); // Rollback jika terjadi error
-                return redirect()->back()->with('error', 'Checkout failed: ' . $e->getMessage());
+                // Ambil quantity dari cart
+                $quantity = $cart->quantity;
+
+                if ($checkoutType == 'purchase') {
+                    $order = OrderSellers::create([
+                        'carts_id' => $cart->id,
+                        'sellers_id' => $item->sellers_id,
+                        'customers_id' => $customerId,
+                        'product_sellers_id' => $item->id,
+                        'order_date' => now(),
+                        'total_amount' => $totalAmount,
+                        'status' => 'waiting for payment',
+                    ]);
+
+                    // Simpan detail order dengan quantity dari cart
+                    OrderDetailsSellers::create([
+                        'sellers_id' => $item->sellers_id,
+                        'product_sellers_id' => $item->id,
+                        'order_sellers_id' => $order->id,
+                        'quantity' => $quantity, // Ambil quantity dari cart
+                        'subtotal' => $cart->purchase_price * $quantity, // Hitung subtotal
+                    ]);
+
+                    // Simpan data ke tabel Payments
+                    Payments::create([
+                        'sellers_id' => $item->sellers_id,
+                        'order_sellers_id' => $order->id,
+                        'payment_date' => now(),
+                        'payment_method' => 'Transfer',
+                        'amount' => $totalAmount,
+                    ]);
+                } elseif ($checkoutType == 'rent') {
+                    // Buat sewa terlebih dahulu
+                    $sewa = SewaSellers::create([
+                        'carts_id' => $cart->id,
+                        'sellers_id' => $item->sellers_id,
+                        'customers_id' => $customerId,
+                        'product_sellers_id' => $item->id,
+                        'start_date' => now(),
+                        'finish_date' => now()->addDays(7),
+                        'total_amount' => $totalAmount,
+                        'status' => 'waiting for payment',
+                    ]);
+
+                    // Simpan detail sewa dengan quantity dari cart
+                    SewaDetailsSellers::create([
+                        'sellers_id' => $item->sellers_id,
+                        'product_sellers_id' => $item->id,
+                        'sewa_sellers_id' => $sewa->id, // Gunakan ID sewa yang baru dibuat
+                        'quantity' => $quantity, // Ambil quantity dari cart
+                        'subtotal' => $cart->rent_price * $quantity, // Hitung subtotal
+                    ]);
+
+                    // Simpan data ke tabel Payments
+                    Payments::create([
+                        'sellers_id' => $item->sellers_id,
+                        'sewa_sellers_id' => $sewa->id,
+                        'payment_date' => now(),
+                        'payment_method' => 'Transfer',
+                        'amount' => $totalAmount,
+                    ]);
+                }
             }
+
+            DB::commit();
+            return redirect()->route('history.index')->with('success', 'Checkout Successfully!');
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with('error', 'Checkout failed: ' . $e->getMessage());
         }
+    }
+
 
     /**
      * Display the specified resource.

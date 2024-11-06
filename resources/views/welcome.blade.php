@@ -141,6 +141,50 @@
     font-size: 16px;
 }
 
+/* Style untuk search bar */
+.search-container {
+    display: flex;
+    justify-content: center; /* Mengatur agar elemen berada di tengah */
+    margin-bottom: 20px; /* Jarak bawah */
+}
+
+.search-form {
+    display: flex; /* Mengatur agar input dan button berada dalam satu baris */
+    border: 2px solid #b22222; /* Warna border merah tua */
+    border-radius: 30px; /* Membuat sudut rounded */
+    overflow: hidden; /* Menyembunyikan bagian yang melebihi sudut */
+    width: 80%; /* Mengatur lebar search bar, bisa disesuaikan */
+    max-width: 600px; /* Lebar maksimal */
+}
+
+.search-input {
+    border: none; /* Menghilangkan border default */
+    padding: 10px 20px; /* Jarak dalam input */
+    outline: none; /* Menghilangkan outline saat input terpilih */
+    flex: 1; /* Membuat input mengisi ruang yang tersedia */
+    font-size: 16px; /* Ukuran font */
+    border-radius: 30px 0 0 30px; /* Rounded pada kiri */
+}
+
+.search-input::placeholder {
+    color: #aaa; /* Warna placeholder */
+}
+
+.search-button {
+    background-color: #b22222; /* Warna latar belakang merah tua */
+    border: none; /* Menghilangkan border default */
+    color: white; /* Warna teks */
+    padding: 10px 15px; /* Jarak dalam button */
+    cursor: pointer; /* Menampilkan pointer saat hover */
+    transition: background-color 0.3s; /* Efek transisi pada hover */
+    border-radius: 0 30px 30px 0; /* Rounded pada kanan */
+}
+
+.search-button:hover {
+    background-color: #8b0000; /* Warna latar belakang lebih gelap saat hover */
+}
+
+
 </style>
 
     </head>
@@ -276,7 +320,16 @@
 <!-- Carousel End -->
          <br>
 
-   <!-- Product For Sale -->
+   <!-- Product Search -->
+   <div class="search-container">
+                <form action="{{ url('product_search') }}" method="GET" class="search-form">
+                    <input class="search-input" type="text" name="search" placeholder="Search Products Here">
+                    <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <br>
+
+            <!-- Product For Sale -->
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
@@ -295,6 +348,10 @@
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
+                            <h8 class="text-secondary">
+                                <i class="fa fa-cogs"></i> {{ $product->specification }}
+                            </h8>
+                            <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->purchase_price, 2, ',', '.') }}</h4>
                             </div>
@@ -339,6 +396,10 @@
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
+                            <h8 class="text-secondary">
+                                <i class="fa fa-cogs"></i> {{ $product->specification }}
+                            </h8>
+                            <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
@@ -381,6 +442,10 @@
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
                             </h6>
+                            <h8 class="text-secondary">
+                                <i class="fa fa-cogs"></i> {{ $product->specification }}
+                            </h8>
+                            <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>

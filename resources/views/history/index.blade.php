@@ -106,6 +106,11 @@ h3.section-subheading {
     }
 }
 
+.text-left {
+    text-align: left;
+}
+
+
 
 </style>
 </head>
@@ -180,8 +185,97 @@ h3.section-subheading {
 
 <br><br>
 
-          <!-- Isi dari halaman -->
+<!-- About Section -->
+<section class="page-section" id="tentang">
+                <div class="container text-center">
+                    <div>
+                        <h2 class="section-heading text-uppercase">History</h2>
+                        <h3 class="section-subheading text-muted">Here's your history order or rent data from zzf website </h3>
+                    </div>
+<br>
 
+<h3 class="text-left">Orders</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Seller Name</th>
+                <th>Product Name</th>
+                <th>Order Date</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($orderDetails as $order)
+                <tr>
+                    <td>{{ $order->seller_name }}</td>
+                    <td>{{ $order->product_seller_name }}</td>
+                    <td>{{ $order->order_date }}</td>
+                    <td>{{ $order->quantity }}</td>
+                    <td>{{ $order->subtotal }}</td>
+                    <td>{{ $order->status }}</td>
+                    <td>
+                        <!-- Button View -->
+                        <a href="" class="btn btn-info btn-sm">View</a>
+
+                        <!-- Button Delete -->
+                        <form action="" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <br>
+
+<h3 class="text-left">Rentals</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Seller Name</th>
+                <th>Product Name</th>
+                <th>Start Date</th>
+                <th>Finish Date</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($sewaDetails as $sewa)
+                <tr>
+                    <td>{{ $sewa->seller_name }}</td>
+                    <td>{{ $sewa->product_seller_name }}</td>
+                    <td>{{ $sewa->start_date }}</td>
+                    <td>{{ $sewa->finish_date }}</td>
+                    <td>{{ $sewa->quantity }}</td>
+                    <td>{{ $sewa->subtotal }}</td>
+                    <td>{{ $sewa->status }}</td>
+                    <td>
+                        <!-- Button View -->
+                        <a href="" class="btn btn-info btn-sm">View</a>
+
+                        <!-- Button Delete -->
+                        <form action="" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<br><br>
    
          <!-- Copyright Start -->
        <div class="container-fluid copyright py-4">

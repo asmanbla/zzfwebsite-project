@@ -38,8 +38,8 @@
                         <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required value="{{$produkseller->product_name ?? old('product_name')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="specification" class="form-label">Product Name</label>
-                        <input type="text" id="specification" name="specification" class="form-control" placeholder="Enter Your product name" aria-label="specification" required value="{{$produkseller->specification ?? old('specification')}}">
+                        <label for="specification" class="form-label">Specification</label>
+                        <input type="text" id="specification" name="specification" class="form-control" placeholder="Enter Your specification Of Product" aria-label="specification" required value="{{$produkseller->specification ?? old('specification')}}">
                      </div>
                      <div class="mb-3 ms-3 me-3">
                           <label for="description" class="form-label">Description</label>
