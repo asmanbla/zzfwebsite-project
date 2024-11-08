@@ -214,7 +214,11 @@ Route::middleware(['auth:customers'])->group(function () {
 
     Route::post('/checkoutprocess/store', [CheckoutViewController::class, 'storecheckout'])->name('checkoutprocess.store');
 
-    Route::resource('history', HistoryController::class);
+    Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+
+    Route::get('/download-receipt-orders/{id}', [HistoryController::class, 'downloadReceiptOrder'])->name('downloadReceiptOrder');
+
+    Route::get('/download-receipt-sewa/{id}', [HistoryController::class, 'downloadReceiptSewa'])->name('downloadReceiptSewa');
 
 
  // Menghapus item dari cart

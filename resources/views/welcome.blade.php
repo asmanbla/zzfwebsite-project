@@ -145,6 +145,49 @@
 .contact-seller:hover {
     background-color: #218838; /* Hijau lebih gelap saat hover */
 }
+
+/* Style untuk search bar */
+.search-container {
+    display: flex;
+    justify-content: center; /* Mengatur agar elemen berada di tengah */
+    margin-bottom: 20px; /* Jarak bawah */
+}
+
+.search-form {
+    display: flex; /* Mengatur agar input dan button berada dalam satu baris */
+    border: 2px solid #b22222; /* Warna border merah tua */
+    border-radius: 30px; /* Membuat sudut rounded */
+    overflow: hidden; /* Menyembunyikan bagian yang melebihi sudut */
+    width: 80%; /* Mengatur lebar search bar, bisa disesuaikan */
+    max-width: 600px; /* Lebar maksimal */
+}
+
+.search-input {
+    border: none; /* Menghilangkan border default */
+    padding: 10px 20px; /* Jarak dalam input */
+    outline: none; /* Menghilangkan outline saat input terpilih */
+    flex: 1; /* Membuat input mengisi ruang yang tersedia */
+    font-size: 16px; /* Ukuran font */
+    border-radius: 30px 0 0 30px; /* Rounded pada kiri */
+}
+
+.search-input::placeholder {
+    color: #aaa; /* Warna placeholder */
+}
+
+.search-button {
+    background-color: #b22222; /* Warna latar belakang merah tua */
+    border: none; /* Menghilangkan border default */
+    color: white; /* Warna teks */
+    padding: 10px 15px; /* Jarak dalam button */
+    cursor: pointer; /* Menampilkan pointer saat hover */
+    transition: background-color 0.3s; /* Efek transisi pada hover */
+    border-radius: 0 30px 30px 0; /* Rounded pada kanan */
+}
+
+.search-button:hover {
+    background-color: #8b0000; /* Warna latar belakang lebih gelap saat hover */
+}
 </style>
 
     </head>
@@ -280,9 +323,6 @@
 <!-- Carousel End -->
          <br>
 
-<<<<<<< HEAD
-<!-- Product For Sale -->
-=======
    <!-- Product Search -->
    <div class="search-container">
                 <form action="{{ url('product_search') }}" method="GET" class="search-form">
@@ -292,8 +332,8 @@
             </div>
             <br>
 
-            <!-- Product For Sale -->
->>>>>>> 65bd0c04f83d38d87bcc43209e9e722879ed3ed7
+
+<!-- Product For Sale -->
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">

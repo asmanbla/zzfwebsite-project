@@ -480,10 +480,14 @@ h2.section-heading {
                     </select>
                 </div>
 
-                <div class="d-flex justify-content-between mb-3">
-                    <a href="/" class="btn1 btn-info">Continue To Shopping</a>
-                    <button type="submit" class="btn2 btn-info">Proceed to Checkout</button>
-                </div>
+                <form action="{{ route('checkout.store') }}" method="POST">
+    @csrf
+    <div class="d-flex justify-content-between mb-3">
+        <a href="/" class="btn1 btn-info">Continue To Shopping</a>
+        <button type="submit" class="btn2 btn-info">Proceed to Checkout</button>
+    </div>
+</form>
+
             </form>
         </div>
     </div>

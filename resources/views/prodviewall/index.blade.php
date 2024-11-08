@@ -220,23 +220,40 @@ h3.section-subheading {
             transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
         }
 
+/* Atur ulang padding dan font-size untuk semua tombol agar seragam */
+.custom-btn3, .custom-btn4, .contact-seller {
+    padding: 10px 20px; /* Pastikan padding seragam */
+    font-size: 14px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* Jarak antara ikon dan teks */
+    height: 40px; /* Pastikan tinggi seragam */
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Warna dan background untuk tombol masing-masing */
 .custom-btn3 {
-            background-color: #475054; /* Warna biru */
-            color: white; /* Warna font putih */
-            border: none; /* Menghilangkan border default */
-            border-radius: 10px; /* Sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
-        }
+    background-color: #475054; /* Warna biru */
+    color: white;
+}
 
 .custom-btn4 {
-            background-color: #B1AFB5; /* Warna biru */
-            color: white; /* Warna font putih */
-            border: none; /* Menghilangkan border default */
-            border-radius: 10px; /* Sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
-        }
+    background-color: #6c757d; /* Warna background */
+    color: #ffffff;
+}
+
+.contact-seller {
+    background-color: #28a745; /* Warna hijau */
+    color: #fff;
+}
+
+/* Hover efek untuk tombol Contact Seller */
+.contact-seller:hover {
+    background-color: #218838; /* Hijau lebih gelap saat hover */
+}
 
 
 /* Animasi */
@@ -402,18 +419,24 @@ h2, h3, .customer-info {
                                         </div>
                                         <!-- Tombol detail produk -->
                                         <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                                        <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline me-2">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <input type="hidden" name="quantity" value="1">
-                                            <button type="submit" class="btn custom-btn4">Purchase</button>
-                                        </form>
-                                        <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline me-2">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <input type="hidden" name="quantity" value="1">
-                                            <button type="submit" class="btn custom-btn3">Rent</button>
-                                        </form>
+                                        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+    <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
+        @csrf
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn custom-btn4">Purchase</button>
+    </form>
+    <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
+        @csrf
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" class="btn custom-btn3">Rent</button>
+    </form>
+    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller d-flex align-items-center" style="white-space: nowrap; flex-shrink: 0;" target="_blank">
+        <i class="fab fa-whatsapp me-1"></i> Contact Seller
+    </a>
+</div>
+
                                     </div>
                                 </div>
                             </div>

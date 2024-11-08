@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('product_categories_sellers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sellers_id');
-            $table->enum('kategori', ['equipment','component', 'bundling'])->default('equipment');
+            $table->enum('kategori', ['tower_crane', 'passenger_hoist', 'form_work', 'scaffolding', 'placing_boom', 'safety_net', 'concrete_pump', 'concrete_batching_plant', 'mobile_crane'])->default('tower_crane');
             $table->timestamps();
             // Foreign Key Constraint
             $table->foreign('sellers_id')->references('id')->on('sellers')->onDelete('cascade');
