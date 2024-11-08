@@ -145,6 +145,78 @@
 .contact-seller:hover {
     background-color: #218838; /* Hijau lebih gelap saat hover */
 }
+
+/* Style untuk search bar */
+.search-container {
+    display: flex;
+    justify-content: center; /* Mengatur agar elemen berada di tengah */
+    margin-bottom: 20px; /* Jarak bawah */
+}
+
+.search-form {
+    display: flex; /* Mengatur agar input dan button berada dalam satu baris */
+    border: 2px solid #b22222; /* Warna border merah tua */
+    border-radius: 30px; /* Membuat sudut rounded */
+    overflow: hidden; /* Menyembunyikan bagian yang melebihi sudut */
+    width: 80%; /* Mengatur lebar search bar, bisa disesuaikan */
+    max-width: 600px; /* Lebar maksimal */
+}
+
+.search-input {
+    border: none; /* Menghilangkan border default */
+    padding: 10px 20px; /* Jarak dalam input */
+    outline: none; /* Menghilangkan outline saat input terpilih */
+    flex: 1; /* Membuat input mengisi ruang yang tersedia */
+    font-size: 16px; /* Ukuran font */
+    border-radius: 30px 0 0 30px; /* Rounded pada kiri */
+}
+
+.search-input::placeholder {
+    color: #aaa; /* Warna placeholder */
+}
+
+.search-button {
+    background-color: #b22222; /* Warna latar belakang merah tua */
+    border: none; /* Menghilangkan border default */
+    color: white; /* Warna teks */
+    padding: 10px 15px; /* Jarak dalam button */
+    cursor: pointer; /* Menampilkan pointer saat hover */
+    transition: background-color 0.3s; /* Efek transisi pada hover */
+    border-radius: 0 30px 30px 0; /* Rounded pada kanan */
+}
+
+.search-button:hover {
+    background-color: #8b0000; /* Warna latar belakang lebih gelap saat hover */
+}
+
+<style>
+/* Style untuk kotak layanan persegi panjang melebar ke samping */
+.custom-service-item {
+    width: 100%;
+    height: 100px; /* Ukuran persegi panjang melebar ke samping */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.row.g-4.d-flex.justify-content-center {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Layout 3 kolom */
+    gap: 20px; /* Jarak antar kotak */
+}
+
+@media (max-width: 768px) {
+    .row.g-4.d-flex.justify-content-center {
+        grid-template-columns: repeat(1, 1fr); /* Satu kolom pada layar kecil */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .row.g-4.d-flex.justify-content-center {
+        grid-template-columns: repeat(2, 1fr); /* Dua kolom pada tablet */
+    }
+}
 </style>
 
     </head>
@@ -238,11 +310,7 @@
 
 <!-- Carousel Start -->
 <div class="header-carousel" id="home">
-    <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-wrap="true"> <!-- Interval 2 detik dan looping -->
-        <ol class="carousel-indicators">
-            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
-            <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
-        </ol>
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-wrap="true">
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
                 <img src="img/imgzzf/bg2.jpg" class="img-fluid w-100" alt="First slide"/>
@@ -250,25 +318,66 @@
                     <div class="container py-4">
                         <div class="row g-5">
                             <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
-                                <div class="text-start">
-                                    <h1 class="display-5 text-white">Find the best quality and affordable heavy machine tools here</h1>
-                                    <p>Make your machine rental experience even better with us!</p>
+                                <!-- Services Start -->
+                                <div class="container-fluid service py-5" id="service">
+                                    <div class="container py-5">
+                                        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                                            <h1 class="display-5 text-capitalize mb-3">Type Of <span class="text-primary">Services</span></h1>
+                                            <p class="mb-0">Choose According to your needs</p>
+                                        </div>
+                                        <div class="row g-4 d-flex justify-content-center service-grid">
+                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                                                <div class="service-item custom-service-item p-4 border">
+                                                    <div class="service-icon mb-4 text-center">
+                                                        <i class="fa fa-truck fa-2x"></i>
+                                                    </div>
+                                                    <h5 class="mb-3 text-center">Heavy Equipment Sales</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
+                                                <div class="service-item custom-service-item p-4 border">
+                                                    <div class="service-icon mb-4 text-center">
+                                                        <i class="fa fa-tools fa-2x"></i>
+                                                    </div>
+                                                    <h5 class="mb-3 text-center">Heavy Equipment Rental</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s">
+                                                <div class="service-item custom-service-item p-4 border">
+                                                    <div class="service-icon mb-4 text-center">
+                                                        <i class="fa fa-cogs fa-2x"></i>
+                                                    </div>
+                                                    <h5 class="mb-3 text-center">Component Rental</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.7s">
+                                                <div class="service-item custom-service-item p-4 border">
+                                                    <div class="service-icon mb-4 text-center">
+                                                        <i class="fa fa-box fa-2x"></i>
+                                                    </div>
+                                                    <h5 class="mb-3 text-center">Component Sales</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.9s">
+                                                <div class="service-item custom-service-item p-4 border">
+                                                    <div class="service-icon mb-4 text-center">
+                                                        <i class="fa fa-tags fa-2x"></i>
+                                                    </div>
+                                                    <h5 class="mb-3 text-center">Bundling Sales</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="1.1s">
+                                                <div class="service-item custom-service-item p-4 border">
+                                                    <div class="service-icon mb-4 text-center">
+                                                        <i class="fa fa-box-open fa-2x"></i>
+                                                    </div>
+                                                    <h5 class="mb-3 text-center">Bundling Rental</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="img/imgzzf/bg1.jpeg" class="img-fluid w-100" alt="First slide"/>
-                <div class="carousel-caption">
-                    <div class="container py-4">
-                        <div class="row g-5">
-                            <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
-                                <div class="text-start">
-                                <h1 class="display-5 text-white">Find the best quality and affordable heavy machine tools here</h1>
-                                <p>Make your machine rental experience even better with us!</p>
-                                </div>
+                                <!-- Services End -->
                             </div>
                         </div>
                     </div>
@@ -278,23 +387,25 @@
     </div>
 </div>
 <!-- Carousel End -->
-         <br>
 
-<<<<<<< HEAD
-<!-- Product For Sale -->
-=======
-   <!-- Product Search -->
-   <div class="search-container">
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
+         <br>
+<!-- 
+   Product Search -->
+   <!-- <div class="search-container">
                 <form action="{{ url('product_search') }}" method="GET" class="search-form">
                     <input class="search-input" type="text" name="search" placeholder="Search Products Here">
                     <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
-            <br>
+            <br> -->
 
-            <!-- Product For Sale -->
->>>>>>> 65bd0c04f83d38d87bcc43209e9e722879ed3ed7
-<div class="container-fluid categories pb-5" id="produk">
+
+<!-- Product For Sale -->
+<!-- <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">For Sale <span class="text-primary">Product</span></h1>
@@ -306,8 +417,8 @@
                     <div class="categories-item-inner">
                         <div class="categories-img rounded-top">
                             <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
-                        </div>
-                        <div class="categories-content rounded-bottom p-4">
+                        </div> -->
+                        <!-- <div class="categories-content rounded-bottom p-4">
                             <h4>{{ $product->product_name }}</h4>
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
@@ -318,17 +429,17 @@
                             <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ number_format($product->purchase_price, 2, ',', '.') }}</h4>
-                            </div>
-                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3 mb-3">Detail</a>
+                            </div> -->
+                            <!-- <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3 mb-3">Detail</a> -->
                             <!-- Button Section -->
-                            <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
+                            <!-- <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <input type="hidden" name="quantity" value="1">
-                                <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
-                                    <button type="submit" class="btn custom-btn4">Purchase</button>
-                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
-                                        <i class="fab fa-whatsapp"></i> Contact Seller
+                                <div style="display: flex; justify-content: center; gap: 10px;"> Flexbox for button alignment -->
+                                    <!-- <button type="submit" class="btn custom-btn4">Purchase</button>
+                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> Menambahkan btn-success untuk warna hijau -->
+                                        <!-- <i class="fab fa-whatsapp"></i> Contact Seller
                                     </a>
                                 </div>
                             </form>
@@ -337,20 +448,20 @@
                 </div>
             @endforeach
         </div>
-        <br>
-        <a href="/products/purchase" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Purchase Product</a>
+        <br> -->
+        <!-- <a href="/products/purchase" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Purchase Product</a>
     </div>
-</div>
+</div> -->
 
 
 <!-- Product For Rent -->
-<div class="container-fluid categories pb-5">
+<!-- <div class="container-fluid categories pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">For Rent <span class="text-primary">Products</span></h1>
             <p class="mb-0">The Following are the Product for Rent</p>
-        </div>
-        <div class="categories-carousel owl-carousel">
+        </div> -->
+        <!-- <div class="categories-carousel owl-carousel">
             @foreach($productsForRent as $product)
                 <div class="categories-item p-6">
                     <div class="categories-item-inner">
@@ -364,21 +475,21 @@
                             </h6>
                             <h8 class="text-secondary">
                                 <i class="fa fa-cogs"></i> {{ $product->specification }}
-                            </h8>
-                            <br><br>
+                            </h8> -->
+                            <!-- <br><br>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{number_format($product->rent_price, 2, ',', '.') }}/Day</h4>
                             </div>
-                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a> -->
                             <!-- Button Section -->
-                            <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
+                            <!-- <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="hidden" name="quantity" value="1">
-                                <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
-                                    <button type="submit" class="btn custom-btn3">Rent</button>
-                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
-                                        <i class="fab fa-whatsapp"></i> Contact Seller
+                                <input type="hidden" name="quantity" value="1"> -->
+                                <!-- <div style="display: flex; justify-content: center; gap: 10px;"> Flexbox for button alignment -->
+                                    <!-- <button type="submit" class="btn custom-btn3">Rent</button>
+                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> Menambahkan btn-success untuk warna hijau -->
+                                        <!-- <i class="fab fa-whatsapp"></i> Contact Seller
                                     </a>
                                 </div>
                             </form>
@@ -390,22 +501,22 @@
         <br>
         <a href="/products/rent" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Rent Products</a>
     </div>
-</div>
+</div> -->
 
-<div class="container-fluid categories pb-5">
+<!-- <div class="container-fluid categories pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">For Rent and Sale <span class="text-primary">Products</span></h1>
             <p class="mb-0">The Following are the Product for Rent and Sale</p>
-        </div>
-        <div class="categories-carousel owl-carousel">
+        </div> -->
+        <!-- <div class="categories-carousel owl-carousel">
             @foreach($productsForAll as $product)
                 <div class="categories-item p-6">
                     <div class="categories-item-inner">
                         <div class="categories-img rounded-top">
                             <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
-                        </div>
-                        <div class="categories-content rounded-bottom p-4">
+                        </div> -->
+                        <!-- <div class="categories-content rounded-bottom p-4">
                             <h4>{{ $product->product_name }}</h4>
                             <h6 class="text-secondary">
                                 <i class="fa fa-user"></i> {{ $product->name }}
@@ -419,10 +530,10 @@
                             </div>
                             <div class="mb-4">
                                 <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ number_format($product->purchase_price, 2, ',', '.') }}</h4>
-                            </div>
-                            <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
+                            </div> -->
+                            <!-- <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a> -->
                             <!-- Flexbox untuk menyusun tombol -->
-                            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                            <!-- <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
                                 <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -447,9 +558,7 @@
         <br>
         <a href="/products/all" target="_blank" class="btn custom-btn2" style="margin-right: 15px !important;">More Purchase and Rent Products</a>
     </div>
-</div>
-
-
+</div> -->
 
         <!-- About Start -->
         <div class="container-fluid overflow-hidden about py-5" id="tentang">
@@ -585,70 +694,6 @@
     </div>
 </div>
 <!-- Features End -->
-
-
-<!-- Services Start -->
-<div class="container-fluid service py-5" id="service">
-    <div class="container py-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Type Of <span class="text-primary">Services</span></h1>
-            <p class="mb-0">Choose According to your needs</p>
-        </div>
-        <div class="row g-4 d-flex justify-content-center">
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item p-4">
-                    <div class="service-icon mb-4">
-                        <i class="fa fa-truck fa-2x"></i>
-                    </div>
-                    <h5 class="mb-3">Heavy Equipment Sales</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item p-4">
-                    <div class="service-icon mb-4">
-                        <i class="fa fa-tools fa-2x"></i>
-                    </div>
-                    <h5 class="mb-3">Heavy Equipment Rental</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item p-4">
-                    <div class="service-icon mb-4">
-                        <i class="fa fa-cogs fa-2x"></i>
-                    </div>
-                    <h5 class="mb-3">Component Rental</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item p-4">
-                    <div class="service-icon mb-4">
-                        <i class="fa fa-box fa-2x"></i>
-                    </div>
-                    <h5 class="mb-3">Component Sales</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="service-item p-4">
-                    <div class="service-icon mb-4">
-                        <i class="fa fa-tags fa-2x"></i>
-                    </div>
-                    <h5 class="mb-3">Bundling Sales</h5>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.9s">
-                <div class="service-item p-4">
-                    <div class="service-icon mb-4">
-                        <i class="fa fa-box-open fa-2x"></i>
-                    </div>
-                    <h5 class="mb-3">Bundling Rental</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Services End -->
-
-
 
 
         <!-- Banner Start -->

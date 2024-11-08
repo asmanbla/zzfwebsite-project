@@ -129,6 +129,7 @@ class CheckoutViewController extends Controller
 
                     // Simpan detail order dengan quantity dari cart
                     OrderDetailsSellers::create([
+                        'customers_id' => $customerId, // Mengisi berdasarkan user yang sedang login
                         'sellers_id' => $item->sellers_id,
                         'product_sellers_id' => $item->id,
                         'order_sellers_id' => $order->id,
@@ -159,6 +160,7 @@ class CheckoutViewController extends Controller
 
                     // Simpan detail sewa dengan quantity dari cart
                     SewaDetailsSellers::create([
+                        'customers_id' => $customerId, // Mengisi berdasarkan user yang sedang login
                         'sellers_id' => $item->sellers_id,
                         'product_sellers_id' => $item->id,
                         'sewa_sellers_id' => $sewa->id, // Gunakan ID sewa yang baru dibuat
