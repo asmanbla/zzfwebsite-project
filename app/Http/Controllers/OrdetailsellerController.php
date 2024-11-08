@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\OrderDetailsSellers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class OrdetailsellerController extends Controller
 {

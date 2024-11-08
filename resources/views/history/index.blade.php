@@ -110,6 +110,44 @@ h3.section-subheading {
     text-align: left;
 }
 
+/* Membuat tombol lebih besar dan jelas */
+.btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.btn i {
+    font-size: 16px;
+    margin-right: 5px; /* Menambahkan jarak antara ikon dan teks */
+}
+
+/* Hover effect untuk tombol */
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Menambahkan sedikit shadow untuk efek kedalaman */
+.btn {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Membuat tabel lebih rapi dan readable */
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Memberikan jarak antar tombol */
+td a.btn {
+    margin-right: 15px; /* Memberikan jarak antara tombol */
+}
+
+/* Mengatur tombol terakhir agar tidak ada margin kanan */
+td a.btn:last-child {
+    margin-right: 0;
+}
+
 
 
 </style>
@@ -195,85 +233,84 @@ h3.section-subheading {
 <br>
 
 <h3 class="text-left">Orders</h3>
-    <table class="table table-bordered">
-        <thead>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Seller Name</th>
+            <th>Product Name</th>
+            <th>Order Date</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($orderDetails as $order)
             <tr>
-                <th>Seller Name</th>
-                <th>Product Name</th>
-                <th>Order Date</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-                <th>Status</th>
-                <th>Action</th>
+                <td>{{ $order->seller_name }}</td>
+                <td>{{ $order->product_seller_name }}</td>
+                <td>{{ $order->order_date }}</td>
+                <td>{{ $order->quantity }}</td>
+                <td>{{ $order->subtotal }}</td>
+                <td>{{ $order->status }}</td>
+                <td class="d-flex justify-content-center align-items-center">
+                    <a href="{{ route('downloadReceiptOrder', ['id' => $order->order_sellers_id]) }}" class="btn btn-success btn-sm mr-2">
+                        <i class="fas fa-download"></i> 
+                    </a> 
+                    <a href="#" class="btn btn-warning btn-sm mr-2">
+                        <i class="fas fa-star"></i> 
+                    </a>
+                    <a href="#" class="btn btn-danger btn-sm">
+                        <i class="fas fa-check-circle"></i> 
+                    </a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach($orderDetails as $order)
-                <tr>
-                    <td>{{ $order->seller_name }}</td>
-                    <td>{{ $order->product_seller_name }}</td>
-                    <td>{{ $order->order_date }}</td>
-                    <td>{{ $order->quantity }}</td>
-                    <td>{{ $order->subtotal }}</td>
-                    <td>{{ $order->status }}</td>
-                    <td>
-                        <!-- Button View -->
-                        <a href="" class="btn btn-info btn-sm">View</a>
+        @endforeach
+    </tbody>
+</table>
 
-                        <!-- Button Delete -->
-                        <form action="" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <br>
+<br>
 
 <h3 class="text-left">Rentals</h3>
-    <table class="table table-bordered">
-        <thead>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Seller Name</th>
+            <th>Product Name</th>
+            <th>Start Date</th>
+            <th>Finish Date</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($sewaDetails as $sewa)
             <tr>
-                <th>Seller Name</th>
-                <th>Product Name</th>
-                <th>Start Date</th>
-                <th>Finish Date</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-                <th>Status</th>
-                <th>Action</th>
+                <td>{{ $sewa->seller_name }}</td>
+                <td>{{ $sewa->product_seller_name }}</td>
+                <td>{{ $sewa->start_date }}</td>
+                <td>{{ $sewa->finish_date }}</td>
+                <td>{{ $sewa->quantity }}</td>
+                <td>{{ $sewa->subtotal }}</td>
+                <td>{{ $sewa->status }}</td>
+                <td class="d-flex justify-content-center align-items-center">
+                    <a href="{{ route('downloadReceiptSewa', ['id' => $sewa->sewa_sellers_id]) }}" class="btn btn-success btn-sm mr-2">
+                        <i class="fas fa-download"></i> 
+                    </a> 
+                    <a href="#" class="btn btn-warning btn-sm mr-2">
+                        <i class="fas fa-star"></i> 
+                    </a>
+                    <a href="#" class="btn btn-danger btn-sm">
+                        <i class="fas fa-check-circle"></i> 
+                    </a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach($sewaDetails as $sewa)
-                <tr>
-                    <td>{{ $sewa->seller_name }}</td>
-                    <td>{{ $sewa->product_seller_name }}</td>
-                    <td>{{ $sewa->start_date }}</td>
-                    <td>{{ $sewa->finish_date }}</td>
-                    <td>{{ $sewa->quantity }}</td>
-                    <td>{{ $sewa->subtotal }}</td>
-                    <td>{{ $sewa->status }}</td>
-                    <td>
-                        <!-- Button View -->
-                        <a href="" class="btn btn-info btn-sm">View</a>
-
-                        <!-- Button Delete -->
-                        <form action="" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+        @endforeach
+    </tbody>
+</table>
 
 <br><br>
    
