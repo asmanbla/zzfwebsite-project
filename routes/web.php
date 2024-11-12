@@ -40,10 +40,12 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\OrderdetailsellerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ContactController;
 
 
 
 Route::resource('/', HomeBladeController::class);
+Route::resource('/contactus', ContactController::class);
  // Search Button Controller : 
  Route::get ('/product_search', [HomeBladeController::class,'product_search']);
  Route::get ('/product_search_purchase', [HomeBladeController::class,'product_search_purchase']);

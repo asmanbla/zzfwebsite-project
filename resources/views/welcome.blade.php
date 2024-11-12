@@ -267,7 +267,7 @@
                     <a href="#tentang" class="nav-item nav-link">About</a>
                     <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
                     <a href="#service" class="nav-item nav-link">Service</a>
-                    <a href="#kontak" class="nav-item nav-link">Contact</a>
+                    <a href="/contactus" class="nav-item nav-link">Contact</a>
                 </div>
 
                 <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
@@ -795,9 +795,7 @@
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    
+    <script src="lib/counterup/counterup.min.js"></script>    
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
