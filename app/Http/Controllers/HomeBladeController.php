@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductsZzf;
 use App\Models\ProductSellers;
 use App\Models\ProductCategoriesSeller;
+use App\Models\Client;
 use App\Models\Carts;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,32 +18,35 @@ class HomeBladeController extends Controller
      */
 
      public function index()
-{
-    // Query untuk produk dengan tipe 'purchase' dan 'rent'
-    $productsForSale = DB::table('vwprodukseller')->where('type', 'purchase')->get();
-    $productsForRent = DB::table('vwprodukseller')->where('type', 'rent')->get();
-    $productsForAll = DB::table('vwprodukseller')->where('type', 'rent_and_purchase')->get();
-
-    // Query untuk mengambil semua kategori
-    $categories = ProductCategoriesSeller::all();
-
-    // Cek apakah user sudah login sebagai customer
-    if (Auth::guard('customers')->check()) {
-        $customerId = Auth::guard('customers')->id();
-        $totalItems = Carts::where('customer_id', $customerId)->sum('quantity');
-    } else {
-        $totalItems = 0;
-    }
-
-    return view('welcome', [
-        'productsForSale' => $productsForSale,
-        'productsForRent' => $productsForRent,
-        'productsForAll' => $productsForAll,
-        'totalItems' => $totalItems,
-        'categories' => $categories,
-    ]);
-}
-
+     {
+         // Query untuk produk dengan tipe 'purchase' dan 'rent'
+         $productsForSale = DB::table('vwprodukseller')->where('type', 'purchase')->get();
+         $productsForRent = DB::table('vwprodukseller')->where('type', 'rent')->get();
+         $productsForAll = DB::table('vwprodukseller')->where('type', 'rent_and_purchase')->get();
+     
+         // Query untuk mengambil semua kategori
+         $categories = ProductCategoriesSeller::all();
+     
+         // Cek apakah user sudah login sebagai customer
+         if (Auth::guard('customers')->check()) {
+             $customerId = Auth::guard('customers')->id();
+             $totalItems = Carts::where('customer_id', $customerId)->sum('quantity');
+         } else {
+             $totalItems = 0;
+         }
+     
+         // Query untuk mengambil semua client
+         $clients = Client::all();
+     
+         return view('welcome', [
+             'productsForSale' => $productsForSale,
+             'productsForRent' => $productsForRent,
+             'productsForAll' => $productsForAll,
+             'totalItems' => $totalItems,
+             'categories' => $categories,
+             'clients' => $clients, // Mengirim data client ke view
+         ]);
+     }
 
     /**
      * Show the form for creating a new resource.

@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <meta charset="utf-8">
-        <title>ZZF Industri - Home Page</title>
+        <title>ZZF Industri - Rent Form Page</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -284,28 +284,36 @@ h2, h3, .customer-info {
 
 
 <br><br>
-
-    <!-- About Section -->
-    <section class="page-section" id="tentang">
+ <!-- About Section -->
+ <section class="page-section" id="tentang">
                 <div class="container text-center">
                     <div>
-                        <h2 class="section-heading text-uppercase">Customer Profile</h2>
-                        <h3 class="section-subheading text-muted">Here's customer profile data, please contact admin if any wrong data </h3>
+                        <h2 class="section-heading text-uppercase">Rents Form</h2>
+                        <h3 class="section-subheading text-muted">Please field the data before rent proccess</h3>
                     </div>
-                    <div class="customer-info d-flex align-items-start"> <!-- Menggunakan d-flex dan align-items-start untuk fleksbox -->
-                    <i class="fas fa-user fa-3x me-2 align-self-center"></i> <!-- Icon Profil -->
-                    <div class="customer-info">
-                        <p><strong>Name:</strong> {{ $customer->name }}</p>
-                        <p><strong>Email:</strong> {{ $customer->email }}</p>
-                        <p><strong>Phone:</strong> {{ $customer->phone }}</p>
-                        <p><strong>Password:</strong> {{ $customer->password }}</p>
-                        <p><strong>Address 1:</strong> {{ $customer->address1 }}</p>
-                        <p><strong>Address 2:</strong> {{ $customer->address2 }}</p>
-                    </div>
-                </div>
-                <a href="/" type="button" class="btn btn-info">Back To Home Page</a>
-                </div>
-            </section>
+</section>
+
+<form action="/submit-data" method="POST" class="mx-auto p-3" style="max-width: 600px;">
+    @csrf
+    <div class="mb-3">
+        <label for="name" class="form-label">Nama Lengkap</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Nomor Telepon</label>
+        <input type="tel" class="form-control" id="phone" name="phone" required>
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Alamat</label>
+        <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Send The Data</button>
+</form>
+
 </body>
 
 <br><br>

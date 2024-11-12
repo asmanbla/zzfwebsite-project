@@ -52,6 +52,10 @@ Route::resource('/contactus', ContactController::class);
  Route::get ('/product_search_rent', [HomeBladeController::class,'product_search_rent']);
  Route::get ('/product_search_all', [HomeBladeController::class,'product_search_all']);
 
+Route::resource('aboutus', AboutUsController::class);
+Route::resource('orderform', OrderFormController::class);
+Route::resource('formrent', RentFormController::class);
+
 
 //Produk Details View
 
