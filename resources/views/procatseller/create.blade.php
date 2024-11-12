@@ -41,9 +41,15 @@
                                         <label for="kategori" class="form-label">Category</label>
                                         <select class="form-select" aria-label="Default select example" id="kategori" name="kategori">
                                             <option selected>Choose Category</option>
-                                            <option value="equipment">Equipment</option>
-                                            <option value="component">Component</option>
-                                            <option value="bundling">Bundling</option>
+                                            <option value="tower_crane">Tower Crane</option>
+                                            <option value="passenger_hoist">Passenger Hoist</option>
+                                            <option value="form_work">Form Work</option>
+                                            <option value="scaffolding">Scaffolding</option>
+                                            <option value="placing_boom">Placing Boom</option>
+                                            <option value="safety_net">Safety Net</option>
+                                            <option value="concrete_pump">Conrete Pump</option>
+                                            <option value="concrete_batching_plant">Concrete Bacthing Plant</option>
+                                            <option value="mobile_crane">Mobile Crane</option>
                                         </select>
                                     </div>
                                     <label for="sellers_id" class="form-label"></label>

@@ -39,6 +39,7 @@ use App\Http\Controllers\CheckoutViewController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\OrderdetailsellerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientController;
 
 
 
@@ -150,6 +151,10 @@ Route::get('/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hap
 Route::get('/paymentsewaszzf/hapuspaymentsewaszzf/{id}', [PaymentSewasZzfController::class, 'hapuspaymentsewaszzf']);
 
 Route::resource('cart', CartController::class);
+
+Route::resource('client', ClientController::class);
+Route::get('/hapusclient/{id}', [ClientController::class, 'hapusclient'])->name('hapusclient');
+Route::get('/client/hapusclient/{id}', [ClientController::class, 'hapusclient']);
 
 // DASHPROFILE 
 Route::resource('dashprofilezzf', App\Http\Controllers\DashProfileController::class);

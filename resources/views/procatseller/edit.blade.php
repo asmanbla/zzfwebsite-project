@@ -27,9 +27,15 @@
                       <label for="level" class="form-label">Category</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="kategori" required>
                         <option selected disabled>Pilih Kategori</option>
-                        <option value="equipment" {{ old('kategori', $procatseller->kategori) == 'equipment' ? 'selected' : '' }}>Equipment</option>
-                        <option value="component" {{ old('kategori', $procatseller->kategori) == 'component' ? 'selected' : '' }}>Component</option>
-                        <option value="bundling" {{ old('kategori', $procatseller->kategori) == 'bundling' ? 'selected' : '' }}>Bundling</option>
+                        <option value="tower_crane" {{ old('kategori', $procatseller->kategori) == 'tower_crane' ? 'selected' : '' }}>Tower Crane</option>
+                        <option value="passenger_hoist" {{ old('kategori', $procatseller->kategori) == 'passenger_hoist' ? 'selected' : '' }}>Passenger Hoist</option>
+                        <option value="form_work" {{ old('kategori', $procatseller->kategori) == 'form_work' ? 'selected' : '' }}>Form Work</option>
+                        <option value="scaffolding" {{ old('kategori', $procatseller->kategori) == 'scaffolding' ? 'selected' : '' }}>Scaffolding</option>
+                        <option value="placing_boom" {{ old('kategori', $procatseller->kategori) == 'placing_boom' ? 'selected' : '' }}>Placing Boom</option>
+                        <option value="safety_net" {{ old('kategori', $procatseller->kategori) == 'safety_net' ? 'selected' : '' }}>Safety Net</option>
+                        <option value="concrete_pump" {{ old('kategori', $procatseller->kategori) == 'concrete_pump' ? 'selected' : '' }}>Concrete Pump</option>
+                        <option value="concrete_batching_plant" {{ old('kategori', $procatseller->kategori) == 'concrete_batching_plant' ? 'selected' : '' }}>Concrete Batching Plant</option>
+                        <option value="mobile_crane" {{ old('kategori', $procatseller->kategori) == 'mobile_crane' ? 'selected' : '' }}>Mobile Crane</option>
                       </select>
                      </div>
                      
