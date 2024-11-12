@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <meta charset="utf-8">
-        <title>ZZF Industri - Home Page</title>
+        <title>ZZF Industri - About Us Page</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -217,30 +217,13 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow halus untuk meningkatkan keterbacaan */
 }
 
-.btn-blue {
-    background-color: #050436;
-    color: white;
-    border: none;
-}
 
-.btn-blue:hover {
-    background-color: #03031a; /* sedikit gelap saat hover */
-}
 
 </style>
 
     </head>
 
     <body>
-
-        <!-- Website Start (Preload) -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
         <!-- Topbar Start -->
         <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
             <div class="container">
@@ -269,7 +252,7 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
+                 <div class="navbar-nav mx-auto py-0">
                     <a href="/" class="nav-item nav-link active">Home</a>
                     <a href="#produk" class="nav-item nav-link">Catalog</a>
                     <a href="/aboutus" class="nav-item nav-link">About</a>
@@ -316,169 +299,74 @@
 </div>
 <!-- Navbar & Hero End -->
 
-<!-- Services Start -->
-<div class="container-fluid service py-5" id="service">
+ <!-- About Start -->
+ <div class="container-fluid overflow-hidden about py-5" id="tentang">
     <div class="container py-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-primary mb-3">Type Of <span class="text-primary">Services</span></h1>
-            <p class="mb-0">Choose According to your needs</p>
-        </div>
-        <div class="row g-4 d-flex justify-content-center">
-            @foreach($categories as $category)
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.{{ $loop->iteration }}s">
-                    <div class="service-item p-4" onclick="openModal('{{ $category->kategori }}')">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-box-open fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">{{ $category->kategori }}</h5>
+        <div class="row g-5">
+            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
+                <div class="about-item">
+                    <div class="pb-5">
+                        <h1 class="display-5 text-capitalize">About <span class="text-primary">Us</span></h1>
+                        <p class="mb-0">
+                        ZZF Industri Indonesia, which started operating in 2012, is one of the companies
+                            which is currently developing from the Expanding CHINA ZZF INDUSTRIAL project. This company has a lot to offer
+                            equipment especially in construction materials, such as Tower Cranes, Batching Plants, and others.
+                            We also guarantee that the products and materials we provide are one of the best products
+                            and quality from China, with extraordinary quality.
+                        </p>
                     </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="serviceModalLabel">Apa yang anda butuhkan?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <p class="text-primary">Pilih salah satu layanan:</p>
-                <a href="/formrent" class="btn btn-primary mx-2">Sewa</a>
-                <a href="/orderform" class="btn btn-blue mx-2">Order</a>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-
-<!-- Client Start -->
-<div class="container-fluid testimonial pb-5">
-    <div class="container pb-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our<span class="text-primary"> Client</span></h1>
-            <p class="mb-0 text-primary">The following are our client partnership</p>
-        </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            @foreach($clients as $client)
-            <div class="testimonial-item">
-                <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i></div>
-                <div class="testimonial-inner p-4">
-                    <img src="{{ asset('storage/' . $client->logo_url) }}"  class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;" alt="{{ $client->company_name }}">
-                    <div class="ms-4">
-                        <h4>{{ $client->company_name }}</h4>
-                        <p>Our Partner</p>
-                    </div>
-                </div>
-                <div class="border-top rounded-bottom p-4">
-                    <p class="mb-0">{{ $client->description}}</p>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Client End -->
-
-<!-- Documentation Start -->
-<div class="container-fluid pb-5">
-    <div class="container pb-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our<span class="text-primary"> Documentation</span></h1>
-            <p class="mb-0 text-primary">The following are our client partnerships</p>
-        </div>
-        <div class="row">
-            @foreach($clients as $client)
-            <div class="col-md-6 mb-4">
-                <div class="testimonial-inner text-center">
-                    <!-- Menampilkan gambar tanpa border -->
-                    <img src="{{ asset('storage/' . $client->documentation_url) }}" class="img-fluid rounded" style="max-width: 100%; height: auto;" alt="{{ $client->company_name }}">
-                    <div class="pt-3">
-                        <!-- Menampilkan nama perusahaan di bawah gambar -->
-                        <h4>{{ $client->company_name }}</h4>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-<!-- Documentation End -->
-
-
-<!-- Features Start -->
-<div class="container-fluid feature py-5" id="keunggulan">
-    <div class="container py-5">
-        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Speciality</span></h1>
-            <p class="mb-0 text-primary">PT ZZF offers a variety of products with very high quality and affordable</p>
-        </div>
-        <div class="row g-4 align-items-center">
-            <div class="col-xl-4">
-                <div class="row gy-4 gx-0">
-                    <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <span class="fa fa-dollar-sign fa-2x"></span> <!-- Ikon untuk Low Price -->
-                            </div>
-                            <div class="ms-4">
-                                <h5 class="mb-3">Low Price</h5>
-                                <p class="mb-0">Offer quality solutions at a more affordable cost than competitors.</p>
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="text-center rounded bg-secondary p-4">
+                                <h1 class="display-6 text-white">12</h1>
+                                <h5 class="text-light mb-0">Years Experience</h5>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <span class="fa fa-clock fa-2x"></span> <!-- Ikon untuk Time Efficiency -->
+                        <div class="col-lg-6">
+                            <div class="rounded">
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Producing High Quality Heavy Equipment</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Fast Service</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Harga Affordable Rent and Sell</p>
+                                <p class="mb-0"><i class="fa fa-check-circle text-primary me-1"></i> Extensive and Abundant Experience</p>
                             </div>
-                            <div class="ms-4">
-                                <h5 class="mb-3">Time Efficiency</h5>
-                                <p class="mb-0">Efficiently complete projects in faster time without sacrificing quality.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="d-flex align-items-center">
+                                <img src="img/imgzzf/foto-pak-ginting.jpg" class="img-fluid rounded-circle border border-4 border-secondary" style="width: 100px; height: 100px;" alt="Image">
+                                <div class="ms-4">
+                                    <h4>Harmony Ginting Ir, Msc</h4>
+                                    <p class="mb-0">CEO PT ZZF Indonesia</p>
+                                </div>
+                                <img src="img/imgzzf/foto-pak-jack-xie.jpg" class="img-fluid rounded-circle border border-4 border-secondary ms-5" style="width: 100px; height: 100px;" alt="Image">
+                                <div class="ms-4">
+                                    <h4>Jack Xie, MBA</h4>
+                                    <p class="mb-0">CEO Founder ZZF Group & PINETREE</p>
+                                </div>
                             </div>
+                        </div>
+                        <div class="col-lg-12 d-flex align-items-center mt-4">
+                            <a href="https://zzf.co.id/" target="_blank" class="btn btn-primary rounded py-3 px-5">More About Us</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
-                <img src="img/keunggulan.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
-            </div>
-            <div class="col-xl-4">
-                <div class="row gy-4 gx-0">
-                    <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="feature-item justify-content-end">
-                            <div class="text-end me-4">
-                                <h5 class="mb-3">Service Flexibility</h5>
-                                <p class="mb-0">Offer solutions that can be tailored to the specific needs of the project.</p>
-                            </div>
-                            <div class="feature-icon">
-                                <span class="fa fa-cogs fa-2x"></span> <!-- Ikon untuk Service Flexibility -->
-                            </div>
-                        </div>
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="about-img">
+                    <div class="img-1 mb-4">
+                        <img src="img/imgzzf/tentang-kami3.jpg" class="img-fluid rounded h-100 w-100" alt="">
                     </div>
-                    <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="feature-item justify-content-end">
-                            <div class="text-end me-4">
-                                <h5 class="mb-3">Portable Foundation</h5>
-                                <p class="mb-0">Using reliable, durable high-quality tools to ensure maximum productivity.</p>
-                            </div>
-                            <div class="feature-icon">
-                                <span class="fa fa-check-circle fa-2x"></span> <!-- Ikon untuk Machine Reliability -->
-                            </div>
-                        </div>
+                    <div class="img-2">
+                        <img src="img/imgzzf/tentang-kami1.jpg" class="img-fluid rounded w-100" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Features End -->
 
-        <!-- Footer Start -->
+        <!-- About End -->
+
+<!-- Footer Start -->
 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s" style="position: relative; bottom: 0; width: 100%;">
     <div class="container py-5">
         <div class="row g-5">
@@ -514,93 +402,5 @@
         </div>
     </div>
 </div>
-        
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4">
-            <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>PT ZZF Industri</a>, All right reserved.</span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end text-body">
-                        <!--/* This template is free as long as you keep the below author’s credit link/attribution link/backlink. */-->
-                        <!--/* If you'd like to use the template without the below author’s credit link/attribution link/backlink, */-->
-                        <!--/* you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". */-->
-                        Designed By <a class="border-bottom text-white">ZZF Industri</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyright End -->
+<!-- Footer End -->
 
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
-        @if (Session::has('success'))
-    <script>
-      swal("success", "{{ Session::get('success') }}", 'success', {
-          button:true,
-          button:"OK",
-          timer:5000
-      });
-    </script>
-    @endif 
-        
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    </body>
-
-    <!-- Script untuk inisialisasi Owl Carousel -->
-<script>
-    $(document).ready(function(){
-        $(".categories-carousel").owlCarousel({
-            items: 1, // Menampilkan satu slide pada satu waktu
-            loop: true, // Mengulangi slide setelah selesai
-            nav: true, // Mengaktifkan tombol navigasi
-            navText: [
-                '<span class="text-danger">&#10094;</span>', // Ikon panah merah kiri
-                '<span class="text-danger">&#10095;</span>'  // Ikon panah merah kanan
-            ],
-            autoplay: false, // Menonaktifkan autoplay agar pengguna menggeser manual
-            responsive: {
-                0: { items: 1 },   // Pada layar kecil (mobile) menampilkan 1 slide
-                768: { items: 1 }, // Pada layar sedang (tablet) menampilkan 1 slide
-                992: { items: 1 }  // Pada layar besar (desktop) menampilkan 1 slide
-            }
-        });
-    });
-</script>
-
-<!-- Script to Handle Modal -->
-<script>
-    function openModal(category) {
-        // Set the modal title dynamically (optional)
-        document.getElementById('serviceModalLabel').textContent = `Apa yang anda butuhkan untuk ${category}?`;
-        // Open the modal
-        var myModal = new bootstrap.Modal(document.getElementById('serviceModal'));
-        myModal.show();
-    }
-
-    function handleService(action) {
-        // Handle the button click (e.g., redirect based on 'sewa' or 'order')
-        if (action === 'sewa') {
-            window.location.href = '/sewa'; // Adjust URL as needed
-        } else if (action === 'order') {
-            window.location.href = '/order'; // Adjust URL as needed
-        }
-    }
-</script>
-
-
-</html>
