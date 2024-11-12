@@ -32,7 +32,7 @@
                     </select>
                 </div>
                      <div class="mb-3 ms-3 me-3">
-                        <label for="product_name" class="form-label">Product Name</label>
+                        <label for="product_name" class="form-label">Product Name and Type</label>
                         <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter Your product name" aria-label="product_name" required>
                      </div>
                      <div class="mb-3 ms-3 me-3">
