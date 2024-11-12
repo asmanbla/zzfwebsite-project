@@ -188,38 +188,37 @@
 .search-button:hover {
     background-color: #8b0000; /* Warna latar belakang lebih gelap saat hover */
 }
-<<<<<<< HEAD
-=======
 
-<style>
-/* Style untuk kotak layanan persegi panjang melebar ke samping */
-.custom-service-item {
-    width: 100%;
-    height: 100px; /* Ukuran persegi panjang melebar ke samping */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.service {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/imgzzf/bg2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-.row.g-4.d-flex.justify-content-center {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Layout 3 kolom */
-    gap: 20px; /* Jarak antar kotak */
+.text-primary, .text-primary span {
+    color: #ffffff; /* Sesuaikan dengan warna yang kontras */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow untuk meningkatkan keterbacaan */
 }
 
-@media (max-width: 768px) {
-    .row.g-4.d-flex.justify-content-center {
-        grid-template-columns: repeat(1, 1fr); /* Satu kolom pada layar kecil */
-    }
+.text-primary {
+    color: #f1c40f; /* Kuning emas yang kontras dengan biru dan merah */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-@media (min-width: 768px) and (max-width: 992px) {
-    .row.g-4.d-flex.justify-content-center {
-        grid-template-columns: repeat(2, 1fr); /* Dua kolom pada tablet */
-    }
+/* Atur warna subjudul agar senada namun tetap kontras */
+.text-center p {
+    color: #ecf0f1; /* Abu-abu terang yang masih terbaca di atas background berwarna */
 }
->>>>>>> 737865f7f4a81e27186ebfbc322b90f73b122ebc
+
+.text-primary, .text-primary span, .text-center p {
+    color: #ffffff; /* Warna putih untuk teks utama */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow halus untuk meningkatkan keterbacaan */
+}
+
+
+
 </style>
 
     </head>
@@ -310,114 +309,44 @@
 </div>
 <!-- Navbar & Hero End -->
 
-
-<!-- Carousel Start -->
-<div class="header-carousel" id="home">
-    <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-wrap="true">
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img src="img/imgzzf/bg2.jpg" class="img-fluid w-100" alt="First slide"/>
-                <div class="carousel-caption">
-                    <div class="container py-4">
-                        <div class="row g-5">
-                            <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
-                                <!-- Services Start -->
-                                <div class="container-fluid service py-5" id="service">
-                                    <div class="container py-5">
-                                        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                                            <h1 class="display-5 text-capitalize mb-3">Type Of <span class="text-primary">Services</span></h1>
-                                            <p class="mb-0">Choose According to your needs</p>
-                                        </div>
-                                        <div class="row g-4 d-flex justify-content-center service-grid">
-                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-                                                <div class="service-item custom-service-item p-4 border">
-                                                    <div class="service-icon mb-4 text-center">
-                                                        <i class="fa fa-truck fa-2x"></i>
-                                                    </div>
-                                                    <h5 class="mb-3 text-center">Heavy Equipment Sales</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
-                                                <div class="service-item custom-service-item p-4 border">
-                                                    <div class="service-icon mb-4 text-center">
-                                                        <i class="fa fa-tools fa-2x"></i>
-                                                    </div>
-                                                    <h5 class="mb-3 text-center">Heavy Equipment Rental</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.5s">
-                                                <div class="service-item custom-service-item p-4 border">
-                                                    <div class="service-icon mb-4 text-center">
-                                                        <i class="fa fa-cogs fa-2x"></i>
-                                                    </div>
-                                                    <h5 class="mb-3 text-center">Component Rental</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.7s">
-                                                <div class="service-item custom-service-item p-4 border">
-                                                    <div class="service-icon mb-4 text-center">
-                                                        <i class="fa fa-box fa-2x"></i>
-                                                    </div>
-                                                    <h5 class="mb-3 text-center">Component Sales</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.9s">
-                                                <div class="service-item custom-service-item p-4 border">
-                                                    <div class="service-icon mb-4 text-center">
-                                                        <i class="fa fa-tags fa-2x"></i>
-                                                    </div>
-                                                    <h5 class="mb-3 text-center">Bundling Sales</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 wow fadeInUp" data-wow-delay="1.1s">
-                                                <div class="service-item custom-service-item p-4 border">
-                                                    <div class="service-icon mb-4 text-center">
-                                                        <i class="fa fa-box-open fa-2x"></i>
-                                                    </div>
-                                                    <h5 class="mb-3 text-center">Bundling Rental</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Services End -->
-                            </div>
+<!-- Services Start -->
+<div class="container-fluid service py-5" id="service">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-primary mb-3">Type Of <span class="text-primary">Services</span></h1>
+            <p class="mb-0">Choose According to your needs</p>
+        </div>
+        <div class="row g-4 d-flex justify-content-center">
+            @foreach($categories as $category)
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.{{ $loop->iteration }}s">
+                    <div class="service-item p-4">
+                        <div class="service-icon mb-4">
+                            <i class="fa fa-box-open fa-2x"></i>
                         </div>
+                        <h5 class="mb-3">{{ $category->kategori }}</h5>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
-<!-- Carousel End -->
 
-<<<<<<< HEAD
-   <!-- Product Search -->
-   <div class="search-container">
-=======
-        </div>
-    </div>
-</div>
-<!-- Carousel End -->
+<!-- Services End -->
+
          <br>
-<!-- 
-   Product Search -->
+
+   <!-- Product Search -->
    <!-- <div class="search-container">
->>>>>>> 737865f7f4a81e27186ebfbc322b90f73b122ebc
                 <form action="{{ url('product_search') }}" method="GET" class="search-form">
                     <input class="search-input" type="text" name="search" placeholder="Search Products Here">
                     <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
-            <br> -->
+            <br> --> 
 
 
 <!-- Product For Sale -->
-<<<<<<< HEAD
-<div class="container-fluid categories pb-5" id="produk">
-=======
 <!-- <div class="container-fluid categories pb-5" id="produk">
->>>>>>> 737865f7f4a81e27186ebfbc322b90f73b122ebc
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">For Sale <span class="text-primary">Product</span></h1>
@@ -572,6 +501,8 @@
     </div>
 </div> -->
 
+
+
         <!-- About Start -->
         <div class="container-fluid overflow-hidden about py-5" id="tentang">
     <div class="container py-5">
@@ -644,7 +575,7 @@
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
             <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Speciality</span></h1>
-            <p class="mb-0">PT ZZF offers a variety of products with very high quality and affordable</p>
+            <p class="mb-0 text-primary">PT ZZF offers a variety of products with very high quality and affordable</p>
         </div>
         <div class="row g-4 align-items-center">
             <div class="col-xl-4">
@@ -692,7 +623,7 @@
                     <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="feature-item justify-content-end">
                             <div class="text-end me-4">
-                                <h5 class="mb-3">Machine Reliability</h5>
+                                <h5 class="mb-3">Portable Foundation</h5>
                                 <p class="mb-0">Using reliable, durable high-quality tools to ensure maximum productivity.</p>
                             </div>
                             <div class="feature-icon">
@@ -707,33 +638,14 @@
 </div>
 <!-- Features End -->
 
-
-        <!-- Banner Start -->
-        <div class="container-fluid banner pb-5 wow zoomInDown" data-wow-delay="0.1s" id="kontak">
-            <div class="container pb-5">
-                <div class="banner-item rounded">
-                    <img src="img/imgzzf/bg3.jpg" class="img-fluid rounded w-100" alt="">
-                    <div class="banner-content">
-                        <h4 class="text-white">Start Cooperation with Us Now!</h4>
-                        <h2 class="text-white">Interested in renting or buying?</h2>
-                        <p class="text-white">Contact Us For More Information</p>
-                        <div class="banner-btn">
-                            <a href="https://wa.link/q0c1lg" target="_blank" class="btn btn-secondary rounded-pill py-3 px-4 px-md-5 me-2">
-                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Banner End -->
+<br>
 
         <!-- Testimonial Start -->
         <div class="container-fluid testimonial pb-5">
             <div class="container pb-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                     <h1 class="display-5 text-capitalize mb-3">Our Client<span class="text-primary"> Review</span></h1>
-                    <p class="mb-0">The following are reviews from clients who have used the services of our heavy equipment products and our partners
+                    <p class="mb-0 text-primary">The following are reviews from clients who have used the services of our heavy equipment products and our partners
                     </p>
                 </div>
                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
