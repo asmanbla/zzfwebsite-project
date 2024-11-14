@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <meta charset="utf-8">
-        <title>ZZF Industri - Product View</title>
+        <title>ZZF Industri - Catalog Product</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -389,13 +389,13 @@ h2, h3, .customer-info {
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Products <span class="text-primary">for Sale</span></h1>
+            <h1 class="display-5 text-capitalize mb-3">Products <span class="text-primary">PT ZZF Industry</span></h1>
             <p class="mb-0">The following are the products for sale</p>
         </div>
 
 <!-- Product Search -->
 <div class="search-container-purchase">
-                <form action="{{ url('product_search_purchase') }}" method="GET" class="search-form">
+                <form action="{{ url('product_search_catalog') }}" method="GET" class="search-form">
                     <input class="search-input-purchase" type="text" name="search" placeholder="Search Products Here">
                     <button class="search-button-purchase" type="submit"><i class="fas fa-search"></i></button>
                 </form>
@@ -404,7 +404,7 @@ h2, h3, .customer-info {
 
         <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
         <div class="row">
-            @foreach($productsForSale as $product)
+            @foreach($produkall as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="categories-item p-4 h-100">
                         <div class="categories-item-inner">

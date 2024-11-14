@@ -270,20 +270,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-<<<<<<< HEAD
-                    <a href="#home" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Product</a>
-                    <a href="#tentang" class="nav-item nav-link">About</a>
-                    <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
-                    <a href="#service" class="nav-item nav-link">Service</a>
-                    <a href="/contactus" class="nav-item nav-link">Contact</a>
-=======
                     <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Catalog</a>
+                    <a href="/catalog" class="nav-item nav-link">Catalog</a>
                     <a href="/aboutus" class="nav-item nav-link">About</a>
                     <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/contact" class="nav-item nav-link">Contact</a>
->>>>>>> 2926075f133245ec592ebfca70247238167ef41b
+                    <a href="/contactus" class="nav-item nav-link">Contact</a>
                 </div>
 
                 <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
@@ -357,8 +348,8 @@
             </div>
             <div class="modal-body text-center">
                 <p class="text-primary">Pilih salah satu layanan:</p>
-                <a href="/formrent" class="btn btn-primary mx-2">Sewa</a>
-                <a href="/orderform" class="btn btn-blue mx-2">Order</a>
+                <a href="/products/rent" target="_blank" class="btn btn-primary mx-2">Sewa</a>
+                <a href="/products/purchase" target="_blank" class="btn btn-blue mx-2">Order</a>
             </div>
         </div>
     </div>
@@ -562,7 +553,9 @@
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>    
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
