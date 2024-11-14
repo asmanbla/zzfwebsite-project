@@ -348,8 +348,8 @@
             </div>
             <div class="modal-body text-center">
                 <p class="text-primary">Pilih salah satu layanan:</p>
-                <a href="/formrent" class="btn btn-primary mx-2">Sewa</a>
-                <a href="/orderform" class="btn btn-blue mx-2">Order</a>
+                <a href="/products/rent" target="_blank" class="btn btn-primary mx-2">Sewa</a>
+                <a href="/products/purchase" target="_blank" class="btn btn-blue mx-2">Order</a>
             </div>
         </div>
     </div>
@@ -553,7 +553,9 @@
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>    
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

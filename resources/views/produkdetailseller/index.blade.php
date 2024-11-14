@@ -414,27 +414,12 @@
                 <br>
                 <h5>Specification Of Product: {{ $productseller->specification }}</h5>
                 <p>{{ $productseller->description }}</p>
-                <p class="card-text">
-                    <span class="price" style="color: #A00000;">Purchase Price: Rp{{ number_format($productseller->purchase_price, 2, ',', '.') }}</span>
-                </p>
-                <p class="card-text">
-                    <span class="price" style="color: #A00000;">Rent Price: Rp{{ number_format($productseller->rent_price, 2, ',', '.') }}</span>
-                </p>
                 <p>Stock: {{ $productseller->stok_quantity }}</p>
                 <div class="d-flex justify-content-start align-items-center mb-5">
                         <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
-                        <form action="{{ route('cart.addToCartPurchase', $productseller->id) }}" method="POST" class="d-inline me-2">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $productseller->id }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn custom-btn2">Purchase</button>
-                        </form>
-                        <form action="{{ route('cart.addToCartRent', $productseller->id) }}" method="POST" class="d-inline me-2">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $productseller->id }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn custom-btn3">Rent</button>
-                        </form>
+                                    <a href="https://wa.me/{{ $productseller->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
+                                        <i class="fab fa-whatsapp"></i> Contact
+                                    </a>
                     </div>
                     <div>
                         <h6 class="text-secondary">

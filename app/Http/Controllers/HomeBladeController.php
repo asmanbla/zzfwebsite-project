@@ -219,5 +219,27 @@ public function product_search_all(Request $request)
     return view('prodviewall.index', compact('products', 'productsForAll'));
 }
 
+public function product_search_catalog (Request $request)
+{
+    $search_text = $request->search;
+    $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
+    $productQuery = ProductSellers::query();
+
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Ambil produk yang dicari
+    $products = $productQuery->get();
+
+    $produkall = $products->where('type'); // 
+
+    return view('catalog.index', compact('products', 'produkall'));
+}
+
+
 
 }

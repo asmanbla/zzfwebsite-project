@@ -329,13 +329,12 @@ h2, h3, .customer-info {
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="#home" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Product</a>
-                    <a href="#tentang" class="nav-item nav-link">About</a>
-                    <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
-                    <a href="#service" class="nav-item nav-link">Service</a>
-                    <a href="#kontak" class="nav-item nav-link">Contact</a>
+            <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="/catalog" class="nav-item nav-link">Catalog</a>
+                    <a href="/aboutus" class="nav-item nav-link">About</a>
+                    <a href="/" class="nav-item nav-link">Service</a>
+                    <a href="/contactus" class="nav-item nav-link">Contact</a>
                 </div>
 
                 <!-- Dropdown -->
@@ -409,13 +408,6 @@ h2, h3, .customer-info {
                                         <h6 class="text-secondary">
                                             <i class="fa fa-user"></i> {{ $product->seller->name }}
                                         </h6>
-                                        <h8 class="text-secondary">
-                                            <i class="fa fa-cogs"></i> {{ $product->specification }}
-                                        </h8>
-                                        <div class="mb-4">
-                                            <!-- Menampilkan harga produk -->
-                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rp{{ $product->rent_price, 2, ',', '.' }}/Day</h4>
-                                        </div>
                                         <!-- Tombol detail produk -->
                                         <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                                         <!-- Button Section -->

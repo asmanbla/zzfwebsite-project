@@ -44,8 +44,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\OrderFormController;
 use App\Http\Controllers\RentFormController;
-
-
+use App\Http\Controllers\CatalogController;
 
 Route::resource('/', HomeBladeController::class);
 Route::resource('/contactus', ContactController::class);
@@ -54,10 +53,13 @@ Route::resource('/contactus', ContactController::class);
  Route::get ('/product_search_purchase', [HomeBladeController::class,'product_search_purchase']);
  Route::get ('/product_search_rent', [HomeBladeController::class,'product_search_rent']);
  Route::get ('/product_search_all', [HomeBladeController::class,'product_search_all']);
+ Route::get('/product_search_catalog', [HomeBladeController::class,'product_search_catalog']);
+
 
 Route::resource('aboutus', AboutUsController::class);
 Route::resource('orderform', OrderFormController::class);
 Route::resource('formrent', RentFormController::class);
+Route::resource('catalog', CatalogController::class);
 
 
 //Produk Details View
