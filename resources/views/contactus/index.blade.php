@@ -94,7 +94,7 @@
   width: 35%;
   padding-bottom: 10px;
   padding-left: 30px;
-  background-color: #03a9f4;
+  background-color: #14115e;
   position: absolute;
   height: 950px;
   right: 0px;
@@ -219,7 +219,7 @@
 
 .contact_us_6 .submit-btn {
   width: 98%;
-  background-color: #03a9f4;
+  background-color: #14115e;
   height: 60px;
   font-size: 20px;
   font-weight: 700;
@@ -318,7 +318,7 @@
   margin-right: 0px;
   margin-bottom: 10px;
   margin-left: 0px;
-  color: #03a9f4;
+  color: #14115e;
 }
 
 .contact_us_6 .text-blk.map-contactus-subhead {

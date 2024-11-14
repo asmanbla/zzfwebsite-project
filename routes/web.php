@@ -41,6 +41,9 @@ use App\Http\Controllers\OrderdetailsellerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\OrderFormController;
+use App\Http\Controllers\RentFormController;
 
 
 
