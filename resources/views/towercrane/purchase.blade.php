@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <meta charset="utf-8">
-        <title>ZZF Industri - Catalog Product</title>
+        <title>ZZF Industri - Product View</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -26,14 +26,14 @@
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-        <!-- Logo Website-->
-        <link rel="icon" type="image/x-icon" href="../img/imgzzf/logo.png" />
+       <!-- Logo Website-->
+       <link rel="icon" type="image/x-icon" href="../../img/imgzzf/logo.png" />
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
        <!-- Template File CSS -->
-       <link href="../../css/style.css" rel="stylesheet">
+       <link href="../../../css/style.css" rel="stylesheet">
 <style>
 
 <style>
@@ -330,7 +330,7 @@ h2, h3, .customer-info {
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-        <a href="" class="navbar-brand p-0">
+            <a href="" class="navbar-brand p-0">
                 <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -338,8 +338,8 @@ h2, h3, .customer-info {
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link">Home</a>
-                    <a href="/catalog" class="nav-item nav-link active">Catalog</a>
+                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="/catalog" class="nav-item nav-link">Catalog</a>
                     <a href="/aboutus" class="nav-item nav-link">About</a>
                     <a href="/" class="nav-item nav-link">Service</a>
                     <a href="/contactus" class="nav-item nav-link">Contact</a>
@@ -388,22 +388,31 @@ h2, h3, .customer-info {
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Products <span class="text-primary">PT ZZF Industry</span></h1>
-            <p class="mb-0">The following are all the zzf product</p>
+            <h1 class="display-5 text-capitalize mb-3">Tower Crane Products <span class="text-primary">for Sale</span></h1>
+            <p class="mb-0">The following are tower crane Product for Sale</p>
         </div>
+
+<!-- Penjelasan Tower Crane -->
+ <div class=""> 
+    <h3 class=""> 
+        Tower Crane
+    </h3>
+    <p>Tower crane adalah alat angkat yang digunakan dalam proyek konstruksi untuk mengangkat material berat ke ketinggian. Biasanya digunakan di proyek gedung tinggi, jembatan, atau konstruksi besar lainnya. Tower crane terdiri dari struktur menara vertikal, jib (lengan horizontal), dan counterweight untuk menyeimbangkan beban. Dengan kapasitas angkat yang besar, crane ini dapat mengangkat material hingga beberapa ton ke ketinggian ratusan meter. Tower crane dikendalikan oleh operator yang berada di dalam kabin yang terletak di puncak menara. Keunggulan utama tower crane adalah kemampuannya untuk bekerja di ruang terbatas dan memindahkan material secara efisien di area konstruksi yang luas.</p>
+</div>
 
 <!-- Product Search -->
 <div class="search-container-purchase">
-                <form action="{{ url('product_search_catalog') }}" method="GET" class="search-form">
+                <form action="{{ url('product_search_purchase/tower_crane') }}" method="GET" class="search-form">
                     <input class="search-input-purchase" type="text" name="search" placeholder="Search Products Here">
                     <button class="search-button-purchase" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
             <br>
 
+
         <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
         <div class="row">
-            @foreach($produkall as $product)
+            @foreach($productsForOrder as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="categories-item p-4 h-100">
                         <div class="categories-item-inner">
@@ -412,9 +421,6 @@ h2, h3, .customer-info {
                             </div>
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>{{ $product->product_name }}</h4>
-                                <h6 class="text-secondary">
-                                    <i class="fa fa-user"></i> {{ $product->seller->name }}
-                                </h6>
                                 <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                                 <!-- Button Section -->
                             <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">

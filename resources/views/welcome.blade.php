@@ -344,19 +344,84 @@
             <p class="mb-0">Choose According to your needs</p>
         </div>
         <div class="row g-4 d-flex justify-content-center">
-            @foreach($categories as $category)
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.{{ $loop->iteration }}s">
-                    <div class="service-item p-4" onclick="openModal('{{ $category->kategori }}')">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-box-open fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">{{ $category->kategori }}</h5>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item p-4" onclick="openModal('Tower Crane')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
                     </div>
+                    <h5 class="mb-3">Tower Crane</h5>
                 </div>
-            @endforeach
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="service-item p-4" onclick="openModal('Passenger Hoist')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Passenger Hoist</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Form Work')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Form Work</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Scaffolding')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Scaffolding</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Placing Boom')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Placing Boom</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Safety Net')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Safety Net</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Concrete Pump')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Concrete Pump</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Concrete Batching Plant')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Concrete Batching Plant</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Mobile Crane')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Mobile Crane</h5>
+                </div>
+            </div>
+            <!-- Tambahkan lebih banyak layanan jika diperlukan -->
         </div>
     </div>
 </div>
+<!-- Services End -->
+
 
 <!-- Modal -->
 <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
@@ -368,12 +433,13 @@
             </div>
             <div class="modal-body text-center">
                 <p class="text-primary">Pilih salah satu layanan:</p>
-                <a href="/products/rent" target="_blank" class="btn btn-primary mx-2">Sewa</a>
-                <a href="/products/purchase" target="_blank" class="btn btn-blue mx-2">Order</a>
+                <a id="rentLink" href="#" target="_blank" class="btn btn-primary mx-2">Sewa</a>
+                <a id="purchaseLink" href="#" target="_blank" class="btn btn-blue mx-2">Order</a>
             </div>
         </div>
     </div>
 </div>
+
 <br>
 
 <!-- Client Start -->
@@ -612,14 +678,11 @@
         myModal.show();
     }
 
-    function handleService(action) {
-        // Handle the button click (e.g., redirect based on 'sewa' or 'order')
-        if (action === 'sewa') {
-            window.location.href = '/sewa'; // Adjust URL as needed
-        } else if (action === 'order') {
-            window.location.href = '/order'; // Adjust URL as needed
-        }
-    }
+    // Tampilkan modal
+    var modal = new bootstrap.Modal(document.getElementById('serviceModal'));
+    modal.show();
+}
+
 </script>
 
 

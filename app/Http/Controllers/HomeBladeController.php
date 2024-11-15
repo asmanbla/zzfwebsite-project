@@ -159,7 +159,7 @@ public function product_search(Request $request)
     return view('welcome', compact('products', 'productsForSale', 'productsForRent', 'productsForAll'));
 }
 
-public function product_search_purchase(Request $request)
+public function product_search_purchase(Request $request, $category)
 {
     $search_text = $request->search;
     $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
@@ -172,15 +172,19 @@ public function product_search_purchase(Request $request)
         });
     }
 
+    // Filter berdasarkan tipe 'purchase' dan kategori tertentu
+    $productQuery->where('type', 'purchase')
+                 ->whereHas('category', function($query) use ($category) {
+                    $query->where('kategori', $category);
+                 });
+
     // Ambil produk yang dicari
-    $products = $productQuery->get();
+    $productsForSale = $productQuery->get();
 
-    $productsForSale = $products->where('type', 'purchase'); // 
-
-    return view('prodviewpurchase.index', compact('products', 'productsForSale'));
+    return view('prodviewpurchase.index', compact('productsForSale'));
 }
 
-public function product_search_rent(Request $request)
+public function product_search_rent(Request $request, $category)
 {
     $search_text = $request->search;
     $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
@@ -193,13 +197,18 @@ public function product_search_rent(Request $request)
         });
     }
 
+    // Filter berdasarkan tipe 'rent' dan kategori tertentu
+    $productQuery->where('type', 'rent')
+                 ->whereHas('category', function($query) use ($category) {
+                    $query->where('kategori', $category);
+                 });
+
     // Ambil produk yang dicari
-    $products = $productQuery->get();
+    $productsForRent = $productQuery->get();
 
-    $productsForRent = $products->where('type', 'rent'); // 
-
-    return view('prodviewrent.index', compact('products', 'productsForRent'));
+    return view('prodviewrent.index', compact('productsForRent'));
 }
+
 
 public function product_search_all(Request $request)
 {

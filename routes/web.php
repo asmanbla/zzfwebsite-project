@@ -92,6 +92,43 @@ Route::get('/products/rent', [ProductViewController::class, 'showProductRent'])-
 // Route untuk menampilkan semua produk tipe 'rent_and_purchase'
 Route::get('/products/all', [ProductViewController::class, 'showProductAll'])->name('products.all');
 
+// Route untuk menampilkan produk tipe barang category 'towecrane'
+Route::get('/products/purchase/towercrane', [ProductViewController::class, 'showProductPurchaseTowerCrane'])->name('products.purchase');
+Route::get('/products/rent/towercrane', [ProductViewController::class, 'showProductRentTowerCrane'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'passengerhoist'
+Route::get('/products/purchase/passengerhoist', [ProductViewController::class, 'showProductPurchasePassengerHoist'])->name('products.purchase');
+Route::get('/products/rent/passengerhoist', [ProductViewController::class, 'showProductRentpassengerhoist'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'formwork'
+Route::get('/products/purchase/formwork', [ProductViewController::class, 'showProductPurchaseFormWork'])->name('products.purchase');
+Route::get('/products/rent/formwork', [ProductViewController::class, 'showProductRentFormWork'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'scaffolding'
+Route::get('/products/purchase/scaffolding', [ProductViewController::class, 'showProductPurchaseScaffolding'])->name('products.purchase');
+Route::get('/products/rent/scaffolding', [ProductViewController::class, 'showProductRentScaffolding'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'scaffolding'
+Route::get('/products/purchase/placingboom', [ProductViewController::class, 'showProductPurchasePlacingBoom'])->name('products.purchase');
+Route::get('/products/rent/placingboom', [ProductViewController::class, 'showProductRentPlacingBoom'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'scaffolding'
+Route::get('/products/purchase/safetynet', [ProductViewController::class, 'showProductPurchaseSafetyNet'])->name('products.purchase');
+Route::get('/products/rent/safetynet', [ProductViewController::class, 'showProductRentSafetyNet'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'scaffolding'
+Route::get('/products/purchase/concretepump', [ProductViewController::class, 'showProductPurchaseConcretePump'])->name('products.purchase');
+Route::get('/products/rent/concretepump', [ProductViewController::class, 'showProductRentConcretePump'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'scaffolding'
+Route::get('/products/purchase/concretebatchingplant', [ProductViewController::class, 'showProductPurchaseConcretePump'])->name('products.purchase');
+Route::get('/products/rent/concretebatchingplant', [ProductViewController::class, 'showProductRentConcretePump'])->name('products.rent');
+
+// Route untuk menampilkan produk tipe barang category 'scaffolding'
+Route::get('/products/purchase/mobilecrane', [ProductViewController::class, 'showProductPurchaseMobileCrane'])->name('products.purchase');
+Route::get('/products/rent/mobilecrane', [ProductViewController::class, 'showProductRentMobileCrane'])->name('products.rent');
+
+
 // Route login 
 // Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
 // Route::post('/customer/register', [CustomerRegisterController::class, 'register'])->name('register.register.post');
