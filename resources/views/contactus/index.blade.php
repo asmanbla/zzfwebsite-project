@@ -1035,21 +1035,30 @@ body {
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a href="" class="navbar-brand p-0">
-                <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industry</h1>
-                <!-- <img src="img/logo.png" alt="Logo"> -->
+        <a href="" class="navbar-brand p-0">
+                <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                 <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Catalog</a>
-                    <a href="/aboutus" class="nav-item nav-link">About</a>
-                    <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/contact" class="nav-item nav-link">Contact</a>
-                </div>
+            <div class="navbar-nav mx-auto py-0">
+            <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
+<a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+<a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+<a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+<a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
+</div>
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+        Choose Lang
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+        <li><a href="{{ route('locale', ['locale' => 'id']) }}">Bahasa Indonesia</a></li>
+        <li><a href="{{ route('locale', ['locale' => 'en']) }}">English</a></li>
+    </ul>
+</div>
 
                 <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
                 <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>

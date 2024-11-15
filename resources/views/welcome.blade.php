@@ -268,14 +268,34 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="#home" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Product</a>
-                    <a href="#tentang" class="nav-item nav-link">About</a>
-                    <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
-                    <a href="#service" class="nav-item nav-link">Service</a>
-                    <a href="/contactus" class="nav-item nav-link">Contact</a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0">
+            <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
+<a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+<a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+<a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+<a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
+</div>
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+        Language
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+        <li>
+            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                Bahasa Indonesia
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                English
+            </a>
+        </li>
+    </ul>
+</div>
 
                 <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
                 <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
@@ -445,7 +465,7 @@
                 </div>
             </div>
             <div class="col-lg-12 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
-                <img src="img/keunggulan.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
+                <img src="img/imgzzf/speciality.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
             </div>
             <div class="col-xl-4">
                 <div class="row gy-4 gx-0">
@@ -588,7 +608,7 @@
         // Set the modal title dynamically (optional)
         document.getElementById('serviceModalLabel').textContent = `Apa yang anda butuhkan untuk ${category}?`;
         // Open the modal
-        var myModal = new bootstrap.Modal(document.getElementById('serviceModal'));
+        var myModal = new bootst    rap.Modal(document.getElementById('serviceModal'));
         myModal.show();
     }
 

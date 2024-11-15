@@ -81,11 +81,14 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+// config/app.php
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+'locale' => 'en',  // Bahasa default
 
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+'fallback_locale' => 'en',
+'faker_locale' => 'en_US',
+
+
 
     /*
     |--------------------------------------------------------------------------

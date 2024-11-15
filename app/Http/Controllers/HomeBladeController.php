@@ -18,7 +18,10 @@ class HomeBladeController extends Controller
      */
 
      public function index()
+     
      {
+        $locale = session()->get('locale', config('app.locale'));
+    \Log::info('Locale yang didapat di controller: ' . $locale);
          // Query untuk produk dengan tipe 'purchase' dan 'rent'
          $productsForSale = DB::table('vwprodukseller')->where('type', 'purchase')->get();
          $productsForRent = DB::table('vwprodukseller')->where('type', 'rent')->get();

@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -45,9 +46,25 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\OrderFormController;
 use App\Http\Controllers\RentFormController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Middleware\Localization;
 
-Route::resource('/', HomeBladeController::class);
-Route::resource('/contactus', ContactController::class);
+
+use Illuminate\Support\Facades\Session;
+
+Route::middleware([Localization::class])->group(function () {
+    Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
+    Route::resource('aboutus', AboutUsController::class);
+    Route::resource('/contactus', ContactController::class);
+
+    Route::get('locale/{locale}', function ($locale) {
+        $validLocales = ['en', 'id'];
+        if (in_array($locale, $validLocales)) {
+            session(['locale' => $locale]);
+        }
+        return redirect()->back();
+    })->name('locale');
+});
+
  // Search Button Controller : 
  Route::get ('/product_search', [HomeBladeController::class,'product_search']);
  Route::get ('/product_search_purchase', [HomeBladeController::class,'product_search_purchase']);
@@ -56,7 +73,6 @@ Route::resource('/contactus', ContactController::class);
  Route::get('/product_search_catalog', [HomeBladeController::class,'product_search_catalog']);
 
 
-Route::resource('aboutus', AboutUsController::class);
 Route::resource('orderform', OrderFormController::class);
 Route::resource('formrent', RentFormController::class);
 Route::resource('catalog', CatalogController::class);

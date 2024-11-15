@@ -13,7 +13,19 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+    protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\Localization::class,  // Pastikan ini ada
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\SetLocale::class,
+        ],
+    ];
+
     protected $middleware = [
+        // Hapus baris Localization::class di sini
         \App\Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\HandleCors::class,
         \App\Http\Middleware\SetCacheHeaders::class,
@@ -24,6 +36,7 @@ class Kernel extends HttpKernel
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\VerifyCsrfToken::class, // Jika Anda menggunakan CSRF
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
+       
     ];
 
     /**
@@ -40,5 +53,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         // Middleware tambahan yang mungkin diperlukan
         'checkRole' => \App\Http\Middleware\CheckRole::class, // Contoh middleware custom
+        'localization' => \App\Http\Middleware\Localization::class,
     ];
 }

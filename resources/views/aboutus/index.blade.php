@@ -251,14 +251,24 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                 <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Catalog</a>
-                    <a href="/aboutus" class="nav-item nav-link">About</a>
-                    <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/contact" class="nav-item nav-link">Contact</a>
-                </div>
+            <div class="navbar-nav mx-auto py-0">
+            <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
+<a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+<a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+<a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+<a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
+</div>
 
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+        Choose Lang
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+        <li><a href="{{ route('locale', ['locale' => 'id']) }}">Bahasa Indonesia</a></li>
+        <li><a href="{{ route('locale', ['locale' => 'en']) }}">English</a></li>
+    </ul>
+</div>
                 <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
                 <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
 
@@ -402,4 +412,45 @@
     </div>
 </div>
 <!-- Footer End -->
+</body>
+<script>
+    $(document).ready(function(){
+        $(".categories-carousel").owlCarousel({
+            items: 1, // Menampilkan satu slide pada satu waktu
+            loop: true, // Mengulangi slide setelah selesai
+            nav: true, // Mengaktifkan tombol navigasi
+            navText: [
+                '<span class="text-danger">&#10094;</span>', // Ikon panah merah kiri
+                '<span class="text-danger">&#10095;</span>'  // Ikon panah merah kanan
+            ],
+            autoplay: false, // Menonaktifkan autoplay agar pengguna menggeser manual
+            responsive: {
+                0: { items: 1 },   // Pada layar kecil (mobile) menampilkan 1 slide
+                768: { items: 1 }, // Pada layar sedang (tablet) menampilkan 1 slide
+                992: { items: 1 }  // Pada layar besar (desktop) menampilkan 1 slide
+            }
+        });
+    });
+</script>
 
+<!-- Script to Handle Modal -->
+<script>
+    function openModal(category) {
+        // Set the modal title dynamically (optional)
+        document.getElementById('serviceModalLabel').textContent = `Apa yang anda butuhkan untuk ${category}?`;
+        // Open the modal
+        var myModal = new bootst    rap.Modal(document.getElementById('serviceModal'));
+        myModal.show();
+    }
+
+    function handleService(action) {
+        // Handle the button click (e.g., redirect based on 'sewa' or 'order')
+        if (action === 'sewa') {
+            window.location.href = '/sewa'; // Adjust URL as needed
+        } else if (action === 'order') {
+            window.location.href = '/order'; // Adjust URL as needed
+        }
+    }
+</script>
+
+</html>
