@@ -256,7 +256,7 @@
                     <a href="#produk" class="nav-item nav-link">Catalog</a>
                     <a href="/aboutus" class="nav-item nav-link">About</a>
                     <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/contact" class="nav-item nav-link">Contact</a>
+                    <a href="/contactus" class="nav-item nav-link">Contact</a>
                 </div>
 
                 <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>

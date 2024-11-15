@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <meta charset="utf-8">
-        <title>ZZF Industri - Catalog Product</title>
+        <title>ZZF Industri - Product View</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -26,14 +26,14 @@
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-        <!-- Logo Website-->
-        <link rel="icon" type="image/x-icon" href="../img/imgzzf/logo.png" />
+       <!-- Logo Website-->
+       <link rel="icon" type="image/x-icon" href="../../img/imgzzf/logo.png" />
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
        <!-- Template File CSS -->
-       <link href="../../css/style.css" rel="stylesheet">
+       <link href="../../../css/style.css" rel="stylesheet">
 <style>
 
 <style>
@@ -331,9 +331,7 @@ h2, h3, .customer-info {
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a href="" class="navbar-brand p-0">
-                <a href="" class="navbar-brand p-0">
                 <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
-            </a>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -390,22 +388,30 @@ h2, h3, .customer-info {
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Products <span class="text-primary">PT ZZF Industry</span></h1>
-            <p class="mb-0">The following are all the zzf product</p>
+            <h1 class="display-5 text-capitalize mb-3">Placing Boom Products <span class="text-primary">for Rent</span></h1>
+            <p class="mb-0">The following are placing boom Product for Rent</p>
         </div>
+
+<!-- Penjelasan Tower Crane -->
+<div class=""> 
+    <h3 class=""> 
+        Placing Boom 
+    </h3>
+    <p>Placing boom adalah alat yang digunakan dalam konstruksi untuk menyalurkan beton dari mixer ke area yang sulit dijangkau, seperti lantai tinggi atau lokasi proyek besar. Alat ini terdiri dari boom panjang yang dapat diputar dan digerakkan, memungkinkan beton untuk dipindahkan dengan presisi dan efisiensi. Placing boom sering digunakan dalam proyek gedung tinggi, jembatan, atau infrastruktur besar lainnya. Dengan kapasitas yang besar, placing boom dapat menyalurkan beton secara kontinu tanpa perlu pemindahan manual yang memakan waktu. Sistem ini mengurangi risiko kecelakaan dan meningkatkan produktivitas di lokasi konstruksi. Placing boom dapat dipasang di crane atau digunakan secara terpisah sebagai alat independen.</p>
+</div>
 
 <!-- Product Search -->
 <div class="search-container-purchase">
-                <form action="{{ url('product_search_catalog') }}" method="GET" class="search-form">
+                <form action="{{ url('product_search_rent/placing_boom') }}" method="GET" class="search-form">
                     <input class="search-input-purchase" type="text" name="search" placeholder="Search Products Here">
                     <button class="search-button-purchase" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
             <br>
-
+            
         <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
         <div class="row">
-            @foreach($produkall as $product)
+            @foreach($productsForRent as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="categories-item p-4 h-100">
                         <div class="categories-item-inner">
@@ -414,9 +420,6 @@ h2, h3, .customer-info {
                             </div>
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>{{ $product->product_name }}</h4>
-                                <h6 class="text-secondary">
-                                    <i class="fa fa-user"></i> {{ $product->seller->name }}
-                                </h6>
                                 <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                                 <!-- Button Section -->
                             <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">

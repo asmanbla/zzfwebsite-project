@@ -268,12 +268,11 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="#home" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Product</a>
-                    <a href="#tentang" class="nav-item nav-link">About</a>
-                    <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
-                    <a href="#service" class="nav-item nav-link">Service</a>
+            <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="/catalog" class="nav-item nav-link">Catalog</a>
+                    <a href="/aboutus" class="nav-item nav-link">About</a>
+                    <a href="/" class="nav-item nav-link">Service</a>
                     <a href="/contactus" class="nav-item nav-link">Contact</a>
                 </div>
 
@@ -324,19 +323,84 @@
             <p class="mb-0">Choose According to your needs</p>
         </div>
         <div class="row g-4 d-flex justify-content-center">
-            @foreach($categories as $category)
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.{{ $loop->iteration }}s">
-                    <div class="service-item p-4" onclick="openModal('{{ $category->kategori }}')">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-box-open fa-2x"></i>
-                        </div>
-                        <h5 class="mb-3">{{ $category->kategori }}</h5>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item p-4" onclick="openModal('Tower Crane')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
                     </div>
+                    <h5 class="mb-3">Tower Crane</h5>
                 </div>
-            @endforeach
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="service-item p-4" onclick="openModal('Passenger Hoist')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Passenger Hoist</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Form Work')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Form Work</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Scaffolding')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Scaffolding</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Placing Boom')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Placing Boom</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Safety Net')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Safety Net</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Concrete Pump')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Concrete Pump</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Concrete Batching Plant')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Concrete Batching Plant</h5>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item p-4" onclick="openModal('Mobile Crane')">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-box-open fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">Mobile Crane</h5>
+                </div>
+            </div>
+            <!-- Tambahkan lebih banyak layanan jika diperlukan -->
         </div>
     </div>
 </div>
+<!-- Services End -->
+
 
 <!-- Modal -->
 <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
@@ -348,12 +412,13 @@
             </div>
             <div class="modal-body text-center">
                 <p class="text-primary">Pilih salah satu layanan:</p>
-                <a href="/products/rent" target="_blank" class="btn btn-primary mx-2">Sewa</a>
-                <a href="/products/purchase" target="_blank" class="btn btn-blue mx-2">Order</a>
+                <a id="rentLink" href="#" target="_blank" class="btn btn-primary mx-2">Sewa</a>
+                <a id="purchaseLink" href="#" target="_blank" class="btn btn-blue mx-2">Order</a>
             </div>
         </div>
     </div>
 </div>
+
 <br>
 
 <!-- Client Start -->
@@ -584,22 +649,55 @@
 
 <!-- Script to Handle Modal -->
 <script>
-    function openModal(category) {
-        // Set the modal title dynamically (optional)
-        document.getElementById('serviceModalLabel').textContent = `Apa yang anda butuhkan untuk ${category}?`;
-        // Open the modal
-        var myModal = new bootstrap.Modal(document.getElementById('serviceModal'));
-        myModal.show();
+function openModal(serviceName) {
+    var modalTitle = document.getElementById('serviceModalLabel');
+    var rentLink = document.getElementById('rentLink');
+    var purchaseLink = document.getElementById('purchaseLink');
+    
+    // Set konten modal berdasarkan layanan yang diklik
+    if (serviceName === 'Tower Crane') {
+        modalTitle.innerText = 'Layanan untuk Tower Crane';
+        rentLink.href = '/products/rent/towercrane';
+        purchaseLink.href = '/products/purchase/towercrane';
+    } else if (serviceName === 'Passenger Hoist') {
+        modalTitle.innerText = 'Layanan untuk Passenger Hoist';
+        rentLink.href = '/products/rent/passengerhoist';
+        purchaseLink.href = '/products/purchase/passengerhoist';
+    } else if (serviceName === 'Form Work') {
+        modalTitle.innerText = 'Layanan untuk Form Work';
+        rentLink.href = '/products/rent/formwork';
+        purchaseLink.href = '/products/purchase/formwork';
+    } else if (serviceName === 'Scaffolding') {
+        modalTitle.innerText = 'Layanan untuk Scaffolding';
+        rentLink.href = '/products/rent/scaffolding';
+        purchaseLink.href = '/products/purchase/scaffolding';
+    } else if (serviceName === 'Placing Boom') {
+        modalTitle.innerText = 'Layanan untuk Placing Boom';
+        rentLink.href = '/products/rent/placingboom';
+        purchaseLink.href = '/products/purchase/placingboom';
+    } else if (serviceName === 'Safety Net') {
+        modalTitle.innerText = 'Layanan untuk Safety Net';
+        rentLink.href = '/products/rent/safetynet';
+        purchaseLink.href = '/products/purchase/safetynet';
+    } else if (serviceName === 'Concrete Pump') {
+        modalTitle.innerText = 'Layanan untuk Concrete Pump';
+        rentLink.href = '/products/rent/concretepump';
+        purchaseLink.href = '/products/purchase/concretepump';
+    } else if (serviceName === 'Concrete Batching Plant') {
+        modalTitle.innerText = 'Layanan untuk Concrete Batching Plant';
+        rentLink.href = '/products/rent/concretebatchingplant';
+        purchaseLink.href = '/products/purchase/concretebatchingplant';
+    } else if (serviceName === 'Mobile Crane') {
+        modalTitle.innerText = 'Layanan untuk Mobile Crane';
+        rentLink.href = '/products/rent/mobilecrane';
+        purchaseLink.href = '/products/purchase/mobilecrane';
     }
 
-    function handleService(action) {
-        // Handle the button click (e.g., redirect based on 'sewa' or 'order')
-        if (action === 'sewa') {
-            window.location.href = '/sewa'; // Adjust URL as needed
-        } else if (action === 'order') {
-            window.location.href = '/order'; // Adjust URL as needed
-        }
-    }
+    // Tampilkan modal
+    var modal = new bootstrap.Modal(document.getElementById('serviceModal'));
+    modal.show();
+}
+
 </script>
 
 
