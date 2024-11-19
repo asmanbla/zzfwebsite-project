@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -46,31 +45,16 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\OrderFormController;
 use App\Http\Controllers\RentFormController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BestProductController;
+use App\Http\Controllers\LatestProjectController;
+use App\Http\Controllers\ProdetLatestProjectController;
 use App\Http\Middleware\Localization;
-
-
 use Illuminate\Support\Facades\Session;
 
-Route::middleware([Localization::class])->group(function () {
-    Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
-    Route::resource('aboutus', AboutUsController::class);
-    Route::resource('/contactus', ContactController::class);
+Route::resource('/', HomeBladeController::class);
 
-    Route::get('locale/{locale}', function ($locale) {
-        $validLocales = ['en', 'id'];
-        if (in_array($locale, $validLocales)) {
-            session(['locale' => $locale]);
-        }
-        return redirect()->back();
-    })->name('locale');
-});
-
- // Search Button Controller : 
- Route::get ('/product_search', [HomeBladeController::class,'product_search']);
- Route::get ('/product_search_purchase', [HomeBladeController::class,'product_search_purchase']);
- Route::get ('/product_search_rent', [HomeBladeController::class,'product_search_rent']);
- Route::get ('/product_search_all', [HomeBladeController::class,'product_search_all']);
- Route::get('/product_search_catalog', [HomeBladeController::class,'product_search_catalog']);
+Route::get('/product_search_purchase/{category}', [HomeBladeController::class, 'product_search_purchase']);
+Route::get('/product_search_rent/{category}', [HomeBladeController::class, 'product_search_rent']);
 
 
 Route::resource('orderform', OrderFormController::class);
@@ -80,8 +64,10 @@ Route::resource('catalog', CatalogController::class);
 
 //Produk Details View
 
-Route::get('/produkdetails/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
+Route::get('/detailproduklatest/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
 Route::get('/produkdetailseller/{id}', [DetailProdukController::class, 'showseller'])->name('detailprodukseller.show');
+
+Route::get('/product/{id}', [ProdetLatestProjectController::class, 'showproduct'])->name('product.show');
 
 // Route untuk menampilkan produk tipe 'purchase'
 Route::get('/products/purchase', [ProductViewController::class, 'showProductPurchase'])->name('products.purchase');
@@ -220,6 +206,14 @@ Route::resource('client', ClientController::class);
 Route::get('/hapusclient/{id}', [ClientController::class, 'hapusclient'])->name('hapusclient');
 Route::get('/client/hapusclient/{id}', [ClientController::class, 'hapusclient']);
 
+Route::resource('bestproduct', BestProductController::class);
+Route::get('/hapusbestproduct/{id}', [BestProductController::class, 'hapusbestproduct'])->name('hapusbestproduct');
+Route::get('/bestproduct/hapusbestproduct/{id}', [BestProductController::class, 'hapusbestproduct']);
+
+Route::resource('latestproject', LatestProjectController::class);
+Route::get('/hapuslatestproject/{id}', [LatestProjectController::class, 'hapuslatestproject'])->name('hapuslatestproject');
+Route::get('/latestproject/hapuslatestproject/{id}', [LatestProjectController::class, 'hapuslatestproject']);
+
 // DASHPROFILE 
 Route::resource('dashprofilezzf', App\Http\Controllers\DashProfileController::class);
 
@@ -341,4 +335,18 @@ Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->n
 // Route Middleware Untuk Halaman Home
 Route::group(['middleware' => 'auth:customers'], function () {
     Route::resource('custprofile', App\Http\Controllers\ProfileCustController::class);
+});
+
+Route::middleware([Localization::class])->group(function () {
+    Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
+    Route::resource('aboutus', AboutUsController::class);
+    Route::resource('/contactus', ContactController::class);
+
+    Route::get('locale/{locale}', function ($locale) {
+        $validLocales = ['en', 'id'];
+        if (in_array($locale, $validLocales)) {
+            session(['locale' => $locale]);
+        }
+        return redirect()->back();
+    })->name('locale');
 });

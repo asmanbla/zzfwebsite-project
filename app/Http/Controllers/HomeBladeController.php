@@ -8,6 +8,8 @@ use App\Models\ProductSellers;
 use App\Models\ProductCategoriesSeller;
 use App\Models\Client;
 use App\Models\Carts;
+use App\Models\LatestProject;
+use App\Models\BestProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -29,6 +31,8 @@ class HomeBladeController extends Controller
      
          // Query untuk mengambil semua kategori
          $categories = ProductCategoriesSeller::all();
+         $bestproduct = BestProduct::all();
+         $latestproject = LatestProject::all();
      
          // Cek apakah user sudah login sebagai customer
          if (Auth::guard('customers')->check()) {
@@ -47,7 +51,9 @@ class HomeBladeController extends Controller
              'productsForAll' => $productsForAll,
              'totalItems' => $totalItems,
              'categories' => $categories,
-             'clients' => $clients, // Mengirim data client ke view
+             'clients' => $clients, 
+             'bestproduct' => $bestproduct, 
+             'latestproject' => $latestproject, 
          ]);
      }
 

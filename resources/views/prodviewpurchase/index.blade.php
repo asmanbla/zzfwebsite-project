@@ -392,15 +392,6 @@ h2, h3, .customer-info {
             <p class="mb-0">The following are the products for sale</p>
         </div>
 
-<!-- Product Search -->
-<div class="search-container-purchase">
-                <form action="{{ url('product_search_purchase') }}" method="GET" class="search-form">
-                    <input class="search-input-purchase" type="text" name="search" placeholder="Search Products Here">
-                    <button class="search-button-purchase" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-            </div>
-            <br>
-
         <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
         <div class="row">
             @foreach($productsForSale as $product)
