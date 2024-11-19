@@ -294,53 +294,57 @@
         </div>
         <!-- Topbar End -->
 
-      <!-- Navbar & Hero Start -->
+     <!-- Navbar & Hero Start -->
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-             <a href="" class="navbar-brand p-0">
+            <a href="" class="navbar-brand p-0">
                 <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
-            <div class="navbar-nav mx-auto py-0">
-            <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
-<a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
-<a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
-<a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
-<a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
-</div>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
+                </div>
 
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
-        Language
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-        <li>
-            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
-                Bahasa Indonesia
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
-                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
-                English
-            </a>
-        </li>
-    </ul>
-</div>
-                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
-                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
 
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -358,10 +362,11 @@
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -761,6 +766,9 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 
