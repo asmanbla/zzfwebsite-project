@@ -47,23 +47,9 @@ use App\Http\Controllers\OrderFormController;
 use App\Http\Controllers\RentFormController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Middleware\Localization;
-
-
 use Illuminate\Support\Facades\Session;
 
-Route::middleware([Localization::class])->group(function () {
-    Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
-    Route::resource('aboutus', AboutUsController::class);
-    Route::resource('/contactus', ContactController::class);
 
-    Route::get('locale/{locale}', function ($locale) {
-        $validLocales = ['en', 'id'];
-        if (in_array($locale, $validLocales)) {
-            session(['locale' => $locale]);
-        }
-        return redirect()->back();
-    })->name('locale');
-});
 
  // Search Button Controller : 
  Route::get ('/product_search', [HomeBladeController::class,'product_search']);
@@ -75,7 +61,7 @@ Route::middleware([Localization::class])->group(function () {
 
 Route::resource('orderform', OrderFormController::class);
 Route::resource('formrent', RentFormController::class);
-Route::resource('catalog', CatalogController::class);
+
 
 
 //Produk Details View
@@ -341,4 +327,19 @@ Route::post('/registercustomer', [AuthController::class, 'customerRegister'])->n
 // Route Middleware Untuk Halaman Home
 Route::group(['middleware' => 'auth:customers'], function () {
     Route::resource('custprofile', App\Http\Controllers\ProfileCustController::class);
+});
+
+Route::middleware([Localization::class])->group(function () {
+    Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
+    Route::resource('aboutus', AboutUsController::class);
+    Route::resource('catalog', CatalogController::class);
+    Route::resource('/contactus', ContactController::class);
+
+    Route::get('locale/{locale}', function ($locale) {
+        $validLocales = ['en', 'id'];
+        if (in_array($locale, $validLocales)) {
+            session(['locale' => $locale]);
+        }
+        return redirect()->back();
+    })->name('locale');
 });

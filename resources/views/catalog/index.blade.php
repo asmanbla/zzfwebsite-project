@@ -330,28 +330,53 @@ h2, h3, .customer-info {
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-        <a href="" class="navbar-brand p-0">
+            <a href="" class="navbar-brand p-0">
                 <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link">Home</a>
-                    <a href="/catalog" class="nav-item nav-link active">Catalog</a>
-                    <a href="/aboutus" class="nav-item nav-link">About</a>
-                    <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/contactus" class="nav-item nav-link">Contact</a>
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link active">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
                 </div>
 
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
+
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -369,10 +394,11 @@ h2, h3, .customer-info {
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -388,8 +414,8 @@ h2, h3, .customer-info {
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Products <span class="text-primary">PT ZZF Industry</span></h1>
-            <p class="mb-0">The following are all the zzf product</p>
+            <h1 class="display-5 text-capitalize mb-3">{{ __('catalog.Products') }} <span class="text-primary">PT ZZF Industri</span></h1>
+            <p class="mb-0">{{ __('catalog.The following are all the zzf product') }}</p>
         </div>
 
 <!-- Product Search -->
@@ -422,9 +448,9 @@ h2, h3, .customer-info {
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <input type="hidden" name="quantity" value="1">
                                 <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
-                                    <button type="submit" class="btn custom-btn4">Purchase</button>
+                                    <button type="submit" class="btn custom-btn4">{{ __('catalog.Purchase') }}</button>
                                     <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
-                                        <i class="fab fa-whatsapp"></i> Contact Seller
+                                        <i class="fab fa-whatsapp"></i> {{ __('catalog.Contact Seller') }}
                                     </a>
                                 </div>
                             </form>
@@ -435,7 +461,7 @@ h2, h3, .customer-info {
             @endforeach
         </div>
         <div class="d-flex justify-content-start align-items-center mb-5">
-                        <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
+                        <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">{{ __('catalog.Back To Home Page') }}</a>
                         </div>
     </div>
 </div>

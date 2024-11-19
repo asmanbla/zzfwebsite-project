@@ -20,7 +20,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
        
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
         <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -227,6 +227,43 @@
     background-color: #03031a; /* sedikit gelap saat hover */
 }
 
+.categories-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.categories-img:hover .product-img {
+    transform: scale(1.1);
+    filter: blur(2px) brightness(80%);
+}
+
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.categories-img:hover .hover-overlay {
+    opacity: 1;
+}
+
+.modal-body img {
+    width: 60%; /* Atur ukuran gambar menjadi 70% dari lebar modal */
+    max-width: 350px; /* Maksimal lebar gambar 500px */
+    height: auto; /* Pertahankan rasio aspek gambar */
+    transition: transform 0.3s ease; /* Animasi untuk efek hover */
+}
+
+
 </style>
 
     </head>
@@ -257,56 +294,57 @@
         </div>
         <!-- Topbar End -->
 
-      <!-- Navbar & Hero Start -->
+     <!-- Navbar & Hero Start -->
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-             <a href="" class="navbar-brand p-0">
+            <a href="" class="navbar-brand p-0">
                 <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-            <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
-<a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
-<a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
-<a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
-<a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
-</div>
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
+                </div>
 
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
-        Language
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-        <li>
-            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
-                Bahasa Indonesia
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
-                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
-                English
-            </a>
-        </li>
-    </ul>
-</div>
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
 
-                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
-                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -324,10 +362,11 @@
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -441,6 +480,87 @@
 </div>
 
 <br>
+<!-- Latest Project Tampilan -->
+
+<div class="container-fluid categories pb-5" id="produk">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Latest <span class="text-primary">Project</span></h1>
+            <p class="mb-0 text-primary">The Following are Our Latest Project</p>
+        </div>
+        <div class="categories-carousel owl-carousel">
+            @foreach($latestproject as $product)
+                <div class="categories-item p-6">
+                    <div class="categories-item-inner">
+                        <div class="categories-img rounded-top">
+                            <img src="{{ asset('storage/' . $product->image_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->project_name }}">
+                        </div>
+                        <div class="categories-content rounded-bottom p-4">
+                            <h4>{{ $product->project_name }}</h4>
+                            <br>
+                            <a href="{{ route('product.show', ['id' => $product->id]) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3 mb-3">Detail</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <br>
+    </div>
+</div> 
+
+<!-- Best product Preview -->
+<div class="container-fluid testimonial pb-5">
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize mb-3">Our<span class="text-primary"> Best Product</span></h1>
+            <p class="mb-0 text-primary">The following are our Best Product in ZZF Industri</p>
+        </div>
+        <div class="row">
+            @foreach($bestproduct as $product)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="categories-item p-4 h-100 text-center">
+                        <!-- Gambar Produk -->
+                        <div class="categories-img rounded-top mb-3 position-relative">
+                            <img src="{{ asset('storage/' . $product->image_url) }}" 
+                                 class="img-fluid w-100 rounded product-img" 
+                                 alt="{{ $product->name }}" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#productModal{{ $product->id }}">
+                        </div>
+                        <!-- Nama Produk -->
+                        <h4>
+                            <a href="#" 
+                               class="text-decoration-none text-dark product-link" 
+                               data-bs-toggle="modal" 
+                               data-bs-target="#productModal{{ $product->id }}">
+                                {{ $product->name }}
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $product->id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabel{{ $product->id }}">{{ $product->name }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <!-- Gambar Produk -->
+                                <img src="{{ asset('storage/' . $product->image_url) }}" class="img-fluid rounded mb-3" alt="{{ $product->name }}">
+                                <!-- Deskripsi Produk -->
+                                <p class="text-dark">{{ $product->description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
 
 <!-- Client Start -->
 <div class="container-fluid testimonial pb-5">
@@ -454,7 +574,7 @@
             <div class="testimonial-item">
                 <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i></div>
                 <div class="testimonial-inner p-4">
-                    <img src="{{ asset('storage/' . $client->logo_url) }}"  class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;" alt="{{ $client->company_name }}">
+                    <img src="{{ asset('storage/' . $client->logo_url) }}"  class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;" alt="{{ $client->company_name }}">
                     <div class="ms-4">
                         <h4>{{ $client->company_name }}</h4>
                         <p>Our Partner</p>
@@ -531,7 +651,7 @@
                 </div>
             </div>
             <div class="col-lg-12 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
-                <img src="img/imgzzf/speciality.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
+                <img src="img/keunggulan.png" class="img-fluid w-100" style="object-fit: cover;" alt="Img">
             </div>
             <div class="col-xl-4">
                 <div class="row gy-4 gx-0">
@@ -645,6 +765,11 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
     </body>
 
     <!-- Script untuk inisialisasi Owl Carousel -->
@@ -670,18 +795,74 @@
 
 <!-- Script to Handle Modal -->
 <script>
-    function openModal(category) {
-        // Set the modal title dynamically (optional)
-        document.getElementById('serviceModalLabel').textContent = `Apa yang anda butuhkan untuk ${category}?`;
-        // Open the modal
-        var myModal = new bootst    rap.Modal(document.getElementById('serviceModal'));
-        myModal.show();
+function openModal(serviceName) {
+    var modalTitle = document.getElementById('serviceModalLabel');
+    var rentLink = document.getElementById('rentLink');
+    var purchaseLink = document.getElementById('purchaseLink');
+    
+    // Set konten modal berdasarkan layanan yang diklik
+    if (serviceName === 'Tower Crane') {
+        modalTitle.innerText = 'Layanan untuk Tower Crane';
+        rentLink.href = '/products/rent/towercrane';
+        purchaseLink.href = '/products/purchase/towercrane';
+    } else if (serviceName === 'Passenger Hoist') {
+        modalTitle.innerText = 'Layanan untuk Passenger Hoist';
+        rentLink.href = '/products/rent/passengerhoist';
+        purchaseLink.href = '/products/purchase/passengerhoist';
+    } else if (serviceName === 'Form Work') {
+        modalTitle.innerText = 'Layanan untuk Form Work';
+        rentLink.href = '/products/rent/formwork';
+        purchaseLink.href = '/products/purchase/formwork';
+    } else if (serviceName === 'Scaffolding') {
+        modalTitle.innerText = 'Layanan untuk Scaffolding';
+        rentLink.href = '/products/rent/scaffolding';
+        purchaseLink.href = '/products/purchase/scaffolding';
+    } else if (serviceName === 'Placing Boom') {
+        modalTitle.innerText = 'Layanan untuk Placing Boom';
+        rentLink.href = '/products/rent/placingboom';
+        purchaseLink.href = '/products/purchase/placingboom';
+    } else if (serviceName === 'Safety Net') {
+        modalTitle.innerText = 'Layanan untuk Safety Net';
+        rentLink.href = '/products/rent/safetynet';
+        purchaseLink.href = '/products/purchase/safetynet';
+    } else if (serviceName === 'Concrete Pump') {
+        modalTitle.innerText = 'Layanan untuk Concrete Pump';
+        rentLink.href = '/products/rent/concretepump';
+        purchaseLink.href = '/products/purchase/concretepump';
+    } else if (serviceName === 'Concrete Batching Plant') {
+        modalTitle.innerText = 'Layanan untuk Concrete Batching Plant';
+        rentLink.href = '/products/rent/concretebatchingplant';
+        purchaseLink.href = '/products/purchase/concretebatchingplant';
+    } else if (serviceName === 'Mobile Crane') {
+        modalTitle.innerText = 'Layanan untuk Mobile Crane';
+        rentLink.href = '/products/rent/mobilecrane';
+        purchaseLink.href = '/products/purchase/mobilecrane';
     }
 
     // Tampilkan modal
     var modal = new bootstrap.Modal(document.getElementById('serviceModal'));
     modal.show();
 }
+
+// Seleksi semua gambar produk
+document.querySelectorAll('.product-img').forEach((img) => {
+    img.addEventListener('click', function () {
+        // Dapatkan ID modal dari data-bs-target
+        const modalId = img.getAttribute('data-bs-target');
+        
+        // Pilih elemen modal menggunakan ID
+        const modal = document.querySelector(modalId);
+
+        if (modal) {
+            // Tampilkan modal secara manual menggunakan Bootstrap Modal API
+            const modalInstance = new bootstrap.Modal(modal);
+            modalInstance.show();
+        } else {
+            console.error(Modal dengan ID ${modalId} tidak ditemukan!);
+        }
+    });
+});
+
 
 </script>
 

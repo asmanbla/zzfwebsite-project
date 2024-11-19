@@ -251,34 +251,46 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-            <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
-<a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
-<a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
-<a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
-<a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
-</div>
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link active">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
+                </div>
 
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
 
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
-        Choose Lang
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-        <li><a href="{{ route('locale', ['locale' => 'id']) }}">Bahasa Indonesia</a></li>
-        <li><a href="{{ route('locale', ['locale' => 'en']) }}">English</a></li>
-    </ul>
-</div>
-                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
-                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -296,10 +308,11 @@
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -309,52 +322,48 @@
 <!-- Navbar & Hero End -->
 
  <!-- About Start -->
- <div class="container-fluid overflow-hidden about py-5" id="tentang">
+<div class="container-fluid overflow-hidden about py-5" id="tentang">
     <div class="container py-5">
         <div class="row g-5">
             <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
                 <div class="about-item">
                     <div class="pb-5">
-                        <h1 class="display-5 text-capitalize">About <span class="text-primary">Us</span></h1>
+                        <h1 class="display-5 text-capitalize">{{ __('about.About Us') }}</h1>
                         <p class="mb-0">
-                        ZZF Industri Indonesia, which started operating in 2012, is one of the companies
-                            which is currently developing from the Expanding CHINA ZZF INDUSTRIAL project. This company has a lot to offer
-                            equipment especially in construction materials, such as Tower Cranes, Batching Plants, and others.
-                            We also guarantee that the products and materials we provide are one of the best products
-                            and quality from China, with extraordinary quality.
+                            {{ __('about.Description') }}
                         </p>
                     </div>
                     <div class="row g-4">
                         <div class="col-lg-6">
                             <div class="text-center rounded bg-secondary p-4">
                                 <h1 class="display-6 text-white">12</h1>
-                                <h5 class="text-light mb-0">Years Experience</h5>
+                                <h5 class="text-light mb-0">{{ __('about.Years Experience') }}</h5>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="rounded">
-                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Producing High Quality Heavy Equipment</p>
-                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Fast Service</p>
-                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> Harga Affordable Rent and Sell</p>
-                                <p class="mb-0"><i class="fa fa-check-circle text-primary me-1"></i> Extensive and Abundant Experience</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> {{ __('about.High Quality Equipment') }}</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> {{ __('about.Fast Service') }}</p>
+                                <p class="mb-2"><i class="fa fa-check-circle text-primary me-1"></i> {{ __('about.Affordable Prices') }}</p>
+                                <p class="mb-0"><i class="fa fa-check-circle text-primary me-1"></i> {{ __('about.Extensive Experience') }}</p>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="d-flex align-items-center">
                                 <img src="img/imgzzf/foto-pak-ginting.jpg" class="img-fluid rounded-circle border border-4 border-secondary" style="width: 100px; height: 100px;" alt="Image">
                                 <div class="ms-4">
-                                    <h4>Harmony Ginting Ir, Msc</h4>
-                                    <p class="mb-0">CEO PT ZZF Indonesia</p>
+                                    <h4>{{ __('about.Harmony Ginting') }}</h4>
+                                    <p class="mb-0">{{ __('about.CEO ZZF Indonesia') }}</p>
                                 </div>
                                 <img src="img/imgzzf/foto-pak-jack-xie.jpg" class="img-fluid rounded-circle border border-4 border-secondary ms-5" style="width: 100px; height: 100px;" alt="Image">
                                 <div class="ms-4">
-                                    <h4>Jack Xie, MBA</h4>
-                                    <p class="mb-0">CEO Founder ZZF Group & PINETREE</p>
+                                    <h4>{{ __('about.Jack Xie') }}</h4>
+                                    <p class="mb-0">{{ __('about.CEO ZZF Group & PINETREE') }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12 d-flex align-items-center mt-4">
-                            <a href="https://zzf.co.id/" target="_blank" class="btn btn-primary rounded py-3 px-5">More About Us</a>
+                            <a href="https://zzf.co.id/" target="_blank" class="btn btn-primary rounded py-3 px-5">{{ __('about.More About Us') }}</a>
                         </div>
                     </div>
                 </div>
@@ -372,8 +381,8 @@
         </div>
     </div>
 </div>
+<!-- About End -->
 
-        <!-- About End -->
 
 <!-- Footer Start -->
 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s" style="position: relative; bottom: 0; width: 100%;">
@@ -381,28 +390,26 @@
         <div class="row g-5">
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <div class="footer-item">
-                        <h4 class="text-white mb-4">About Us</h4>
-                        <p class="mb-3"> ZZF Industri Indonesia which started operating in 2012 is one of the companies
-                            which is developing from the Expanding CHINA ZZF INDUSTRIAL project.</p>
+                <div class="footer-item">
+                        <h4 class="text-white mb-4">{{ __('landingpage.About Us') }}</h4>
+                        <p class="mb-3">{{ __('landingpage.ZZF Industri Indonesia which started operating in 2012 is one of the companies which is developing from the Expanding CHINA ZZF INDUSTRIAL project.') }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a href="#tentang"><i class="fas fa-angle-right me-2"></i> About</a>
-                    <a href="#produk"><i class="fas fa-angle-right me-2"></i>Product </a>
-                    <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Speciality</a>
-                    <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
-                    <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Contact</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+            <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">{{ __('landingpage.Quick Links') }}</h4>
+                    <a href="#tentang"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.About') }}</a>
+                    <a href="#produk"><i class="fas fa-angle-right me-2"></i>{{ __('landingpage.Product') }}</a>
+                    <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.Speciality') }}</a>
+                    <a href="#service"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.Service') }}</a>
+                    <a href="#kontak"><i class="fas fa-angle-right me-2"></i>{{ __('landingpage.Contact') }}</a>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Contact Info</h4>
+                    <h4 class="text-white mb-4">{{ __('landingpage.Contact Info') }}</h4>
                     <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
                     <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
                     <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
@@ -413,6 +420,9 @@
 </div>
 <!-- Footer End -->
 </body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
     $(document).ready(function(){
         $(".categories-carousel").owlCarousel({

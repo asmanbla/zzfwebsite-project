@@ -1,8 +1,45 @@
 <?php
 return [
+    //navbar
     "Home" => "Beranda",
     "Catalog" => "Katalog",
-    "About" => "Tentang",
+    "About" => "Tentang Kami",
     "Service" => "Layanan",
     "Contact" => "Kontak",
+    "Shopping" => "Belanja",
+    "Start Selling" => "Mulai Jual",
+
+    "Type Of Services" => "Jenis Layanan",
+    "Choose According to your needs" => "Pilih Sesuai Kebutuhan Anda",
+    "What do you need?" => "Apa yang Anda butuhkan?",
+    "Choose one service : " => "Pilih salah satu layanan: ",
+    "Rent" => "Sewa",
+    "Purchase" => "Beli",
+
+    "Our Client" => "Klien Kami",
+    "The following are our client partnership" => "Berikut adalah rekanan klien kami",
+    "Our Partner" => "Rekanan Kami",
+    "Our Documentation" => "Dokumentasi Kami",
+    "The following are our client partnerships" => "Berikut adalah rekanan klien kami",
+    "Our Speciality" => "Keunggulan Kami",
+    "PT ZZF offers a variety of products with very high quality and affordable" => "PT ZZF menawarkan berbagai produk dengan kualitas sangat tinggi dan harga terjangkau",
+    "Low Price" => "Harga Terjangkau",
+    "Offer quality solutions at a more affordable cost than competitors." => "Menawarkan solusi berkualitas dengan biaya lebih terjangkau dibandingkan pesaing.",
+    "Time Efficiency" => "Efisiensi Waktu",
+    "Efficiently complete projects in faster time without sacrificing quality." => "Menyelesaikan proyek dengan efisien dalam waktu yang lebih cepat tanpa mengorbankan kualitas.",
+    "Service Flexibility" => "Fleksibilitas Layanan",
+    "Offer solutions that can be tailored to the specific needs of the project." => "Menawarkan solusi yang dapat disesuaikan dengan kebutuhan spesifik proyek.",
+    "Portable Foundation" => "Fondasi Portabel",
+    "Using reliable, durable high-quality tools to ensure maximum productivity." => "Menggunakan alat yang andal, tahan lama, dan berkualitas tinggi untuk memastikan produktivitas maksimal.",
+
+    //footer
+    "About Us" => "Tentang Kami",
+    "ZZF Industri Indonesia which started operating in 2012 is one of the companies which is developing from the Expanding CHINA ZZF INDUSTRIAL project." => "ZZF Industri Indonesia yang mulai beroperasi pada tahun 2012 adalah salah satu perusahaan yang berkembang dari proyek Ekspansi ZZF INDUSTRIAL CHINA.",
+    "Quick Links" => "Tautan Cepat",
+    "About" => "Tentang",
+    "Product" => "Produk",
+    "Speciality" => "Keunggulan",
+    "Service" => "Layanan",
+    "Contact" => "Kontak",
+    "Contact Info" => "Informasi Kontak",
 ];
