@@ -858,7 +858,7 @@ document.querySelectorAll('.product-img').forEach((img) => {
             const modalInstance = new bootstrap.Modal(modal);
             modalInstance.show();
         } else {
-            console.error(`Modal dengan ID ${modalId} tidak ditemukan!`);
+            console.error(Modal dengan ID ${modalId} tidak ditemukan!);
         }
     });
 });

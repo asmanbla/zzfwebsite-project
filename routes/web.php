@@ -51,15 +51,19 @@ use App\Http\Controllers\ProdetLatestProjectController;
 use App\Http\Middleware\Localization;
 use Illuminate\Support\Facades\Session;
 
-Route::resource('/', HomeBladeController::class);
 
-Route::get('/product_search_purchase/{category}', [HomeBladeController::class, 'product_search_purchase']);
-Route::get('/product_search_rent/{category}', [HomeBladeController::class, 'product_search_rent']);
+
+ // Search Button Controller : 
+ Route::get ('/product_search', [HomeBladeController::class,'product_search']);
+ Route::get ('/product_search_purchase', [HomeBladeController::class,'product_search_purchase']);
+ Route::get ('/product_search_rent', [HomeBladeController::class,'product_search_rent']);
+ Route::get ('/product_search_all', [HomeBladeController::class,'product_search_all']);
+ Route::get('/product_search_catalog', [HomeBladeController::class,'product_search_catalog']);
 
 
 Route::resource('orderform', OrderFormController::class);
 Route::resource('formrent', RentFormController::class);
-Route::resource('catalog', CatalogController::class);
+
 
 
 //Produk Details View
@@ -340,6 +344,10 @@ Route::group(['middleware' => 'auth:customers'], function () {
 Route::middleware([Localization::class])->group(function () {
     Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
     Route::resource('aboutus', AboutUsController::class);
+<<<<<<< HEAD
+    Route::resource('catalog', CatalogController::class);
+=======
+>>>>>>> 75d41cecb3ea7363f008b7c57856a546032144b8
     Route::resource('/contactus', ContactController::class);
 
     Route::get('locale/{locale}', function ($locale) {

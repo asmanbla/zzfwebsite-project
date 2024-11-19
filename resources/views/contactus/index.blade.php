@@ -1035,41 +1035,51 @@ body {
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-        <a href="" class="navbar-brand p-0">
+            <a href="" class="navbar-brand p-0">
                 <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-            <a href="/" class="nav-item nav-link active">{{ __('landingpage.Home') }}</a>
-<a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
-<a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
-<a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
-<a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
-</div>
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link active">{{ __('landingpage.Contact') }}</a>
+                </div>
 
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
-        Choose Lang
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
-        <li><a href="{{ route('locale', ['locale' => 'id']) }}">Bahasa Indonesia</a></li>
-        <li><a href="{{ route('locale', ['locale' => 'en']) }}">English</a></li>
-    </ul>
-</div>
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
 
-                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4">Shopping </a>
-                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4">Start Selling</a>
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                        <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+    Bahasa Indonesia
+</a>
+<a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+    <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+    English
+</a>
+                        </li>
+                    </ul>
+                </div>
 
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -1087,10 +1097,11 @@ body {
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -1098,47 +1109,45 @@ body {
     </div>
 </div>
 <!-- Navbar & Hero End -->
+
 <div class="contact_us_6">
   <div class="responsive-container-block container">
   <form class="form-box" id="contact-form">
   <div class="container-block form-wrapper">
     <div class="mob-text">
       <p class="text-blk contactus-head">
-        Get in Touch
-      </p>
-      <p class="text-blk contactus-subhead">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Felis diam lectus sapien.
+        {{ __('contact.Get in Touch') }}
       </p>
     </div>
     <div class="responsive-container-block" id="i2cbk">
       <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i10mt-3">
         <p class="text-blk input-title">
-          NAME
+          {{ __('contact.NAME') }}
         </p>
-        <input class="input" id="ijowk-3" name="FirstName" placeholder="Please enter first name...">
+        <input class="input" id="ijowk-3" name="FirstName" placeholder="{{ __('contact.Please enter first name...') }}">
       </div>
       <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ip1yp">
         <p class="text-blk input-title">
-          EMAIL
+          {{ __('contact.EMAIL') }}
         </p>
-        <input class="input" id="ipmgh-3" name="Email" placeholder="Please enter email...">
+        <input class="input" id="ipmgh-3" name="Email" placeholder="{{ __('contact.Please enter email...') }}">
       </div>
       <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-3">
         <p class="text-blk input-title">
-          WHAT DO YOU HAVE IN MIND ?
+          {{ __('contact.WHAT DO YOU HAVE IN MIND ?') }}
         </p>
-        <textarea class="textinput" id="i5vyy-3" placeholder="Please enter query..."></textarea>
+        <textarea class="textinput" id="i5vyy-3" placeholder="{{ __('contact.Please enter query...') }}"></textarea>
       </div>
     </div>
     <button type="button" class="submit-btn" id="w-c-s-bgc_p-1-dm-id-2" onclick="sendToWhatsApp()">
-      Submit
+      {{ __('contact.Submit') }}
     </button>
   </div>
 </form>
     <div class="responsive-cell-block wk-desk-7 wk-ipadp-12 wk-tab-12 wk-mobile-12" id="i772w">
       <div class="map-part">
         <p class="text-blk map-contactus-head" id="w-c-s-fc_p-1-dm-id">
-          Reach us at
+          {{ __('contact.Reach us at') }}
         </p>
         <div class="social-media-links mob">
     <!-- Gmail Icon -->
@@ -1181,28 +1190,26 @@ body {
         <div class="row g-5">
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <div class="footer-item">
-                        <h4 class="text-white mb-4">About Us</h4>
-                        <p class="mb-3"> ZZF Industri Indonesia which started operating in 2012 is one of the companies
-                            which is developing from the Expanding CHINA ZZF INDUSTRIAL project.</p>
+                <div class="footer-item">
+                        <h4 class="text-white mb-4">{{ __('landingpage.About Us') }}</h4>
+                        <p class="mb-3">{{ __('landingpage.ZZF Industri Indonesia which started operating in 2012 is one of the companies which is developing from the Expanding CHINA ZZF INDUSTRIAL project.') }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a href="#tentang"><i class="fas fa-angle-right me-2"></i> About</a>
-                    <a href="#produk"><i class="fas fa-angle-right me-2"></i>Product </a>
-                    <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Speciality</a>
-                    <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
-                    <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Contact</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+            <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">{{ __('landingpage.Quick Links') }}</h4>
+                    <a href="#tentang"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.About') }}</a>
+                    <a href="#produk"><i class="fas fa-angle-right me-2"></i>{{ __('landingpage.Product') }}</a>
+                    <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.Speciality') }}</a>
+                    <a href="#service"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.Service') }}</a>
+                    <a href="#kontak"><i class="fas fa-angle-right me-2"></i>{{ __('landingpage.Contact') }}</a>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Contact Info</h4>
+                    <h4 class="text-white mb-4">{{ __('landingpage.Contact Info') }}</h4>
                     <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
                     <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
                     <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
@@ -1212,6 +1219,9 @@ body {
     </div>
 </div>
 <!-- Footer End -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
   function sendToWhatsApp() {
