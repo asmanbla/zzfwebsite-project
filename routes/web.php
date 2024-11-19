@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
@@ -46,6 +45,9 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\OrderFormController;
 use App\Http\Controllers\RentFormController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BestProductController;
+use App\Http\Controllers\LatestProjectController;
+use App\Http\Controllers\ProdetLatestProjectController;
 use App\Http\Middleware\Localization;
 use Illuminate\Support\Facades\Session;
 
@@ -66,8 +68,10 @@ Route::resource('formrent', RentFormController::class);
 
 //Produk Details View
 
-Route::get('/produkdetails/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
+Route::get('/detailproduklatest/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
 Route::get('/produkdetailseller/{id}', [DetailProdukController::class, 'showseller'])->name('detailprodukseller.show');
+
+Route::get('/product/{id}', [ProdetLatestProjectController::class, 'showproduct'])->name('product.show');
 
 // Route untuk menampilkan produk tipe 'purchase'
 Route::get('/products/purchase', [ProductViewController::class, 'showProductPurchase'])->name('products.purchase');
@@ -206,6 +210,14 @@ Route::resource('client', ClientController::class);
 Route::get('/hapusclient/{id}', [ClientController::class, 'hapusclient'])->name('hapusclient');
 Route::get('/client/hapusclient/{id}', [ClientController::class, 'hapusclient']);
 
+Route::resource('bestproduct', BestProductController::class);
+Route::get('/hapusbestproduct/{id}', [BestProductController::class, 'hapusbestproduct'])->name('hapusbestproduct');
+Route::get('/bestproduct/hapusbestproduct/{id}', [BestProductController::class, 'hapusbestproduct']);
+
+Route::resource('latestproject', LatestProjectController::class);
+Route::get('/hapuslatestproject/{id}', [LatestProjectController::class, 'hapuslatestproject'])->name('hapuslatestproject');
+Route::get('/latestproject/hapuslatestproject/{id}', [LatestProjectController::class, 'hapuslatestproject']);
+
 // DASHPROFILE 
 Route::resource('dashprofilezzf', App\Http\Controllers\DashProfileController::class);
 
@@ -332,7 +344,10 @@ Route::group(['middleware' => 'auth:customers'], function () {
 Route::middleware([Localization::class])->group(function () {
     Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
     Route::resource('aboutus', AboutUsController::class);
+<<<<<<< HEAD
     Route::resource('catalog', CatalogController::class);
+=======
+>>>>>>> 75d41cecb3ea7363f008b7c57856a546032144b8
     Route::resource('/contactus', ContactController::class);
 
     Route::get('locale/{locale}', function ($locale) {

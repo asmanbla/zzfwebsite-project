@@ -262,6 +262,35 @@
   </a>
 </li>
 
+<li class="nav-item">
+  <a class="nav-link" href="{{ route('bestproduct.index') }}">
+    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+      <svg width="12px" height="20px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <title>Comment</title>
+        <g fill="#FFFFFF">
+          <path class="color-background" d="M20 2C9 2 0 9 0 18c0 4 2 7 5 9v5l5-5c1 0 1 0 2-1 2 1 4 1 6 1 11 0 20-7 20-18S30 2 20 2z"/>
+        </g>
+      </svg>
+    </div>
+    <span class="nav-link-text ms-1">Best Product</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ route('latestproject.index') }}">
+  <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+      <svg width="12px" height="20px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <title>Folder</title>
+        <g fill="#FFFFFF">
+          <path class="color-background" d="M5 0H0v5h5v-5zm35 5h-25l-5-5H0v30h40V5z"/>
+        </g>
+      </svg>
+    </div>
+    <span class="nav-link-text ms-1">Latest Project</span>
+  </a>
+</li>
+
+
        <li class="nav-item">
   <a class="nav-link d-flex align-items-center" href="/cart">
     <div style="background-color: #ffffff; border-radius: 8px; padding: 7px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
