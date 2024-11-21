@@ -20,7 +20,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
        
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
         <!-- Libraries Stylesheet -->
         <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -227,43 +227,6 @@
     background-color: #03031a; /* sedikit gelap saat hover */
 }
 
-.categories-img {
-    position: relative;
-    overflow: hidden;
-}
-
-.product-img {
-    transition: transform 0.3s ease-in-out;
-}
-
-.categories-img:hover .product-img {
-    transform: scale(1.1);
-    filter: blur(2px) brightness(80%);
-}
-
-.hover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 0, 0, 0.4);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.categories-img:hover .hover-overlay {
-    opacity: 1;
-}
-
-.modal-body img {
-    width: 60%; /* Atur ukuran gambar menjadi 70% dari lebar modal */
-    max-width: 350px; /* Maksimal lebar gambar 500px */
-    height: auto; /* Pertahankan rasio aspek gambar */
-    transition: transform 0.3s ease; /* Animasi untuk efek hover */
-}
-
-
 </style>
 
     </head>
@@ -294,7 +257,7 @@
         </div>
         <!-- Topbar End -->
 
-     <!-- Navbar & Hero Start -->
+      <!-- Navbar & Hero Start -->
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -375,12 +338,13 @@
 </div>
 <!-- Navbar & Hero End -->
 
+
 <!-- Services Start -->
 <div class="container-fluid service py-5" id="service">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-primary mb-3">Type Of <span class="text-primary">Services</span></h1>
-            <p class="mb-0">Choose According to your needs</p>
+        <h1 class="display-5 text-primary mb-3">{{ __('landingpage.Type Of Services') }}</h1>
+            <p class="mb-0">{{ __('landingpage.Choose According to your needs') }}</p>
         </div>
         <div class="row g-4 d-flex justify-content-center">
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -467,13 +431,13 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="serviceModalLabel">Apa yang anda butuhkan?</h5>
+                <h5 class="modal-title" id="serviceModalLabel">{{ __('landingpage.What do you need?') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-                <p class="text-primary">Pilih salah satu layanan:</p>
-                <a id="rentLink" href="#" target="_blank" class="btn btn-primary mx-2">Sewa</a>
-                <a id="purchaseLink" href="#" target="_blank" class="btn btn-blue mx-2">Order</a>
+                <p class="text-primary">{{ __('landingpage.Choose one service : ') }}</p>
+                <a id="rentLink" href="#" target="_blank" class="btn btn-primary mx-2">{{ __('landingpage.Rent') }}</a>
+                <a id="purchaseLink" href="#" target="_blank" class="btn btn-blue mx-2">{{ __('landingpage.Purchase') }}</a>
             </div>
         </div>
     </div>
@@ -485,8 +449,8 @@
 <div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Latest <span class="text-primary">Project</span></h1>
-            <p class="mb-0 text-primary">The Following are Our Latest Project</p>
+            <h1 class="display-5 text-capitalize mb-3">{{ __('landingpage.Latest Project') }}</span></h1>
+            <p class="mb-0 text-primary">{{ __('landingpage.The Following are Our Latest Project') }}</p>
         </div>
         <div class="categories-carousel owl-carousel">
             @foreach($latestproject as $product)
@@ -512,8 +476,8 @@
 <div class="container-fluid testimonial pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our<span class="text-primary"> Best Product</span></h1>
-            <p class="mb-0 text-primary">The following are our Best Product in ZZF Industri</p>
+            <h1 class="display-5 text-capitalize mb-3">{{ __('landingpage.Our Best Product') }}</span></h1>
+            <p class="mb-0 text-primary">{{ __('landingpage.The following are our Best Product in ZZF Industri') }}</p>
         </div>
         <div class="row">
             @foreach($bestproduct as $product)
@@ -561,23 +525,24 @@
     </div>
 </div>
 
+<br>
 
 <!-- Client Start -->
 <div class="container-fluid testimonial pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our<span class="text-primary"> Client</span></h1>
-            <p class="mb-0 text-primary">The following are our client partnership</p>
+            <h1 class="display-5 text-capitalize mb-3">{{__('landingpage.Our Client')}}</h1>
+            <p class="mb-0 text-primary">{{ __('landingpage.The following are our client partnership') }}</p>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
             @foreach($clients as $client)
             <div class="testimonial-item">
                 <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i></div>
                 <div class="testimonial-inner p-4">
-                    <img src="{{ asset('storage/' . $client->logo_url) }}"  class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;" alt="{{ $client->company_name }}">
+                    <img src="{{ asset('storage/' . $client->logo_url) }}"  class="img-thumbnail" style="width: 180px; height: 100px; object-fit: cover;" alt="{{ $client->company_name }}">
                     <div class="ms-4">
                         <h4>{{ $client->company_name }}</h4>
-                        <p>Our Partner</p>
+                        <p>{{ __('landingpage.Our Partner') }}</p>
                     </div>
                 </div>
                 <div class="border-top rounded-bottom p-4">
@@ -594,8 +559,8 @@
 <div class="container-fluid pb-5">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our<span class="text-primary"> Documentation</span></h1>
-            <p class="mb-0 text-primary">The following are our client partnerships</p>
+            <h1 class="display-5 text-capitalize mb-3">{{ __('landingpage.Our Documentation') }}</span></h1>
+            <p class="mb-0 text-primary">{{ __('landingpage.The following are our client partnerships') }}</p>
         </div>
         <div class="row">
             @foreach($clients as $client)
@@ -620,8 +585,8 @@
 <div class="container-fluid feature py-5" id="keunggulan">
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Speciality</span></h1>
-            <p class="mb-0 text-primary">PT ZZF offers a variety of products with very high quality and affordable</p>
+            <h1 class="display-5 text-capitalize mb-3">{{ __('landingpage.Our Speciality') }}</h1>
+            <p class="mb-0 text-primary">{{ __('landingpage.PT ZZF offers a variety of products with very high quality and affordable') }}</p>
         </div>
         <div class="row g-4 align-items-center">
             <div class="col-xl-4">
@@ -632,8 +597,8 @@
                                 <span class="fa fa-dollar-sign fa-2x"></span> <!-- Ikon untuk Low Price -->
                             </div>
                             <div class="ms-4">
-                                <h5 class="mb-3">Low Price</h5>
-                                <p class="mb-0">Offer quality solutions at a more affordable cost than competitors.</p>
+                                <h5 class="mb-3">{{ __('landingpage.Low Price') }}</h5>
+                                <p class="mb-0">{{ __('landingpage.Offer quality solutions at a more affordable cost than competitors.') }}</p>
                             </div>
                         </div>
                     </div>
@@ -643,8 +608,8 @@
                                 <span class="fa fa-clock fa-2x"></span> <!-- Ikon untuk Time Efficiency -->
                             </div>
                             <div class="ms-4">
-                                <h5 class="mb-3">Time Efficiency</h5>
-                                <p class="mb-0">Efficiently complete projects in faster time without sacrificing quality.</p>
+                                <h5 class="mb-3">{{ __('landingpage.Time Efficiency') }}</h5>
+                                <p class="mb-0">{{ __('landingpage.Efficiently complete projects in faster time without sacrificing quality.') }}</p>
                             </div>
                         </div>
                     </div>
@@ -658,8 +623,8 @@
                     <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="feature-item justify-content-end">
                             <div class="text-end me-4">
-                                <h5 class="mb-3">Service Flexibility</h5>
-                                <p class="mb-0">Offer solutions that can be tailored to the specific needs of the project.</p>
+                                <h5 class="mb-3">{{ __('landingpage.Service Flexibility') }}</h5>
+                                <p class="mb-0">{{ __('landingpage.Offer solutions that can be tailored to the specific needs of the project.') }}</p>
                             </div>
                             <div class="feature-icon">
                                 <span class="fa fa-cogs fa-2x"></span> <!-- Ikon untuk Service Flexibility -->
@@ -669,8 +634,8 @@
                     <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="feature-item justify-content-end">
                             <div class="text-end me-4">
-                                <h5 class="mb-3">Portable Foundation</h5>
-                                <p class="mb-0">Using reliable, durable high-quality tools to ensure maximum productivity.</p>
+                                <h5 class="mb-3">{{ __('landingpage.Portable Foundation') }}</h5>
+                                <p class="mb-0">{{ __('landingpage.Using reliable, durable high-quality tools to ensure maximum productivity.') }}</p>
                             </div>
                             <div class="feature-icon">
                                 <span class="fa fa-check-circle fa-2x"></span> <!-- Ikon untuk Machine Reliability -->
@@ -690,28 +655,26 @@
         <div class="row g-5">
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <div class="footer-item">
-                        <h4 class="text-white mb-4">About Us</h4>
-                        <p class="mb-3"> ZZF Industri Indonesia which started operating in 2012 is one of the companies
-                            which is developing from the Expanding CHINA ZZF INDUSTRIAL project.</p>
+                <div class="footer-item">
+                        <h4 class="text-white mb-4">{{ __('landingpage.About Us') }}</h4>
+                        <p class="mb-3">{{ __('landingpage.ZZF Industri Indonesia which started operating in 2012 is one of the companies which is developing from the Expanding CHINA ZZF INDUSTRIAL project.') }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a href="#tentang"><i class="fas fa-angle-right me-2"></i> About</a>
-                    <a href="#produk"><i class="fas fa-angle-right me-2"></i>Product </a>
-                    <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> Speciality</a>
-                    <a href="#service"><i class="fas fa-angle-right me-2"></i> Service</a>
-                    <a href="#kontak"><i class="fas fa-angle-right me-2"></i>Contact</a>
-                    <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+            <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">{{ __('landingpage.Quick Links') }}</h4>
+                    <a href="#tentang"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.About') }}</a>
+                    <a href="#produk"><i class="fas fa-angle-right me-2"></i>{{ __('landingpage.Product') }}</a>
+                    <a href="#keunggulan"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.Speciality') }}</a>
+                    <a href="#service"><i class="fas fa-angle-right me-2"></i> {{ __('landingpage.Service') }}</a>
+                    <a href="#kontak"><i class="fas fa-angle-right me-2"></i>{{ __('landingpage.Contact') }}</a>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
-                    <h4 class="text-white mb-4">Contact Info</h4>
+                    <h4 class="text-white mb-4">{{ __('landingpage.Contact Info') }}</h4>
                     <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
                     <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
                     <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
@@ -765,11 +728,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-      <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
     </body>
 
     <!-- Script untuk inisialisasi Owl Carousel -->
