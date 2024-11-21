@@ -344,10 +344,7 @@ Route::group(['middleware' => 'auth:customers'], function () {
 Route::middleware([Localization::class])->group(function () {
     Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
     Route::resource('aboutus', AboutUsController::class);
-<<<<<<< HEAD
     Route::resource('catalog', CatalogController::class);
-=======
->>>>>>> 75d41cecb3ea7363f008b7c57856a546032144b8
     Route::resource('/contactus', ContactController::class);
 
     Route::get('locale/{locale}', function ($locale) {
