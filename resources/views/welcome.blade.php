@@ -436,8 +436,8 @@
             </div>
             <div class="modal-body text-center">
                 <p class="text-primary">{{ __('landingpage.Choose one service : ') }}</p>
-                <a id="rentLink" href="#" target="_blank" class="btn btn-primary mx-2">{{ __('landingpage.Rent') }}</a>
-                <a id="purchaseLink" href="#" target="_blank" class="btn btn-blue mx-2">{{ __('landingpage.Purchase') }}</a>
+                <a id="rentLink" href="#" target="blank" class="btn btn-primary mx-2">{{ __('landingpage.Rent') }}</a>
+                <a id="purchaseLink" href="#" target="blank" class="btn btn-blue mx-2">{{ __('landingpage.Purchase') }}</a>
             </div>
         </div>
     </div>
