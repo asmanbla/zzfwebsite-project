@@ -436,8 +436,8 @@
             </div>
             <div class="modal-body text-center">
                 <p class="text-primary">{{ __('landingpage.Choose one service : ') }}</p>
-                <a id="rentLink" href="#" target="_blank" class="btn btn-primary mx-2">{{ __('landingpage.Rent') }}</a>
-                <a id="purchaseLink" href="#" target="_blank" class="btn btn-blue mx-2">{{ __('landingpage.Purchase') }}</a>
+                <a id="rentLink" href="#" target="blank" class="btn btn-primary mx-2">{{ __('landingpage.Rent') }}</a>
+                <a id="purchaseLink" href="#" target="blank" class="btn btn-blue mx-2">{{ __('landingpage.Purchase') }}</a>
             </div>
         </div>
     </div>
@@ -801,26 +801,6 @@ function openModal(serviceName) {
     var modal = new bootstrap.Modal(document.getElementById('serviceModal'));
     modal.show();
 }
-
-// Seleksi semua gambar produk
-document.querySelectorAll('.product-img').forEach((img) => {
-    img.addEventListener('click', function () {
-        // Dapatkan ID modal dari data-bs-target
-        const modalId = img.getAttribute('data-bs-target');
-        
-        // Pilih elemen modal menggunakan ID
-        const modal = document.querySelector(modalId);
-
-        if (modal) {
-            // Tampilkan modal secara manual menggunakan Bootstrap Modal API
-            const modalInstance = new bootstrap.Modal(modal);
-            modalInstance.show();
-        } else {
-            console.error(Modal dengan ID ${modalId} tidak ditemukan!);
-        }
-    });
-});
-
 
 </script>
 
