@@ -14,6 +14,10 @@ return [
     "Choose one service : " => "Choose one service : ",
     "Rent" => "Rent",
     "Purchase" => "Purchase",
+    "Latest Project" => "Latest Project",
+    "The Following are Our Latest Project" => "The Following are Our Latest Project",
+    "Our Best Product" => "Our Best Product",
+    "The following are our Best Product in ZZF Industri" => "The following are our Best Product in ZZF Industri",
 
     "Our Client" => "Our Client",
     "The following are our client partnership" => "The following are our client partnership",

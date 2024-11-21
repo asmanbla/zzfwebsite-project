@@ -15,6 +15,11 @@ return [
     "Choose one service : " => "Pilih salah satu layanan: ",
     "Rent" => "Sewa",
     "Purchase" => "Beli",
+    "Latest Project" => "Projek Terkini",
+    "The Following are Our Latest Project" => "Berikut adalah Projek Terkini kami",
+    "Our Best Product" => "Produk Unggulan",
+    "The following are our Best Product in ZZF Industri" => "Berikut adalah Produk Unggulan Kami",
+
 
     "Our Client" => "Klien Kami",
     "The following are our client partnership" => "Berikut adalah rekanan klien kami",
