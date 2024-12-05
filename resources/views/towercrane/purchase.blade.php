@@ -412,6 +412,9 @@ h2, h3, .customer-info {
 
         <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
         <div class="row">
+        @if($productsForOrder->isEmpty())
+            <p class="text-center"><strong>Product Not Found</strong></p>
+        @else
             @foreach($productsForOrder as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="categories-item p-4 h-100">
@@ -429,8 +432,11 @@ h2, h3, .customer-info {
                                 <input type="hidden" name="quantity" value="1">
                                 <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
                                     <button type="submit" class="btn custom-btn4">Purchase</button>
-                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
-                                        <i class="fab fa-whatsapp"></i> Contact Seller
+                                    <a href="https://wa.me/{{ $product->phone }}?text=Hallo%20bisakah%20saya%20melakukan%20{{ urlencode($product->type) }}%20untuk%20produk%20{{ urlencode($product->product_name) }}" 
+                                        class="btn btn-success contact-seller" 
+                                        target="_blank" 
+                                        style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
+                                            <i class="fab fa-whatsapp"></i> Contact Seller
                                     </a>
                                 </div>
                             </form>
@@ -439,6 +445,7 @@ h2, h3, .customer-info {
                     </div>
                 </div>
             @endforeach
+            @endif
         </div>
         <div class="d-flex justify-content-start align-items-center mb-5">
                         <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>

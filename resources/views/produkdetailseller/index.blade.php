@@ -58,6 +58,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap) -->
     <link href="{{ ('css/styles.css')}}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <style>
         /* Nav Style */
@@ -304,6 +306,165 @@
             border-width: 8px 14px 8px 0; /* Bentuk segitiga terbalik */
             border-color: transparent #ccc transparent transparent; /* Warna abu-abu untuk panah */
         }
+
+        /* Gaya default untuk desktop */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header, .footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Responsif untuk tablet */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header, .footer {
+        padding: 15px 0;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Responsif untuk perangkat mobile */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    .nav {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Atur lebar container agar responsif */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Mengatur layout gambar produk dan info produk dengan Flexbox */
+.product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Mengatur gambar produk */
+.product-images {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Mengatur informasi produk */
+.product-info {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+/* Menambahkan gaya untuk tombol */
+.custom-btn, .contact-seller {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Responsif untuk perangkat tablet */
+@media (max-width: 768px) {
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-images {
+        max-width: 100%;
+    }
+
+    .product-info {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .custom-btn, .contact-seller {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Responsif untuk perangkat mobile */
+@media (max-width: 480px) {
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-info h1 {
+        font-size: 22px;
+    }
+
+    .product-info h5 {
+        font-size: 16px;
+    }
+
+    .product-info p {
+        font-size: 14px;
+    }
+
+    .product-images {
+        max-width: 100%;
+    }
+
+    .custom-btn, .contact-seller {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .swiper-container {
+        max-width: 100%;
+    }
+}
+
+}
+
     </style>
 </head>
         <!-- Topbar Start -->
@@ -384,7 +545,7 @@
 
 <body>
     <div>
-        <h2 class="section-heading text-uppercase">Products Details Seller</h2>
+        <h2 class="section-heading text-uppercase">Products Details</h2>
         <h3 class="section-subheading text-muted">Here's the produk details data for more information about the products </h3>
     </div>
     <div class="container">
@@ -396,7 +557,7 @@
                         @foreach ([ $productseller->image1_url,  $productseller->image2_url,  $productseller->image3_url] as $image)
                             @if($image)
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('storage/' . $image) }}" alt="{{  $productseller->product_name }}" style="width: 520x; height: 700px;" class="product-image">
+                                    <img src="{{ asset('storage/' . $image) }}" alt="{{  $productseller->product_name }}" style="width: 520px; height: 700px;" class="product-image">
                                 </div>
                             @endif
                         @endforeach
@@ -415,42 +576,38 @@
                 <p>{{ $productseller->description }}</p>
                 <p>Stock: {{ $productseller->stok_quantity }}</p>
                 <div class="d-flex justify-content-start align-items-center mb-5">
-                        <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
-                                    <a href="https://wa.me/{{ $productseller->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
-                                        <i class="fab fa-whatsapp"></i> Contact
-                                    </a>
-                    </div>
-                    <div>
-                        <h6 class="text-secondary">
-                                <i class="fa fa-user"></i> {{ $productseller->name }}
-                            </h6>
-                        </div>
-                    <div class="ppn">
-                             <h7>*biaya belum termasuk ppn 11%<h7>
-                        </div>
+                    <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
+                    <!-- Tombol untuk mengirim pesan ke WhatsApp menggunakan JavaScript -->
+                    <button onclick="sendToWhatsApp()" class="btn btn-success contact-seller" style="height: 100%;">
+                        <i class="fab fa-whatsapp"></i> Contact Seller
+                    </button>
+                </div>
+                <div>
+                    <h6 class="text-secondary">
+                        <i class="fa fa-user"></i> {{ $productseller->name }}
+                    </h6>
+                </div>
+                <div class="ppn">
+                    <h6>*biaya belum termasuk ppn 11%</h6>
                 </div>
             </div>
         </div>
     <br><br>
        
-       <!-- Copyright Start -->
-       <div class="container-fluid copyright py-4">
-            <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-body"><a href="https://zzf.co.id/" target="_blank" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>PT ZZF Industri</a>, All right reserved.</span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end text-body">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom text-white">ZZF Industri</a>
-                    </div>
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="https://zzf.co.id/" target="_blank" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>PT ZZF Industri</a>, All right reserved.</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-body">
+                    Designed By <a class="border-bottom text-white">ZZF Industri</a>
                 </div>
             </div>
         </div>
-        <!-- Copyright End -->
-
+    </div>
+    <!-- Copyright End -->
 
     <script>
         // Swiper initialization
@@ -466,30 +623,47 @@
                 clickable: true,
             },
         });
+
+        // Fungsi untuk mengirim pesan WhatsApp menggunakan JavaScript
+        function sendToWhatsApp() {
+            // Ambil data yang diperlukan (misalnya nama produk dan tipe produk)
+            var productName = "{{ addslashes($productseller->product_name) }}";  // Menangani karakter khusus
+            var productType = "{{ $productseller->type }}"; // 'rent', 'purchase', atau 'rent_and_purchase'
+            
+            // Pesan yang akan dikirim
+            var message = "Hallo, bisakah saya melakukan " + productType + " untuk produk " + productName;
+            
+            // URL WhatsApp dengan pesan
+            var whatsappURL = "https://wa.me/{{ $productseller->phone }}?text=" + encodeURIComponent(message);
+            
+            // Mengarahkan ke URL WhatsApp
+            window.open(whatsappURL, "_blank");
+        }
     </script>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
-</body>
 
-@if (Session::has('success'))
-      <script>
-        swal("Success", "{{ Session::get('success') }}", "success", {
-          button: true,
-          button: "OK",
-          timer: 5000
-        });
-      </script>
+    <!-- Menampilkan SweetAlert jika ada session success atau error -->
+    @if (Session::has('success'))
+        <script>
+            swal("Success", "{{ Session::get('success') }}", "success", {
+              button: true,
+              button: "OK",
+              timer: 5000
+            });
+        </script>
     @endif 
 
     @if (Session::has('error'))
-      <script>
-        swal("Error", "{{ Session::get('error') }}", "error", {
-          button: true,
-          button: "OK",
-          timer: 5000
-        });
-      </script>
+        <script>
+            swal("Error", "{{ Session::get('error') }}", "error", {
+              button: true,
+              button: "OK",
+              timer: 5000
+            });
+        </script>
     @endif 
+</body>
 
 </html>

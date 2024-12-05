@@ -429,7 +429,7 @@ h2, h3, .customer-info {
 
         <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
         <div class="row">
-            @foreach($produkall as $product)
+            @foreach($vwprodukseller as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="categories-item p-4 h-100">
                         <div class="categories-item-inner">
@@ -439,7 +439,7 @@ h2, h3, .customer-info {
                             <div class="categories-content rounded-bottom p-4">
                                 <h4>{{ $product->product_name }}</h4>
                                 <h6 class="text-secondary">
-                                    <i class="fa fa-user"></i> {{ $product->seller->name }}
+                                    <i class="fa fa-user"></i> {{ $product->name }}
                                 </h6>
                                 <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                                 <!-- Button Section -->
@@ -449,8 +449,11 @@ h2, h3, .customer-info {
                                 <input type="hidden" name="quantity" value="1">
                                 <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
                                     <button type="submit" class="btn custom-btn4">{{ __('catalog.Purchase') }}</button>
-                                    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller" target="_blank" style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
-                                        <i class="fab fa-whatsapp"></i> {{ __('catalog.Contact Seller') }}
+                                    <a href="https://wa.me/{{ $product->phone }}?text=Hallo%20bisakah%20saya%20melakukan%20{{ urlencode($product->type) }}%20untuk%20produk%20{{ urlencode($product->product_name) }}" 
+                                        class="btn btn-success contact-seller" 
+                                        target="_blank" 
+                                        style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
+                                            <i class="fab fa-whatsapp"></i> Contact Seller
                                     </a>
                                 </div>
                             </form>
@@ -501,6 +504,7 @@ h2, h3, .customer-info {
           button:"OK",
           timer:5000
       });
+
     </script>
     @endif 
         
