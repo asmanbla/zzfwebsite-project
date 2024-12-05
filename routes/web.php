@@ -60,6 +60,48 @@ use Illuminate\Support\Facades\Session;
  Route::get ('/product_search_all', [HomeBladeController::class,'product_search_all']);
  Route::get('/product_search_catalog', [HomeBladeController::class,'product_search_catalog']);
 
+//  Tower Crane
+ Route::get('/product_search_rent/tower_crane', [HomeBladeController::class, 'product_search_rent_tower_crane']);
+ Route::get('/product_search_purchase/tower_crane', [HomeBladeController::class, 'product_search_purchase_tower_crane']);
+
+//  Passenger Hoist
+Route::get('/product_search_rent/passenger_hoist', [HomeBladeController::class, 'product_search_rent_passenger_hoist']);
+Route::get('/product_search_purchase/passenger_hoist', [HomeBladeController::class, 'product_search_purchase_passenger_hoist']);
+
+// Form Work
+Route::get('/product_search_rent/form_work', [HomeBladeController::class, 'product_search_rent_form_work']);
+Route::get('/product_search_purchase/form_work', [HomeBladeController::class, 'product_search_purchase_form_work']);
+
+// Scaffolding
+
+Route::get('/product_search_rent/scaffolding', [HomeBladeController::class, 'product_search_rent_scaffolding']);
+Route::get('/product_search_purchase/scaffolding', [HomeBladeController::class, 'product_search_purchase_scaffolding']);
+
+// Placing Boom
+
+Route::get('/product_search_rent/placing_boom', [HomeBladeController::class, 'product_search_rent_placing_boom']);
+Route::get('/product_search_purchase/placing_boom', [HomeBladeController::class, 'product_search_purchase_placing_boom']);
+
+// Safety Net
+
+Route::get('/product_search_rent/safety_net', [HomeBladeController::class, 'product_search_rent_safety_net']);
+Route::get('/product_search_purchase/safety_net', [HomeBladeController::class, 'product_search_purchase_safety_net']);
+
+// Concrete Pump
+
+Route::get('/product_search_rent/concrete_pump', [HomeBladeController::class, 'product_search_rent_concrete_pump']);
+Route::get('/product_search_purchase/concrete_pump', [HomeBladeController::class, 'product_search_purchase_concrete_pump']);
+
+// Concrete Batching Plant
+
+Route::get('/product_search_rent/concrete_batching_plant', [HomeBladeController::class, 'product_search_rent_concrete_batching_plant']);
+Route::get('/product_search_purchase/concrete_batching_plant', [HomeBladeController::class, 'product_search_purchase_concrete_batching_plant']);
+
+// Mobile Crane
+
+Route::get('/product_search_rent/mobile_crane', [HomeBladeController::class, 'product_search_rent_mobile_crane']);
+Route::get('/product_search_purchase/mobile_crane', [HomeBladeController::class,'product_search_purchase_mobile_crane']);
+
 
 Route::resource('orderform', OrderFormController::class);
 Route::resource('formrent', RentFormController::class);
@@ -111,8 +153,8 @@ Route::get('/products/purchase/concretepump', [ProductViewController::class, 'sh
 Route::get('/products/rent/concretepump', [ProductViewController::class, 'showProductRentConcretePump'])->name('products.rent');
 
 // Route untuk menampilkan produk tipe barang category 'scaffolding'
-Route::get('/products/purchase/concretebatchingplant', [ProductViewController::class, 'showProductPurchaseConcretePump'])->name('products.purchase');
-Route::get('/products/rent/concretebatchingplant', [ProductViewController::class, 'showProductRentConcretePump'])->name('products.rent');
+Route::get('/products/purchase/concretebatchingplant', [ProductViewController::class, 'showProductPurchaseConcreteBatchingPlant'])->name('products.purchase');
+Route::get('/products/rent/concretebatchingplant', [ProductViewController::class, 'showProductRentConcreteBatchingPlant'])->name('products.rent');
 
 // Route untuk menampilkan produk tipe barang category 'scaffolding'
 Route::get('/products/purchase/mobilecrane', [ProductViewController::class, 'showProductPurchaseMobileCrane'])->name('products.purchase');

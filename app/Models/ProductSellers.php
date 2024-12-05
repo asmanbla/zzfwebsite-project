@@ -25,7 +25,6 @@ class ProductSellers extends Model
     ]; 
 
 
-
     public function procatseller()
     {
         return $this->belongsTo(ProductCategoriesSeller::class, 'product_category_id');

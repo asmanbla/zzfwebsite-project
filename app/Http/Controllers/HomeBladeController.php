@@ -258,6 +258,499 @@ public function product_search_catalog (Request $request)
     return view('catalog.index', compact('products', 'produkall'));
 }
 
+// public function product_search_rent_scaffolding(Request $request)
+// {
+//     // Ambil input pencarian dari query string
+//     $search_text = $request->input('search');
+    
+//     // Pecah kata kunci menjadi array jika ada spasi
+//     $keywords = explode(' ', $search_text);
+    
+//     // Query ke tabel Scaffolding, filter hanya untuk produk bertipe 'rent'
+//     $productQuery = DB::table('scaffolding')->where('type', 'rent');
+    
+//     // Iterasi setiap keyword untuk melakukan pencarian
+//     foreach ($keywords as $keyword) {
+//         $productQuery->where(function ($query) use ($keyword) {
+//             $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+//                   ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+//         });
+//     }
+
+//     // Ambil hasil pencarian
+//     $products = $productQuery->get();
+    
+//     // Return ke view yang sesuai, misalnya ke 'welcome' dengan hasil pencarian
+//     return view('welcome', compact('products'));
+// }
+
+public function product_search_rent_tower_crane(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'tower_crane'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('towercrane.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_tower_crane(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'tower_crane'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('towercrane.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_passenger_hoist(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'passenger_hoist'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('passengerhoist.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_passenger_hoist(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'passenger_hoist'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('passengerhoist.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_form_work(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'form_work'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('formwork.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_form_work(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'form_work'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('formwork.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_scaffolding(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'scaffolding'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('scaffolding.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_scaffolding(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'scaffolding'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('scaffolding.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_placing_boom(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'placing_boom'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('placingboom.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_placingboom(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'placingboom'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('placingboom.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_safety_net(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'safety_net'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('safetynet.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_safety_net(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'safety_net'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('safetynet.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_concrete_pump(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'concrete_pump'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('concretepump.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_concrete_pump(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'concrete_pump'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('concretepump.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_concrete_batching_plant(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'concrete_batching_plant'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('concretebatchingplant.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_concrete_battching_plant(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'concrete_batching_plant'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('concretebatchingplant.purchase', compact('productsForOrder'));
+}
+
+public function product_search_rent_mobile_crane(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'rent')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'mobile_crane'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForRent = $productQuery->get();
+
+    return view('mobilecrane.rent', compact('productsForRent'));
+}
+
+public function product_search_purchase_mobile_crane(Request $request)
+{
+    $search_text = $request->input('search');
+    $keywords = explode(' ', $search_text);
+
+    // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
+    $productQuery = ProductSellers::with(['seller', 'category'])
+                                  ->where('type', 'purchase')
+                                  ->whereHas('category', function ($query) {
+                                      $query->where('kategori', 'mobile_crane'); // Ganti sesuai nama kolom di tabel kategori
+                                  });
+
+    // Tambahkan filter berdasarkan kata kunci pencarian
+    foreach ($keywords as $keyword) {
+        $productQuery->where(function ($query) use ($keyword) {
+            $query->where('product_name', 'LIKE', '%' . $keyword . '%')
+                  ->orWhere('specification', 'LIKE', '%' . $keyword . '%');
+        });
+    }
+
+    // Eksekusi query
+    $productsForOrder = $productQuery->get();
+
+    return view('mobilecrane.purchase', compact('productsForOrder'));
+}
 
 
 }
