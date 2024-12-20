@@ -47,7 +47,7 @@
                                         {{ $data->rating}}
                                     </td>
                                     <td>
-                                        {{ $data->comment}}
+                                        {{ $data->comment}} 
                                     </td>
                                     <td class="text-center">
                                         
