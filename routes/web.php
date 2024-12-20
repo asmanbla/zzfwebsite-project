@@ -251,6 +251,8 @@ Route::resource('cart', CartController::class);
 Route::resource('client', ClientController::class);
 Route::get('/hapusclient/{id}', [ClientController::class, 'hapusclient'])->name('hapusclient');
 Route::get('/client/hapusclient/{id}', [ClientController::class, 'hapusclient']);
+Route::get('client/{client}/edit', [ClientController::class, 'edit'])->name('client.edit');
+Route::put('/client/{id}', [ClientController::class, 'update'])->name('client.update');
 
 Route::resource('bestproduct', BestProductController::class);
 Route::get('/hapusbestproduct/{id}', [BestProductController::class, 'hapusbestproduct'])->name('hapusbestproduct');
@@ -259,6 +261,8 @@ Route::get('/bestproduct/hapusbestproduct/{id}', [BestProductController::class, 
 Route::resource('latestproject', LatestProjectController::class);
 Route::get('/hapuslatestproject/{id}', [LatestProjectController::class, 'hapuslatestproject'])->name('hapuslatestproject');
 Route::get('/latestproject/hapuslatestproject/{id}', [LatestProjectController::class, 'hapuslatestproject']);
+Route::get('latestproject/{latestproject}/edit', [LatestProjectController::class, 'edit'])->name('latestproject.edit');
+Route::put('/latestproject/{id}', [LatestProjectController::class, 'update'])->name('latestproject.update');
 
 // DASHPROFILE 
 Route::resource('dashprofilezzf', App\Http\Controllers\DashProfileController::class);

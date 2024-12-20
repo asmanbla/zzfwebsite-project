@@ -65,18 +65,53 @@ class LatestProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        // Ambil data produk berdasarkan ID
+        $latestproject = LatestProject::findOrFail($id);
+
+        // Kirim data ke view edit
+        return view('latestproject.edit', compact('latestproject'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified product in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        // Validasi input
+        $request->validate([
+            'project_name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Ambil data produk berdasarkan ID
+        $latestproject = LatestProject::findOrFail($id);
+
+        // Update data produk
+        $latestproject->project_name = $request->input('project_name');
+        $latestproject->description = $request->input('description');
+
+        // Cek apakah ada file gambar baru yang diunggah
+        if ($request->hasFile('image_url')) {
+            // Hapus gambar lama jika ada
+            if ($latestproject->image_url && file_exists(storage_path('app/public/' . $latestproject->image_url))) {
+                unlink(storage_path('app/public/' . $latestproject->image_url));
+            }
+
+            // Simpan gambar baru
+            $file = $request->file('image_url');
+            $path = $file->store('images', 'public');
+            $latestproject->image_url = $path;
+        }
+
+        // Simpan perubahan ke database
+        $latestproject->save();
+
+    return redirect('/latestproject')->with('success', 'Edit Product Saved!');
+
+}
 
     /**
      * Remove the specified resource from storage.

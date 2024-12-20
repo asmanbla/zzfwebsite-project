@@ -78,6 +78,7 @@
                 @endforeach
             </td>
             <td class="text-center">
+            <a href="{{route('client.edit',$data)}}"  class="btn btn-secondary btn btn-outline-primar btn-sm">Edit</a>
                 <div class="btn-group me-2">
                     <a href="/hapusclient/{{$data->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this data?')">Delete</a>
                 </div>

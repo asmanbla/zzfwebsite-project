@@ -61,18 +61,68 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        // Ambil data produk berdasarkan ID
+        $client = Client::findOrFail($id);
+
+        // Kirim data ke view edit
+        return view('client.edit', compact('client'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        // Validasi input
+        $request->validate([
+            'company_name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'logo_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'documentation_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Ambil data produk berdasarkan ID
+        $client = Client::findOrFail($id);
+
+        // Update data produk
+        $client->company_name = $request->input('company_name');
+        $client->description = $request->input('description');
+
+        // Cek apakah ada file gambar baru yang diunggah
+        if ($request->hasFile('logo_url')) {
+            // Hapus gambar lama jika ada
+            if ($client->logo_url && file_exists(storage_path('app/public/' . $client->logo_url))) {
+                unlink(storage_path('app/public/' . $client->logo_url));
+            }
+
+            // Simpan gambar baru
+            $file = $request->file('logo_url');
+            $path = $file->store('logo', 'public');
+            $client->logo_url = $path;
+        }
+
+         // Cek apakah ada file gambar baru yang diunggah
+         if ($request->hasFile('documentation_url')) {
+            // Hapus gambar lama jika ada
+            if ($client->documentation_url && file_exists(storage_path('app/public/' . $client->documentation_url))) {
+                unlink(storage_path('app/public/' . $client->documentation_url));
+            }
+
+            // Simpan gambar baru
+            $file = $request->file('documentation_url');
+            $path = $file->store('documentation', 'public');
+            $client->documentation_url = $path;
+        }
+
+        // Simpan perubahan ke database
+        $client->save();
+
+    return redirect('/client')->with('success', 'Edit Product Saved!');
+
+}
 
     /**
      * Remove the specified resource from storage.

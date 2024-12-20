@@ -2,7 +2,7 @@
 @section('nav')
       @include('dashboard.nav')
 @endsection
-@section('page', 'Client ZZF / Edit')
+@section('page', 'Best Product ZZF / Edit')
 @section('main')
       @include('dashboard.main')
 
@@ -12,7 +12,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Client Form</h6>
+              <h6>Best Product Form</h6>
               <hr class="">
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -20,30 +20,25 @@
            <!-- FORM EDIT -->
 <div class="table-responsive p-0">
     <div class="card border-2 m-4 pt-4">
-        <form action="{{ route('client.update', $client->id) }}" method="POST" id="frmproduct" enctype="multipart/form-data">
+        <form action="{{ route('latestproject.update', $latestproject->id) }}" method="POST" id="frmproduct" enctype="multipart/form-data">
             @csrf
             @method('PUT') <!-- Method PUT untuk update -->
             <div class="mb-3 ms-3 me-3">
-                        <label for="logo_url" class="form-label">Logo Company</label>
-                        <img src="{{ asset('storage/' . $client->logo_url) }}" class="img-thumbnail d-block" alt="Image" width="150">
-                        <input type="file" class="form-control" id="foto2" name="logo_url">
+                        <label for="image_url" class="form-label">Product Image</label>
+                        <img src="{{ asset('storage/' . $latestproject->image_url) }}" class="img-thumbnail d-block" alt="Image" width="150">
+                        <input type="file" class="form-control" id="foto2" name="image_url">
                      </div>
             <div class="mb-3 ms-3 me-3">
-                <label for="name" class="form-label">Company Name</label>
-                <input type="text" id="name" name="company_name" class="form-control" placeholder="Enter Your company name" aria-label="name" value="{{ old('name', $client->company_name) }}" required>
+                <label for="name" class="form-label">Name Of Project</label>
+                <input type="text" id="name" name="project_name" class="form-control" placeholder="Enter Your company name" aria-label="name" value="{{ old('name', $latestproject->project_name) }}" required>
             </div>
             <div class="mb-3 ms-3 me-3">
-                        <label for="documentation_url" class="form-label">Documentation</label>
-                        <img src="{{ asset('storage/' . $client->documentation_url) }}" class="img-thumbnail d-block" alt="Image" width="150">
-                        <input type="file" class="form-control" id="foto2" name="documentation_url">
-                     </div>
-            <div class="mb-3 ms-3 me-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea rows="5" name="description" id="description" class="form-control" placeholder="Enter the description of product" aria-label="description" required>{{ old('description', $client->description) }}</textarea>
+                <label for="description" class="form-label">Description Of Product</label>
+                <textarea rows="5" name="description" id="description" class="form-control" placeholder="Enter the description of product" aria-label="description" required>{{ old('description', $latestproject->description) }}</textarea>
             </div>  
             <div class="row ms-3 me-3 justify-content-end">
                 <div class="col-3">
-                    <a href="{{ route('client.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
+                    <a href="{{ route('latestproject.index') }}" class="btn bg-gradient-secondary w-100">Cancel</a>
                 </div>
                 <div class="col-3">
                     <button type="submit" class="btn bg-gradient-danger w-100" id="save">Save</button>

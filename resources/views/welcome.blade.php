@@ -567,7 +567,7 @@
             <div class="col-md-6 mb-4">
                 <div class="testimonial-inner text-center">
                     <!-- Menampilkan gambar tanpa border -->
-                    <img src="{{ asset('storage/' . $client->documentation_url) }}" class="img-fluid rounded" style="max-width: 100%; height: auto;" alt="{{ $client->company_name }}">
+                    <img src="{{ asset('storage/' . $client->documentation_url) }}" class="img-fluid rounded" style="width: 470px; height: 400px;" alt="{{ $client->company_name }}">
                     <div class="pt-3">
                         <!-- Menampilkan nama perusahaan di bawah gambar -->
                         <h4>{{ $client->company_name }}</h4>
