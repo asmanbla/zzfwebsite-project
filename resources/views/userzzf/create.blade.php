@@ -37,8 +37,7 @@
                      <div class="mb-3 ms-3 me-3">
                       <label for="level" class="form-label">Roles</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="roles" required>
-                        <option selected>Chose your Level</option>
-                        <option value="admin">Admin</option>
+                        <option selected value="admin">Admin</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">

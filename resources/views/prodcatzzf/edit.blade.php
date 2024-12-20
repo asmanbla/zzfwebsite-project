@@ -27,9 +27,9 @@
                       <label for="level" class="form-label">Category</label>
                       <select class="form-select" aria-label="Default select example" id="roles" name="kategori" required>
                         <option selected disabled>Pilih Kategori</option>
-                        <option value="equipment" {{ old('kategori', $procatseller->kategori) == 'equipment' ? 'selected' : '' }}>Equipment</option>
-                        <option value="component" {{ old('kategori', $procatseller->kategori) == 'component' ? 'selected' : '' }}>Component</option>
-                        <option value="bundling" {{ old('kategori', $procatseller->kategori) == 'bundling' ? 'selected' : '' }}>Bundling</option>
+                        <option value="equipment" {{ old('kategori', $prodcat->kategori) == 'equipment' ? 'selected' : '' }}>Equipment</option>
+                        <option value="component" {{ old('kategori', $prodcat->kategori) == 'component' ? 'selected' : '' }}>Component</option>
+                        <option value="bundling" {{ old('kategori', $prodcat->kategori) == 'bundling' ? 'selected' : '' }}>Bundling</option>
                       </select>
                      </div>
                 <div class="row ms-3 me-3 justify-content-end">
