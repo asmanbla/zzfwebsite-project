@@ -422,12 +422,12 @@ h2, h3, .customer-info {
                                 <h4>{{ $product->product_name }}</h4>
                                 <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
                                 <!-- Button Section -->
-                            <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <input type="hidden" name="quantity" value="1">
                                 <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
-                                    <button type="submit" class="btn custom-btn4">Purchase</button>
+                                    <button type="submit" class="btn custom-btn4">Rent</button>
                                     <a href="https://wa.me/{{ $product->phone }}?text=Hallo%20bisakah%20saya%20melakukan%20{{ urlencode($product->type) }}%20untuk%20produk%20{{ urlencode($product->product_name) }}" 
                                         class="btn btn-success contact-seller" 
                                         target="_blank" 

@@ -54,5 +54,6 @@ class Kernel extends HttpKernel
         // Middleware tambahan yang mungkin diperlukan
         'checkRole' => \App\Http\Middleware\CheckRole::class, // Contoh middleware custom
         'localization' => \App\Http\Middleware\Localization::class,
+        'locale' => \App\Http\Middleware\Localization::class,
     ];
 }

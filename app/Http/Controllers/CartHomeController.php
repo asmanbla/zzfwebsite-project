@@ -15,45 +15,63 @@ class CartHomeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function store(Request $request)
+    {
+        // Ambil data dari request untuk item yang dipilih
+        $selectedItems = $request->input('selected_items', []);
+    
+        // Pastikan $selectedItems adalah array
+        $selectedItems = is_array($selectedItems) ? $selectedItems : [];
+    
+        // Ambil checkout type dari request
+        $checkoutType = $request->input('checkout_type', 'purchase'); // Default ke 'purchase' jika tidak ada
+    
+        // Simpan selected item dan checkout type dalam session
+        session([
+            'selected_items' => $selectedItems,
+            'checkout_type' => $checkoutType,
+        ]);
+    
+        // Hapus item dari keranjang setelah masuk ke halaman checkout
+        Carts::whereIn('id', $selectedItems)->delete();
+    
+        // Redirect ke halaman checkout setelah barang berhasil masuk
+        return redirect()->route('checkout.index')->with('success', 'Products successfully added to checkout!');
+    }
+    
     public function index()
-{
-    // Ambil data dari tabel cart berdasarkan customer_id
-    $customerId = Auth::id(); // Mendapatkan ID customer yang login
-
-    // Ambil item keranjang berdasarkan customer_id
-    $cartItems = Carts::where('customer_id', $customerId)
-                        ->with(['product', 'productSellers.seller']) // Ambil relasi produk dan seller
-                        ->get();
+    {
+        // Ambil data dari tabel cart berdasarkan customer_id
+        $customerId = Auth::id(); // Mendapatkan ID customer yang login
     
-    // Setelah penghapusan, ambil item keranjang lagi
-    $cartItems = Carts::where('customer_id', $customerId)
-                        ->with(['product', 'productSellers.seller']) // Ambil relasi produk dan seller
-                        ->get();
+        // Ambil item keranjang berdasarkan customer_id
+        $cartItems = Carts::where('customer_id', $customerId)
+                            ->with(['product', 'productSellers.seller']) // Ambil relasi produk dan seller
+                            ->get();
+        
+        // Kelompokkan berdasarkan seller
+        $groupedCartItems = $cartItems->groupBy(function($item) {
+            if ($item->productSellers && $item->productSellers->seller) {
+                return $item->productSellers->seller->name;
+            }
+            return 'No Seller';
+        });
     
-    $groupedCartItems = $cartItems->groupBy(function($item) {
-        // Jika produk berasal dari tabel ProductSellers, gunakan nama dari relasi seller
-        if ($item->productSellers && $item->productSellers->seller) {
-            return $item->productSellers->seller->name;
-        }
-        // Jika tidak ada relasi seller atau product, kelompokkan sebagai "No Seller"
-        return 'No Seller';
-    });
-
-    // Hitung total harga belanjaan
-    $totalPrice = $cartItems->sum(function ($cartItem) {
-        if ($cartItem->product) {
-            return $cartItem->product->price * $cartItem->quantity;
-        } elseif ($cartItem->productSellers) {
-            return $cartItem->productSellers->price * $cartItem->quantity;
-        }
-        return 0;
-    });
-
-    // Hitung jumlah item dalam keranjang
-    $totalItems = $cartItems->sum('quantity');
-
-    return view('carthome.index', compact('groupedCartItems', 'totalPrice', 'totalItems'));
-}
+        // Hitung total harga belanjaan
+        $totalPrice = $cartItems->sum(function ($cartItem) {
+            if ($cartItem->product) {
+                return $cartItem->product->price * $cartItem->quantity;
+            } elseif ($cartItem->productSellers) {
+                return $cartItem->productSellers->price * $cartItem->quantity;
+            }
+            return 0;
+        });
+    
+        // Hitung jumlah item dalam keranjang
+        $totalItems = $cartItems->sum('quantity');
+    
+        return view('carthome.index', compact('groupedCartItems', 'totalPrice', 'totalItems'));
+    }
 
     /**
      * Store a newly created resource in storage.

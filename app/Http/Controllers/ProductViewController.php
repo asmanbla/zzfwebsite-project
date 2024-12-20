@@ -17,7 +17,7 @@ class ProductViewController extends Controller
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'tower_crane'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -37,7 +37,7 @@ public function showProductRentTowerCrane()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'tower_crane'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -57,7 +57,7 @@ public function showProductPurchasePassengerHoist()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'passenger_hoist'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -77,7 +77,7 @@ public function showProductRentPassengerHoist()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'passenger_hoist'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -97,7 +97,7 @@ public function showProductPurchaseFormWork()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'form_work'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -117,7 +117,7 @@ public function showProductRentFormWork()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'form_work'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -137,7 +137,7 @@ public function showProductPurchaseScaffolding()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'scaffolding'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -157,7 +157,7 @@ public function showProductRentScaffolding()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'scaffolding'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -177,7 +177,7 @@ public function showProductPurchasePlacingBoom()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'placing_boom'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -197,7 +197,7 @@ public function showProductRentPlacingBoom()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'placing_boom'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -217,7 +217,7 @@ public function showProductPurchaseSafetyNet()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'safety_net'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -237,7 +237,7 @@ public function showProductRentSafetyNet()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'safety_net'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -254,9 +254,9 @@ public function showProductRentSafetyNet()
 }
 public function showProductPurchaseConcretePump()
 {
-    // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
+    // Ambil produk dengan tipe 'purchase' dan 'rent_and_purchase' serta kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+        ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'purchase' dan 'rent_and_purchase'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'concrete_pump'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -271,12 +271,11 @@ public function showProductPurchaseConcretePump()
         'totalItems' => $totalItems,
     ]);
 }
-
 public function showProductRentConcretePump()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'concrete_pump'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -297,7 +296,7 @@ public function showProductPurchaseConcreteBatchingPlant()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'concrete_batching_plant'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -317,7 +316,7 @@ public function showProductRentConcreteBatchingPlant()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase'])// Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'concrete_batching_plant'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -337,7 +336,7 @@ public function showProductPurchaseMobileCrane()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForOrder = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'purchase') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['purchase', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'mobile_crane'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu
@@ -357,7 +356,7 @@ public function showProductRentMobileCrane()
 {
     // Ambil produk dengan tipe 'order' dan kategori 'tower_crane'
     $productsForRent = ProductSellers::with(['seller', 'category'])
-        ->where('type', 'rent') // Filter berdasarkan tipe 'order'
+    ->whereIn('type', ['rent', 'rent_and_purchase']) // Filter berdasarkan tipe 'order'
         ->whereHas('category', function ($query) {
             // Pastikan Anda menggunakan nama kolom yang tepat untuk kategori
             $query->where('kategori', 'mobile_crane'); // Ganti 'category_name' dengan nama kolom yang benar jika perlu

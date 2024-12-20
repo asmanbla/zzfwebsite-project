@@ -306,6 +306,7 @@ h2, h3, .customer-info {
     }
 
 }
+
 </style>
 
     </head>
@@ -421,15 +422,19 @@ h2, h3, .customer-info {
 <!-- Product Search -->
 <div class="search-container-purchase">
                 <form action="{{ url('product_search_catalog') }}" method="GET" class="search-form">
-                    <input class="search-input-purchase" type="text" name="search" placeholder="Search Products Here">
+                    <input class="search-input-purchase" type="text" name="search" placeholder="{{ __('catalog.Search Products Here') }}">
                     <button class="search-button-purchase" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
             <br>
 
-        <!-- Menggunakan grid Bootstrap untuk produk yang dijual -->
-        <div class="row">
-            @foreach($vwprodukseller as $product)
+            <div class="container">
+    <!-- Produk Purchase -->
+    <h2>{{ __('catalog.For Purchase') }}</h2>
+    <br>
+    <div class="row">
+        @foreach($vwprodukseller as $product)
+            @if($product->type === 'purchase')
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="categories-item p-4 h-100">
                         <div class="categories-item-inner">
@@ -441,33 +446,111 @@ h2, h3, .customer-info {
                                 <h6 class="text-secondary">
                                     <i class="fa fa-user"></i> {{ $product->name }}
                                 </h6>
-                                <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                                <!-- Button Section -->
-                            <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="hidden" name="quantity" value="1">
-                                <div style="display: flex; justify-content: center; gap: 10px;"> <!-- Flexbox for button alignment -->
-                                    <button type="submit" class="btn custom-btn4">{{ __('catalog.Purchase') }}</button>
-                                    <a href="https://wa.me/{{ $product->phone }}?text=Hallo%20bisakah%20saya%20melakukan%20{{ urlencode($product->type) }}%20untuk%20produk%20{{ urlencode($product->product_name) }}" 
-                                        class="btn btn-success contact-seller" 
-                                        target="_blank" 
-                                        style="height: 100%;"> <!-- Menambahkan btn-success untuk warna hijau -->
-                                            <i class="fab fa-whatsapp"></i> Contact Seller
-                                    </a>
-                                </div>
-                            </form>
+                                <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">{{ __('catalog.Detail') }}</a>
+                                <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button type="submit" class="btn custom-btn4">{{ __('catalog.Purchase') }}</button>
+                                        <a href="https://wa.me/{{ $product->phone }}?text=Hallo%20bisakah%20saya%20melakukan%20{{ urlencode($product->type) }}%20untuk%20produk%20{{ urlencode($product->product_name) }}" 
+                                           class="btn btn-success contact-seller" 
+                                           target="_blank">
+                                            <i class="fab fa-whatsapp"></i> {{ __('catalog.Contact Seller') }}
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
-        <div class="d-flex justify-content-start align-items-center mb-5">
-                        <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">{{ __('catalog.Back To Home Page') }}</a>
+            @endif
+        @endforeach
+    </div>
+    <br>
+
+    <!-- Produk Rent -->
+    <h2>{{ __('catalog.For Rent') }}</h2>
+    <br>
+    <div class="row">
+        @foreach($vwprodukseller as $product)
+            @if($product->type === 'rent')
+                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="categories-item p-4 h-100">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>{{ $product->product_name }}</h4>
+                                <h6 class="text-secondary">
+                                    <i class="fa fa-user"></i> {{ $product->name }}
+                                </h6>
+                                <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">{{ __('catalog.Detail') }}</a>
+                                <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button type="submit" class="btn custom-btn4">{{ __('catalog.Rent') }}</button>
+                                        <a href="https://wa.me/{{ $product->phone }}?text=Hallo%20bisakah%20saya%20melakukan%20{{ urlencode($product->type) }}%20untuk%20produk%20{{ urlencode($product->product_name) }}" 
+                                           class="btn btn-success contact-seller" 
+                                           target="_blank">
+                                            <i class="fab fa-whatsapp"></i> {{ __('catalog.Contact Seller') }}
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
+    </div>
+    <br>
+
+    <!-- Produk Rent and Purchase -->
+    <h2>{{ __('catalog.For Rent and Purchase') }}</h2>
+    <br>
+    <div class="row">
+        @foreach($vwprodukseller as $product)
+            @if($product->type === 'rent_and_purchase')
+                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="categories-item p-4 h-100">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>{{ $product->product_name }}</h4>
+                                <h6 class="text-secondary">
+                                    <i class="fa fa-user"></i> {{ $product->name }}
+                                </h6>
+                                <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">{{ __('catalog.Detail') }}</a>
+                                <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button type="submit" class="btn custom-btn4 btn-lg">
+                                            {{ __('catalog.Purchase Or Rent') }}
+                                        </button>
+                                        <a href="https://wa.me/{{ $product->phone }}?text=Hallo%20bisakah%20saya%20melakukan%20{{ urlencode($product->type) }}%20untuk%20produk%20{{ urlencode($product->product_name) }}" 
+                                        class="btn btn-success contact-seller btn-lg" 
+                                        target="_blank">
+                                            <i class="fab fa-whatsapp"></i> {{ __('catalog.Contact') }}
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
     </div>
 </div>
+
 
 <br><br>
 

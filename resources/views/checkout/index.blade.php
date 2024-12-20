@@ -176,8 +176,8 @@ h3.section-subheading {
 </style>
 </head>
 
-      <!-- Topbar Start -->
-      <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
+    <!-- Topbar Start -->
+    <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
             <div class="container">
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
@@ -192,60 +192,88 @@ h3.section-subheading {
         </div>
         <!-- Topbar End -->
 
-        <!-- Navbar & Hero Start -->
-        <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a href="/" class="navbar-brand p-0">
-                        <h1 class="display-6 text-primary"><i class="fas fa-hard-hat me-3"></i>ZZF Industry</h1>
+       <!-- Navbar & Hero Start -->
+<div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="" class="navbar-brand p-0">
+                <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link active">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
+                </div>
 
-                        <!-- <img src="img/logo.png" alt="Logo"> -->
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars"></span>
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
+
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0">
-                            <a href="/" class="nav-item nav-link active">Home</a>
-                            <a href="/" class="nav-item nav-link">Product</a>
-                            <a href="/" class="nav-item nav-link">About</a>
-                            <a href="/" class="nav-item nav-link">Speciality</a>
-                            <a href="/" class="nav-item nav-link">Service</a>
-                            <a href="/" class="nav-item nav-link">Contact</a>
-                    </div>
-
-                        <!-- Dropdown -->
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user"></i> <!-- Ikon profil -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                @auth('customers') <!-- Menggunakan guard 'customer' -->
-                                    <li>
-                                        <a class="dropdown-item" href="/custprofile">
-                                            {{ Auth::guard('customers')->user()->name }} - Customers
-                                        </a>
-                                    </li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li>
-                                        <form action="{{ route('logoutcustomer') }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item">Logout</button>
-                                        </form>
-                                    </li>
-                                @else
-                                    <li><a class="dropdown-item" href="/login">Login</a></li>
-                                @endauth
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        @auth('customers')
+                            <li>
+                                <a class="dropdown-item" href="/custprofile">
+                                    {{ Auth::guard('customers')->user()->name }} - Customers
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <form action="{{ route('logoutcustomer') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        @else
+                            <li><a class="dropdown-item" href="/login">Login</a></li>
+                        @endauth
+                    </ul>
+                </div>
+
+                <a href="/cartpage" class="nav-link position-relative me-3">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
+                    </span>
+                </a>
             </div>
-        </div>
-        <!-- Navbar & Hero End -->
+        </nav>
+    </div>
+</div>
+<!-- Navbar & Hero End -->
 
 <br><br>
-
           <!-- Isi dari halaman -->
 
      <!-- About Section -->
@@ -279,8 +307,6 @@ h3.section-subheading {
                                     <div class="item-details">
                                         <h4>{{ $item->productSellers->product_name }}</h4>
                                         <p>Seller Name: {{ $item->productSellers->seller->name }}</p>
-                                        <p>Price: Rp{{ number_format($item->total, 0, ',', '.') }}</p>
-                                        <p>Total Items: {{ $item->quantity }}</p>
                                         <input type="hidden" name="selected_items[]" value="{{ $item->productSellers->id }}">
                                     </div>
                                 </li>
@@ -290,11 +316,37 @@ h3.section-subheading {
                         </ul>
                         @if($selectedItems->isNotEmpty())
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-                                <h4>Total Price: Rp{{ number_format($totalPrice, 0, ',', '.') }}</h4>
                                 <input type="hidden" name="total_amount" value="{{ $totalPrice }}">
                                 <p>Checkout Type: <strong>{{ ucfirst(session('checkout_type', 'purchase')) }}</strong></p>
                                 <input type="hidden" name="checkout_type" value="{{ session('checkout_type', 'purchase') }}">
-                                <button type="submit" class="btn btn-primary">Pay Now</button>
+
+                               <!-- WhatsApp Button -->
+                                @php
+                                    $userName = Auth::user()->name; // Ambil nama pengguna yang sedang login
+                                    $messages = [];
+                                    foreach ($selectedItems as $item) {
+                                        $product = $item->productSellers; // Mengambil data produk terkait
+                                        $messages[] = "Nama Produk: {$product->product_name}, Tipe: {$product->type}"; // Hanya mencantumkan nama dan tipe produk
+                                    }
+                                    $whatsappMessage = implode('%0A', $messages); // Menggabungkan pesan dengan baris baru
+                                    $phoneNumber = $selectedItems->first()->productSellers->seller->phone; // Nomor telepon pemilik barang pertama
+                                @endphp
+                                <!-- Buttons -->
+                               
+                                <div style="display: flex; gap: 10px;">
+                                    <a href="https://wa.me/{{ $phoneNumber }}?text=Hallo%20saya%20{{ $userName }},%20saya%20tertarik%20untuk%20melakukan%20checkout%20terkait%20barang%20{{ $whatsappMessage }}%20bisakah%20saya%20melanjutkan%20proses%20checkout%20dan%20mengetahui%20informasi%20lebih%20lanjut%20terkait%20barang%20ini?"
+                                    class="btn"
+                                    target="_blank"
+                                    style="background-color: #FF0000; color: white; padding: 10px 20px; border: none; text-decoration: none; text-align: center;">
+                                        Checkout Now
+                                    </a>
+                                    <a href="/cart"
+                                    class="btn"
+                                    target="_blank"
+                                    style="background-color: #001f3f; color: white; padding: 10px 20px; border: none; text-decoration: none; text-align: center;">
+                                        Back To Previous Page
+                                    </a>
+                                </div>
                             </div>
                         @endif
                     </form>
