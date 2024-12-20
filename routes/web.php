@@ -255,6 +255,9 @@ Route::get('/client/hapusclient/{id}', [ClientController::class, 'hapusclient'])
 Route::resource('bestproduct', BestProductController::class);
 Route::get('/hapusbestproduct/{id}', [BestProductController::class, 'hapusbestproduct'])->name('hapusbestproduct');
 Route::get('/bestproduct/hapusbestproduct/{id}', [BestProductController::class, 'hapusbestproduct']);
+Route::get('/bestproduct/{id}/edit', [BestProductController::class, 'edit'])->name('bestproduct.edit');
+Route::put('/bestproduct/{id}', [BestProductController::class, 'update'])->name('bestproduct.update');
+
 
 Route::resource('latestproject', LatestProjectController::class);
 Route::get('/hapuslatestproject/{id}', [LatestProjectController::class, 'hapuslatestproject'])->name('hapuslatestproject');

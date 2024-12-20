@@ -290,34 +290,6 @@
   </a>
 </li>
 
-
-       <li class="nav-item">
-  <a class="nav-link d-flex align-items-center" href="/cart">
-    <div style="background-color: #ffffff; border-radius: 8px; padding: 7px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-      <svg width="18px" height="18px" viewBox="0 0 24 24" style="fill: #2e3a59;">
-        <path d="M7 4V2a1 1 0 1 1 2 0v2h6V2a1 1 0 1 1 2 0v2h3a1 1 0 0 1 .96 1.273l-2.75 9A1 1 0 0 1 17.25 15H6.75a1 1 0 0 1-.96-.727l-2.75-9A1 1 0 0 1 3 4h4zm-1.38 9h11.76l2.1-7H3.52l2.1 7zM5.5 17a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm9 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z"/>
-      </svg>
-    </div>
-    <span class="nav-link-text ms-2">Carts</span>
-  </a>
-</li>
-      </ul>
-    </div>
-    <!-- <div class="sidenav-footer mx-3 ">
-      <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
-        <div class="full-background" style="background-image: url('../assets/img/curved-images/white-curved.jpg')"></div>
-        <div class="card-body text-start p-3 w-100">
-          <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
-            <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
-          </div>
-          <div class="docs-info">
-            <h6 class="text-white up mb-0">Need help?</h6>
-            <p class="text-xs font-weight-bold">Please check our docs</p>
-            <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard" target="_blank" class="btn btn-white btn-sm w-100 mb-0">Documentation</a>
-          </div>
-        </div>
-        
-      </div> -->
       <a class="btn bg-gradient-danger mt-3 w-100" href="/">Back to Home Page</a>
     </div> 
   </aside>

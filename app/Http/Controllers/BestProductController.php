@@ -63,21 +63,54 @@ class BestProductController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        // Ambil data produk berdasarkan ID
+        $bestproduct = BestProduct::findOrFail($id);
+
+        // Kirim data ke view edit
+        return view('bestproduct.edit', compact('bestproduct'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified product in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Ambil data produk berdasarkan ID
+        $bestproduct = BestProduct::findOrFail($id);
+
+        // Update data produk
+        $bestproduct->name = $request->input('name');
+        $bestproduct->description = $request->input('description');
+
+        // Cek apakah ada file gambar baru yang diunggah
+        if ($request->hasFile('image_url')) {
+            // Hapus gambar lama jika ada
+            if ($bestproduct->image_url && file_exists(storage_path('app/public/' . $bestproduct->image_url))) {
+                unlink(storage_path('app/public/' . $bestproduct->image_url));
+            }
+
+            // Simpan gambar baru
+            $file = $request->file('image_url');
+            $path = $file->store('images', 'public');
+            $bestproduct->image_url = $path;
+        }
+
+        // Simpan perubahan ke database
+        $bestproduct->save();
+
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('bestproduct.index')->with('success', 'Product updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
