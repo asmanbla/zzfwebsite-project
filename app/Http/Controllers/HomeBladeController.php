@@ -237,7 +237,7 @@ public function product_search_all(Request $request)
     return view('prodviewall.index', compact('products', 'productsForAll'));
 }
 
-public function product_search_catalog (Request $request)
+public function product_search_catalog(Request $request)
 {
     $search_text = $request->search;
     $keywords = explode(' ', $search_text); // Memisahkan setiap kata dalam pencarian
@@ -253,9 +253,15 @@ public function product_search_catalog (Request $request)
     // Ambil produk yang dicari
     $products = $productQuery->get();
 
-    $produkall = $products->where('type'); // 
+    // Filter produk dengan type rent atau rent_and_purchase
+    $produkall = $products->filter(function ($product) {
+        return in_array($product->type, ['rent', 'rent_and_purchase']);
+    });
 
-    return view('catalog.index', compact('products', 'produkall'));
+    // Menetapkan vwprodukseller sama dengan produk yang diambil
+    $vwprodukseller = $products;
+
+    return view('catalog.index', compact('products', 'produkall', 'vwprodukseller'));
 }
 
 // public function product_search_rent_scaffolding(Request $request)
@@ -291,7 +297,7 @@ public function product_search_rent_tower_crane(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+                                  ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'tower_crane'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -317,7 +323,7 @@ public function product_search_purchase_tower_crane(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+                                  ->whereIn('type', ['purchase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'tower_crane'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -343,7 +349,7 @@ public function product_search_rent_passenger_hoist(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+                                ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'passenger_hoist'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -369,7 +375,7 @@ public function product_search_purchase_passenger_hoist(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purhcase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'passenger_hoist'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -395,7 +401,7 @@ public function product_search_rent_form_work(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+    ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'form_work'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -421,7 +427,8 @@ public function product_search_purchase_form_work(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purchase', 'rent_and_purchase'])
+
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'form_work'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -447,7 +454,7 @@ public function product_search_rent_scaffolding(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+    ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'scaffolding'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -473,7 +480,7 @@ public function product_search_purchase_scaffolding(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purchase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'scaffolding'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -499,7 +506,7 @@ public function product_search_rent_placing_boom(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+    ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'placing_boom'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -525,7 +532,7 @@ public function product_search_purchase_placingboom(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purchase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'placingboom'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -551,7 +558,7 @@ public function product_search_rent_safety_net(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+    ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'safety_net'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -577,7 +584,7 @@ public function product_search_purchase_safety_net(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purchase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'safety_net'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -603,7 +610,7 @@ public function product_search_rent_concrete_pump(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+    ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'concrete_pump'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -629,7 +636,7 @@ public function product_search_purchase_concrete_pump(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purchase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'concrete_pump'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -655,7 +662,7 @@ public function product_search_rent_concrete_batching_plant(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+    ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'concrete_batching_plant'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -681,7 +688,7 @@ public function product_search_purchase_concrete_battching_plant(Request $reques
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purchase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'concrete_batching_plant'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -707,7 +714,7 @@ public function product_search_rent_mobile_crane(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'rent')
+    ->whereIn('type', ['rent', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'mobile_crane'); // Ganti sesuai nama kolom di tabel kategori
                                   });
@@ -733,7 +740,7 @@ public function product_search_purchase_mobile_crane(Request $request)
 
     // Query ke tabel ProductSellers untuk tipe 'rent' dan kategori 'tower_crane'
     $productQuery = ProductSellers::with(['seller', 'category'])
-                                  ->where('type', 'purchase')
+    ->whereIn('type', ['purchase', 'rent_and_purchase'])
                                   ->whereHas('category', function ($query) {
                                       $query->where('kategori', 'mobile_crane'); // Ganti sesuai nama kolom di tabel kategori
                                   });
