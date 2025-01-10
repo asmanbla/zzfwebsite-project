@@ -313,8 +313,8 @@
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="tel:+62 812-1800-2682" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-1800-2682</a>
+                            <a href="mailto:zzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>zzf@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -384,8 +384,8 @@
 
 <body>
     <div>
-        <h2 class="section-heading text-uppercase">Products Details Latest Project</h2>
-        <h3 class="section-subheading text-muted">Here's the produk details data for more information about the products </h3>
+        <h2 class="section-heading text-uppercase">Latest Project Detail</h2>
+        <h3 class="section-subheading text-muted">Here's the detail for more information about the latest project</h3>
     </div>
     <div class="container">
         <div class="product-detail d-flex">

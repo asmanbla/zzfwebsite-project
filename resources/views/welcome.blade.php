@@ -248,8 +248,8 @@
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="tel:+62 812-1800-2682" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-1800-2682</a>
+                            <a href="mailto:zzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>zzf@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -677,8 +677,8 @@
                 <div class="footer-item d-flex flex-column">
                     <h4 class="text-white mb-4">{{ __('landingpage.Contact Info') }}</h4>
                     <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
-                    <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
-                    <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
+                    <a href="mailto:zzf@gmail.com"><i class="fas fa-envelope me-2"></i> zzf@gmail.com</a>
+                    <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 812-1800-2682</a>
                 </div>
             </div>
         </div>
