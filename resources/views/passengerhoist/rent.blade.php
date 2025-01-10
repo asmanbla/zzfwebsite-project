@@ -319,8 +319,7 @@ h2, h3, .customer-info {
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
                             <a href="tel:+62 812-9340-8484" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-9340-8484</a>
                             <a href="mailto:marketingzzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>marketingzzf@gmail.com</a>
-                            <a href="tel:+62 812-1800-2682" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-1800-2682</a>
-                            <a href="mailto:zzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>zzf@gmail.com</a>
+                           
                         </div>
                     </div>
                 </div>
