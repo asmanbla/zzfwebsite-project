@@ -48,6 +48,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BestProductController;
 use App\Http\Controllers\LatestProjectController;
 use App\Http\Controllers\ProdetLatestProjectController;
+use App\Http\Controllers\LatestProjectViewController;
 use App\Http\Middleware\Localization;
 use Illuminate\Support\Facades\Session;
 
@@ -112,8 +113,6 @@ Route::resource('formrent', RentFormController::class);
 
 Route::get('/detailproduklatest/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
 Route::get('/produkdetailseller/{id}', [DetailProdukController::class, 'showseller'])->name('detailprodukseller.show');
-
-Route::get('/product/{id}', [ProdetLatestProjectController::class, 'showproduct'])->name('product.show');
 
 // Route untuk menampilkan produk tipe 'purchase'
 Route::get('/products/purchase', [ProductViewController::class, 'showProductPurchase'])->name('products.purchase');
@@ -181,7 +180,6 @@ Route::resource('userzzf', UserZZFController::class);
 // Route::post('/update/{id}', [UserZZFController::class, 'update'])->name('update');
 Route::get('/hapususer/{id}', [UserZZFController::class, 'hapususer'])->name('hapususer');
 Route::get('/user/hapususer/{id}', [UserZZFController::class, 'hapususer']);
-
 
 // Route Customer 
 Route::resource('customer', CustomerController::class);
@@ -394,7 +392,11 @@ Route::middleware([Localization::class])->group(function () {
     Route::get('/', [HomeBladeController::class, 'index']); // Memanggil controller secara langsung
     Route::resource('aboutus', AboutUsController::class);
     Route::resource('catalog', CatalogController::class);
-    Route::resource('/contactus', ContactController::class);
+    Route::resource('/contactus', ContactController::class); 
+    Route::resource('latestprojectview', LatestProjectViewController::class);
+    Route::get('/product/{id}', [ProdetLatestProjectController::class, 'showproduct'])->name('product.show');
+    Route::get('/detailproduklatest/{id}', [DetailProdukController::class, 'show'])->name('detailproduk.show');
+Route::get('/produkdetailseller/{id}', [DetailProdukController::class, 'showseller'])->name('detailprodukseller.show');
 
     Route::get('locale/{locale}', function ($locale) {
         $validLocales = ['en', 'id'];

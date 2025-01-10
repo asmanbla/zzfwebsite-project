@@ -313,8 +313,8 @@
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="tel:+62 812-9340-8484" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-9340-8484</a>
+                            <a href="mailto:marketingzzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>marketingzzf@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -333,23 +333,46 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="/catalog" class="nav-item nav-link">Catalog</a>
-                    <a href="/aboutus" class="nav-item nav-link">About</a>
-                    <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/contactus" class="nav-item nav-link">Contact</a>
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link active">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
                 </div>
 
-                <a href="/registercustomer" class="btn btn-secondary rounded-pill py-2 px-4">Login </a>
-                
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
+
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -367,11 +390,11 @@
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
-                    <!-- Jika kamu ingin menampilkan badge jumlah item -->
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -384,8 +407,8 @@
 
 <body>
     <div>
-        <h2 class="section-heading text-uppercase">Products Details Latest Project</h2>
-        <h3 class="section-subheading text-muted">Here's the produk details data for more information about the products </h3>
+        <h2 class="section-heading text-uppercase">{{ __('prodetlatest.Latest Project Details') }}</h2>
+        <h3 class="section-subheading text-muted">{{ __("prodetlatest.Here's the produk details data for more information about the products ") }} </h3>
     </div>
     <div class="container">
         <div class="product-detail d-flex">
@@ -400,12 +423,6 @@
                             </div>
                         @endif
                     </div>
-
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
 
@@ -458,6 +475,15 @@
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 </body>
 
 @if (Session::has('success'))

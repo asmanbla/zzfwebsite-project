@@ -317,8 +317,8 @@ h2, h3, .customer-info {
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="tel:+62 812-9340-8484" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-9340-8484</a>
+                            <a href="mailto:marketingzzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>marketingzzf@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -382,14 +382,6 @@ h2, h3, .customer-info {
 <!-- Navbar & Hero End -->
 
 <br><br>
-
-<!-- Penjelasan Tower Crane -->
-<div class=""> 
-    <h3 class=""> 
-        Placing Boom 
-    </h3>
-    <p>Placing boom adalah alat yang digunakan dalam konstruksi untuk menyalurkan beton dari mixer ke area yang sulit dijangkau, seperti lantai tinggi atau lokasi proyek besar. Alat ini terdiri dari boom panjang yang dapat diputar dan digerakkan, memungkinkan beton untuk dipindahkan dengan presisi dan efisiensi. Placing boom sering digunakan dalam proyek gedung tinggi, jembatan, atau infrastruktur besar lainnya. Dengan kapasitas yang besar, placing boom dapat menyalurkan beton secara kontinu tanpa perlu pemindahan manual yang memakan waktu. Sistem ini mengurangi risiko kecelakaan dan meningkatkan produktivitas di lokasi konstruksi. Placing boom dapat dipasang di crane atau digunakan secara terpisah sebagai alat independen.</p>
-</div>
             
   <!-- Produk Kami Purchase -->
 <div class="container-fluid categories pb-5" id="produk">

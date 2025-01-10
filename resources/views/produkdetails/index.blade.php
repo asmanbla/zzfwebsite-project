@@ -60,6 +60,26 @@
     <link href="{{ ('css/styles.css')}}" rel="stylesheet" />
 
     <style>
+        /* Nav Style */
+        .nav-bar {
+            padding-top: 0.2rem;  /* Mengurangi padding atas */
+            padding-bottom: 0.2rem; /* Mengurangi padding bawah */
+        }
+
+        .navbar .navbar-brand h1 {
+            font-size: 2rem;  /* Atur ukuran teks menjadi lebih kecil */
+            margin: 0;  /* Menghilangkan margin yang mungkin menyebabkan elemen lebih tinggi */
+        }
+
+        .navbar-nav .nav-link {
+            padding-top: 0.10rem;  /* Kurangi padding antara teks dan batas atas/bawah */
+            padding-bottom: 0.25rem;
+        }
+
+        .navbar-toggler {
+            padding: 0.25rem 0.5rem; /* Mengurangi ukuran toggle button */
+        }
+
         body {
             font-family: 'Lato', sans-serif;
             background-color: #f8f9fa; /* Warna latar belakang */
@@ -73,7 +93,7 @@
             gap: 20px;
             background: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            border-radius: 18px;
             overflow: hidden;
         }
 
@@ -150,6 +170,9 @@
             font-weight: bold;
         }
 
+        .ppn {
+            color: #B40707;
+        }
 
         footer {
             background-color: #343a40; /* Warna latar belakang footer */
@@ -234,7 +257,16 @@
             background-color: #050436; /* Warna biru */
             color: white; /* Warna font putih */
             border: none; /* Menghilangkan border default */
-            border-radius: 20px; /* Sudut sedikit bulat */
+            border-radius: 10px; /* Sudut sedikit bulat */
+            padding: 10px 20px; /* Ruang di dalam tombol */
+            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
+        }
+
+        .custom-btn3 {
+            background-color: #475054; /* Warna biru */
+            color: white; /* Warna font putih */
+            border: none; /* Menghilangkan border default */
+            border-radius: 10px; /* Sudut sedikit bulat */
             padding: 10px 20px; /* Ruang di dalam tombol */
             transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
         }
@@ -272,7 +304,6 @@
             border-width: 8px 14px 8px 0; /* Bentuk segitiga terbalik */
             border-color: transparent #ccc transparent transparent; /* Warna abu-abu untuk panah */
         }
-
     </style>
 </head>
 
@@ -283,8 +314,8 @@
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="tel:+62 812-9340-8484" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-9340-8484</a>
+                            <a href="mailto:marketingzzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>marketingzzf@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -292,7 +323,7 @@
         </div>
         <!-- Topbar End -->
 
-       <!-- Navbar & Hero Start -->
+      <!-- Navbar & Hero Start -->
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -304,23 +335,45 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="/" class="nav-item nav-link">Product</a>
-                    <a href="/" class="nav-item nav-link">About</a>
-                    <a href="/" class="nav-item nav-link">Speciality</a>
-                    <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/" class="nav-item nav-link">Contact</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link active">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
                 </div>
 
-                <a href="/registercustomer" class="btn btn-secondary rounded-pill py-2 px-4">Login </a>
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
 
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -338,11 +391,11 @@
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
-                    <!-- Jika kamu ingin menampilkan badge jumlah item -->
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -403,8 +456,8 @@
     </div>
 <br><br>
        
-       <!-- Copyright Start -->
-       <div class="container-fluid copyright py-4">
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
@@ -440,6 +493,15 @@
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
 </body>
 
 </html>

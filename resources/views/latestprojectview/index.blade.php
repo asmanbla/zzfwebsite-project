@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <meta charset="utf-8">
-        <title>ZZF Industri - Product View</title>
+        <title>ZZF Industri - Latest Project</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -32,8 +32,8 @@
         <!-- Customized Bootstrap Stylesheet -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Template File CSS -->
-        <link href="../css/style.css" rel="stylesheet">
+       <!-- Template File CSS -->
+       <link href="../../css/style.css" rel="stylesheet">
 <style>
 
 <style>
@@ -87,8 +87,9 @@ a.btn.btn-secondary {
     display: inline-block; /* Pastikan tombol tetap inline */
 }
 
- /* Style untuk search bar */
- .search-container-purchase {
+
+    /* Style untuk search bar */
+    .search-container-purchase {
     display: flex;
     justify-content: center; /* Mengatur agar elemen berada di tengah */
     margin-bottom: 20px; /* Jarak bawah */
@@ -261,6 +262,15 @@ h2, h3, .customer-info {
     animation: fadeInUp 1s ease-in-out;
 }
 
+.custom-btn {
+            background-color: #590d0b;; /* Warna merah */
+            color: white; /* Warna font putih */
+            border: none; /* Menghilangkan border default */
+            border-radius: 20px; /* Sudut sedikit bulat */
+            padding: 10px 20px; /* Ruang di dalam tombol */
+            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
+        }
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -294,7 +304,9 @@ h2, h3, .customer-info {
     .customer-info i {
         font-size: 2.5rem;
     }
+
 }
+
 </style>
 
     </head>
@@ -327,21 +339,45 @@ h2, h3, .customer-info {
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto py-0">
-                    <a href="#home" class="nav-item nav-link active">Home</a>
-                    <a href="#produk" class="nav-item nav-link">Product</a>
-                    <a href="#tentang" class="nav-item nav-link">About</a>
-                    <a href="#keunggulan" class="nav-item nav-link">Speciality</a>
-                    <a href="#service" class="nav-item nav-link">Service</a>
-                    <a href="#kontak" class="nav-item nav-link">Contact</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link active">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
                 </div>
 
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
+
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -359,10 +395,11 @@ h2, h3, .customer-info {
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -372,84 +409,39 @@ h2, h3, .customer-info {
 <!-- Navbar & Hero End -->
 
 <br><br>
-   <!-- Produk Kami (ZZF) -->
-   <div class="container-fluid categories pb-5" id="produk">
+
+            
+  <!-- Produk Kami Purchase -->
+<div class="container-fluid categories pb-5" id="produk">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-            <h1 class="display-5 text-capitalize mb-3">Our <span class="text-primary">Product</span></h1>
-            <p class="mb-0">The following are the products produced by PT ZZF Indonesia</p>
+            <h1 class="display-5 text-capitalize mb-3">{{ __('latestproject.Latest Project') }} <span class="text-primary">PT ZZF Industri</span></h1>
+            <p class="mb-0">{{ __('latestproject.The following are all the latest project zzf industry') }}</p>
         </div>
 
-        <!-- Product Search -->
-<div class="search-container-purchase">
-                <form action="{{ url('product_search_all') }}" method="GET" class="search-form">
-                    <input class="search-input-purchase" type="text" name="search" placeholder="Search Products Here">
-                    <button class="search-button-purchase" type="submit"><i class="fas fa-search"></i></button>
-                </form>
-            </div>
-            <br>
-
-        <!-- Menggunakan grid Bootstrap -->
-                <div class="row">
-                    @foreach($productsForAll as $product)
-                        <div class="col-lg-4 col-md-6 mb-4"> <!-- Mengatur 3 produk per baris -->
-                            <div class="categories-item p-4 h-100">
-                                <div class="categories-item-inner">
-                                    <div class="categories-img rounded-top">
-                                        <!-- Menampilkan gambar produk -->
-                                        <img src="{{ asset('storage/' . $product->image1_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->product_name }}">
-                                    </div>
-                                    <div class="categories-content rounded-bottom p-4">
-                                        <!-- Menampilkan nama produk -->
-                                        <h4>{{ $product->product_name }}</h4>
-                                        <h6 class="text-secondary">
-                                            <i class="fa fa-user"></i> {{ $product->seller->name }}
-                                        </h6>
-                                        <h8 class="text-secondary">
-                                            <i class="fa fa-cogs"></i> {{ $product->specification }}
-                                        </h8>
-                                        <div class="mb-4">
-                                            <!-- Menampilkan harga produk price-->
-                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Sale : Rp{{ $product->purchase_price, 2, ',', '.' }}</h4>
-                                        </div>
-                                        <div class="mb-4">
-                                            <!-- Menampilkan harga produk rent -->
-                                            <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">Rent : Rp{{ $product->rent_price, 2, ',', '.' }}/Day</h4>
-                                        </div>
-                                        <!-- Tombol detail produk -->
-                                        <a href="{{ route('detailprodukseller.show', $product->id) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3">Detail</a>
-                                        <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
-    <form action="{{ route('cart.addToCartPurchase', $product->id) }}" method="POST" class="d-inline">
-        @csrf
-        <input type="hidden" name="product_id" value="{{ $product->id }}">
-        <input type="hidden" name="quantity" value="1">
-        <button type="submit" class="btn custom-btn4">Purchase</button>
-    </form>
-    <form action="{{ route('cart.addToCartRent', $product->id) }}" method="POST" class="d-inline">
-        @csrf
-        <input type="hidden" name="product_id" value="{{ $product->id }}">
-        <input type="hidden" name="quantity" value="1">
-        <button type="submit" class="btn custom-btn3">Rent</button>
-    </form>
-    <a href="https://wa.me/{{ $product->phone }}" class="btn btn-success contact-seller d-flex align-items-center" style="white-space: nowrap; flex-shrink: 0;" target="_blank">
-        <i class="fab fa-whatsapp me-1"></i> Contact Seller
-    </a>
-</div>
-
-                                    </div>
-                                </div>
+<div class="container">
+    <div class="row">
+        @foreach($latestproject as $product)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="categories-item p-4 h-100">
+                        <div class="categories-item-inner">
+                            <div class="categories-img rounded-top">
+                                <img src="{{ asset('storage/' . $product->image_url) }}" class="img-fluid w-100 rounded-top" alt="{{ $product->project_name }}">
+                            </div>
+                            <div class="categories-content rounded-bottom p-4">
+                                <h4>{{ $product->project_name }}</h4>
+                                <a href="{{ route('product.show', ['id' => $product->id]) }}" class="btn btn-primary rounded-pill d-flex justify-content-center py-3 mb-3">Detail</a>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-                <div class="d-flex justify-content-start align-items-center mb-5">
-                        <a href="/" class="btn custom-btn" style="margin-right: 15px !important;">Back To Home Page</a>
-                        </div>
-            </div>
-        </div>
+        @endforeach
+    </div>
+</div>
+
+
 <br><br>
 
-    
 </body>
 
 <br><br>
@@ -483,6 +475,7 @@ h2, h3, .customer-info {
           button:"OK",
           timer:5000
       });
+
     </script>
     @endif 
         

@@ -1016,6 +1016,7 @@ body {
 </style>
 </head>
 <body>
+
           <!-- Topbar Start -->
           <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
             <div class="container">
@@ -1023,8 +1024,8 @@ body {
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="tel:+62 812-9340-8484" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-9340-8484</a>
+                            <a href="mailto:marketingzzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>marketingzzf@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -1032,47 +1033,47 @@ body {
         </div>
         <!-- Topbar End -->
 
-      <!-- Navbar & Hero Start -->
-<div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a href="" class="navbar-brand p-0">
-                <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="fa fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
-                    <a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
-                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
-                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
-                    <a href="/contactus" class="nav-item nav-link active">{{ __('landingpage.Contact') }}</a>
-                </div>
-
-                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
-                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
-
-                <!-- Dropdown for Language Selection -->
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
-                        <!-- Display active language flag based on locale -->
-                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+              <!-- Navbar & Hero Start -->
+        <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a href="" class="navbar-brand p-0">
+                        <img src="{{ asset('img/imgzzf/logozzf.jpg') }}" alt="Logo ZZF Industry" class="logo-image" style="height: 50px;">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
-                        <li>
-                        <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
-    Bahasa Indonesia
-</a>
-<a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
-    <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
-    English
-</a>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto py-0">
+                            <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                            <a href="/catalog" class="nav-item nav-link">{{ __('landingpage.Catalog') }}</a>
+                            <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                            <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                            <a href="/contactus" class="nav-item nav-link active">{{ __('landingpage.Contact') }}</a>
+                        </div>
+
+                        <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                        <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
+
+                        <!-- Dropdown for Language Selection -->
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                                <!-- Display active language flag based on locale -->
+                                <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                      Bahasa Indonesia
+                                    </a>
+                                      <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                          <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                          English
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
 
                 <!-- Dropdown for Profile or Auth Links -->
                 <div class="nav-item dropdown mx-3">
@@ -1111,40 +1112,40 @@ body {
 </div>
 <!-- Navbar & Hero End -->
 
-<div class="contact_us_6">
-  <div class="responsive-container-block container">
-  <form class="form-box" id="contact-form">
-  <div class="container-block form-wrapper">
-    <div class="mob-text">
-      <p class="text-blk contactus-head">
-        {{ __('contact.Get in Touch') }}
-      </p>
-    </div>
-    <div class="responsive-container-block" id="i2cbk">
-      <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i10mt-3">
-        <p class="text-blk input-title">
-          {{ __('contact.NAME') }}
-        </p>
-        <input class="input" id="ijowk-3" name="FirstName" placeholder="{{ __('contact.Please enter first name...') }}">
+    <div class="contact_us_6">
+      <div class="responsive-container-block container">
+      <form class="form-box" id="contact-form">
+      <div class="container-block form-wrapper">
+        <div class="mob-text">
+          <p class="text-blk contactus-head">
+            {{ __('contact.Get in Touch') }}
+          </p>
+        </div>
+        <div class="responsive-container-block" id="i2cbk">
+          <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i10mt-3">
+            <p class="text-blk input-title">
+              {{ __('contact.NAME') }}
+            </p>
+            <input class="input" id="ijowk-3" name="FirstName" placeholder="{{ __('contact.Please enter first name...') }}">
+          </div>
+          <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ip1yp">
+            <p class="text-blk input-title">
+              {{ __('contact.EMAIL') }}
+            </p>
+            <input class="input" id="ipmgh-3" name="Email" placeholder="{{ __('contact.Please enter email...') }}">
+          </div>
+          <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-3">
+            <p class="text-blk input-title">
+              {{ __('contact.WHAT DO YOU HAVE IN MIND ?') }}
+            </p>
+            <textarea class="textinput" id="i5vyy-3" placeholder="{{ __('contact.Please enter query...') }}"></textarea>
+          </div>
+        </div>
+        <button type="button" class="submit-btn" id="w-c-s-bgc_p-1-dm-id-2" onclick="sendToWhatsApp()">
+          {{ __('contact.Submit') }}
+        </button>
       </div>
-      <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ip1yp">
-        <p class="text-blk input-title">
-          {{ __('contact.EMAIL') }}
-        </p>
-        <input class="input" id="ipmgh-3" name="Email" placeholder="{{ __('contact.Please enter email...') }}">
-      </div>
-      <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-3">
-        <p class="text-blk input-title">
-          {{ __('contact.WHAT DO YOU HAVE IN MIND ?') }}
-        </p>
-        <textarea class="textinput" id="i5vyy-3" placeholder="{{ __('contact.Please enter query...') }}"></textarea>
-      </div>
-    </div>
-    <button type="button" class="submit-btn" id="w-c-s-bgc_p-1-dm-id-2" onclick="sendToWhatsApp()">
-      {{ __('contact.Submit') }}
-    </button>
-  </div>
-</form>
+    </form>
     <div class="responsive-cell-block wk-desk-7 wk-ipadp-12 wk-tab-12 wk-mobile-12" id="i772w">
       <div class="map-part">
         <p class="text-blk map-contactus-head" id="w-c-s-fc_p-1-dm-id">
@@ -1152,9 +1153,9 @@ body {
         </p>
         <div class="social-media-links mob">
     <!-- Gmail Icon -->
-    <a class="social-icon-link" href="mailto:assecyuda@gmail.com" id="gmail-link">
+    <a class="social-icon-link" href="mailto:marketingzzf@gmail.com" id="gmail-link">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>
-</a>
+    </a>
 
 
     <!-- WhatsApp Icon -->
@@ -1219,8 +1220,8 @@ body {
                 <div class="footer-item d-flex flex-column">
                     <h4 class="text-white mb-4">{{ __('landingpage.Contact Info') }}</h4>
                     <a href="#"><i class="fa fa-map-marker-alt me-2"></i> Jl. Karang Tengah Raya No.29, RT.4/RW.4, Lb. Bulus, Cilandak District, South Jakarta City, Special Capital Region of Jakarta 12930</a>
-                    <a href="mailto:asmanabila03@gmail.com"><i class="fas fa-envelope me-2"></i> asmanabila03@gmail.com</a>
-                    <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 818-961-343</a>
+                    <a href="mailto:marketingzzf@gmail.com"><i class="fas fa-envelope me-2"></i> marketingzzf@gmail.com</a>
+                    <a href="tel:+"><i class="fas fa-phone me-2"></i> +62 812-9340-8484</a>
                 </div>
             </div>
         </div>
@@ -1237,7 +1238,7 @@ body {
     var email = document.getElementById('ipmgh-3').value;
     var message = document.getElementById('i5vyy-3').value;
     
-    var whatsappURL = "https://wa.me/62895383271397?text=";
+    var whatsappURL = "https://wa.me/6281293408484?text=";
     var text = "Name: " + encodeURIComponent(name) + "%0A" +
                "Email: " + encodeURIComponent(email) + "%0A" +
                "Message: " + encodeURIComponent(message);

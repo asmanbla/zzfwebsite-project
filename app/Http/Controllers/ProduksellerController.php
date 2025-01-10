@@ -7,6 +7,9 @@ use App\Models\ProductCategoriesSeller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\LatestProject; 
+use Carbon\Carbon; 
+
 
 class produksellerController extends Controller
 {
@@ -59,7 +62,7 @@ class produksellerController extends Controller
         ]);
     
         try {
-            // Ambil data yang diperlukan dan tambahkan sellers_id
+            // Simpan data produk ke tabel produk_sellers
             $data = $request->only([
                 'product_category_id',
                 'product_name',
@@ -71,29 +74,32 @@ class produksellerController extends Controller
                 'description'
             ]);
     
-            // Tambahkan sellers_id berdasarkan pengguna yang sedang login
-            $data['sellers_id'] = Auth::id();
+            $data['sellers_id'] = Auth::id(); // Tambahkan sellers_id
+            $data['image1_url'] = $request->file('image1_url')->store('produkseller/Photos', 'public'); // Simpan gambar utama
     
-            // Simpan image1
-            $data['image1_url'] = $request->file('image1_url')->store('produkseller/Photos', 'public');
-    
-            // Simpan image2 jika ada
             if ($request->hasFile('image2_url')) {
                 $data['image2_url'] = $request->file('image2_url')->store('produkseller/Photos', 'public');
             }
     
-            // Simpan image3 jika ada
             if ($request->hasFile('image3_url')) {
                 $data['image3_url'] = $request->file('image3_url')->store('produkseller/Photos', 'public');
             }
     
-            // Simpan data produk ke database
-            ProductSellers::create($data);
+            // Simpan ke tabel produk_sellers
+            $produk = ProductSellers::create($data);
     
-            // Redirect ke halaman index dengan pesan sukses
+            // Simpan data ke tabel latest_projects
+            LatestProject::create([
+                'image_url' => $data['image1_url'], // Menggunakan gambar pertama produk
+                'project_name' => $request->input('product_name'), // Nama produk
+                'description' => $request->input('description'), // Deskripsi produk
+                'expires_at' => Carbon::now()->addDays(30), // Masa berlaku 30 hari
+            ]);
+    
+            // Redirect dengan pesan sukses
             return redirect()->route('produkseller.index')->with('success', 'New Product Successfully Added!');
         } catch (\Exception $e) {
-            // Tangani error jika terjadi kesalahan
+            // Tangani error
             return redirect()->back()->withErrors(['error' => 'Failed to save product: ' . $e->getMessage()])->withInput();
         }
     }
@@ -115,54 +121,58 @@ class produksellerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        $request->validate([
-            'product_name' => 'required|string|max:255',
-            'specification' => 'required|string|max:255',
-            'product_category_id' => 'required|exists:product_categories_sellers,id',
-            'type'=>'required|in:rent, purchase, rent_and_purchase',
-            'purchase_price' => 'nullable|numeric|min:0',
-            'rent_price' => 'nullable|numeric|min:0',
-            'stok_quantity' => 'nullable|numeric|min:0',
-            'description' => 'required|string|max:500',
-            'image1_url' => 'nullable|image|max:6000',
-            'image2_url' => 'nullable|image|max:6000',
-            'image3_url' => 'nullable|image|max:6000',
-        ]);
+public function update(Request $request, string $id)
+{
+    $request->validate([
+        'product_name' => 'required|string|max:255',
+        'specification' => 'required|string|max:255',
+        'product_category_id' => 'required|exists:product_categories_sellers,id',
+        'type' => 'required|in:rent,purchase,rent_and_purchase',
+        'purchase_price' => 'nullable|numeric|min:0',
+        'rent_price' => 'nullable|numeric|min:0',
+        'stok_quantity' => 'nullable|numeric|min:0',
+        'description' => 'required|string|max:500',
+        'image1_url' => 'nullable|image|max:6000',
+        'image2_url' => 'nullable|image|max:6000',
+        'image3_url' => 'nullable|image|max:6000',
+    ]);
 
-    // Custom validation to ensure at least one price is filled if type is rent or purchase
-    if (($request->type == 'rent' && empty($request->rent_price)) ||
-    ($request->type == 'purchase' && empty($request->purchase_price)) ||
-    ($request->type == 'rent_and_purchase' && empty($request->rent_price) && empty($request->purchase_price))) {
-    return back()->withErrors(['price' => 'Either rent price or purchase price must be provided based on the selected type.'])->withInput();
-}
-    
-        $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->firstOrFail();
-        $produkseller->product_name = $request->input('product_name');
-        $produkseller->specification = $request->input('specification');
-        $produkseller->product_category_id = $request->input('product_category_id');
-        $produkseller->type = $request->input('type');
-        $produkseller->purchase_price = $request->input('purchase_price');
-        $produkseller->rent_price = $request->input('rent_price');
-        $produkseller->stok_quantity = $request->input('stok_quantity');
-        $produkseller->description = $request->input('description');
-    
-        // Update gambar jika ada yang di-upload
-        for ($i = 1; $i <= 3; $i++) {
-            if ($request->hasFile('image' . $i . '_url')) {
-                // Store the uploaded image
-                $imagePath = $request->file('image' . $i . '_url')->store('produkseller/Photos', 'public');
-                // Update properti image_url yang sesuai dari produk
-                $produkseller->{'image' . $i . '_url'} = str_replace('public/', 'storage/', $imagePath);
-            }
-        }
-    
-        // Save the updated product
-        $produkseller->save();
-    
-        return redirect('/produkseller')->with('success', 'Edit Product Saved Successfully!!!');
+    // Validasi tambahan untuk harga
+    if (($request->type == 'rent' && is_null($request->rent_price)) ||
+        ($request->type == 'purchase' && is_null($request->purchase_price)) ||
+        ($request->type == 'rent_and_purchase' && is_null($request->rent_price) && is_null($request->purchase_price))) {
+        return back()->withErrors(['price' => 'Either rent price or purchase price must be provided based on the selected type.'])->withInput();
     }
+
+    // Ambil produk berdasarkan ID
+    $produkseller = ProductSellers::where('id', $id)->where('sellers_id', Auth::id())->firstOrFail();
+
+    // Update data produk
+    $produkseller->product_name = $request->input('product_name');
+    $produkseller->specification = $request->input('specification');
+    $produkseller->product_category_id = $request->input('product_category_id');
+    $produkseller->type = $request->input('type');
+    $produkseller->purchase_price = $request->input('purchase_price');
+    $produkseller->rent_price = $request->input('rent_price');
+    $produkseller->stok_quantity = $request->input('stok_quantity');
+    $produkseller->description = $request->input('description');
+
+    // Update gambar jika diunggah
+    for ($i = 1; $i <= 3; $i++) {
+        if ($request->hasFile('image' . $i . '_url')) {
+            // Simpan gambar
+            $imagePath = $request->file('image' . $i . '_url')->store('produkseller/Photos', 'public');
+            // Simpan path gambar ke database
+            $produkseller->{'image' . $i . '_url'} = $imagePath;
+        }
+    }
+
+    // Simpan perubahan
+    $produkseller->save();
+
+    // Redirect dengan pesan sukses
+    return redirect('/produkseller')->with('success', 'Edit Product Saved Successfully!!!');
+}
     
     /**
      * Remove the specified resource from storage.

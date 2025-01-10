@@ -61,352 +61,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <style>
-        /* Nav Style */
-        .nav-bar {
-            padding-top: 0.2rem;  /* Mengurangi padding atas */
-            padding-bottom: 0.2rem; /* Mengurangi padding bawah */
-        }
+<style>
 
-        .navbar .navbar-brand h1 {
-            font-size: 2rem;  /* Atur ukuran teks menjadi lebih kecil */
-            margin: 0;  /* Menghilangkan margin yang mungkin menyebabkan elemen lebih tinggi */
-        }
-
-        .navbar-nav .nav-link {
-            padding-top: 0.10rem;  /* Kurangi padding antara teks dan batas atas/bawah */
-            padding-bottom: 0.25rem;
-        }
-
-        .navbar-toggler {
-            padding: 0.25rem 0.5rem; /* Mengurangi ukuran toggle button */
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f8f9fa; /* Warna latar belakang */
-            margin: 0;
-            padding: 0;
-        }
-
-        .product-detail {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 18px;
-            overflow: hidden;
-        }
-
-        .product-images {
-            flex: 1;
-            position: relative; /* Agar anak elemen bisa diposisikan */
-            overflow: hidden;
-        }
-
-        .product-images img {
-            width: 100%; 
-            height: auto; 
-            object-fit: cover; 
-            border-radius: 8px 0 0 8px; /* Rounded corners on the left side */
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%; /* Posisikan di tengah vertikal */
-            transform: translateY(-50%); /* Pusatkan secara vertikal */
-            background-color: rgba(211, 211, 211, 0.8); /* Warna abu-abu */
-            border-radius: 50%; /* Membuat lingkaran */
-            width: 24px; /* Ukuran lingkaran */
-            height: 24px; /* Ukuran lingkaran */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            outline: 2px solid rgba(170, 170, 170, 0.8); /* Outline lingkaran */
-        }
-
-        .arrow-left {
-            left: 10px; /* Jarak dari gambar ke kiri */
-        }
-
-        .arrow-right {
-            right: 10px; /* Jarak dari gambar ke kanan */
-        }
-
-        .product-info {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: left;
-            background-color: #fff;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin: 0;
-            color: #333;
-        }
-
-        p {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        .price {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: #28a745; /* Warna hijau untuk harga */
-        }
-
-        .fa-star {
-            color: gold;
-        }
-
-        .btn {
-            border-radius: 5px; /* Bulatkan sudut tombol */
-            font-weight: bold;
-        }
-
-        .ppn {
-            color: #B40707;
-        }
-
-        footer {
-            background-color: #343a40; /* Warna latar belakang footer */
-            color: #ffffff; /* Warna teks footer */
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        footer a {
-            color: #ffffff; /* Warna tautan footer */
-            text-decoration: none; /* Menghilangkan garis bawah tautan */
-        }
-
-        footer a:hover {
-            text-decoration: underline; /* Menambahkan garis bawah saat hover */
-        }
-
-        /* Umum */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-
-        h2.section-heading {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #c0392b; /* Merah */
-            margin-bottom: 1rem;
-            text-align: center; /* Rata tengah */
-        }
-
-        h3.section-subheading {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: black;
-            margin-bottom: 2rem;
-            text-align: center; /* Rata tengah */
-        }
-
-        .footer {
-            display: flex;
-            justify-content: left;
-            align-items: left;
-            text-align: left;
-            color: white;
-        }
-
-        .footer .container {
-            max-width: 100%;
-        }
-
-        .footer-item {
-            display: flex;
-            flex-direction: column;
-            justify-content: left;
-            align-items: left;
-            text-align: left;
-        }
-
-        .footer .row {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .footer-item a {
-            text-align: left;
-        }
-
-        .custom-btn {
-            background-color: #590d0b;; /* Warna merah */
-            color: white; /* Warna font putih */
-            border: none; /* Menghilangkan border default */
-            border-radius: 20px; /* Sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
-        }
-
-        .custom-btn2 {
-            background-color: #050436; /* Warna biru */
-            color: white; /* Warna font putih */
-            border: none; /* Menghilangkan border default */
-            border-radius: 10px; /* Sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
-        }
-
-        .custom-btn3 {
-            background-color: #475054; /* Warna biru */
-            color: white; /* Warna font putih */
-            border: none; /* Menghilangkan border default */
-            border-radius: 10px; /* Sudut sedikit bulat */
-            padding: 10px 20px; /* Ruang di dalam tombol */
-            transition: box-shadow 0.3s ease; /* Transisi untuk efek bayangan */
-        }
-
-        .custom-btn:hover {
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3); /* Efek bayangan saat hover */
-        }
-
-        /* Swipper Logo */
-
-        .swiper-button-next, .swiper-button-prev {
-            background-color: transparent;
-            border: 2px solid #ccc; /* Abu-abu untuk outline */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .swiper-button-next::after, .swiper-button-prev::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-style: solid;
-        }
-
-        .swiper-button-next::after {
-            border-width: 8px 0 8px 14px; /* Bentuk segitiga */
-            border-color: transparent transparent transparent #ccc; /* Warna abu-abu untuk panah */
-        }
-
-        .swiper-button-prev::after {
-            border-width: 8px 14px 8px 0; /* Bentuk segitiga terbalik */
-            border-color: transparent #ccc transparent transparent; /* Warna abu-abu untuk panah */
-        }
-
-        /* Gaya default untuk desktop */
+    /* Umum */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+h1, h2, h3 {
+    margin: 0;
+    color: #333;
 }
 
-.header, .footer {
-    background-color: #2c3e50;
+p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+h2.section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #c0392b; /* Merah */
+    margin-bottom: 1rem;
+    text-align: center; /* Rata tengah */
+}
+
+h3.section-subheading {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #6c757d;
+    margin-bottom: 2rem;
+    text-align: center; /* Rata tengah */
+}
+
+/* Nav Style */
+.nav-bar {
+    padding-top: 0.2rem;  /* Mengurangi padding atas */
+    padding-bottom: 0.2rem; /* Mengurangi padding bawah */
+}
+
+.navbar .navbar-brand h1 {
+    font-size: 2rem;  /* Atur ukuran teks menjadi lebih kecil */
+    margin: 0;
+}
+
+.navbar-nav .nav-link {
+    padding-top: 0.10rem;  /* Kurangi padding antara teks dan batas atas/bawah */
+    padding-bottom: 0.25rem;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.5rem; /* Mengurangi ukuran toggle button */
+}
+
+/* Gaya Produk */
+.product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.product-images {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-images img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(211, 211, 211, 0.8);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: 2px solid rgba(170, 170, 170, 0.8);
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+.product-info {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    background-color: #fff;
+}
+
+.product-info h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.product-info .price {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #28a745; /* Warna hijau untuk harga */
+}
+
+.product-info .fa-star {
+    color: gold;
+}
+
+.product-info p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Tombol */
+.btn, .custom-btn, .custom-btn2, .custom-btn3 {
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.custom-btn {
+    background-color: #590d0b;
     color: white;
+    border: none;
+}
+
+.custom-btn2 {
+    background-color: #050436;
+    color: white;
+    border: none;
+}
+
+.custom-btn3 {
+    background-color: #475054;
+    color: white;
+    border: none;
+}
+
+.custom-btn:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #ffffff;
     padding: 20px 0;
     text-align: center;
 }
 
-/* Responsif untuk tablet */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    .header, .footer {
-        padding: 15px 0;
-    }
-
-    .nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+footer a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
-/* Responsif untuk perangkat mobile */
-@media (max-width: 480px) {
-    .header h1 {
-        font-size: 18px;
-    }
-
-    .footer p {
-        font-size: 12px;
-    }
-
-    .container {
-        padding: 5px;
-    }
-
-    .nav {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    /* Atur lebar container agar responsif */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+footer a:hover {
+    text-decoration: underline;
 }
 
-/* Mengatur layout gambar produk dan info produk dengan Flexbox */
-.product-detail {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-/* Mengatur gambar produk */
-.product-images {
-    flex: 1;
-    min-width: 300px;
-    max-width: 600px;
-}
-
-.product-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-/* Mengatur informasi produk */
-.product-info {
-    flex: 1;
-    min-width: 300px;
-    max-width: 600px;
-}
-
-/* Menambahkan gaya untuk tombol */
-.custom-btn, .contact-seller {
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    text-align: center;
-}
 
 /* Responsif untuk perangkat tablet */
 @media (max-width: 768px) {
@@ -430,42 +267,67 @@ body {
     }
 }
 
-/* Responsif untuk perangkat mobile */
-@media (max-width: 480px) {
-    .product-detail {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .product-info h1 {
-        font-size: 22px;
-    }
-
-    .product-info h5 {
-        font-size: 16px;
-    }
-
-    .product-info p {
-        font-size: 14px;
-    }
-
-    .product-images {
-        max-width: 100%;
-    }
-
-    .custom-btn, .contact-seller {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    .swiper-container {
-        max-width: 100%;
-    }
+/* Swipper Logo */
+.swiper-button-next, .swiper-button-prev {
+    background-color: transparent;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.swiper-button-next::after, .swiper-button-prev::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.swiper-button-next::after {
+    border-width: 8px 0 8px 14px;
+    border-color: transparent transparent transparent #ccc;
+}
+
+.swiper-button-prev::after {
+    border-width: 8px 14px 8px 0;
+    border-color: transparent #ccc transparent transparent;
+}
+
+/* Footer layout */
+.footer {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    color: white;
+}
+
+.footer .container {
+    max-width: 100%;
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+}
+
+.footer .row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-item a {
+    text-align: left;
 }
 
     </style>
+    
 </head>
         <!-- Topbar Start -->
         <div class="container-fluid topbar bg-secondary d-none d-xl-block w-100">
@@ -474,8 +336,8 @@ body {
                     <div class="col-lg-6 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap text-white">
                             <a href="https://maps.app.goo.gl/Pi63CAbYZseqwskv8" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>ZZF's Office</a>
-                            <a href="tel:+62 818-961-343" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 818-961-343</a>
-                            <a href="mailto:asmanabila03@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>asmanabila03@gmail.com</a>
+                            <a href="tel:+62 812-9340-8484" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+62 812-9340-8484</a>
+                            <a href="mailto:marketingzzf@gmail.com" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>marketingzzf@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -483,7 +345,7 @@ body {
         </div>
         <!-- Topbar End -->
 
-      <!-- Navbar & Hero Start -->
+          <!-- Navbar & Hero Start -->
 <div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -494,23 +356,46 @@ body {
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="/catalog" class="nav-item nav-link">Catalog</a>
-                    <a href="/aboutus" class="nav-item nav-link">About</a>
-                    <a href="/" class="nav-item nav-link">Service</a>
-                    <a href="/contactus" class="nav-item nav-link">Contact</a>
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Home') }}</a>
+                    <a href="/catalog" class="nav-item nav-link active">{{ __('landingpage.Catalog') }}</a>
+                    <a href="/aboutus" class="nav-item nav-link">{{ __('landingpage.About') }}</a>
+                    <a href="/" class="nav-item nav-link">{{ __('landingpage.Service') }}</a>
+                    <a href="/contactus" class="nav-item nav-link">{{ __('landingpage.Contact') }}</a>
                 </div>
 
-                <a href="/registercustomer" class="btn btn-secondary rounded-pill py-2 px-4">Login </a>
-                
-                <!-- Dropdown -->
-                <div class="nav-item dropdown">
+                <a href="/registercustomer" class="btn btn-primary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Shopping') }}</a>
+                <a href="/dashboardseller" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">{{ __('landingpage.Start Selling') }}</a>
+
+                <!-- Dropdown for Language Selection -->
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Display active language flag based on locale -->
+                        <img src="{{ session('locale') == 'id' ? 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg' : 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg' }}" alt="Active Language Flag" width="20">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'id']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Indonesian Flag" width="20" style="margin-right: 8px;">
+                                Bahasa Indonesia
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('locale', ['locale' => 'en']) }}">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" width="20" style="margin-right: 8px;">
+                                English
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dropdown for Profile or Auth Links -->
+                <div class="nav-item dropdown mx-3">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user"></i> <!-- Ikon profil -->
+                        <i class="fas fa-user"></i> <!-- Profile Icon -->
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        @auth('customers') <!-- Menggunakan guard 'customer' -->
+                        @auth('customers')
                             <li>
                                 <a class="dropdown-item" href="/custprofile">
                                     {{ Auth::guard('customers')->user()->name }} - Customers
@@ -528,11 +413,11 @@ body {
                         @endauth
                     </ul>
                 </div>
+
                 <a href="/cartpage" class="nav-link position-relative me-3">
                     <i class="fas fa-shopping-cart"></i>
-                    <!-- Jika kamu ingin menampilkan badge jumlah item -->
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }} <!-- Menampilkan jumlah item keranjang -->
+                        {{ isset($totalItems) && $totalItems > 0 ? $totalItems : 0 }}
                     </span>
                 </a>
             </div>
@@ -540,14 +425,15 @@ body {
     </div>
 </div>
 <!-- Navbar & Hero End -->
-
+    
 <br><br>
 
 <body>
     <div>
-        <h2 class="section-heading text-uppercase">Products Details</h2>
-        <h3 class="section-subheading text-muted">Here's the produk details data for more information about the products </h3>
+        <h2 class="section-heading text-uppercase">{{ __('detailproduk.Product Details') }}</h2>
+        <h3 class="section-subheading text-muted">  {{ __("detailproduk.Here's the produk details data for more information about the products") }}</h3>
     </div>
+    
     <div class="container">
         <div class="product-detail">
             <div class="product-images">
@@ -643,6 +529,15 @@ body {
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/main.js"></script>
+
+     <!-- JavaScript Libraries -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Menampilkan SweetAlert jika ada session success atau error -->
     @if (Session::has('success'))

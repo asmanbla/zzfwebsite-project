@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LatestProject;
+use App\Models\ProductSellers;
 
 class LatestProjectController extends Controller
 {
@@ -36,23 +37,36 @@ class LatestProjectController extends Controller
         ]);
     
         try {
+            // Simpan data input dari form
             $data = $request->only([
                 'image_url',
                 'project_name',
                 'description'
             ]);
     
+            // Upload gambar form dan simpan di folder 'latestproject/Photos'
             $data['image_url'] = $request->file('image_url')->store('latestproject/Photos', 'public');
-
-            // Simpan data produk ke database
-            $latestproject = LatestProject::create($data);
+    
+            // Simpan data proyek terbaru yang dimasukkan secara manual
+            LatestProject::create($data);
+    
+            // Ambil data produk yang ditambahkan dalam 30 hari terakhir
+            $recentProducts = ProductSellers::where('created_at', '>=', now()->subDays(30))->get();
+    
+            // Simpan setiap produk terbaru ke dalam tabel latest_project
+            foreach ($recentProducts as $product) {
+                LatestProject::create([
+                    'project_name' => $product->product_name,
+                    'description' => $product->description,
+                    'image_url' => $product->image1_url, // Mengambil hanya gambar pertama
+                ]);
+            }
     
             return redirect()->route('latestproject.index')->with('success', 'New Best Latest Project Data added!');
         } catch (\Exception $e) {
-            dd($e->getMessage());  // Menampilkan pesan error untuk debugging
+            return redirect()->route('latestproject.index')->with('error', 'Failed to add data! ' . $e->getMessage());
         }
     }
-    
 
     /**
      * Display the specified resource.
